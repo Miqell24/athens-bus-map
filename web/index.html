@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kraków Public Transport — interactive map</title>
+<link rel="stylesheet" href="vendor/maplibre-gl.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="map"></div>
+<aside id="panel">
+  <h1>Kraków<br>Public Transport</h1>
+  <ul class="legend">
+    <li><label><input type="checkbox" id="toggle-bus" checked> <span class="sw line"></span> Bus routes</label></li>
+    <li><label><input type="checkbox" id="toggle-tram" checked> <span class="sw line tram"></span> Tram routes</label></li>
+    <li><span class="sw stop"></span> Stop</li>
+    <li><span class="sw terminus"></span> Terminus</li>
+  </ul>
+  <details class="lines">
+    <summary>All lines <span id="count"></span></summary>
+    <p class="hint">Click a line to show its route and stops.</p>
+    <div id="chips" class="chip-cloud"></div>
+  </details>
+  <button id="export-png" title="Renders the current view as a large, print-quality PNG — street and stop names become legible as you zoom into the image">Export view as PNG</button>
+  <div id="footer">Data: GTFS ZTP Kraków · <span id="stamp"></span></div>
+  <label class="debug"><input type="checkbox" id="toggle-shape"> show raw GTFS shapes (QA)</label>
+</aside>
+<script src="vendor/maplibre-gl.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
