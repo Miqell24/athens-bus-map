@@ -1,9 +1,12 @@
 // GTFS → OSM graph → map matching (HMM) → GeoJSON files for the frontend.
-// Modes: buses (OSM roadways, navy) and trams (railway=tram tracks, red).
-// Usage: node pipeline/build.mjs [--all | lines...] [--tram 1,4]
+// Modes: buses/trolleybuses (OSY feed, OSM roadways, navy) and metro+tram
+// (STASY feed, OSM rails, red). Usage: node pipeline/build.mjs [--all | lines...] [--tram M1,T6]
+// The STASY feed ships NO shapes.txt — for those lines the pipeline uses the stop
+// sequence as sparse HMM observations and lets Viterbi route between stations
+// along the OSM rail network (tunnels included).
 // Each mode has its own GTFS feed, graph and color; results land in shared files
 // with properties.color/mode, so the frontend styles them data-driven.
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { iterCsv, readCsv } from './lib/csv.mjs';
@@ -12,7 +15,10 @@ import { buildGraph } from './lib/graph.mjs';
 import { matchShape } from './lib/hmm.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const GAP_MIN = 120;   // m — longer jumps between shape points are GTFS data gaps
+// m — longer jumps between shape points are GTFS data gaps. The OSY feed samples
+// shapes only every ~100 m (vs ~20 m in Kraków), so the threshold sits above the
+// normal spacing; chords up to 250 m get interpolated observations instead.
+const GAP_MIN = 250;
 
 const t0 = Date.now();
 const log = (m) => console.log(`[${((Date.now() - t0) / 1000).toFixed(1)}s] ${m}`);
@@ -32,13 +38,17 @@ const busAll = busArgs.includes('--all');
 const busList = busArgs.filter((a) => a !== '--all');
 
 const MODES = [{
-  mode: 'bus', label: 'buses', gtfsDir: 'data/gtfs', osmFile: 'data/osm/krakow.json',
+  mode: 'bus', label: 'buses & trolleybuses (OSY)', gtfsDir: 'data/gtfs', osmFile: 'data/osm/athens.json',
   graphMode: 'road', color: '#0059a9', colorDark: '#00294f',
-  all: busAll, lines: busList.length ? busList : (busAll ? [] : ['102']),
+  all: busAll, lines: busList.length ? busList : (busAll ? [] : ['550']),
 }];
 if (tramLines.length) MODES.push({
-  mode: 'tram', label: 'trams', gtfsDir: 'data/gtfs-t', osmFile: 'data/osm/krakow-tram.json',
+  mode: 'tram', label: 'metro & tram (STASY)', gtfsDir: 'data/gtfs-t', osmFile: 'data/osm/athens-rail.json',
   graphMode: 'tram', color: '#d6212b', colorDark: '#7c1116',
+  // official Athens line colors: M1 green, M2 red, M3 blue (drawn azure so it
+  // never blends with the navy bus strokes), tram purple
+  lineColors:     { M1: '#009550', M2: '#e30613', M3: '#1e9cd7', T6: '#7d2b8b', T7: '#7d2b8b' },
+  lineColorsDark: { M1: '#00512b', M2: '#7c060e', M3: '#0d567a', T6: '#45164e', T7: '#45164e' },
   all: false, lines: tramLines,
 });
 
@@ -95,9 +105,21 @@ function mergeRuns(all) {
 
 async function processMode(cfg) {
   log(`== ${cfg.label} ==`);
+  // per-line colors (metro/tram); runs sharing tracks always share the color group
+  // (only T6+T7 interleave), so the first line of a sorted set is representative
+  const colorOf = (lines) => (cfg.lineColors && cfg.lineColors[lines[0]]) || cfg.color;
+  const colorDarkOf = (lines) => (cfg.lineColorsDark && cfg.lineColorsDark[lines[0]]) || cfg.colorDark;
+  // STASY publishes no shapes.txt — geometry is reconstructed from stop sequences
+  const hasShapes = existsSync(join(ROOT, cfg.gtfsDir, 'shapes.txt'));
+  if (!hasShapes) log('no shapes.txt in this feed — stop sequences become the HMM observations');
+  // more trips sampled when stop sequences ARE the geometry: the longest run must
+  // win over short-turn variants (e.g. M3 to the airport vs Doukissis Plakentias)
+  const tripCap = hasShapes ? 40 : 200;
 
   // ---------- 1) routes.txt → line list and route_ids ----------
   const routes = await readCsv(join(ROOT, cfg.gtfsDir, 'routes.txt'));
+  // OSY data quirk: some short names carry stray whitespace ("14 " vs "14")
+  for (const r of routes) r.route_short_name = (r.route_short_name || '').trim();
   let LINES = cfg.all
     ? [...new Set(routes.map((r) => r.route_short_name))].sort(numSort)
     : cfg.lines;
@@ -125,7 +147,7 @@ async function processMode(cfg) {
     let e = m.get(t.shape_id);
     if (!e) m.set(t.shape_id, (e = { count: 0, trips: [] }));
     e.count++;
-    if (e.trips.length < 40) e.trips.push({ trip_id: t.trip_id, headsign: t.trip_headsign });
+    if (e.trips.length < tripCap) e.trips.push({ trip_id: t.trip_id, headsign: t.trip_headsign });
   }
   let reps = [];
   for (const L of LINES) {
@@ -163,27 +185,40 @@ async function processMode(cfg) {
     r.stopSeq = (tripStops.get(bestTrip) || []).sort((a, b) => a.seq - b.seq);
   }
 
-  // ---------- 4) shapes.txt (streaming) → route polylines ----------
-  const shapeIds = new Set(reps.map((r) => r.shapeId));
-  const shapePts = new Map();
-  for await (const s of iterCsv(join(ROOT, cfg.gtfsDir, 'shapes.txt'))) {
-    if (!shapeIds.has(s.shape_id)) continue;
-    let arr = shapePts.get(s.shape_id);
-    if (!arr) shapePts.set(s.shape_id, (arr = []));
-    arr.push([Number(s.shape_pt_sequence), Number(s.shape_pt_lat), Number(s.shape_pt_lon)]);
-  }
-  for (const r of reps) {
-    const pts = (shapePts.get(r.shapeId) || []).sort((a, b) => a[0] - b[0]);
-    r.shapeLatLon = pts.map((p) => [p[1], p[2]]);
-    if (r.shapeLatLon.length < 2) log(`SKIPPED ${r.line}/${r.dir}: empty shape ${r.shapeId}`);
-  }
-  reps = reps.filter((r) => r.shapeLatLon.length >= 2);
-
-  // ---------- 5) stops.txt ----------
+  // ---------- 4) stops.txt (before shapes — stop coords may BE the geometry) ----------
   const stopsById = new Map();
   for (const s of await readCsv(join(ROOT, cfg.gtfsDir, 'stops.txt'))) {
-    stopsById.set(s.stop_id, { name: s.stop_name, lat: Number(s.stop_lat), lon: Number(s.stop_lon) });
+    // OSY names carry double spaces here and there — collapse for clean labels
+    const name = (s.stop_name || '').replace(/\s+/g, ' ').trim();
+    stopsById.set(s.stop_id, { name, lat: Number(s.stop_lat), lon: Number(s.stop_lon) });
   }
+
+  // ---------- 5) route polylines: shapes.txt, or the stop sequence itself ----------
+  if (hasShapes) {
+    const shapeIds = new Set(reps.map((r) => r.shapeId));
+    const shapePts = new Map();
+    for await (const s of iterCsv(join(ROOT, cfg.gtfsDir, 'shapes.txt'))) {
+      if (!shapeIds.has(s.shape_id)) continue;
+      let arr = shapePts.get(s.shape_id);
+      if (!arr) shapePts.set(s.shape_id, (arr = []));
+      arr.push([Number(s.shape_pt_sequence), Number(s.shape_pt_lat), Number(s.shape_pt_lon)]);
+    }
+    for (const r of reps) {
+      const pts = (shapePts.get(r.shapeId) || []).sort((a, b) => a[0] - b[0]);
+      r.shapeLatLon = pts.map((p) => [p[1], p[2]]);
+      if (r.shapeLatLon.length < 2) log(`SKIPPED ${r.line}/${r.dir}: empty shape ${r.shapeId}`);
+    }
+  } else {
+    for (const r of reps) {
+      r.pseudo = true;
+      r.shapeLatLon = r.stopSeq
+        .map((s) => stopsById.get(s.stopId))
+        .filter(Boolean)
+        .map((st) => [st.lat, st.lon]);
+      if (r.shapeLatLon.length < 2) log(`SKIPPED ${r.line}/${r.dir}: not enough stops for a pseudo-shape`);
+    }
+  }
+  reps = reps.filter((r) => r.shapeLatLon.length >= 2);
 
   // ---------- 6) local projection + graph ----------
   let latMin = Infinity, latMax = -Infinity, lonMin = Infinity, lonMax = -Infinity;
@@ -201,14 +236,28 @@ async function processMode(cfg) {
   const rawRunsAll = [];
   for (const r of reps) {
     const xy = r.shapeLatLon.map(([lat, lon]) => proj.toXY(lat, lon));
-    let gaps = 0, maxGap = 0;
-    for (let i = 1; i < xy.length; i++) {
-      const L = Math.hypot(xy[i][0] - xy[i - 1][0], xy[i][1] - xy[i - 1][1]);
-      if (L > GAP_MIN) { gaps++; if (L > maxGap) maxGap = L; }
+    let sampled, opts;
+    if (r.pseudo) {
+      // stations as sparse observations: wider candidate net (platform centroids
+      // sit beside the track axis), softer emission/transition — the routing
+      // between consecutive stations does the geometric work. ONE wide radius:
+      // the radii array is a fallback (a wider net is cast only when the narrow
+      // one is empty), and at interchange stations the other line's trackage
+      // fills the narrow net so this line's tunnel would never be seen (M1 vs M3
+      // at Monastiraki). perWay keeps the list diverse despite dense station tracks.
+      sampled = xy;
+      opts = { sigma: 20, beta: 64, radii: [150], maxCand: 24, perWay: 2 };
+    } else {
+      let gaps = 0, maxGap = 0;
+      for (let i = 1; i < xy.length; i++) {
+        const L = Math.hypot(xy[i][0] - xy[i - 1][0], xy[i][1] - xy[i - 1][1]);
+        if (L > GAP_MIN) { gaps++; if (L > maxGap) maxGap = L; }
+      }
+      if (gaps) log(`  shape gap ${r.line}/${r.dir}: ${gaps} × >${GAP_MIN} m (max ${Math.round(maxGap)} m) — bridged by routing`);
+      sampled = resample(xy, 20, GAP_MIN);
+      opts = {};
     }
-    if (gaps) log(`  shape gap ${r.line}/${r.dir}: ${gaps} × >${GAP_MIN} m (max ${Math.round(maxGap)} m) — bridged by routing`);
-    const sampled = resample(xy, 20, GAP_MIN);
-    const res = matchShape(graph, sampled);
+    const res = matchShape(graph, sampled, opts);
     if (!res) { log(`SKIPPED ${r.line}/${r.dir}: matching failed`); continue; }
     r.matchedXY = res.coords;
     r.usedSegs = res.usedSegs;
@@ -273,17 +322,18 @@ async function processMode(cfg) {
     const useSnap = best && best.d <= 80;
     if (!useSnap) stopsFar++;
     const [lon, lat] = useSnap ? proj.toLonLat(best.x, best.y) : [e.lon, e.lat];
+    const arr = [...e.lines].sort(numSort);
     stopFeatures.push({
       type: 'Feature',
       geometry: { type: 'Point', coordinates: [round6(lon), round6(lat)] },
       properties: {
         name: e.name,
-        lines: [...e.lines].sort(numSort).join(', '),
-        arr: [...e.lines].sort(numSort),
+        lines: arr.join(', '),
+        arr,
         terminus: e.terminus,
         mode: cfg.mode,
-        color: cfg.color,
-        colorDark: cfg.colorDark,
+        color: colorOf(arr),
+        colorDark: colorDarkOf(arr),
         snapDist: best ? Math.round(best.d) : null,
       },
     });
@@ -346,16 +396,20 @@ async function processMode(cfg) {
     flush(runStart, prevPos, runKey);
   }
   const mergedRuns = mergeRuns(runs);
-  const streetFeatures = mergedRuns.map((r) => ({
-    type: 'Feature',
-    geometry: { type: 'LineString', coordinates: r.coords },
-    properties: { name: r.name, lines: r.linesKey, arr: r.linesKey.split(', '), roundabout: r.roundabout, mode: cfg.mode, color: cfg.color },
-  }));
+  const streetFeatures = mergedRuns.map((r) => {
+    const arr = r.linesKey.split(', ');
+    return {
+      type: 'Feature',
+      geometry: { type: 'LineString', coordinates: r.coords },
+      properties: { name: r.name, lines: r.linesKey, arr, roundabout: r.roundabout, mode: cfg.mode, color: colorOf(arr) },
+    };
+  });
   for (const g of rawRunsAll) {
+    const arr = [...g.lines].sort(numSort);
     streetFeatures.push({
       type: 'Feature',
       geometry: { type: 'LineString', coordinates: g.coords },
-      properties: { name: '', lines: [...g.lines].sort(numSort).join(', '), arr: [...g.lines].sort(numSort), roundabout: 0, mode: cfg.mode, color: cfg.color, unmapped: 1 },
+      properties: { name: '', lines: arr.join(', '), arr, roundabout: 0, mode: cfg.mode, color: colorOf(arr), unmapped: 1 },
     });
   }
   log(`Runs: ${runs.length} → ${mergedRuns.length} after merging` +
@@ -365,7 +419,7 @@ async function processMode(cfg) {
   const routeFeatures = reps.map((r) => ({
     type: 'Feature',
     geometry: { type: 'LineString', coordinates: toLonLat(r.matchedXY) },
-    properties: { line: r.line, dir: r.dir, headsign: r.headsign, mode: cfg.mode, color: cfg.color },
+    properties: { line: r.line, dir: r.dir, headsign: r.headsign, mode: cfg.mode, color: colorOf([r.line]) },
   }));
   const shapeFeatures = reps.map((r) => ({
     type: 'Feature',
@@ -375,7 +429,7 @@ async function processMode(cfg) {
   const metaLines = [...new Set(reps.map((r) => r.line))].sort(numSort).map((L) => ({
     line: L,
     mode: cfg.mode,
-    color: cfg.color,
+    color: colorOf([L]),
     dirs: reps.filter((r) => r.line === L).map((r) => ({
       dir: r.dir, headsign: r.headsign, variants: r.variants, tripCount: r.tripCount,
       stops: r.stopSeq.length, lengthKm: Math.round(r.lengthKm * 100) / 100, stats: r.stats,

@@ -1,90 +1,75 @@
-# PLAN — Interactive KMK Kraków map (started with: bus line 102)
+# PLAN — Interactive OASA Athens map
 
-Target: an interactive (zoom/pan) web map of Kraków public transport in the visual
-logic of the official KMK map (ztp.krakow.pl → "Mapy i schematy KMK"): lines drawn
-**exactly along roadways**, line numbers written along every street they use, stops
-labeled, correct roundabout arcs and intersection turns. Start: **bus 102**, with an
-architecture ready for all lines from day one.
+Target: an interactive (zoom/pan) web map of Athens public transport in the visual
+logic of a printed network map: lines drawn **exactly along roadways and tracks**,
+line numbers written along every street they use, stops labeled, correct roundabout
+arcs and intersection turns. Port of the krakow-bus-map pipeline to Athens data.
 
 ## Architecture
 
 - **Plain JavaScript**: pipeline in Node ≥ 18 (no npm dependencies), frontend in the browser.
-- **Input data**: ZTP Kraków GTFS (`gtfs.ztp.krakow.pl/GTFS_KRK_A.zip` — buses)
-  + OSM road network via the Overpass API (bbox of the whole city and beyond).
+- **Input data**: OASA GTFS from data.gov.gr — `osy_gtfs.zip` (buses + trolleybuses)
+  and `stasy_gtfs.zip` (metro M1–M3, tram T6/T7) — plus the OSM road and rail
+  network via the Overpass API (bbox of all Attica served by OSY).
 - **Map matching**: own HMM/Viterbi implementation (Newson–Krumm 2009) on a directed
-  road graph — the heart of the project.
+  graph — the heart of the project.
 - **Frontend**: MapLibre GL JS (vendored) + OSM vector tiles from OpenFreeMap
-  (`positron` style — light background like the KMK map). Static server on port **8124**.
+  (`positron` style). Static server on port **8125**.
 
-## Stages — step by step
+## Athens-specific data quirks (vs Kraków)
 
-### Stage 1 — data download (`pipeline/download.sh`)
-1. ZTP bus GTFS → `data/gtfs/` (routes, trips, shapes, stop_times, stops).
-2. Overpass: all roadways in the Kraków bbox (`motorway…residential`, `service`, `busway`,
-   `*_link` **and `highway=construction`** — roadworks/the tram build to Mistrzejowice
-   can "puncture" the graph while buses really drive there) → `data/osm/krakow.json`.
-   Mirror order: overpass-api.de → maps.mail.ru → kumi.systems.
-3. MapLibre GL 5.6.1 → `web/vendor/` (no CDN at runtime).
+1. **OSY shapes are sparse**: ~100 m between points (Kraków: ~20 m), with real holes
+   up to 3 km. `GAP_MIN` raised to 250 m; longer jumps are treated as data gaps and
+   bridged by graph routing.
+2. **STASY has no shapes.txt**: the stop sequence of the representative trip becomes
+   the HMM observation list. Pseudo-shape matching uses one wide candidate radius
+   (150 m), `sigma` 20, `beta` 64, `maxCand` 24 and `perWay` 2 — see below.
+3. **Candidate diversity (`perWay`)**: at interchange stations the dense trackage of
+   one line (many short station segments) can fill the whole candidate list before a
+   parallel line's tunnel appears (M1 vs M3 at Monastiraki). Candidates are capped
+   per OSM way instead of enlarging the list.
+4. **Radii array is a fallback, not a union**: `[60, 150]` never casts the wide net
+   when the narrow one catches anything — pseudo-shapes must use a single `[150]`.
+5. **Rail graph** built from `railway=subway|tram|light_rail|rail` (metro tunnels
+   included; suburban rail is harmless extra — Viterbi keeps each line on its own
+   connected network). Depot tracks (`service=yard|siding|spur|crossover`) excluded.
+6. **Feed hygiene**: stray whitespace in `route_short_name` ("14 ") and double
+   spaces in stop names are normalized on read.
 
-### Stage 2 — line extraction from GTFS (`pipeline/build.mjs`)
-1. `routes.txt` → `route_id` for each `route_short_name`.
-2. `trips.txt` → the line's trips; for each direction (`direction_id` 0/1) pick the
-   **representative route variant** = the `shape_id` serving the most trips.
-3. `stop_times.txt` (streamed — the file is huge) → the stop sequence of the
-   representative trip in each direction.
-4. `shapes.txt` (streamed) → the route polyline; `stops.txt` → pole names and positions.
+## Pipeline stages
 
-### Stage 3 — road graph from OSM (`pipeline/lib/graph.mjs`)
-1. Every pair of adjacent way nodes = a **directed segment** of the graph.
-2. Directionality: `oneway=yes/-1`, exceptions `oneway:bus|psv=no`,
-   **`junction=roundabout/circular` ⇒ always one-way** (crucial for roundabouts).
-3. Access filters: `access=no/private` drops out unless `bus=yes`/`psv=yes` (bus
-   gates!); service roads like `parking_aisle` drop out; others carry cost penalties.
-4. Spatial index (120 m grid) for fast candidate lookup.
+1. `pipeline/download.sh` — GTFS zips, Overpass roads (bbox 37.70–38.34, 23.31–24.05),
+   Overpass rails (bbox 37.82–38.11, 23.61–23.98), MapLibre vendored.
+2. `build.mjs` — routes → representative shape per line+direction (most trips);
+   stop sequences from streamed `stop_times.txt`.
+3. Directed graph from OSM (`lib/graph.mjs`): oneway/roundabout rules, bus-gate
+   access, penalty-weighted contraflow; rail mode for STASY.
+4. HMM/Viterbi (`lib/hmm.mjs`): emission σ, transition |route − straight|/β via
+   capped Dijkstra; controlled breaks bridged by routing; raw-trace fallback when
+   OSM lacks the road.
+5. Data products (`data/out/`): `streets.geojson` (merged strokes per roadway),
+   `labels.geojson` (one rotated number label per street × line set),
+   `stops.geojson` (snapped, termini flagged), `route.geojson`, `meta.json`.
+6. Frontend (`web/`): KMK-style strokes (bus navy, metro/tram red), rotated number
+   labels beside streets, two-color shared-corridor segments, black stop names,
+   mode filters + clickable line list, poster PNG export (tiled hidden-map render).
 
-### Stage 4 — HMM/Viterbi map matching (`pipeline/lib/hmm.mjs`) — THE HEART
-1. The GTFS polyline resampled every ~20 m = observations.
-2. **Candidates**: projections of each point onto segments within 45 m (retry 70 m
-   before declaring a hole), up to 12 per point, penalty-aware ranking.
-3. **Emission**: Gaussian penalty for projection distance, σ = 8 m.
-4. **Transition**: `-|routing_dist − straight_dist| / β`, β = 32 m; routing distance
-   via Dijkstra on the directed graph (capped), with correct partial-segment math.
-5. **Viterbi** picks the globally most consistent segment chain; when no transition
-   exists — a controlled break, bridged by routing.
-6. Output geometry = a **chain of OSM nodes**, not GPS points ⇒ on a roundabout the
-   line follows the true arc (one-way rules force the loop, no shortcut through the
-   middle), and turns run along roadway axes — zero corner cutting.
-7. Quality report: matched point %, mean error, break count, roundabout segments used.
+## Current state
 
-### Stage 5 — data products (`data/out/`)
-- `route.geojson` — per-direction runs (with headsigns).
-- `streets.geojson` — segments merged per street with the line list — this is where
-  the **line numbers written along streets** come from; scales to many lines.
-- `stops.geojson` — stops **snapped to the matched route** (the dot sits on the line,
-  like on the KMK map), with names; termini highlighted.
-- `labels.geojson` — one number label per (street × line set), with street bearing.
-- `meta.json` — statistics, bbox, line info.
+- 283 bus/trolleybus lines + M1, M2, M3, T6, T7 — full network matched.
+- Bus mean error ~3 m; 17 Viterbi breaks total (~1.1 km drawn from raw GTFS, mostly
+  depot loop stubs); STASY: zero breaks, all five lines routed fully along OSM rails.
+- Verified in browser: rendering, filters, line selection, PNG export (5826×6561,
+  4 tiles), no console errors.
 
-### Stage 6 — frontend in the KMK map logic (`web/`)
-- Bus line: **navy stroke with a white casing** along roadways; trams red.
-- Line numbers rotated parallel to the street, standing beside it; shared bus+tram
-  corridors get one two-color number segment.
-- Stops: white dots with a colored ring **on the line**, labels with halo, termini
-  bold with their line numbers; label density depends on zoom.
-- Layers inserted BELOW the base style street names (names stay readable).
-- Zoom/pan/scale, stop popup, minimal English panel: legend, bus/tram visibility
-  filters, clickable line list (click = that line's route with all stops), poster
-  PNG export.
+## Roadmap
 
-### Stage 7 — verification
-- Browser console clean; visual checks: full overview, close-ups of **roundabouts**
-  and selected intersections; stop list consistency with GTFS.
-
-## Roadmap (after acceptance)
-1. ~~All bus lines~~ done (164 lines). ~~All tram lines~~ done (23 lines).
-2. KMK-style corridors: merging twin carriageways into one stroke, ramp absorption,
-   smoothing — **roundabouts always excluded** (true arc). Deferred: needs a
-   "corridor axes" preprocessing approach.
-3. Route variants + one-way arrows (ZTP convention).
-4. Per-tram-line colors.
-5. Line/stop search with highlighting, GTFS-RT (live positions), hosting.
+1. ~~Per-line metro colors~~ done: M1 green `#009550`, M2 red `#e30613`, M3 azure
+   `#1e9cd7` (official blue would blend with the navy bus strokes), tram T6/T7
+   purple `#7d2b8b`; strokes, stops, termini, number labels, shared-corridor
+   segments and panel chips are all per-line colored.
+2. KMK-style corridors: merging twin carriageways into one stroke — deferred
+   ("corridor axes" preprocessing).
+3. Route variants + one-way arrows; line/stop search; GTFS-RT (live positions).
+4. ~~Hosting~~ done: GitHub Pages from `main:/docs` at
+   https://miqell24.github.io/krakow-bus-map/ (repo name kept for URL stability).

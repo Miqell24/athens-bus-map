@@ -22,11 +22,15 @@ const PEN_DRIVEWAY = 4;    // service=driveway — sometimes a mistag of a real 
 // an alternative further than ~12 m, while still damping accidental wrong-way shortcuts.
 const PEN_CONTRAFLOW = 2.5;
 
-// Tram mode: graph built from tracks (railway=tram/light_rail), excluding depot tracks.
+// Rail mode (STASY): graph built from tracks — metro tunnels (railway=subway),
+// tram tracks and surface rail (parts of M1 run in a rail-tagged corridor; plain
+// rail also brings the suburban railway, which is harmless — Viterbi consistency
+// keeps each line on its own connected network). Depot tracks excluded.
+const RAIL_OK = new Set(['subway', 'tram', 'light_rail', 'rail']);
 function tramAccess(tags) {
-  if (!tags || (tags.railway !== 'tram' && tags.railway !== 'light_rail')) return null;
+  if (!tags || !RAIL_OK.has(tags.railway)) return null;
   const s = tags.service;
-  if (s === 'yard' || s === 'siding' || s === 'spur') return null;
+  if (s === 'yard' || s === 'siding' || s === 'spur' || s === 'crossover') return null;
   return { restricted: false, driveway: false };
 }
 
@@ -134,8 +138,12 @@ export function buildGraph(elements, proj, mode = 'road') {
   return { nodes, segs, out, segByNodes, grid, CELL, ways };
 }
 
-// Candidates: projections of point (x,y) onto segments within `radius`, up to `maxN` nearest.
-export function candidates(graph, x, y, radius, maxN) {
+// Candidates: projections of point (x,y) onto segments within `radius`, up to `maxN`
+// nearest. `perWay` caps candidates per OSM way: at interchange stations the dense
+// trackage of one line (many short station segments) can fill every slot before a
+// parallel line's tunnel appears at all (M1 vs M3 at Monastiraki) — diversity, not
+// a bigger N, is what fixes that.
+export function candidates(graph, x, y, radius, maxN, perWay = Infinity) {
   const { grid, CELL, segs } = graph;
   const r2 = radius * radius;
   const seen = new Set();
@@ -166,7 +174,18 @@ export function candidates(graph, x, y, radius, maxN) {
     }
   }
   res.sort((p, q) => p.rank - q.rank);
-  return res.slice(0, maxN);
+  if (perWay === Infinity) return res.slice(0, maxN);
+  const perWayCnt = new Map();
+  const picked = [];
+  for (const c of res) {
+    const w = segs[c.segIdx].wayId;
+    const n = perWayCnt.get(w) || 0;
+    if (n >= perWay) continue;
+    perWayCnt.set(w, n + 1);
+    picked.push(c);
+    if (picked.length >= maxN) break;
+  }
+  return picked;
 }
 
 class MinHeap {

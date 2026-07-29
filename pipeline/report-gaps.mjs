@@ -1,9 +1,9 @@
-// Report of gaps in the GTFS feed's shapes.txt (MPK/ZTP) — for manual verification
+// Report of gaps in the GTFS feed's shapes.txt (OASA/OSY) — for manual verification
 // and reporting to the publisher. A gap = a pair of adjacent shape points more than
 // THRESHOLD meters apart (the trace jumps in a straight line instead of following the
 // roadway). ALL shapes used by trips are analyzed, results grouped by location.
 // Usage: node pipeline/report-gaps.mjs [threshold_m]
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { iterCsv, readCsv } from './lib/csv.mjs';
@@ -15,7 +15,8 @@ const t0 = Date.now();
 const log = (m) => console.log(`[${((Date.now() - t0) / 1000).toFixed(1)}s] ${m}`);
 
 // ---------- feed_info + routes + trips ----------
-const feedInfo = (await readCsv(join(ROOT, 'data/gtfs/feed_info.txt')))[0] || {};
+const feedInfoPath = join(ROOT, 'data/gtfs/feed_info.txt');
+const feedInfo = existsSync(feedInfoPath) ? ((await readCsv(feedInfoPath))[0] || {}) : {};
 const routes = await readCsv(join(ROOT, 'data/gtfs/routes.txt'));
 const routeToLine = new Map(routes.map((r) => [r.route_id, r.route_short_name]));
 const shapeLines = new Map(); // shape_id -> Set(line)
@@ -36,7 +37,7 @@ for await (const s of iterCsv(join(ROOT, 'data/gtfs/shapes.txt'))) {
   if (!a) pts.set(s.shape_id, (a = []));
   a.push([Number(s.shape_pt_sequence), Number(s.shape_pt_lat), Number(s.shape_pt_lon)]);
 }
-const proj = makeProj(50.06, 19.96);
+const proj = makeProj(37.98, 23.73);
 const gaps = []; // {lat, lon, x, y, len, shapeId, lines}
 for (const [sid, arr] of pts) {
   arr.sort((a, b) => a[0] - b[0]);
@@ -69,7 +70,7 @@ log(`locations after grouping: ${clusters.length}`);
 
 // ---------- nearest named OSM street (approximate) ----------
 log('Indexing named OSM streets…');
-const osm = JSON.parse(readFileSync(join(ROOT, 'data/osm/krakow.json'), 'utf8'));
+const osm = JSON.parse(readFileSync(join(ROOT, 'data/osm/athens.json'), 'utf8'));
 const CELL = 250;
 const nameGrid = new Map();
 for (const el of osm.elements) {
@@ -110,10 +111,10 @@ const rows = clusters.map((c, i) => {
 });
 
 const lineCount = new Set(clusters.flatMap((c) => [...c.lines])).size;
-const md = `# Gap report for shapes.txt — Kraków bus GTFS
+const md = `# Gap report for shapes.txt — Athens (OSY) bus GTFS
 
-- **Feed:** ${feedInfo.feed_publisher_name || 'MPK S.A. w Krakowie'}, version \`${feedInfo.feed_version || '?'}\` (valid ${feedInfo.feed_start_date || '?'}–${feedInfo.feed_end_date || '?'}), contact: ${feedInfo.feed_contact_email || '—'}
-- **Generated:** ${new Date().toLocaleString('en-GB', { dateStyle: 'short', timeStyle: 'short' })} by the \`krakow-bus-map\` pipeline
+- **Feed:** ${feedInfo.feed_publisher_name || 'OASA / OSY (data.gov.gr)'}, version \`${feedInfo.feed_version || '?'}\` (valid ${feedInfo.feed_start_date || '?'}–${feedInfo.feed_end_date || '?'}), contact: ${feedInfo.feed_contact_email || '—'}
+- **Generated:** ${new Date().toLocaleString('en-GB', { dateStyle: 'short', timeStyle: 'short' })} by the \`athens-bus-map\` pipeline
 - **Gap definition:** a pair of adjacent \`shapes.txt\` points more than ${THRESHOLD} m apart in a straight line — the trace "jumps" instead of following the roadway (the GTFS spec requires shapes to trace the actual travel path).
 - **Scope:** all ${pts.size} shapes used by trips in the feed.
 

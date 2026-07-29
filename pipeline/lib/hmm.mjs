@@ -113,13 +113,14 @@ export function matchShape(graph, pts, opts = {}) {
   const beta = opts.beta ?? 32;
   const radii = opts.radii ?? [45, 70];
   const maxCand = opts.maxCand ?? 12;
+  const perWay = opts.perWay ?? Infinity;
 
   const obs = [];
   let skipped = 0;
   pts.forEach((p, idx) => {
     let cand = [];
     for (const r of radii) {
-      cand = candidates(graph, p[0], p[1], r, maxCand);
+      cand = candidates(graph, p[0], p[1], r, maxCand, perWay);
       if (cand.length) break;
     }
     if (cand.length) obs.push({ x: p[0], y: p[1], cand, idx });

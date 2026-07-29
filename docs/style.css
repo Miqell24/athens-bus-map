@@ -65,7 +65,10 @@ body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
 .legend li { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
 .sw { flex: 0 0 auto; }
 .sw.line { width: 26px; height: 5px; background: var(--kmk); border-radius: 3px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ccd; }
-.sw.line.tram { background: #d6212b; }
+.sw.line.tram { background: linear-gradient(90deg, #009550 25%, #e30613 25% 50%, #1e9cd7 50% 75%, #7d2b8b 75%); }
+.sublegend { font-size: 11.5px; color: #445; padding-left: 26px; }
+.sublegend .mini { display: inline-block; width: 12px; height: 5px; border-radius: 3px; margin: 0 3px 0 7px; vertical-align: 2px; }
+.sublegend .mini:first-child { margin-left: 0; }
 .sw.stop { width: 11px; height: 11px; border-radius: 50%; background: #fff; border: 2.5px solid var(--kmk); }
 .sw.terminus { width: 13px; height: 13px; border-radius: 50%; background: var(--kmk); border: 2.5px solid var(--kmk-dark); }
 details.lines { border-top: 1px solid #e3e8f0; padding-top: 8px; margin-bottom: 4px; font-size: 12.5px; color: #223; }

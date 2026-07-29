@@ -1,17 +1,18 @@
-// Frontend: MapLibre GL + OpenFreeMap vector tiles (positron) + KMK line layers.
+// Frontend: MapLibre GL + OpenFreeMap vector tiles (positron) + OASA line layers
+// in the visual logic of the official KMK-style network map.
 const KMK = '#0059a9';
 const KMK_DARK = '#00294f';
 
 const map = new maplibregl.Map({
   container: 'map',
   style: 'https://tiles.openfreemap.org/styles/positron',
-  center: [19.94, 50.06],
+  center: [23.73, 37.98],
   zoom: 11.5,
   attributionControl: false,
 });
 map.addControl(new maplibregl.NavigationControl({ visualizePitch: false }), 'top-right');
 map.addControl(new maplibregl.ScaleControl({ maxWidth: 120 }), 'bottom-left');
-map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: 'Timetables: GTFS ZTP Kraków' }));
+map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: 'Timetables: GTFS OASA (data.gov.gr)' }));
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -32,7 +33,7 @@ async function init() {
   // Panel (English, minimal): legend + mode toggles + expandable clickable line list.
   const nBus = meta.lines.filter((l) => l.mode === 'bus').length;
   const nTram = meta.lines.filter((l) => l.mode === 'tram').length;
-  document.getElementById('count').textContent = `(${nBus} bus · ${nTram} tram)`;
+  document.getElementById('count').textContent = `(${nBus} bus · ${nTram} metro/tram)`;
   document.getElementById('stamp').textContent = new Date(meta.generatedAt).toLocaleDateString('en-GB');
   document.getElementById('chips').innerHTML = meta.lines
     .map((l) => `<button class="chip" data-line="${esc(l.line)}" style="background:${esc(l.color)}">${esc(l.line)}</button>`)
@@ -68,11 +69,13 @@ async function init() {
   // Line numbers: pipeline points carry the street bearing (angle) — the text is
   // rotated PARALLEL to the road and offset sideways in text space (anchor bottom
   // + offset), so it stands BESIDE the roadway along its course, never on the stroke.
-  // A shared bus+tram corridor = one segment: the tram row above the bus row.
+  // A shared bus+rail corridor = one segment: the metro/tram row (in that line's
+  // own color — M1 green, M2 red, M3 azure, tram purple) above the bus row.
   const TRAM_RED = '#d6212b';
+  const railColor = ['coalesce', ['get', 'color'], TRAM_RED];
   const numberField = ['case', ['has', 'busLines'],
     ['format',
-      ['get', 'lines'], { 'text-color': TRAM_RED },
+      ['get', 'lines'], { 'text-color': railColor },
       '\n', {},
       ['get', 'busLines'], { 'text-color': KMK }],
     ['format', ['get', 'lines'], {}]];
@@ -261,7 +264,7 @@ async function init() {
       const fs = Math.max(16, Math.round(out.width / 130));
       ctx.font = `${fs}px sans-serif`;
       ctx.textBaseline = 'bottom';
-      const txt = '© OpenStreetMap contributors · OpenFreeMap · GTFS: ZTP Kraków';
+      const txt = '© OpenStreetMap contributors · OpenFreeMap · GTFS: OASA (data.gov.gr)';
       const tw = ctx.measureText(txt).width;
       ctx.fillStyle = 'rgba(255,255,255,0.82)';
       ctx.fillRect(out.width - tw - fs, out.height - fs * 1.7, tw + fs, fs * 1.7);
@@ -272,7 +275,7 @@ async function init() {
       const d = new Date();
       const pad = (n) => String(n).padStart(2, '0');
       const a = document.createElement('a');
-      a.download = `krakow-transit_${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}_${out.width}x${out.height}.png`;
+      a.download = `athens-transit_${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}_${out.width}x${out.height}.png`;
       a.href = URL.createObjectURL(blob);
       a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 30000);
