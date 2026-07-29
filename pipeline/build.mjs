@@ -431,6 +431,38 @@ async function processMode(cfg) {
   }
   log(`Stops: ${stopFeatures.length} poles, ${labelCount} labels`);
 
+  // Terminus badges: at every labeled terminus each line number becomes its own
+  // point feature with a grid offset (ems) — the frontend renders it as a small
+  // translucent box (stretchable icon behind the text), centered under the dot,
+  // like the line boxes at loops on the printed KMK poster.
+  const badgeFeatures = [];
+  {
+    const PER_ROW = 5, CELL_W = 3.0, CELL_H = 1.5, BASE_Y = 1.1;
+    for (const f of stopFeatures) {
+      const p = f.properties;
+      if (!p.terminus || !p.label) continue;
+      p.arr.forEach((line, i) => {
+        const row = Math.floor(i / PER_ROW), col = i % PER_ROW;
+        const rowLen = Math.min(PER_ROW, p.arr.length - row * PER_ROW);
+        badgeFeatures.push({
+          type: 'Feature',
+          geometry: f.geometry,
+          properties: {
+            line,
+            mode: p.mode,
+            color: colorOf([line]),
+            colorDark: colorDarkOf([line]),
+            off: [
+              Math.round((col - (rowLen - 1) / 2) * CELL_W * 100) / 100,
+              Math.round((BASE_Y + row * CELL_H) * 100) / 100,
+            ],
+          },
+        });
+      });
+    }
+  }
+  log(`Termini: ${badgeFeatures.length} line badges`);
+
   // ---------- 9) streets/tracks: runs merged per line set ----------
   const byWay = new Map();
   for (const [si, lines] of segLines) {
@@ -517,7 +549,7 @@ async function processMode(cfg) {
     })),
   }));
 
-  return { routeFeatures, shapeFeatures, stopFeatures, streetFeatures, metaLines };
+  return { routeFeatures, shapeFeatures, stopFeatures, streetFeatures, badgeFeatures, metaLines };
 }
 
 // ---------- run per mode + write shared files ----------
@@ -528,6 +560,7 @@ const routeFeatures = results.flatMap((r) => r.routeFeatures);
 const shapeFeatures = results.flatMap((r) => r.shapeFeatures);
 const stopFeatures = results.flatMap((r) => r.stopFeatures);
 const streetFeatures = results.flatMap((r) => r.streetFeatures);
+const badgeFeatures = results.flatMap((r) => r.badgeFeatures);
 const metaLines = results.flatMap((r) => r.metaLines);
 
 // ---------- 10) line-number labels: SHARED across both modes ----------
@@ -734,6 +767,7 @@ writeFileSync(join(outDir, 'route.geojson'), fc(routeFeatures));
 writeFileSync(join(outDir, 'streets.geojson'), fc(streetFeatures));
 writeFileSync(join(outDir, 'labels.geojson'), fc(labelFeatures));
 writeFileSync(join(outDir, 'stops.geojson'), fc(stopFeatures));
+writeFileSync(join(outDir, 'badges.geojson'), fc(badgeFeatures));
 writeFileSync(join(outDir, 'gtfs-shape.geojson'), fc(shapeFeatures));
 writeFileSync(join(outDir, 'meta.json'), JSON.stringify({
   generatedAt: new Date().toISOString(),
@@ -741,4 +775,4 @@ writeFileSync(join(outDir, 'meta.json'), JSON.stringify({
   modes: MODES.map((m) => ({ mode: m.mode, label: m.label, color: m.color })),
   lines: metaLines,
 }, null, 2));
-log(`Wrote data/out/{route,streets,labels,stops,gtfs-shape}.geojson + meta.json`);
+log(`Wrote data/out/{route,streets,labels,stops,badges,gtfs-shape}.geojson + meta.json`);

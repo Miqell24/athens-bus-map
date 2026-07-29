@@ -226,12 +226,29 @@ async function init() {
     x.lineWidth = 5; x.lineJoin = 'round'; x.strokeStyle = rim; x.stroke();
     return x.getImageData(0, 0, S, S);
   };
+  // Terminus badge box: translucent rounded rectangle rimmed in the line color;
+  // registered as a STRETCHABLE image so icon-text-fit wraps it around any number.
+  const badgeBox = (rim) => {
+    const W = 26, H = 20, LW = 2.5;
+    const c = document.createElement('canvas');
+    c.width = W; c.height = H;
+    const x = c.getContext('2d');
+    x.beginPath();
+    x.roundRect(LW / 2 + 0.5, LW / 2 + 0.5, W - LW - 1, H - LW - 1, 5);
+    x.fillStyle = 'rgba(255,255,255,0.72)'; x.fill();
+    x.lineWidth = LW; x.strokeStyle = rim; x.stroke();
+    return x.getImageData(0, 0, W, H);
+  };
   const addStopIcons = (m) => {
     for (const [c, cd] of PALETTE) {
       m.addImage('stop-' + c, discIcon('#ffffff', c, true), { pixelRatio: 2 });
       m.addImage('stop-' + c + '-t', discIcon(c, cd, true), { pixelRatio: 2 });
       m.addImage('dot-' + c, discIcon('#ffffff', c, false), { pixelRatio: 2 });
       m.addImage('dot-' + c + '-t', discIcon(c, cd, false), { pixelRatio: 2 });
+      m.addImage('badge-' + c, badgeBox(c), {
+        pixelRatio: 2,
+        stretchX: [[10, 16]], stretchY: [[8, 12]], content: [6, 4, 20, 16],
+      });
     }
   };
   addStopIcons(map);
@@ -272,12 +289,9 @@ async function init() {
     minzoom: 10.5,
     filter: ['all', ['==', ['get', 'terminus'], 1], ['==', ['get', 'label'], 1]],
     layout: {
-      // terminus: name (black, like all stop names) + numbers of terminating
-      // lines in the mode color
-      'text-field': ['format',
-        ['get', 'name'], {},
-        '\n', {},
-        ['get', 'lines'], { 'font-scale': 0.82, 'text-color': ['coalesce', ['get', 'colorDark'], KMK_DARK] }],
+      // terminus: name only — the terminating lines render as boxed badges in
+      // their own layer (grid under the dot)
+      'text-field': ['get', 'name'],
       'text-font': [NARROW_BOLD],
       'text-size': ['interpolate', ['linear'], ['zoom'], 10.5, 11, 17, 14.5],
       'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
@@ -285,6 +299,27 @@ async function init() {
       'text-justify': 'auto',
     },
     paint: { 'text-color': '#000000', 'text-halo-color': '#ffffff', 'text-halo-width': 2 },
+  });
+  // Terminus line badges: one small translucent box per line, laid out as a
+  // centered grid below the terminus dot (offsets precomputed by the pipeline).
+  map.addSource('badges', { type: 'geojson', data: 'data/badges.geojson' });
+  map.addLayer({
+    id: 'stops-terminus-badges', type: 'symbol', source: 'badges',
+    minzoom: 11.5,
+    layout: {
+      'text-field': ['get', 'line'],
+      'text-font': [NARROW_BOLD],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 11.5, 9.5, 17, 12.5],
+      'text-offset': ['get', 'off'],
+      'icon-image': ['concat', 'badge-', ['coalesce', ['get', 'color'], KMK]],
+      'icon-text-fit': 'both',
+      'icon-text-fit-padding': [2, 5, 2, 5],
+      // grids must stay complete — a collision-hidden middle badge would read
+      // as a data bug, so badges win overlap unconditionally
+      'text-allow-overlap': true,
+      'icon-allow-overlap': true,
+    },
+    paint: { 'text-color': ['coalesce', ['get', 'colorDark'], KMK_DARK] },
   });
   // line numbers move ABOVE stop symbols — symbol placement runs top-first, so
   // this gives numbers collision priority over stop names. Reversed order: the
@@ -311,6 +346,9 @@ async function init() {
     const lblC = state.selected ? true : ['==', ['get', 'label'], 1];
     map.setFilter('stops-names', ['all', ['!=', ['get', 'terminus'], 1], modeC, selC, lblC]);
     map.setFilter('stops-terminus-names', ['all', ['==', ['get', 'terminus'], 1], modeC, selC, lblC]);
+    // with a line selected only ITS badge stays at the loop
+    map.setFilter('stops-terminus-badges', ['all', modeC,
+      state.selected ? ['==', ['get', 'line'], state.selected] : true]);
     let numC, numField;
     if (state.bus && !state.tram) {
       // trams hidden: shared corridor labels (mode=tram with busLines) must stay,
