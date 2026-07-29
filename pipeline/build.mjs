@@ -20,6 +20,9 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 // normal spacing; chords up to 250 m get interpolated observations instead.
 const GAP_MIN = 250;
 
+const TROLLEY_GREEN = '#149a3f';
+const TROLLEY_DARK = '#0a5121';
+
 const t0 = Date.now();
 const log = (m) => console.log(`[${((Date.now() - t0) / 1000).toFixed(1)}s] ${m}`);
 const numSort = (a, b) => (Number(a) - Number(b)) || a.localeCompare(b);
@@ -105,10 +108,22 @@ function mergeRuns(all) {
 
 async function processMode(cfg) {
   log(`== ${cfg.label} ==`);
-  // per-line colors (metro/tram); runs sharing tracks always share the color group
-  // (only T6+T7 interleave), so the first line of a sorted set is representative
-  const colorOf = (lines) => (cfg.lineColors && cfg.lineColors[lines[0]]) || cfg.color;
-  const colorDarkOf = (lines) => (cfg.lineColorsDark && cfg.lineColorsDark[lines[0]]) || cfg.colorDark;
+  // per-line colors (metro/tram/trolleybus): a run keeps a line color only when
+  // EVERY line of the set shares it (an all-trolleybus street is green); any mix
+  // falls back to the mode color (a bus+trolleybus street stays navy — the green
+  // is added there as a dashed overlay by the frontend)
+  const colorOf = (lines) => {
+    if (!cfg.lineColors) return cfg.color;
+    const c = cfg.lineColors[lines[0]] || cfg.color;
+    for (const l of lines) if ((cfg.lineColors[l] || cfg.color) !== c) return cfg.color;
+    return c;
+  };
+  const colorDarkOf = (lines) => {
+    if (!cfg.lineColorsDark) return cfg.colorDark;
+    const c = cfg.lineColorsDark[lines[0]] || cfg.colorDark;
+    for (const l of lines) if ((cfg.lineColorsDark[l] || cfg.colorDark) !== c) return cfg.colorDark;
+    return c;
+  };
   // STASY publishes no shapes.txt — geometry is reconstructed from stop sequences
   const hasShapes = existsSync(join(ROOT, cfg.gtfsDir, 'shapes.txt'));
   if (!hasShapes) log('no shapes.txt in this feed — stop sequences become the HMM observations');
@@ -120,6 +135,16 @@ async function processMode(cfg) {
   const routes = await readCsv(join(ROOT, cfg.gtfsDir, 'routes.txt'));
   // OSY data quirk: some short names carry stray whitespace ("14 " vs "14")
   for (const r of routes) r.route_short_name = (r.route_short_name || '').trim();
+  // trolleybuses (GTFS route_type 11) ride the same roads but get their own color;
+  // the set also flags shared bus+trolleybus roadways for the dashed overlay
+  if (cfg.mode === 'bus') {
+    cfg.trolleySet = new Set(routes.filter((r) => r.route_type === '11').map((r) => r.route_short_name));
+    if (cfg.trolleySet.size) {
+      cfg.lineColors = {}; cfg.lineColorsDark = {};
+      for (const L of cfg.trolleySet) { cfg.lineColors[L] = TROLLEY_GREEN; cfg.lineColorsDark[L] = TROLLEY_DARK; }
+      log(`trolleybus lines (${cfg.trolleySet.size}): ${[...cfg.trolleySet].sort(numSort).join(', ')}`);
+    }
+  }
   let LINES = cfg.all
     ? [...new Set(routes.map((r) => r.route_short_name))].sort(numSort)
     : cfg.lines;
@@ -309,19 +334,60 @@ async function processMode(cfg) {
       if (i === 0 || i === r.stopSeq.length - 1) e.terminus = 1;
     });
   }
+  // A metro STATION is one place: merge the per-direction (and per-line, at
+  // interchanges) platform records into a single entry keyed by name — one disc,
+  // one label (user report: Irini drawn twice, once off the tracks).
+  if (cfg.mode === 'tram') {
+    const isMetroEntry = (e) => [...e.lines].every((l) => l.startsWith('M'));
+    const byStation = new Map();
+    for (const [id, e] of stopAgg) {
+      if (!isMetroEntry(e)) continue;
+      let g = byStation.get(e.name);
+      if (!g) byStation.set(e.name, (g = []));
+      g.push([id, e]);
+    }
+    for (const g of byStation.values()) {
+      if (g.length < 2) continue;
+      const base = g[0][1];
+      let latS = base.lat, lonS = base.lon;
+      for (let i = 1; i < g.length; i++) {
+        const [id, e] = g[i];
+        for (const L of e.lines) base.lines.add(L);
+        base.terminus = base.terminus || e.terminus;
+        latS += e.lat; lonS += e.lon;
+        stopAgg.delete(id);
+      }
+      base.lat = latS / g.length;
+      base.lon = lonS / g.length;
+    }
+  }
   const stopFeatures = [];
   let stopsFar = 0;
   for (const e of stopAgg.values()) {
     const [sx, sy] = proj.toXY(e.lat, e.lon);
-    let best = null;
+    const isMetroStop = cfg.mode === 'tram' && [...e.lines].every((l) => l.startsWith('M'));
+    let best = null, bestRun = null;
     for (const r of reps) {
       if (!e.lines.has(r.line)) continue;
       const near = nearestOnPolyline(sx, sy, r.matchedXY);
-      if (near && (!best || near.d < best.d)) best = near;
+      if (near && (!best || near.d < best.d)) { best = near; bestRun = r; }
     }
-    const useSnap = best && best.d <= 80;
+    // metro gets a wide snap net: station coords in STASY are entrance-based and
+    // can sit well off the track axis (Irini: >80 m) — the disc belongs ON the line
+    const useSnap = best && best.d <= (isMetroStop ? 250 : 80);
     if (!useSnap) stopsFar++;
     const [lon, lat] = useSnap ? proj.toLonLat(best.x, best.y) : [e.lon, e.lat];
+    // half-disc orientation: flat edge along the street, bulge toward the pole's
+    // side of the roadway (side = sign of the cross product between the street
+    // direction and the snap→pole vector; the GTFS pole stands beside the road)
+    let angle = 0;
+    if (!isMetroStop && best && bestRun && bestRun.matchedXY[best.segIdx + 1]) {
+      const A = bestRun.matchedXY[best.segIdx], B = bestRun.matchedXY[best.segIdx + 1];
+      const dx = B[0] - A[0], dy = B[1] - A[1];
+      const phi = Math.atan2(-dy, dx) * 180 / Math.PI;
+      const cross = dx * (sy - best.y) - dy * (sx - best.x);
+      angle = Math.round((phi + (cross < 0 ? 180 : 0)) * 10) / 10;
+    }
     const arr = [...e.lines].sort(numSort);
     stopFeatures.push({
       type: 'Feature',
@@ -334,6 +400,9 @@ async function processMode(cfg) {
         mode: cfg.mode,
         color: colorOf(arr),
         colorDark: colorDarkOf(arr),
+        angle,
+        // metro stations render as full discs (no roadside pole side to show)
+        ...(isMetroStop ? { metro: 1 } : {}),
         snapDist: best ? Math.round(best.d) : null,
       },
     });
@@ -395,13 +464,25 @@ async function processMode(cfg) {
     }
     flush(runStart, prevPos, runKey);
   }
+  // extra per-run flags: trolley 'all'/'mix' (green stroke / dashed green overlay)
+  // and metro (wide translucent ribbon) — the frontend styles on these
+  const runFlags = (arr) => {
+    const flags = {};
+    if (cfg.trolleySet && cfg.trolleySet.size) {
+      const n = arr.filter((l) => cfg.trolleySet.has(l)).length;
+      if (n === arr.length) flags.trolley = 'all';
+      else if (n > 0) flags.trolley = 'mix';
+    }
+    if (cfg.mode === 'tram' && arr.every((l) => l.startsWith('M'))) flags.metro = 1;
+    return flags;
+  };
   const mergedRuns = mergeRuns(runs);
   const streetFeatures = mergedRuns.map((r) => {
     const arr = r.linesKey.split(', ');
     return {
       type: 'Feature',
       geometry: { type: 'LineString', coordinates: r.coords },
-      properties: { name: r.name, lines: r.linesKey, arr, roundabout: r.roundabout, mode: cfg.mode, color: colorOf(arr) },
+      properties: { name: r.name, lines: r.linesKey, arr, roundabout: r.roundabout, mode: cfg.mode, color: colorOf(arr), ...runFlags(arr) },
     };
   });
   for (const g of rawRunsAll) {
@@ -409,7 +490,7 @@ async function processMode(cfg) {
     streetFeatures.push({
       type: 'Feature',
       geometry: { type: 'LineString', coordinates: g.coords },
-      properties: { name: '', lines: arr.join(', '), arr, roundabout: 0, mode: cfg.mode, color: colorOf(arr), unmapped: 1 },
+      properties: { name: '', lines: arr.join(', '), arr, roundabout: 0, mode: cfg.mode, color: colorOf(arr), unmapped: 1, ...runFlags(arr) },
     });
   }
   log(`Runs: ${runs.length} → ${mergedRuns.length} after merging` +
@@ -467,7 +548,11 @@ const metaLines = results.flatMap((r) => r.metaLines);
   };
   const labelable = (f) => !f.properties.roundabout && !f.properties.unmapped;
   const busF = streetFeatures.filter((f) => f.properties.mode === 'bus' && labelable(f)).map(wrap);
-  const tramF = streetFeatures.filter((f) => f.properties.mode === 'tram' && labelable(f)).map(wrap);
+  // Metro NEVER adopts street numbers: a metro line is one 20-40 km run, so the
+  // adoption union would collect every bus line the tunnel passes under — a
+  // label listing lines that do not ride that street (user report, Iera Odos).
+  // Only street-running trams (T6/T7) share corridors with buses.
+  const tramF = streetFeatures.filter((f) => f.properties.mode === 'tram' && labelable(f) && !f.properties.metro).map(wrap);
   const gridOf = (list) => {
     const g = new Map();
     list.forEach((o, oi) => {
@@ -552,7 +637,7 @@ const metaLines = results.flatMap((r) => r.metaLines);
   // the text parallel to the road and offsets it aside, so the number stands
   // BESIDE the roadway along its course.
   var labelFeatures = [];
-  const groups = new Map(); // (name|set) → longest run of the group
+  const groups = new Map(); // (name|set) → all runs of the group + the longest one
   let anonId = 0;
   for (const f of streetFeatures) {
     const p = f.properties;
@@ -569,18 +654,25 @@ const metaLines = results.flatMap((r) => r.metaLines);
     if (total < 60) continue;
     // no name (links, construction) means no street identity — each run on its own
     const gKey = (p.name || `~${anonId++}`) + '|' + p.lines + '|' + (p.busLines || '');
-    const g = groups.get(gKey);
-    if (!g || total > g.total) groups.set(gKey, { f, coords, xy, segLens, total });
+    const entry = { f, coords, xy, segLens, total };
+    let g = groups.get(gKey);
+    if (!g) groups.set(gKey, (g = { runs: [], best: null }));
+    g.runs.push(entry);
+    if (!g.best || total > g.best.total) g.best = entry;
   }
   const WIN = 30;
-  for (const g of groups.values()) {
-    const { f, coords, xy, segLens, total } = g;
-    const p = f.properties;
-    const at = (d) => {
+  // One label per group at the midpoint of its longest run (the "once per street"
+  // rule) PLUS sparse extra anchors tagged extra:1 — ONLY on very long runs
+  // (avenues), so when zoomed in the number reappears along the street without
+  // repeating on every ordinary block. The frontend reveals extras from z13.
+  const LONG_RUN = 1400, SPACING = 1100, EXCL = 320;
+  const tryPlace = (e, d) => {
+    const { coords, xy, segLens, total } = e;
+    const at = (dd) => {
       let acc = 0;
       for (let i = 0; i < segLens.length; i++) {
-        if (acc + segLens[i] >= d || i === segLens.length - 1) {
-          const t = segLens[i] ? Math.min(1, Math.max(0, (d - acc) / segLens[i])) : 0;
+        if (acc + segLens[i] >= dd || i === segLens.length - 1) {
+          const t = segLens[i] ? Math.min(1, Math.max(0, (dd - acc) / segLens[i])) : 0;
           return {
             x: xy[i][0] + t * (xy[i + 1][0] - xy[i][0]), y: xy[i][1] + t * (xy[i + 1][1] - xy[i][1]),
             lon: coords[i][0] + t * (coords[i + 1][0] - coords[i][0]), lat: coords[i][1] + t * (coords[i + 1][1] - coords[i][1]),
@@ -589,26 +681,44 @@ const metaLines = results.flatMap((r) => r.metaLines);
         acc += segLens[i];
       }
     };
-    // anchor at the midpoint; if there is a tight bend there, try a straighter spot nearby
-    let placed = null;
-    for (const d of [total / 2, total * 0.35, total * 0.65, total * 0.2, total * 0.8]) {
-      const c = at(d), a = at(Math.max(0, d - WIN)), b = at(Math.min(total, d + WIN));
-      const dx = b.x - a.x, dy = b.y - a.y;
-      if (Math.hypot(dx, dy) < 5) continue;
-      let ang = Math.atan2(-dy, dx) * 180 / Math.PI; // clockwise degrees, screen y downwards
-      if (ang > 90) ang -= 180;   // normalization: text never upside down
-      if (ang < -90) ang += 180;
-      placed = { c, ang };
-      break;
-    }
-    if (!placed) continue;
+    const c = at(d), a = at(Math.max(0, d - WIN)), b = at(Math.min(total, d + WIN));
+    const dx = b.x - a.x, dy = b.y - a.y;
+    if (Math.hypot(dx, dy) < 5) return null; // tight bend — no clean bearing here
+    let ang = Math.atan2(-dy, dx) * 180 / Math.PI; // clockwise degrees, screen y downwards
+    if (ang > 90) ang -= 180;   // normalization: text never upside down
+    if (ang < -90) ang += 180;
+    return { c, ang };
+  };
+  for (const g of groups.values()) {
+    const p = g.best.f.properties;
     const arr = p.busLines ? [...p.lines.split(', '), ...p.busLines.split(', ')] : p.lines.split(', ');
-    const props = { lines: p.lines, color: p.color, mode: p.mode, arr, angle: Math.round(placed.ang * 10) / 10 };
-    if (p.busLines) props.busLines = p.busLines;
-    labelFeatures.push({ type: 'Feature', geometry: { type: 'Point', coordinates: [round6(placed.c.lon), round6(placed.c.lat)] }, properties: props });
+    const baseProps = { lines: p.lines, color: p.color, mode: p.mode, arr };
+    if (p.busLines) baseProps.busLines = p.busLines;
+    const anchors = [];
+    const emit = (placed, extra) => {
+      const props = { ...baseProps, angle: Math.round(placed.ang * 10) / 10 };
+      if (extra) props.extra = 1;
+      labelFeatures.push({ type: 'Feature', geometry: { type: 'Point', coordinates: [round6(placed.c.lon), round6(placed.c.lat)] }, properties: props });
+      anchors.push([placed.c.x, placed.c.y]);
+    };
+    // anchor at the midpoint; if there is a tight bend there, try a straighter spot nearby
+    for (const frac of [0.5, 0.35, 0.65, 0.2, 0.8]) {
+      const placed = tryPlace(g.best, frac * g.best.total);
+      if (placed) { emit(placed, false); break; }
+    }
+    for (const e of g.runs) {
+      if (e.total < LONG_RUN) continue;
+      for (let d = SPACING / 2; d < e.total; d += SPACING) {
+        const placed = tryPlace(e, d);
+        if (!placed) continue;
+        if (anchors.some(([ax, ay]) => Math.hypot(ax - placed.c.x, ay - placed.c.y) < EXCL)) continue;
+        emit(placed, true);
+      }
+    }
   }
   const nShared = tramF.filter((o) => o.f.properties.busLines).length;
-  log(`Labels: ${nShared} shared bus+tram segments, ${busF.filter((o) => o.f.properties.nolabel).length} roadways hand their numbers to tracks, ${labelFeatures.length} number labels`);
+  log(`Labels: ${nShared} shared bus+tram segments, ${busF.filter((o) => o.f.properties.nolabel).length} roadways hand their numbers to tracks, ` +
+      `${labelFeatures.length} number labels (${labelFeatures.filter((f) => f.properties.extra).length} zoom-in repeats)`);
 }
 
 let bLonMin = Infinity, bLonMax = -Infinity, bLatMin = Infinity, bLatMax = -Infinity;

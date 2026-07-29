@@ -72,4 +72,4 @@ arcs and intersection turns. Port of the krakow-bus-map pipeline to Athens data.
    ("corridor axes" preprocessing).
 3. Route variants + one-way arrows; line/stop search; GTFS-RT (live positions).
 4. ~~Hosting~~ done: GitHub Pages from `main:/docs` at
-   https://miqell24.github.io/krakow-bus-map/ (repo name kept for URL stability).
+   https://miqell24.github.io/athens-bus-map/.

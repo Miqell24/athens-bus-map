@@ -2,21 +2,88 @@
 // in the visual logic of the official KMK-style network map.
 const KMK = '#0059a9';
 const KMK_DARK = '#00294f';
+const TROLLEY_GREEN = '#149a3f';
+// Narrow label face. Arial Narrow itself cannot be used: MapLibre text comes from
+// pre-rendered glyph PBFs on a font server, and no server hosts that licensed
+// font — Roboto Condensed is the hosted narrow equivalent (with Greek coverage).
+const NARROW = 'roboto_condensed_regular';
+const NARROW_BOLD = 'roboto_condensed_bold';
 
-const map = new maplibregl.Map({
-  container: 'map',
-  style: 'https://tiles.openfreemap.org/styles/positron',
-  center: [23.73, 37.98],
-  zoom: 11.5,
-  attributionControl: false,
-});
-map.addControl(new maplibregl.NavigationControl({ visualizePitch: false }), 'top-right');
-map.addControl(new maplibregl.ScaleControl({ maxWidth: 120 }), 'bottom-left');
-map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: 'Timetables: GTFS OASA (data.gov.gr)' }));
+let map;
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 async function init() {
+  // The OpenFreeMap glyph server only hosts Noto Sans, so the style is fetched
+  // and its glyphs endpoint swapped to VersaTiles, which serves BOTH Noto Sans
+  // (for the base style) and Roboto Condensed (for our labels). VersaTiles names
+  // stacks in snake_case and has no Noto Sans Italic — remap the base style's
+  // fonts (italic degrades to regular, cosmetic only).
+  const style = await (await fetch('https://tiles.openfreemap.org/styles/positron')).json();
+  style.glyphs = 'https://tiles.versatiles.org/assets/glyphs/{fontstack}/{range}.pbf';
+  const FONT_MAP = {
+    'Noto Sans Regular': 'noto_sans_regular',
+    'Noto Sans Bold': 'noto_sans_bold',
+    'Noto Sans Italic': 'noto_sans_regular',
+  };
+  // "Paper map" recolor of the pale positron base — the look of the printed KMK
+  // poster: warm tinted districts, green parks, real-blue water, pale-yellow
+  // motorways, darker street names, brown-gray railways.
+  const BASE_RECOLOR = {
+    background: { 'background-color': '#e8e4d8' },
+    landuse_residential: { 'fill-color': '#e6d2c2' },
+    park: { 'fill-color': '#c4dfa4' },
+    landcover_wood: { 'fill-color': '#b3d295' },
+    water: { 'fill-color': '#9dc2e0' },
+    waterway: { 'line-color': '#9dc2e0' },
+    building: { 'fill-color': '#dccdb9', 'fill-outline-color': '#c9b8a2' },
+    road_area_pier: { 'fill-color': '#e8e4d8' },
+    road_pier: { 'line-color': '#e8e4d8' },
+    'aeroway-area': { 'fill-color': '#f0ece0' },
+    'aeroway-runway': { 'line-color': '#f0ece0' },
+    'aeroway-taxiway': { 'line-color': '#d8d2c2' },
+    'aeroway-runway-casing': { 'line-color': '#d8d2c2' },
+    highway_path: { 'line-color': '#d9d3c3' },
+    highway_minor: { 'line-color': '#fdfcf6' },
+    highway_major_casing: { 'line-color': '#c8bfab' },
+    highway_major_inner: { 'line-color': '#fffdf6' },
+    highway_major_subtle: { 'line-color': 'hsla(38,25%,74%,0.69)' },
+    highway_motorway_casing: { 'line-color': '#c2b28e' },
+    highway_motorway_inner: { 'line-color': '#f8e9b0' },
+    highway_motorway_subtle: { 'line-color': 'hsla(45,45%,70%,0.55)' },
+    highway_motorway_bridge_casing: { 'line-color': '#c2b28e' },
+    highway_motorway_bridge_inner: { 'line-color': '#f8e9b0' },
+    tunnel_motorway_casing: { 'line-color': '#d3cab4' },
+    tunnel_motorway_inner: { 'line-color': '#efe8d2' },
+    railway: { 'line-color': '#a2968a' },
+    railway_dashline: { 'line-color': '#f4efe2' },
+    railway_service: { 'line-color': '#a2968a' },
+    railway_service_dashline: { 'line-color': '#f4efe2' },
+    railway_transit: { 'line-color': '#a2968a' },
+    railway_transit_dashline: { 'line-color': '#f4efe2' },
+    boundary_3: { 'line-color': '#a89f8e' },
+    boundary_2: { 'line-color': '#a89f8e' },
+    'highway-name-minor': { 'text-color': '#3c3a34', 'text-halo-color': '#f4efe2' },
+    'highway-name-major': { 'text-color': '#3c3a34', 'text-halo-color': '#f4efe2' },
+    'highway-name-path': { 'text-color': '#8a8171' },
+  };
+  for (const l of style.layers) {
+    const tf = l.layout && l.layout['text-font'];
+    if (Array.isArray(tf)) l.layout['text-font'] = tf.map((f) => FONT_MAP[f] || f);
+    const o = BASE_RECOLOR[l.id];
+    if (o) l.paint = { ...l.paint, ...o };
+  }
+  map = new maplibregl.Map({
+    container: 'map',
+    style,
+    center: [23.73, 37.98],
+    zoom: 11.5,
+    attributionControl: false,
+  });
+  map.addControl(new maplibregl.NavigationControl({ visualizePitch: false }), 'top-right');
+  map.addControl(new maplibregl.ScaleControl({ maxWidth: 120 }), 'bottom-left');
+  map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: 'Timetables: GTFS OASA (data.gov.gr)' }));
+
   const [meta] = await Promise.all([
     fetch('data/meta.json').then((r) => r.json()),
     // Do not hang on 'load' (one stuck tile blocks it forever) —
@@ -47,14 +114,17 @@ async function init() {
   map.addSource('streets', { type: 'geojson', data: 'data/streets.geojson' });
   map.addSource('stops', { type: 'geojson', data: 'data/stops.geojson' });
 
-  // Trams drawn with the same logic as buses (both tracks at their true OSM
-  // positions, no offset — like the two carriageways of a dual carriageway).
+  // Trams/trolleybuses drawn with the same logic as buses (both tracks at their
+  // true OSM positions). Metro is the exception: a WIDE translucent ribbon with
+  // no white casing, laid over the street network like on printed transit maps.
+  const metroC = ['==', ['get', 'metro'], 1];
   map.addLayer({
     id: 'route-casing', type: 'line', source: 'streets',
     layout: { 'line-join': 'round', 'line-cap': 'round' },
     paint: {
       'line-color': '#ffffff',
       'line-width': ['interpolate', ['linear'], ['zoom'], 10, 2.2, 14, 4.6, 17, 9],
+      'line-opacity': ['case', metroC, 0, 1],
     },
   }, firstSymbol);
   map.addLayer({
@@ -62,7 +132,24 @@ async function init() {
     layout: { 'line-join': 'round', 'line-cap': 'round' },
     paint: {
       'line-color': ['coalesce', ['get', 'color'], KMK],
+      'line-width': ['interpolate', ['linear'], ['zoom'],
+        10, ['case', metroC, 3, 1.1],
+        14, ['case', metroC, 7, 2.3],
+        17, ['case', metroC, 14, 4.5]],
+      'line-opacity': ['case', metroC, 0.4, 1],
+    },
+  }, firstSymbol);
+  // Shared bus+trolleybus roadways: green dashes over the navy stroke, so the
+  // alternation reads as "both ride here". Trolleybus-only roadways are simply
+  // green via properties.color from the pipeline.
+  map.addLayer({
+    id: 'route-trolley-dash', type: 'line', source: 'streets',
+    filter: ['==', ['get', 'trolley'], 'mix'],
+    layout: { 'line-join': 'round', 'line-cap': 'butt' },
+    paint: {
+      'line-color': TROLLEY_GREEN,
       'line-width': ['interpolate', ['linear'], ['zoom'], 10, 1.1, 14, 2.3, 17, 4.5],
+      'line-dasharray': [1.6, 2.2],
     },
   }, firstSymbol);
 
@@ -80,34 +167,90 @@ async function init() {
       ['get', 'busLines'], { 'text-color': KMK }],
     ['format', ['get', 'lines'], {}]];
   map.addSource('labels', { type: 'geojson', data: 'data/labels.geojson' });
+  const numbersLayout = {
+    'text-field': numberField,
+    'text-font': [NARROW_BOLD],
+    'text-size': ['interpolate', ['linear'], ['zoom'], 11, 10, 14, 12.5, 17, 16],
+    'text-rotate': ['get', 'angle'],
+    'text-rotation-alignment': 'map',
+    // 'auto' inherits pitch-alignment 'map', and that path in MapLibre 5.6 kills
+    // rotated point symbols (0 rendered); the map has no pitch anyway
+    'text-pitch-alignment': 'viewport',
+    'text-anchor': 'bottom',
+    'text-offset': [0, -1.0],
+    'text-max-width': 22,
+    'text-line-height': 1.15,
+  };
+  const numbersPaint = { 'text-color': ['coalesce', ['get', 'color'], KMK], 'text-halo-color': '#ffffff', 'text-halo-width': 2 };
+  // Every label is collision-managed (allow-overlap turned whole districts into
+  // digit soup — user report, twice). Numbers still win against stop names
+  // because their layers sit ABOVE them in the style: MapLibre places symbols
+  // top-most layer first, so numbers claim their spot and names yield. Repeats
+  // (extra:1) exist only on very long avenues, emitted sparsely by the pipeline,
+  // and rank BELOW the once-per-street anchors.
+  const NUM_LAYERS = [
+    { id: 'street-numbers-low', minzoom: 11, maxzoom: 13, cond: ['!', ['has', 'extra']] },
+    { id: 'street-numbers', minzoom: 13, cond: ['!', ['has', 'extra']] },
+    { id: 'street-numbers-extra', minzoom: 13.5, cond: ['has', 'extra'] },
+  ];
+  for (const d of NUM_LAYERS) {
+    const def = {
+      id: d.id, type: 'symbol', source: 'labels',
+      minzoom: d.minzoom,
+      filter: d.cond,
+      layout: { ...numbersLayout },
+      paint: { ...numbersPaint },
+    };
+    if (d.maxzoom) def.maxzoom = d.maxzoom;
+    map.addLayer(def);
+  }
+
+  // Stops as HALF-DISCS: flat edge lying on the line, bulge pointing to the
+  // pole's side of the street (angle from the pipeline). Canvas-drawn icon per
+  // color pair — regular: white fill + colored rim; terminus: filled + dark rim.
+  const PALETTE = [
+    [KMK, KMK_DARK], [TROLLEY_GREEN, '#0a5121'],
+    ['#009550', '#00512b'], ['#e30613', '#7c060e'], ['#1e9cd7', '#0d567a'],
+    ['#7d2b8b', '#45164e'], ['#d6212b', '#7c1116'],
+  ];
+  const discIcon = (fill, rim, half) => {
+    const S = 48;
+    const c = document.createElement('canvas');
+    c.width = S; c.height = S;
+    const x = c.getContext('2d');
+    x.beginPath();
+    // half: upper semicircle (bulge up at angle 0); full: whole disc (metro)
+    x.arc(S / 2, S / 2, 15, half ? Math.PI : 0, 2 * Math.PI);
+    if (half) x.closePath();
+    x.fillStyle = fill; x.fill();
+    x.lineWidth = 5; x.lineJoin = 'round'; x.strokeStyle = rim; x.stroke();
+    return x.getImageData(0, 0, S, S);
+  };
+  const addStopIcons = (m) => {
+    for (const [c, cd] of PALETTE) {
+      m.addImage('stop-' + c, discIcon('#ffffff', c, true), { pixelRatio: 2 });
+      m.addImage('stop-' + c + '-t', discIcon(c, cd, true), { pixelRatio: 2 });
+      m.addImage('dot-' + c, discIcon('#ffffff', c, false), { pixelRatio: 2 });
+      m.addImage('dot-' + c + '-t', discIcon(c, cd, false), { pixelRatio: 2 });
+    }
+  };
+  addStopIcons(map);
   map.addLayer({
-    id: 'street-numbers', type: 'symbol', source: 'labels',
+    id: 'stops-dots', type: 'symbol', source: 'stops',
     minzoom: 11,
     layout: {
-      'text-field': numberField,
-      'text-font': ['Noto Sans Bold'],
-      'text-size': ['interpolate', ['linear'], ['zoom'], 11, 10, 14, 12.5, 17, 16],
-      'text-rotate': ['get', 'angle'],
-      'text-rotation-alignment': 'map',
-      // 'auto' inherits pitch-alignment 'map', and that path in MapLibre 5.6 kills
-      // rotated point symbols (0 rendered); the map has no pitch anyway
-      'text-pitch-alignment': 'viewport',
-      'text-anchor': 'bottom',
-      'text-offset': [0, -1.0],
-      'text-max-width': 22,
-      'text-line-height': 1.15,
-    },
-    paint: { 'text-color': ['coalesce', ['get', 'color'], KMK], 'text-halo-color': '#ffffff', 'text-halo-width': 2 },
-  });
-
-  map.addLayer({
-    id: 'stops-dots', type: 'circle', source: 'stops',
-    minzoom: 11,
-    paint: {
-      'circle-radius': ['interpolate', ['linear'], ['zoom'], 11, 2, 14, 4.2, 17, 7],
-      'circle-color': ['case', ['==', ['get', 'terminus'], 1], ['coalesce', ['get', 'color'], KMK], '#ffffff'],
-      'circle-stroke-color': ['case', ['==', ['get', 'terminus'], 1], ['coalesce', ['get', 'colorDark'], KMK_DARK], ['coalesce', ['get', 'color'], KMK]],
-      'circle-stroke-width': ['interpolate', ['linear'], ['zoom'], 11, 1.2, 17, 2.5],
+      // metro stations and TERMINI are ALWAYS full discs; ordinary street stops
+      // are half-discs with the bulge on the pole's side of the roadway
+      'icon-image': ['concat',
+        ['case', ['any', ['==', ['get', 'metro'], 1], ['==', ['get', 'terminus'], 1]], 'dot-', 'stop-'],
+        ['coalesce', ['get', 'color'], KMK],
+        ['case', ['==', ['get', 'terminus'], 1], '-t', '']],
+      'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.34, 14, 0.62, 17, 1.05],
+      'icon-rotate': ['get', 'angle'],
+      'icon-rotation-alignment': 'map',
+      // same MapLibre pitfall as rotated text: pitch-alignment must be explicit
+      'icon-pitch-alignment': 'viewport',
+      'icon-allow-overlap': true,
     },
   });
   map.addLayer({
@@ -116,7 +259,7 @@ async function init() {
     filter: ['all', ['!=', ['get', 'terminus'], 1], ['==', ['get', 'label'], 1]],
     layout: {
       'text-field': ['get', 'name'],
-      'text-font': ['Noto Sans Regular'],
+      'text-font': [NARROW],
       'text-size': ['interpolate', ['linear'], ['zoom'], 13, 10.5, 17, 13.5],
       'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
       'text-radial-offset': 0.75,
@@ -135,7 +278,7 @@ async function init() {
         ['get', 'name'], {},
         '\n', {},
         ['get', 'lines'], { 'font-scale': 0.82, 'text-color': ['coalesce', ['get', 'colorDark'], KMK_DARK] }],
-      'text-font': ['Noto Sans Bold'],
+      'text-font': [NARROW_BOLD],
       'text-size': ['interpolate', ['linear'], ['zoom'], 10.5, 11, 17, 14.5],
       'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
       'text-radial-offset': 0.9,
@@ -143,6 +286,11 @@ async function init() {
     },
     paint: { 'text-color': '#000000', 'text-halo-color': '#ffffff', 'text-halo-width': 2 },
   });
+  // line numbers move ABOVE stop symbols — symbol placement runs top-first, so
+  // this gives numbers collision priority over stop names. Reversed order: the
+  // once-per-street anchors end up on top of the extras, so where both compete
+  // for space the main label wins.
+  for (const d of [...NUM_LAYERS].reverse()) map.moveLayer(d.id);
 
   // Mode filters (bus/tram) + line selection: clicking a chip shows only that
   // line's route with all of its stops (properties.arr carry the line lists).
@@ -157,19 +305,25 @@ async function init() {
     const selC = state.selected ? ['in', state.selected, ['get', 'arr']] : true;
     map.setFilter('route-casing', ['all', modeC, selC]);
     map.setFilter('route-line', ['all', modeC, selC]);
+    map.setFilter('route-trolley-dash', ['all', ['==', ['get', 'trolley'], 'mix'], modeC, selC]);
     map.setFilter('stops-dots', ['all', modeC, selC]);
     // with a line selected, names of ALL its stops (no label clustering)
     const lblC = state.selected ? true : ['==', ['get', 'label'], 1];
     map.setFilter('stops-names', ['all', ['!=', ['get', 'terminus'], 1], modeC, selC, lblC]);
     map.setFilter('stops-terminus-names', ['all', ['==', ['get', 'terminus'], 1], modeC, selC, lblC]);
+    let numC, numField;
     if (state.bus && !state.tram) {
       // trams hidden: shared corridor labels (mode=tram with busLines) must stay,
       // but they show only the bus part
-      map.setFilter('street-numbers', ['all', ['any', ['==', ['get', 'mode'], 'bus'], ['has', 'busLines']], selC]);
-      map.setLayoutProperty('street-numbers', 'text-field', busOnlyNumbers);
+      numC = ['all', ['any', ['==', ['get', 'mode'], 'bus'], ['has', 'busLines']], selC];
+      numField = busOnlyNumbers;
     } else {
-      map.setFilter('street-numbers', ['all', modeC, selC]);
-      map.setLayoutProperty('street-numbers', 'text-field', state.tram && !state.bus ? tramOnlyNumbers : numberField);
+      numC = ['all', modeC, selC];
+      numField = state.tram && !state.bus ? tramOnlyNumbers : numberField;
+    }
+    for (const d of NUM_LAYERS) {
+      map.setFilter(d.id, ['all', d.cond, numC]);
+      map.setLayoutProperty(d.id, 'text-field', numField);
     }
   }
   document.getElementById('chips').addEventListener('click', (e) => {
@@ -232,6 +386,8 @@ async function init() {
         pixelRatio: RATIO, preserveDrawingBuffer: true, antialias: true,
         attributionControl: false, interactive: false, fadeDuration: 0,
       });
+      // canvas-drawn stop icons are not part of the style — re-register them
+      addStopIcons(m2);
       const idle = () => new Promise((res, rej) => {
         const t = setTimeout(() => rej(new Error('tile render timeout')), 45000);
         m2.once('idle', () => { clearTimeout(t); res(); });

@@ -6,11 +6,10 @@ and tram T6/T7 (STASY)** drawn exactly along roadways, tracks and tunnels (own
 HMM/Viterbi map matching on an OSM graph), line numbers written parallel to every
 street they use, labeled stops, true roundabout arcs.
 
-**Live map:** https://miqell24.github.io/krakow-bus-map/
+**Live map:** https://miqell24.github.io/athens-bus-map/
 
-Successor of the Kraków map previously published here — same pipeline, different
-city and feeds (the repository keeps its historical name so the published URL
-stays stable; the Kraków version lives on in the git history).
+Sibling of [krakow-bus-map](https://github.com/Miqell24/krakow-bus-map) — same
+pipeline, different city and feeds.
 
 ## Features
 
