@@ -301,31 +301,48 @@ async function init() {
     paint: { 'text-color': '#000000', 'text-halo-color': '#ffffff', 'text-halo-width': 2 },
   });
   // Terminus line badges: one small translucent box per line, laid out as a
-  // centered grid below the terminus dot (offsets precomputed by the pipeline).
+  // centered grid below the loop (offsets precomputed by the pipeline). The same
+  // badges exist in several ZOOM BANDS — in each band the pipeline fused the grids
+  // that would collide at that scale into one complex, so only the band matching
+  // the current zoom is drawn.
   map.addSource('badges', { type: 'geojson', data: 'data/badges.geojson' });
-  map.addLayer({
-    id: 'stops-terminus-badges', type: 'symbol', source: 'badges',
-    minzoom: 11.5,
-    layout: {
-      'text-field': ['get', 'line'],
-      'text-font': [NARROW_BOLD],
-      'text-size': ['interpolate', ['linear'], ['zoom'], 11.5, 9.5, 17, 12.5],
-      'text-offset': ['get', 'off'],
-      'icon-image': ['concat', 'badge-', ['coalesce', ['get', 'color'], KMK]],
-      'icon-text-fit': 'both',
-      'icon-text-fit-padding': [2, 5, 2, 5],
-      // grids must stay complete — a collision-hidden middle badge would read
-      // as a data bug, so badges win overlap unconditionally
-      'text-allow-overlap': true,
-      'icon-allow-overlap': true,
-    },
-    paint: { 'text-color': ['coalesce', ['get', 'colorDark'], KMK_DARK] },
+  const BADGE_BANDS = meta.badgeBands || [[13, 14], [14, 15], [15, 16.5], [16.5, 22]];
+  // legacy data without `band` passes every band filter — the disjoint zoom
+  // ranges still draw it exactly once, so a stale badges.geojson degrades to the
+  // unfused layout instead of an empty map
+  const bandC = (b) => ['any', ['!', ['has', 'band']], ['==', ['get', 'band'], b]];
+  const BADGE_LAYERS = BADGE_BANDS.map(([z0, z1], b) => {
+    const id = 'stops-terminus-badges-' + b;
+    map.addLayer({
+      id, type: 'symbol', source: 'badges',
+      minzoom: z0, maxzoom: z1,
+      filter: bandC(b),
+      layout: {
+        'text-field': ['get', 'line'],
+        'text-font': [NARROW_BOLD],
+        'text-size': ['interpolate', ['linear'], ['zoom'], 13, 9.5, 17, 12.5],
+        'text-offset': ['get', 'off'],
+        'icon-image': ['concat', 'badge-', ['coalesce', ['get', 'color'], KMK]],
+        'icon-text-fit': 'both',
+        'icon-text-fit-padding': [2, 5, 2, 5],
+        // a grid must stay complete — a collision-hidden middle badge would read
+        // as a data bug, so badges win overlap unconditionally (the pipeline is
+        // what keeps separate grids from landing on top of each other)
+        'text-allow-overlap': true,
+        'icon-allow-overlap': true,
+      },
+      paint: { 'text-color': ['coalesce', ['get', 'colorDark'], KMK_DARK] },
+    });
+    return id;
   });
   // line numbers move ABOVE stop symbols — symbol placement runs top-first, so
   // this gives numbers collision priority over stop names. Reversed order: the
   // once-per-street anchors end up on top of the extras, so where both compete
   // for space the main label wins.
   for (const d of [...NUM_LAYERS].reverse()) map.moveLayer(d.id);
+  // terminus badges go topmost: being placed first, the street numbers route
+  // around the boxes instead of printing across them
+  for (const id of BADGE_LAYERS) map.moveLayer(id);
 
   // Mode filters (bus/tram) + line selection: clicking a chip shows only that
   // line's route with all of its stops (properties.arr carry the line lists).
@@ -347,8 +364,10 @@ async function init() {
     map.setFilter('stops-names', ['all', ['!=', ['get', 'terminus'], 1], modeC, selC, lblC]);
     map.setFilter('stops-terminus-names', ['all', ['==', ['get', 'terminus'], 1], modeC, selC, lblC]);
     // with a line selected only ITS badge stays at the loop
-    map.setFilter('stops-terminus-badges', ['all', modeC,
-      state.selected ? ['==', ['get', 'line'], state.selected] : true]);
+    BADGE_LAYERS.forEach((id, b) => {
+      map.setFilter(id, ['all', bandC(b), modeC,
+        state.selected ? ['==', ['get', 'line'], state.selected] : true]);
+    });
     let numC, numField;
     if (state.bus && !state.tram) {
       // trams hidden: shared corridor labels (mode=tram with busLines) must stay,

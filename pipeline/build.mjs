@@ -431,37 +431,21 @@ async function processMode(cfg) {
   }
   log(`Stops: ${stopFeatures.length} poles, ${labelCount} labels`);
 
-  // Terminus badges: at every labeled terminus each line number becomes its own
-  // point feature with a grid offset (ems) — the frontend renders it as a small
-  // translucent box (stretchable icon behind the text), centered under the dot,
-  // like the line boxes at loops on the printed KMK poster.
-  const badgeFeatures = [];
-  {
-    const PER_ROW = 5, CELL_W = 3.0, CELL_H = 1.5, BASE_Y = 1.1;
-    for (const f of stopFeatures) {
-      const p = f.properties;
-      if (!p.terminus || !p.label) continue;
-      p.arr.forEach((line, i) => {
-        const row = Math.floor(i / PER_ROW), col = i % PER_ROW;
-        const rowLen = Math.min(PER_ROW, p.arr.length - row * PER_ROW);
-        badgeFeatures.push({
-          type: 'Feature',
-          geometry: f.geometry,
-          properties: {
-            line,
-            mode: p.mode,
-            color: colorOf([line]),
-            colorDark: colorDarkOf([line]),
-            off: [
-              Math.round((col - (rowLen - 1) / 2) * CELL_W * 100) / 100,
-              Math.round((BASE_Y + row * CELL_H) * 100) / 100,
-            ],
-          },
-        });
-      });
-    }
+  // Terminus badge ANCHORS: every labeled terminus with the lines that end there
+  // and their colors. The grid layout — and the fusing of grids that would collide
+  // on screen — happens in a shared pass after all modes, so neighbouring loops of
+  // ANY mode merge into one box complex.
+  const badgeAnchors = [];
+  for (const f of stopFeatures) {
+    const p = f.properties;
+    if (!p.terminus || !p.label) continue;
+    badgeAnchors.push({
+      lon: f.geometry.coordinates[0],
+      lat: f.geometry.coordinates[1],
+      lines: p.arr.map((line) => ({ line, mode: p.mode, color: colorOf([line]), colorDark: colorDarkOf([line]) })),
+    });
   }
-  log(`Termini: ${badgeFeatures.length} line badges`);
+  log(`Termini: ${badgeAnchors.length} loops with line badges`);
 
   // ---------- 9) streets/tracks: runs merged per line set ----------
   const byWay = new Map();
@@ -549,7 +533,7 @@ async function processMode(cfg) {
     })),
   }));
 
-  return { routeFeatures, shapeFeatures, stopFeatures, streetFeatures, badgeFeatures, metaLines };
+  return { routeFeatures, shapeFeatures, stopFeatures, streetFeatures, badgeAnchors, metaLines };
 }
 
 // ---------- run per mode + write shared files ----------
@@ -560,7 +544,6 @@ const routeFeatures = results.flatMap((r) => r.routeFeatures);
 const shapeFeatures = results.flatMap((r) => r.shapeFeatures);
 const stopFeatures = results.flatMap((r) => r.stopFeatures);
 const streetFeatures = results.flatMap((r) => r.streetFeatures);
-const badgeFeatures = results.flatMap((r) => r.badgeFeatures);
 const metaLines = results.flatMap((r) => r.metaLines);
 
 // ---------- 10) line-number labels: SHARED across both modes ----------
@@ -754,6 +737,85 @@ const metaLines = results.flatMap((r) => r.metaLines);
       `${labelFeatures.length} number labels (${labelFeatures.filter((f) => f.properties.extra).length} zoom-in repeats)`);
 }
 
+// ---------- 11) terminus line badges: grids fuse into one complex when they collide ----------
+// Each terminating line gets its own small box, laid out in a centered grid under
+// the loop. The grid lives in SCREEN space while loops live in metres, so two
+// neighbouring loops overlap when zoomed out and stand apart when zoomed in. The
+// layout is therefore computed for several ZOOM BANDS: inside a band, anchors whose
+// grids would overlap are merged into ONE complex (union of lines, centroid
+// position), and the frontend shows the band matching the current zoom.
+const badgeFeatures = [];
+const BADGE_BANDS = [[13, 14], [14, 15], [15, 16.5], [16.5, 22]];
+{
+  const anchors = results.flatMap((r) => r.badgeAnchors);
+  const PER_ROW = 5, CELL_W = 3.0, CELL_H = 1.5, BASE_Y = 1.1;
+  const EM = 11, PAD = 10; // px: label em size in the band, plus breathing room
+  const latMid = anchors.length ? anchors.reduce((s, a) => s + a.lat, 0) / anchors.length : 38;
+  const P2 = makeProj(latMid, anchors.length ? anchors[0].lon : 23.7);
+  // grid footprint in px for n lines: width, height and the centre's offset below
+  // the anchor (the grid hangs under the dot)
+  const geom = (n) => {
+    const rows = Math.ceil(n / PER_ROW), cols = Math.min(PER_ROW, n);
+    return {
+      w: cols * CELL_W * EM + PAD,
+      h: ((rows - 1) * CELL_H + 1) * EM + PAD,
+      yc: (BASE_Y + ((rows - 1) * CELL_H) / 2) * EM,
+    };
+  };
+  let mergedTotal = 0;
+  BADGE_BANDS.forEach(([z0], band) => {
+    // metres per pixel at the band's lower edge (worst case inside the band);
+    // 512 px tiles ⇒ the classic 256 px formula at z+1
+    const mpp = (156543.03392 * Math.cos((latMid * Math.PI) / 180)) / 2 ** (z0 + 1);
+    const cl = anchors.map((a) => {
+      const [x, y] = P2.toXY(a.lat, a.lon);
+      return { x, y, n: 1, lines: a.lines.slice() };
+    });
+    for (let pass = 0; pass < 12; pass++) {
+      let merged = false;
+      for (let i = 0; i < cl.length; i++) {
+        for (let j = i + 1; j < cl.length; j++) {
+          const A = cl[i], B = cl[j];
+          const ga = geom(A.lines.length), gb = geom(B.lines.length);
+          const dx = Math.abs(A.x - B.x);
+          const dy = Math.abs((A.y - ga.yc * mpp) - (B.y - gb.yc * mpp));
+          if (dx >= ((ga.w + gb.w) / 2) * mpp || dy >= ((ga.h + gb.h) / 2) * mpp) continue;
+          const seen = new Set(A.lines.map((l) => l.line));
+          for (const l of B.lines) if (!seen.has(l.line)) A.lines.push(l);
+          A.x = (A.x * A.n + B.x * B.n) / (A.n + B.n);
+          A.y = (A.y * A.n + B.y * B.n) / (A.n + B.n);
+          A.n += B.n;
+          cl.splice(j--, 1);
+          merged = true;
+        }
+      }
+      if (!merged) break;
+    }
+    mergedTotal += anchors.length - cl.length;
+    for (const c of cl) {
+      const lines = c.lines.slice().sort((a, b) => numSort(a.line, b.line));
+      const [lon, lat] = P2.toLonLat(c.x, c.y);
+      lines.forEach((l, i) => {
+        const row = Math.floor(i / PER_ROW), col = i % PER_ROW;
+        const rowLen = Math.min(PER_ROW, lines.length - row * PER_ROW);
+        badgeFeatures.push({
+          type: 'Feature',
+          geometry: { type: 'Point', coordinates: [round6(lon), round6(lat)] },
+          properties: {
+            line: l.line, mode: l.mode, color: l.color, colorDark: l.colorDark, band,
+            off: [
+              Math.round((col - (rowLen - 1) / 2) * CELL_W * 100) / 100,
+              Math.round((BASE_Y + row * CELL_H) * 100) / 100,
+            ],
+          },
+        });
+      });
+    }
+  });
+  log(`Badges: ${badgeFeatures.length} boxes across ${BADGE_BANDS.length} zoom bands ` +
+      `(${mergedTotal} colliding grids fused)`);
+}
+
 let bLonMin = Infinity, bLonMax = -Infinity, bLatMin = Infinity, bLatMax = -Infinity;
 for (const f of routeFeatures) for (const [lon, lat] of f.geometry.coordinates) {
   if (lon < bLonMin) bLonMin = lon; if (lon > bLonMax) bLonMax = lon;
@@ -772,6 +834,7 @@ writeFileSync(join(outDir, 'gtfs-shape.geojson'), fc(shapeFeatures));
 writeFileSync(join(outDir, 'meta.json'), JSON.stringify({
   generatedAt: new Date().toISOString(),
   bbox: [bLonMin, bLatMin, bLonMax, bLatMax],
+  badgeBands: BADGE_BANDS,
   modes: MODES.map((m) => ({ mode: m.mode, label: m.label, color: m.color })),
   lines: metaLines,
 }, null, 2));
