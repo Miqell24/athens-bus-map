@@ -273,7 +273,8 @@ async function init() {
   map.addLayer({
     id: 'stops-names', type: 'symbol', source: 'stops',
     minzoom: 13,
-    filter: ['all', ['!=', ['get', 'terminus'], 1], ['==', ['get', 'label'], 1]],
+    // metro station names live in their own top-priority layer (see below)
+    filter: ['all', ['!=', ['get', 'terminus'], 1], ['!=', ['get', 'metro'], 1], ['==', ['get', 'label'], 1]],
     layout: {
       'text-field': ['get', 'name'],
       'text-font': [NARROW],
@@ -287,7 +288,7 @@ async function init() {
   map.addLayer({
     id: 'stops-terminus-names', type: 'symbol', source: 'stops',
     minzoom: 10.5,
-    filter: ['all', ['==', ['get', 'terminus'], 1], ['==', ['get', 'label'], 1]],
+    filter: ['all', ['==', ['get', 'terminus'], 1], ['!=', ['get', 'metro'], 1], ['==', ['get', 'label'], 1]],
     layout: {
       // terminus: name only — the terminating lines render as boxed badges in
       // their own layer (grid under the dot)
@@ -295,6 +296,24 @@ async function init() {
       'text-font': [NARROW_BOLD],
       'text-size': ['interpolate', ['linear'], ['zoom'], 10.5, 11, 17, 14.5],
       'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+      'text-radial-offset': 0.9,
+      'text-justify': 'auto',
+    },
+    paint: { 'text-color': '#000000', 'text-halo-color': '#ffffff', 'text-halo-width': 2 },
+  });
+  // Every metro station is labeled, always: the tunnels run under busy avenues,
+  // so in the shared stop-name layer their names lost the collision fight against
+  // bus stops and street numbers. Own layer + moveLayer to the very top = first in
+  // symbol placement, so these names are never dropped.
+  map.addLayer({
+    id: 'stops-metro-names', type: 'symbol', source: 'stops',
+    minzoom: 11.5,
+    filter: ['all', ['==', ['get', 'metro'], 1], ['==', ['get', 'label'], 1]],
+    layout: {
+      'text-field': ['get', 'name'],
+      'text-font': [NARROW_BOLD],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 11.5, 10.5, 17, 14],
+      'text-variable-anchor': ['left', 'right', 'top', 'bottom'],
       'text-radial-offset': 0.9,
       'text-justify': 'auto',
     },
@@ -343,6 +362,8 @@ async function init() {
   // terminus badges go topmost: being placed first, the street numbers route
   // around the boxes instead of printing across them
   for (const id of BADGE_LAYERS) map.moveLayer(id);
+  // and the metro station names top everything — they must never be dropped
+  map.moveLayer('stops-metro-names');
 
   // Mode filters (bus/tram) + line selection: clicking a chip shows only that
   // line's route with all of its stops (properties.arr carry the line lists).
@@ -361,8 +382,9 @@ async function init() {
     map.setFilter('stops-dots', ['all', modeC, selC]);
     // with a line selected, names of ALL its stops (no label clustering)
     const lblC = state.selected ? true : ['==', ['get', 'label'], 1];
-    map.setFilter('stops-names', ['all', ['!=', ['get', 'terminus'], 1], modeC, selC, lblC]);
-    map.setFilter('stops-terminus-names', ['all', ['==', ['get', 'terminus'], 1], modeC, selC, lblC]);
+    map.setFilter('stops-names', ['all', ['!=', ['get', 'terminus'], 1], ['!=', ['get', 'metro'], 1], modeC, selC, lblC]);
+    map.setFilter('stops-terminus-names', ['all', ['==', ['get', 'terminus'], 1], ['!=', ['get', 'metro'], 1], modeC, selC, lblC]);
+    map.setFilter('stops-metro-names', ['all', ['==', ['get', 'metro'], 1], modeC, selC, lblC]);
     // with a line selected only ITS badge stays at the loop
     BADGE_LAYERS.forEach((id, b) => {
       map.setFilter(id, ['all', bandC(b), modeC,
@@ -540,7 +562,10 @@ async function init() {
   map.on('mouseenter', 'stops-dots', () => (map.getCanvas().style.cursor = 'pointer'));
   map.on('mouseleave', 'stops-dots', () => (map.getCanvas().style.cursor = ''));
 
-  map.fitBounds([[meta.bbox[0], meta.bbox[1]], [meta.bbox[2], meta.bbox[3]]], { padding: 70, duration: 0 });
+  // NOT fitBounds(meta.bbox): the OASA network reaches Elefsina, Rafina and Kapandriti, so fitting the data
+  // bbox would open on countryside with the city as a blob. Open on the city — the
+  // whole network is one zoom out.
+  map.jumpTo({ center: [23.727, 37.983], zoom: 11.3 });
 }
 
 init().catch((err) => {
