@@ -442,6 +442,7 @@ async function processMode(cfg) {
     badgeAnchors.push({
       lon: f.geometry.coordinates[0],
       lat: f.geometry.coordinates[1],
+      name: p.name,
       lines: p.arr.map((line) => ({ line, mode: p.mode, color: colorOf([line]), colorDark: colorDarkOf([line]) })),
     });
   }
@@ -678,10 +679,12 @@ const metaLines = results.flatMap((r) => r.metaLines);
   }
   const WIN = 30;
   // One label per group at the midpoint of its longest run (the "once per street"
-  // rule) PLUS sparse extra anchors tagged extra:1 — ONLY on very long runs
-  // (avenues), so when zoomed in the number reappears along the street without
-  // repeating on every ordinary block. The frontend reveals extras from z13.
-  const LONG_RUN = 1400, SPACING = 1100, EXCL = 320;
+  // rule) PLUS extra anchors tagged extra:1 spaced along every run of a few
+  // blocks or more. The extras are the numbers' FALLBACK positions: stop names
+  // outrank numbers in the frontend ladder, so where a name takes the main
+  // anchor's spot the row must be able to reappear further down the street —
+  // every anchor is collision-managed, so only the free ones actually render.
+  const LONG_RUN = 500, SPACING = 550, EXCL = 300;
   const tryPlace = (e, d) => {
     const { coords, xy, segLens, total } = e;
     const at = (dd) => {
@@ -745,10 +748,19 @@ const metaLines = results.flatMap((r) => r.metaLines);
 // grids would overlap are merged into ONE complex (union of lines, centroid
 // position), and the frontend shows the band matching the current zoom.
 const badgeFeatures = [];
-const BADGE_BANDS = [[13, 14], [14, 15], [15, 16.5], [16.5, 22]];
+// Grids are fused for the WORST CASE inside a band (its lower zoom edge), so
+// wide bands mean badly oversized complexes near the band's top — the
+// whole-map poster renders around z13.9 and with a [13,14] band the fused
+// complexes (sized for z13.0) boxed out their neighbours' stop names.
+// Narrower bands keep the fusion honest at every zoom.
+const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8, 22]];
 {
   const anchors = results.flatMap((r) => r.badgeAnchors);
-  const PER_ROW = 5, CELL_W = 3.0, CELL_H = 1.5, BASE_Y = 1.1;
+  // Cell spacing is in ems (scales with badge text), but each box also carries
+  // FIXED pixels (icon-text-fit padding + rim) that don't scale — at low zoom a
+  // 3-digit box outgrew a 3.0/1.5 em cell and neighbours overlapped, so the
+  // cells are wider than the naive text estimate.
+  const PER_ROW = 5, CELL_W = 3.4, CELL_H = 2.0, BASE_Y = 1.1;
   const EM = 11, PAD = 10; // px: label em size in the band, plus breathing room
   const latMid = anchors.length ? anchors.reduce((s, a) => s + a.lat, 0) / anchors.length : 38;
   const P2 = makeProj(latMid, anchors.length ? anchors[0].lon : 23.7);
@@ -769,7 +781,7 @@ const BADGE_BANDS = [[13, 14], [14, 15], [15, 16.5], [16.5, 22]];
     const mpp = (156543.03392 * Math.cos((latMid * Math.PI) / 180)) / 2 ** (z0 + 1);
     const cl = anchors.map((a) => {
       const [x, y] = P2.toXY(a.lat, a.lon);
-      return { x, y, n: 1, lines: a.lines.slice() };
+      return { x, y, n: 1, lines: a.lines.slice(), names: [a.name] };
     });
     for (let pass = 0; pass < 12; pass++) {
       let merged = false;
@@ -782,6 +794,7 @@ const BADGE_BANDS = [[13, 14], [14, 15], [15, 16.5], [16.5, 22]];
           if (dx >= ((ga.w + gb.w) / 2) * mpp || dy >= ((ga.h + gb.h) / 2) * mpp) continue;
           const seen = new Set(A.lines.map((l) => l.line));
           for (const l of B.lines) if (!seen.has(l.line)) A.lines.push(l);
+          for (const nm of B.names) if (!A.names.includes(nm)) A.names.push(nm);
           A.x = (A.x * A.n + B.x * B.n) / (A.n + B.n);
           A.y = (A.y * A.n + B.y * B.n) / (A.n + B.n);
           A.n += B.n;
@@ -795,6 +808,19 @@ const BADGE_BANDS = [[13, 14], [14, 15], [15, 16.5], [16.5, 22]];
     for (const c of cl) {
       const lines = c.lines.slice().sort((a, b) => numSort(a.line, b.line));
       const [lon, lat] = P2.toLonLat(c.x, c.y);
+      // The terminus NAME(S) ride with the complex: reserved rows stacked
+      // right above the grid, drawn unconditionally like the boxes. The
+      // collision-managed name layer could stay nameless at saturated nodes —
+      // and a nameless loop is a hard error on a printed map, so from z13
+      // these rows replace it.
+      const modes = [...new Set(lines.map((l) => l.mode))].join(',');
+      c.names.forEach((nm, i) => {
+        badgeFeatures.push({
+          type: 'Feature',
+          geometry: { type: 'Point', coordinates: [round6(lon), round6(lat)] },
+          properties: { name: nm, band, modes, arr: lines.map((l) => l.line), off: [0, -(0.8 + i * 1.1)] },
+        });
+      });
       lines.forEach((l, i) => {
         const row = Math.floor(i / PER_ROW), col = i % PER_ROW;
         const rowLen = Math.min(PER_ROW, lines.length - row * PER_ROW);

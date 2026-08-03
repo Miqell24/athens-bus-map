@@ -46,10 +46,10 @@ body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
 .legend input { margin: 0; }
 .hint { margin: 6px 0 0; font-size: 11.5px; color: #667; }
 #footer { font-size: 11.5px; color: #667; margin-top: 8px; border-top: 1px solid #e3e8f0; padding-top: 8px; }
-#export-png {
+.export { display: grid; gap: 6px; margin-top: 10px; }
+.export button {
   display: block;
   width: 100%;
-  margin-top: 10px;
   padding: 6px 10px;
   font: inherit;
   font-size: 12.5px;
@@ -60,7 +60,32 @@ body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
   border-radius: 7px;
   cursor: pointer;
 }
-#export-png:hover { background: var(--kmk-dark); }
+.export button:hover { background: var(--kmk-dark); }
+.export button:disabled { opacity: 0.65; cursor: default; }
+#area-box {
+  position: absolute;
+  display: none;
+  z-index: 4;
+  border: 2px dashed var(--kmk);
+  background: rgba(0, 89, 169, 0.12);
+  pointer-events: none;
+}
+#area-hint {
+  position: absolute;
+  display: none;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 3px 14px rgba(0, 30, 70, 0.3);
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--kmk-dark);
+  pointer-events: none;
+}
 .legend { list-style: none; margin: 0 0 10px; padding: 0; font-size: 12.5px; color: #223; }
 .legend li { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
 .sw { flex: 0 0 auto; }

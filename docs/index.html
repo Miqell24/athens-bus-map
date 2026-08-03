@@ -9,6 +9,8 @@
 </head>
 <body>
 <div id="map"></div>
+<div id="area-box"></div>
+<div id="area-hint">Drag a rectangle to choose the export area &middot; Esc cancels</div>
 <aside id="panel">
   <h1>Athens<br>Public Transport</h1>
   <ul class="legend">
@@ -24,7 +26,11 @@
     <p class="hint">Click a line to show its route and stops.</p>
     <div id="chips" class="chip-cloud"></div>
   </details>
-  <button id="export-png" title="Renders the current view as a large, print-quality PNG — street and stop names become legible as you zoom into the image">Export view as PNG</button>
+  <div class="export">
+    <button id="export-png" title="Renders the visible view as a large print-quality PNG — street and stop names become legible as you zoom into the image">Export PNG — current view</button>
+    <button id="export-area" title="Drag a rectangle on the map; that area is rendered as a large print-quality PNG">Export PNG — select area</button>
+    <button id="export-all" title="Renders the ENTIRE network as one poster-grade PNG, like the printed city transport map (takes a minute or two)">Export PNG — whole map</button>
+  </div>
   <div id="footer">Data: GTFS OASA (data.gov.gr) · <span id="stamp"></span></div>
   <label class="debug"><input type="checkbox" id="toggle-shape"> show raw GTFS shapes (QA)</label>
 </aside>

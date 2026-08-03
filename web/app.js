@@ -67,11 +67,23 @@ async function init() {
     'highway-name-major': { 'text-color': '#3c3a34', 'text-halo-color': '#f4efe2' },
     'highway-name-path': { 'text-color': '#8a8171' },
   };
+  // Stock positron holds street names back (minor z15+, major z12.2) — far too
+  // late for a transit map, where the streets carry the content. Pull them in
+  // earlier (minor stays at 13: the tiles only carry minor names from there)
+  // and halve the 250 px default spacing so long streets repeat their name
+  // instead of showing it once. They still lose collisions to line numbers and
+  // stop names, by design.
+  const BASE_MINZOOM = { 'highway-name-minor': 13, 'highway-name-major': 13 };
+  const BASE_SPACING = { 'highway-name-minor': 130, 'highway-name-major': 130 };
   for (const l of style.layers) {
     const tf = l.layout && l.layout['text-font'];
     if (Array.isArray(tf)) l.layout['text-font'] = tf.map((f) => FONT_MAP[f] || f);
     const o = BASE_RECOLOR[l.id];
     if (o) l.paint = { ...l.paint, ...o };
+    if (BASE_MINZOOM[l.id]) l.minzoom = BASE_MINZOOM[l.id];
+    if (BASE_SPACING[l.id]) l.layout = { ...l.layout, 'symbol-spacing': BASE_SPACING[l.id] };
+    // road-number shields (433, S11…) read as line badges on a transit map
+    if (/shield/.test(l.id)) l.layout = { ...l.layout, visibility: 'none' };
   }
   map = new maplibregl.Map({
     container: 'map',
@@ -170,15 +182,19 @@ async function init() {
   const numbersLayout = {
     'text-field': numberField,
     'text-font': [NARROW_BOLD],
-    'text-size': ['interpolate', ['linear'], ['zoom'], 11, 10, 14, 12.5, 17, 16],
+    'text-size': ['interpolate', ['linear'], ['zoom'], 11, 9, 14, 11.5, 17, 14.5],
     'text-rotate': ['get', 'angle'],
     'text-rotation-alignment': 'map',
     // 'auto' inherits pitch-alignment 'map', and that path in MapLibre 5.6 kills
     // rotated point symbols (0 rendered); the map has no pitch anyway
     'text-pitch-alignment': 'viewport',
     'text-anchor': 'bottom',
-    'text-offset': [0, -1.0],
-    'text-max-width': 22,
+    'text-offset': [0, -0.6],
+    // Long rows WRAP into a stacked block (the printed-KMK convention). This
+    // also matters for collisions: MapLibre boxes rotated text as if unrotated,
+    // so a long single-line row beside a N-S street owns a wide horizontal bar
+    // and dies against anything placed earlier — wrapped blocks survive.
+    'text-max-width': 10,
     'text-line-height': 1.15,
   };
   const numbersPaint = { 'text-color': ['coalesce', ['get', 'color'], KMK], 'text-halo-color': '#ffffff', 'text-halo-width': 2 };
@@ -191,7 +207,7 @@ async function init() {
   const NUM_LAYERS = [
     { id: 'street-numbers-low', minzoom: 11, maxzoom: 13, cond: ['!', ['has', 'extra']] },
     { id: 'street-numbers', minzoom: 13, cond: ['!', ['has', 'extra']] },
-    { id: 'street-numbers-extra', minzoom: 13.5, cond: ['has', 'extra'] },
+    { id: 'street-numbers-extra', minzoom: 13, cond: ['has', 'extra'] },
   ];
   for (const d of NUM_LAYERS) {
     const def = {
@@ -279,7 +295,10 @@ async function init() {
       'text-field': ['get', 'name'],
       'text-font': [NARROW],
       'text-size': ['interpolate', ['linear'], ['zoom'], 13, 10.5, 17, 13.5],
-      'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+      // 8 candidate anchors: in the densest blocks (badge complexes, terminus
+      // names) the four straight ones are all taken and the name must be able
+      // to dodge diagonally — a stop without its name is a hard error here
+      'text-variable-anchor': ['top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right'],
       'text-radial-offset': 0.75,
       'text-justify': 'auto',
     },
@@ -287,7 +306,9 @@ async function init() {
   });
   map.addLayer({
     id: 'stops-terminus-names', type: 'symbol', source: 'stops',
-    minzoom: 10.5,
+    // below z13 only — from z13 the terminus names ride with the badge
+    // complexes (pipeline-reserved rows, never dropped), see below
+    minzoom: 10.5, maxzoom: 13,
     filter: ['all', ['==', ['get', 'terminus'], 1], ['!=', ['get', 'metro'], 1], ['==', ['get', 'label'], 1]],
     layout: {
       // terminus: name only — the terminating lines render as boxed badges in
@@ -295,8 +316,10 @@ async function init() {
       'text-field': ['get', 'name'],
       'text-font': [NARROW_BOLD],
       'text-size': ['interpolate', ['linear'], ['zoom'], 10.5, 11, 17, 14.5],
-      'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
-      'text-radial-offset': 0.9,
+      // radial 1.15: at the heaviest nodes (Kaponiera) 0.9 em left no free
+      // spot between the badge complex below and the neighbour's name above
+      'text-variable-anchor': ['top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right'],
+      'text-radial-offset': 1.15,
       'text-justify': 'auto',
     },
     paint: { 'text-color': '#000000', 'text-halo-color': '#ffffff', 'text-halo-width': 2 },
@@ -335,15 +358,15 @@ async function init() {
     map.addLayer({
       id, type: 'symbol', source: 'badges',
       minzoom: z0, maxzoom: z1,
-      filter: bandC(b),
+      filter: ['all', bandC(b), ['has', 'line']],
       layout: {
         'text-field': ['get', 'line'],
         'text-font': [NARROW_BOLD],
-        'text-size': ['interpolate', ['linear'], ['zoom'], 13, 9.5, 17, 12.5],
+        'text-size': ['interpolate', ['linear'], ['zoom'], 13, 9, 17, 11.5],
         'text-offset': ['get', 'off'],
         'icon-image': ['concat', 'badge-', ['coalesce', ['get', 'color'], KMK]],
         'icon-text-fit': 'both',
-        'icon-text-fit-padding': [2, 5, 2, 5],
+        'icon-text-fit-padding': [1.5, 3.5, 1.5, 3.5],
         // a grid must stay complete — a collision-hidden middle badge would read
         // as a data bug, so badges win overlap unconditionally (the pipeline is
         // what keeps separate grids from landing on top of each other)
@@ -354,15 +377,57 @@ async function init() {
     });
     return id;
   });
-  // line numbers move ABOVE stop symbols — symbol placement runs top-first, so
-  // this gives numbers collision priority over stop names. Reversed order: the
-  // once-per-street anchors end up on top of the extras, so where both compete
-  // for space the main label wins.
+  // Terminus names from z13 up: pipeline-emitted rows riding right above each
+  // badge complex, drawn unconditionally like the boxes themselves — so a
+  // loop can NEVER be nameless, even at the most saturated nodes where the
+  // collision-based layer (kept for z<13) always lost.
+  const BADGE_NAME_LAYERS = BADGE_BANDS.map(([z0, z1], b) => {
+    const id = 'stops-terminus-names-grid-' + b;
+    map.addLayer({
+      id, type: 'symbol', source: 'badges',
+      minzoom: z0, maxzoom: z1,
+      filter: ['all', bandC(b), ['has', 'name']],
+      layout: {
+        'text-field': ['get', 'name'],
+        'text-font': [NARROW_BOLD],
+        'text-size': ['interpolate', ['linear'], ['zoom'], 13, 11.5, 17, 14.5],
+        'text-anchor': 'bottom',
+        'text-offset': ['get', 'off'],
+        'text-allow-overlap': true,
+      },
+      paint: { 'text-color': '#000000', 'text-halo-color': '#ffffff', 'text-halo-width': 2 },
+    });
+    return id;
+  });
+  // Collision-priority ladder — symbol placement runs the TOP layer first, so
+  // the stacking below IS the priority order. Top → bottom:
+  //   metro station names   — never dropped
+  //   terminus badge grids  — placed unconditionally anyway
+  //   arterial-name clone   — the 11.5–13 band, see below
+  //   terminus names        — the bold anchors of the network
+  //   stop names            — MANDATORY: a stop must never lose its name to a
+  //                           line number (numbers repeat along the street and
+  //                           reappear a block further; a stop name cannot)
+  //   line numbers          — once-per-street anchors above the repeats
+  //   arterial street names — street names live ON the axis, numbers 0.6 em
+  //                           beside it: with names placed first their dense
+  //                           repeats grazed the number blocks and emptied
+  //                           whole corridors, so names FILL GAPS instead
+  //   minor street names
+  //   stop dots, then the rest of the base style
+  if (map.getLayer('highway-name-minor')) map.moveLayer('highway-name-minor');
+  if (map.getLayer('highway-name-major')) map.moveLayer('highway-name-major');
   for (const d of [...NUM_LAYERS].reverse()) map.moveLayer(d.id);
-  // terminus badges go topmost: being placed first, the street numbers route
-  // around the boxes instead of printing across them
-  for (const id of BADGE_LAYERS) map.moveLayer(id);
-  // and the metro station names top everything — they must never be dropped
+  map.moveLayer('stops-names');
+  map.moveLayer('stops-terminus-names');
+  // Below z13 arterial names need to outrank even the numbers — the
+  // wall-to-wall low-zoom number labels otherwise leave the city unnamed
+  // (measured at z12.5: 36 arterial names in the tiles, 4 rendered). A CLONE
+  // of the arterial layer covers the 11.5–13 band up here; from z13 the
+  // original (below the numbers) takes over.
+  const majorDef = style.layers.find((l) => l.id === 'highway-name-major');
+  if (majorDef) map.addLayer({ ...majorDef, id: 'highway-name-major-low', minzoom: 11.5, maxzoom: 13 });
+  for (const id of [...BADGE_LAYERS, ...BADGE_NAME_LAYERS]) map.moveLayer(id);
   map.moveLayer('stops-metro-names');
 
   // Mode filters (bus/tram) + line selection: clicking a chip shows only that
@@ -387,8 +452,18 @@ async function init() {
     map.setFilter('stops-metro-names', ['all', ['==', ['get', 'metro'], 1], modeC, selC, lblC]);
     // with a line selected only ITS badge stays at the loop
     BADGE_LAYERS.forEach((id, b) => {
-      map.setFilter(id, ['all', bandC(b), modeC,
+      map.setFilter(id, ['all', bandC(b), ['has', 'line'], modeC,
         state.selected ? ['==', ['get', 'line'], state.selected] : true]);
+    });
+    // complex name rows follow: shown while any of the complex's modes is on
+    // ('in' does substring search on the "bus,tram" string), and with a line
+    // selected only complexes where that line terminates keep their name
+    const nameModeC = ['any',
+      state.bus ? ['in', 'bus', ['get', 'modes']] : false,
+      state.tram ? ['in', 'tram', ['get', 'modes']] : false];
+    BADGE_NAME_LAYERS.forEach((id, b) => {
+      map.setFilter(id, ['all', bandC(b), ['has', 'name'], nameModeC,
+        state.selected ? ['in', state.selected, ['get', 'arr']] : true]);
     });
     let numC, numField;
     if (state.bus && !state.tram) {
@@ -417,40 +492,94 @@ async function init() {
   }
   applyFilters();
 
-  // POSTER-mode PNG export (like the official KMK map): the current view is
-  // rendered in TILES on a hidden map instance and stitched into one ~12288 px
-  // image — the GPU texture limit constrains a single tile only, not the whole.
-  // pixelRatio 2 doubles text pixel density (sharp when zooming the file),
-  // antialias smooths strokes, the PAD overlap reconciles labels at seams.
-  // map.getStyle() carries the FULL user state: bus/tram filters, selected line, QA.
-  const exportBtn = document.getElementById('export-png');
-  exportBtn.addEventListener('click', async () => {
-    if (exportBtn.disabled) return;
-    exportBtn.disabled = true;
-    const setLbl = (t) => { exportBtn.textContent = t; };
+  // POSTER-mode PNG export (the look of the official printed KMK city map),
+  // three entry points sharing one engine: the CURRENT VIEW, a hand-drawn
+  // RECTANGLE, or the WHOLE NETWORK. The requested bbox is rendered in TILES
+  // on a hidden map instance and stitched into one image whose long edge
+  // targets MAX_OUT pixels — the GPU texture limit constrains a single tile
+  // only, not the whole. The zoom is chosen so the bbox exactly fills that
+  // budget (DETAIL first: a wider area simply renders at a bigger absolute
+  // size instead of losing labels); once the zoom would pass Z_CAP — where the
+  // style stops adding content — the leftover budget turns into text pixel
+  // density (ratio up to 2, sharp when zooming the file). The PAD overlap
+  // reconciles labels at tile seams. map.getStyle() carries the FULL user
+  // state: bus/tram filters, selected line, QA overlay.
+  const btnView = document.getElementById('export-png');
+  const btnArea = document.getElementById('export-area');
+  const btnAll = document.getElementById('export-all');
+  const exportBusy = (on) => [btnView, btnArea, btnAll].forEach((b) => { b.disabled = on; });
+  // Scales the outputs of a size value (plain number, interpolate stops, case
+  // branches) by f — used to blow up the symbology for the area poster.
+  const scaleOut = (v, f) => {
+    if (typeof v === 'number') return v * f;
+    if (Array.isArray(v)) {
+      if (v[0] === 'interpolate') return v.map((x, i) => (i >= 3 && i % 2 === 0 ? scaleOut(x, f) : x));
+      if (v[0] === 'case') return v.map((x, i) => ((i >= 2 && i % 2 === 0) || i === v.length - 1 ? scaleOut(x, f) : x));
+    }
+    return v;
+  };
+  // Area-poster styling: every label (street/stop names, numbers, badges),
+  // the stop discs and the transit strokes grow by f while the base street
+  // grid keeps its scale — the KMK look, where the typography dominates the
+  // geometry. All em-based offsets (badge grids, radial offsets) follow the
+  // font size automatically.
+  const boostStyle = (st, f) => {
+    st = JSON.parse(JSON.stringify(st));
+    for (const l of st.layers) {
+      if (l.type === 'symbol') {
+        if (l.layout && l.layout['text-size']) l.layout['text-size'] = scaleOut(l.layout['text-size'], f);
+        if (l.layout && l.layout['icon-size']) l.layout['icon-size'] = scaleOut(l.layout['icon-size'], f);
+        if (l.paint && l.paint['text-halo-width']) l.paint['text-halo-width'] = scaleOut(l.paint['text-halo-width'], f);
+      }
+      if (/^route-/.test(l.id) && l.paint && l.paint['line-width']) {
+        l.paint['line-width'] = scaleOut(l.paint['line-width'], f);
+      }
+    }
+    return st;
+  };
+  async function exportBBox(bbox, btn, doneLabel, opts) {
+    exportBusy(true);
+    const setLbl = (t) => { btn.textContent = t; };
     const PAD = 200;          // CSS px of tile overlap
-    const MAX_OUT = 16384;    // px of the file's longer edge (browser 2D canvas limit)
-    const contCSS = 4096;     // big tile = fewer passes; actual density is measured
+    const MAX_OUT = window.__exportMaxOut || 16384; // px of the long edge (2D canvas limit)
+    // web-mercator fractions of the world covered by the bbox
+    const mx = (lng) => (lng + 180) / 360;
+    const my = (lat) => {
+      const s = Math.sin((lat * Math.PI) / 180);
+      return 0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI);
+    };
+    const fx = mx(bbox[2]) - mx(bbox[0]);
+    const fy = my(bbox[1]) - my(bbox[3]); // mercator y grows southward
+    // the zoom at which the long edge lands exactly on MAX_OUT css px
+    const zFit = Math.log2(MAX_OUT / (512 * Math.max(fx, fy)));
+    let Z;
+    if (opts && opts.wysiwyg) {
+      // WYSIWYG mode (current view): render at the SCREEN's own zoom — the
+      // sheet shows exactly what the user sees, same framing, same
+      // stroke-to-label proportions — and the whole budget goes into pixel
+      // density (up to 4×), so opened at 100% everything is BIGGER than on
+      // screen, never smaller. (The earlier detail-first boost made routes
+      // and labels come out tiny relative to the sheet — user report.)
+      Z = Math.min(map.getZoom(), 17.3);
+    } else {
+      // poster mode (whole map, selected area): the bbox fills MAX_OUT at
+      // whatever zoom that lands on (~z13.9 for the full network), capped at
+      // z15.3 — past that the geometry inflates faster than the text; the
+      // leftover budget becomes pixel density
+      Z = Math.min(zFit, Math.max(15.3, Math.min(map.getZoom(), 17.3)));
+    }
+    const RATIO = Math.min(4, Math.max(1, 2 ** (zFit - Z)));
+    // big tile = fewer passes, but the tile canvas (contCSS × RATIO device px)
+    // must fit the GPU limit — 4096 is the universal floor (this machine's
+    // too: measured), so size the tile to keep the request inside it and the
+    // ratio real. Actual density is still measured after creation.
+    const contCSS = Math.max(1024, Math.floor(4096 / RATIO));
     const tileCSS = contCSS - 2 * PAD;
-    const cont = map.getContainer();
-    const vw = cont.clientWidth, vh = cont.clientHeight;
-    // PRIORITY: detail (a zoom boost of ~+3 so street and stop names make it into
-    // the file), then text pixel density (ratio 1–2) from the remaining budget.
-    // Zoom never exceeds 17.3 — beyond that the style adds nothing but blank pixels.
-    const vpLong = Math.max(vw, vh);
-    const RATIO = Math.min(2, Math.max(1, MAX_OUT / (vpLong * 8)));
-    let boost = Math.min(3.2, Math.log2(MAX_OUT / (vpLong * RATIO)));
-    boost = Math.max(0.8, Math.min(boost, 17.3 - map.getZoom()));
-    const scale = 2 ** boost;
-    const W = Math.round(vw * scale), H = Math.round(vh * scale); // CSS px of the whole
-    const cols = Math.ceil(W / tileCSS), rows = Math.ceil(H / tileCSS);
-    const Z = map.getZoom() + Math.log2(scale);
     // mercator in world pixels at zoom Z (base style tile = 512 px)
     const world = 512 * 2 ** Z;
-    const c0 = map.getCenter();
-    const s0 = Math.sin((c0.lat * Math.PI) / 180);
-    const tlx = ((c0.lng + 180) / 360) * world - W / 2;
-    const tly = (0.5 - Math.log((1 + s0) / (1 - s0)) / (4 * Math.PI)) * world - H / 2;
+    const W = Math.round(fx * world), H = Math.round(fy * world); // CSS px of the whole
+    const cols = Math.ceil(W / tileCSS), rows = Math.ceil(H / tileCSS);
+    const tlx = mx(bbox[0]) * world, tly = my(bbox[3]) * world;
     const px2ll = (x, y) => {
       const n = Math.PI - (2 * Math.PI * y) / world;
       return [(x / world) * 360 - 180, (180 / Math.PI) * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)))];
@@ -461,7 +590,9 @@ async function init() {
     let m2 = null;
     try {
       m2 = new maplibregl.Map({
-        container: div, style: map.getStyle(), center: c0, zoom: Z,
+        container: div,
+        style: opts && opts.boost ? boostStyle(map.getStyle(), opts.boost) : map.getStyle(),
+        center: px2ll(tlx + W / 2, tly + H / 2), zoom: Z,
         pixelRatio: RATIO, preserveDrawingBuffer: true, antialias: true,
         attributionControl: false, interactive: false, fadeDuration: 0,
       });
@@ -512,7 +643,7 @@ async function init() {
       const a = document.createElement('a');
       a.download = `athens-transit_${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}_${out.width}x${out.height}.png`;
       a.href = URL.createObjectURL(blob);
-      a.click();
+      if (!window.__exportNoSave) a.click(); // test hook: render without downloading
       setTimeout(() => URL.revokeObjectURL(a.href), 30000);
       // QA trace: thumbnail of the whole + 1:1 center crop (tile stitching check)
       const mk = (w2, h2, draw) => {
@@ -524,16 +655,89 @@ async function init() {
       const th = Math.round(400 * out.height / out.width);
       window.__lastExport = {
         width: out.width, height: out.height, tiles: rows * cols, sr: Math.round(SR * 100) / 100, bytes: blob.size,
+        z: Math.round(Z * 100) / 100, ratio: Math.round(RATIO * 100) / 100,
         thumb: mk(400, th, (c2) => c2.drawImage(out, 0, 0, 400, th)),
         crop: mk(400, 400, (c2) => c2.drawImage(out, (out.width - 400) / 2, (out.height - 400) / 2, 400, 400, 0, 0, 400, 400)),
       };
     } catch (e) {
       console.error('Export failed', e);
+      setLbl('Export failed — see console');
+      await new Promise((res) => setTimeout(res, 2500));
     }
     if (m2) try { m2.remove(); } catch (e) { /* the canvas may be gone already */ }
     div.remove();
-    exportBtn.disabled = false;
-    setLbl('Export view as PNG');
+    exportBusy(false);
+    setLbl(doneLabel);
+  }
+
+  // Rectangle selection for "select area": crosshair + rubber band; the map
+  // holds still while dragging. Esc — or a sub-8 px drag — cancels.
+  function selectArea() {
+    return new Promise((resolve) => {
+      const cont = map.getContainer();
+      const box = document.getElementById('area-box');
+      const hint = document.getElementById('area-hint');
+      hint.style.display = 'block';
+      cont.style.cursor = 'crosshair';
+      map.dragPan.disable(); map.boxZoom.disable(); map.doubleClickZoom.disable();
+      let p0 = null;
+      const pt = (e) => {
+        const r = cont.getBoundingClientRect();
+        return [e.clientX - r.left, e.clientY - r.top];
+      };
+      const move = (e) => {
+        if (!p0) return;
+        const p = pt(e);
+        Object.assign(box.style, {
+          display: 'block',
+          left: Math.min(p0[0], p[0]) + 'px', top: Math.min(p0[1], p[1]) + 'px',
+          width: Math.abs(p[0] - p0[0]) + 'px', height: Math.abs(p[1] - p0[1]) + 'px',
+        });
+      };
+      const finish = (result) => {
+        cont.removeEventListener('mousedown', down);
+        window.removeEventListener('mousemove', move);
+        window.removeEventListener('mouseup', up);
+        window.removeEventListener('keydown', key);
+        box.style.display = 'none';
+        hint.style.display = 'none';
+        cont.style.cursor = '';
+        map.dragPan.enable(); map.boxZoom.enable(); map.doubleClickZoom.enable();
+        resolve(result);
+      };
+      const down = (e) => { p0 = pt(e); e.preventDefault(); };
+      const up = (e) => {
+        if (!p0) return;
+        const p = pt(e);
+        if (Math.abs(p[0] - p0[0]) < 8 || Math.abs(p[1] - p0[1]) < 8) return finish(null);
+        const a = map.unproject(p0), b = map.unproject(p);
+        finish([Math.min(a.lng, b.lng), Math.min(a.lat, b.lat), Math.max(a.lng, b.lng), Math.max(a.lat, b.lat)]);
+      };
+      const key = (e) => { if (e.key === 'Escape') finish(null); };
+      cont.addEventListener('mousedown', down);
+      window.addEventListener('mousemove', move);
+      window.addEventListener('mouseup', up);
+      window.addEventListener('keydown', key);
+    });
+  }
+
+  btnView.addEventListener('click', () => {
+    if (btnView.disabled) return;
+    const b = map.getBounds();
+    exportBBox([b.getWest(), b.getSouth(), b.getEast(), b.getNorth()], btnView,
+      'Export PNG — current view', { wysiwyg: true });
+  });
+  btnArea.addEventListener('click', async () => {
+    if (btnArea.disabled) return;
+    const bbox = await selectArea();
+    if (bbox) exportBBox(bbox, btnArea, 'Export PNG — select area', { boost: 1.4 });
+  });
+  btnAll.addEventListener('click', () => {
+    if (btnAll.disabled) return;
+    // the data bbox plus a hair of margin, so badge grids at the edge survive
+    const [w, s, e, n] = meta.bbox;
+    const dx = (e - w) * 0.015, dy = (n - s) * 0.015;
+    exportBBox([w - dx, s - dy, e + dx, n + dy], btnAll, 'Export PNG — whole map');
   });
 
   // Raw GTFS trace — for matching QA; lazy-loaded on first toggle
