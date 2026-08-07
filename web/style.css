@@ -46,6 +46,33 @@ body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
 .legend input { margin: 0; }
 .hint { margin: 6px 0 0; font-size: 11.5px; color: #667; }
 #footer { font-size: 11.5px; color: #667; margin-top: 8px; border-top: 1px solid #e3e8f0; padding-top: 8px; }
+.labelsize {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  border-top: 1px solid #e3e8f0;
+  padding-top: 9px;
+  font-size: 12.5px;
+  color: #223;
+}
+.labelsize .lbl { flex: 1 1 auto; font-weight: 600; color: var(--kmk-dark); }
+.labelsize button {
+  flex: 0 0 auto;
+  width: 30px;
+  padding: 3px 0;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--kmk);
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.labelsize button:hover { background: var(--kmk-dark); }
+.labelsize button:disabled { opacity: 0.4; cursor: default; }
+#label-size-val { flex: 0 0 40px; text-align: center; font-variant-numeric: tabular-nums; color: #445; }
 .export { display: grid; gap: 6px; margin-top: 10px; }
 .export button {
   display: block;
@@ -90,7 +117,10 @@ body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
 .legend li { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
 .sw { flex: 0 0 auto; }
 .sw.line { width: 26px; height: 5px; background: var(--kmk); border-radius: 3px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ccd; }
-.sw.line.tram { background: linear-gradient(90deg, #009550 25%, #e30613 25% 50%, #1e9cd7 50% 75%, #7d2b8b 75%); }
+/* Tram is its own category now, in the family's tram red; the metro keeps the
+   operator's three line colours in one bar */
+.sw.line.tram { background: #d6212b; }
+.sw.line.metro3 { background: linear-gradient(90deg, #009550 33%, #e30613 33% 66%, #1e9cd7 66%); }
 .sublegend { font-size: 11.5px; color: #445; padding-left: 26px; }
 .sublegend .mini { display: inline-block; width: 12px; height: 5px; border-radius: 3px; margin: 0 3px 0 7px; vertical-align: 2px; }
 .sublegend .mini:first-child { margin-left: 0; }

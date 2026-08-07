@@ -34,8 +34,9 @@
   <ul class="legend">
     <li><label><input type="checkbox" id="toggle-bus" checked> <span class="sw line"></span> Bus &amp; trolleybus routes</label></li>
     <li class="sublegend"><span class="mini" style="background:#149a3f"></span>trolleybus · dashed = shared with buses</li>
-    <li><label><input type="checkbox" id="toggle-tram" checked> <span class="sw line tram"></span> Metro &amp; tram routes</label></li>
-    <li class="sublegend"><span class="mini" style="background:#009550"></span>M1 <span class="mini" style="background:#e30613"></span>M2 <span class="mini" style="background:#1e9cd7"></span>M3 <span class="mini" style="background:#7d2b8b"></span>Tram T6/T7</li>
+    <li><label><input type="checkbox" id="toggle-tram" checked> <span class="sw line tram"></span> Tram routes (T6, T7)</label></li>
+    <li><label><input type="checkbox" id="toggle-metro" checked> <span class="sw line metro3"></span> Metro</label></li>
+    <li class="sublegend"><span class="mini" style="background:#009550"></span>M1 <span class="mini" style="background:#e30613"></span>M2 <span class="mini" style="background:#1e9cd7"></span>M3</li>
     <li><span class="sw stop"></span> Stop</li>
     <li><span class="sw terminus"></span> Terminus</li>
   </ul>
@@ -44,6 +45,12 @@
     <p class="hint">Click a line to show its route and stops.</p>
     <div id="chips" class="chip-cloud"></div>
   </details>
+  <div class="labelsize" title="Scales every label on the map — line numbers, street and stop names — at any zoom. The PNG exports use the size you pick here.">
+    <span class="lbl">Label size</span>
+    <button id="label-smaller" aria-label="Smaller labels">A&minus;</button>
+    <span id="label-size-val">100%</span>
+    <button id="label-bigger" aria-label="Bigger labels">A+</button>
+  </div>
   <div class="export">
     <button id="export-png" title="Renders the visible view as a large print-quality PNG — street and stop names become legible as you zoom into the image">Export PNG — current view</button>
     <button id="export-area" title="Drag a rectangle on the map; that area is rendered as a large print-quality PNG">Export PNG — select area</button>
