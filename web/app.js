@@ -131,6 +131,12 @@ async function init() {
     }),
   ]);
 
+  // The map can be constructed before the stylesheet lays out #map (style
+  // fetched from disk cache beats CSSOM) — the canvas then sticks at the
+  // 400×300 fallback (this maplibre build only watches window.resize).
+  // Re-measure now that layout is settled; the initial jumpTo below sets the view.
+  map.resize();
+
   // Panel (English, minimal): legend + mode toggles + expandable clickable line list.
   const nBus = meta.lines.filter((l) => l.mode === 'bus').length;
   const nTram = meta.lines.filter((l) => l.mode === 'tram').length;

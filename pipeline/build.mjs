@@ -12,6 +12,7 @@ import { dirname, join } from 'node:path';
 import { iterCsv, readCsv } from './lib/csv.mjs';
 import { makeProj, resample, nearestOnPolyline, polylineLength } from './lib/geo.mjs';
 import { buildGraph } from './lib/graph.mjs';
+import { buildNameDict, greekTitleCase } from './lib/greek.mjs';
 import { matchShape, extendToStops } from './lib/hmm.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -54,6 +55,21 @@ if (tramLines.length) MODES.push({
   lineColorsDark: { M1: '#00512b', M2: '#7c060e', M3: '#0d567a', T6: '#7c1116', T7: '#7c1116' },
   all: false, lines: tramLines,
 });
+
+
+// The stop names arrive from the operator in capitals; OSM holds the same words
+// written properly. This dictionary carries the accents over — see lib/greek.mjs.
+const nameDict = (() => {
+  const docs = [];
+  for (const f of ['data/osm/athens.json', 'data/osm/athens-names.json']) {
+    const p = join(ROOT, f);
+    if (!existsSync(p)) continue;
+    try { docs.push(JSON.parse(readFileSync(p, 'utf8'))); } catch { /* unreadable extract: skip */ }
+  }
+  const d = buildNameDict(docs);
+  log(`Greek names: dictionary of ${d.size} accented word forms from ${docs.length} OSM extract(s)`);
+  return d;
+})();
 
 function mergeRuns(all) {
   const merged = [];
@@ -216,7 +232,8 @@ async function processMode(cfg) {
   for (const s of await readCsv(join(ROOT, cfg.gtfsDir, 'stops.txt'))) {
     // OSY names carry double spaces here and there — collapse for clean labels
     const name = (s.stop_name || '').replace(/\s+/g, ' ').trim();
-    stopsById.set(s.stop_id, { name, lat: Number(s.stop_lat), lon: Number(s.stop_lon) });
+    const shown = greekTitleCase(name, nameDict);
+    stopsById.set(s.stop_id, { name: shown, lat: Number(s.stop_lat), lon: Number(s.stop_lon) });
   }
 
   // ---------- 5) route polylines: shapes.txt, or the stop sequence itself ----------

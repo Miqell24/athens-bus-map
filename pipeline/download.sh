@@ -38,7 +38,29 @@ if [ ! -f data/osm/athens.json ]; then
   [ "$ok" = 1 ] || { echo "Overpass: all mirrors failed" >&2; exit 1; }
 fi
 
-# 2b) OSM — rail network for STASY (separate graph): metro tunnels (subway),
+# 2b) OSM — every NAMED feature in the same bbox, tags only. Not geometry: this
+#     is the accent dictionary. The GTFS shouts its stop names in capitals, and
+#     Greek writes accents only in lowercase, so the feed cannot tell us that
+#     ΑΤΤΙΚΗΣ is Αττικής — but OSM spells the same words properly on streets,
+#     squares, districts and churches. See pipeline/lib/greek.mjs.
+if [ ! -f data/osm/athens-names.json ]; then
+  echo "== Overpass (names for the Greek dictionary) =="
+  QN='[out:json][timeout:600];nwr(37.70,23.31,38.34,24.05)[name][~"^(amenity|place|tourism|leisure|shop|building|railway|public_transport|natural|waterway|landuse|historic|office|man_made)$"~"."];out tags;'
+  ok=0
+  for EP in "https://overpass-api.de/api/interpreter" \
+            "https://maps.mail.ru/osm/tools/overpass/api/interpreter" \
+            "https://overpass.kumi.systems/api/interpreter"; do
+    echo "-- $EP"
+    if curl -fsS --max-time 600 -o data/osm/athens-names.json --data-urlencode "data=$QN" "$EP" \
+       && grep -q '"elements"' data/osm/athens-names.json; then
+      ok=1; break
+    fi
+  done
+  # not fatal: without it the stop names simply come out unaccented
+  [ "$ok" = 1 ] || echo "Overpass (names): all mirrors failed — stop names will lose their accents" >&2
+fi
+
+# 2c) OSM — rail network for STASY (separate graph): metro tunnels (subway),
 #     tram tracks and surface rail (parts of M1 and shared corridors).
 if [ ! -f data/osm/athens-rail.json ]; then
   echo "== Overpass (rail) =="
