@@ -50,6 +50,11 @@ const MODES = [{
   mode: 'bus', label: 'buses & trolleybuses (OSY)', gtfsDir: 'data/gtfs', osmFile: 'data/osm/athens.json',
   graphMode: 'road', color: '#0059a9', colorDark: '#00294f',
   all: busAll, lines: busList.length ? busList : (busAll ? [] : ['550']),
+  // OSY writes direction_id=0 on ALL 97k trips (user report: whole lines drawn
+  // one-way only) — both directions DO exist as mirrored headsigns, so the
+  // direction key is the headsign with schedule-variant suffixes stripped:
+  // "ΠΕΙΡΑΙΑΣ - ΣΤ. ΔΑΦΝΗ (20:30 - ΛΗΞΗ)" folds into "ΠΕΙΡΑΙΑΣ - ΣΤ. ΔΑΦΝΗ"
+  dirKey: (t) => (t.trip_headsign || '0').replace(/(\s*\([^)]*\))+\s*$/, '').trim() || '0',
 }];
 if (tramLines.length) MODES.push({
   mode: 'tram', label: 'metro & tram (STASY)', gtfsDir: 'data/gtfs-t', osmFile: 'data/osm/athens-rail.json',
@@ -188,7 +193,7 @@ async function processMode(cfg) {
     if (!L) continue;
     let dirs = byLineDir.get(L);
     if (!dirs) byLineDir.set(L, (dirs = new Map()));
-    const dir = t.direction_id || '0';
+    const dir = cfg.dirKey ? cfg.dirKey(t) : (t.direction_id || '0');
     let m = dirs.get(dir);
     if (!m) dirs.set(dir, (m = new Map()));
     let e = m.get(t.shape_id);
@@ -955,11 +960,22 @@ const metaLines = results.flatMap((r) => r.metaLines);
     if (ang < -90) ang += 180;
     return { c, ang, dx, dy };
   };
+  const TSET = MODES[0].trolleySet || new Set();
   for (const g of groups.values()) {
     const p = g.best.f.properties;
     const arr = p.busLines ? [...p.lines.split(', '), ...p.busLines.split(', ')] : p.lines.split(', ');
     const baseProps = { lines: p.lines, color: p.color, mode: p.mode, arr, ...(p.metro ? { metro: 1 } : {}) };
     if (p.busLines) baseProps.busLines = p.busLines;
+    // mixed bus+trolleybus roadway: the label keeps the trolleybus numbers
+    // GREEN in a two-colour row (user request) — all-trolleybus sets already
+    // come out green whole via colorOf, so only true mixes split
+    if (p.mode === 'bus' && TSET.size) {
+      const tl = arr.filter((l) => TSET.has(l));
+      if (tl.length && tl.length < arr.length) {
+        baseProps.tLines = tl.join(', ');
+        baseProps.ntLines = arr.filter((l) => !TSET.has(l)).join(', ');
+      }
+    }
     const anchors = [];
     // The collision engine knows nothing about the STROKES, so on a dual
     // carriageway the row happily settles between the roadways — parked on
