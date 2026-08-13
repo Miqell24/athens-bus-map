@@ -964,7 +964,11 @@ const metaLines = results.flatMap((r) => r.metaLines);
   for (const g of groups.values()) {
     const p = g.best.f.properties;
     const arr = p.busLines ? [...p.lines.split(', '), ...p.busLines.split(', ')] : p.lines.split(', ');
-    const baseProps = { lines: p.lines, color: p.color, mode: p.mode, arr, ...(p.metro ? { metro: 1 } : {}) };
+    // GTFS names the trams T6/T7; the city writes bare 6/7 (user 13.08.2026).
+    // Keys keep the prefix — trolleybus 6 exists too, so selection and the
+    // journey planner must not merge them — only the drawn text drops it.
+    const tramDisp = (s) => s.split(', ').map((l) => (/^T\d+$/.test(l) ? l.slice(1) : l)).join(', ');
+    const baseProps = { lines: p.mode === 'tram' ? tramDisp(p.lines) : p.lines, color: p.color, mode: p.mode, arr, ...(p.metro ? { metro: 1 } : {}) };
     if (p.busLines) baseProps.busLines = p.busLines;
     // mixed bus+trolleybus roadway: the label keeps the trolleybus numbers
     // GREEN in a two-colour row (user request) — all-trolleybus sets already
@@ -1268,6 +1272,7 @@ const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8
           geometry: { type: 'Point', coordinates: [round6(lon), round6(lat)] },
           properties: {
             line: l.line, mode: l.mode, color: l.color, colorDark: l.colorDark, band,
+            ...(l.mode === 'tram' && /^T\d+$/.test(l.line) ? { disp: l.line.slice(1) } : {}),
             ...(scC < 1 ? { sc: scC } : {}),
             off: [
               Math.round((col - (rowLen - 1) / 2) * CELL_W * 100) / 100,
