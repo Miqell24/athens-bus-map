@@ -67,6 +67,11 @@ const MODES = [{
   // direction key is the headsign with schedule-variant suffixes stripped:
   // "ΠΕΙΡΑΙΑΣ - ΣΤ. ΔΑΦΝΗ (20:30 - ΛΗΞΗ)" folds into "ΠΕΙΡΑΙΑΣ - ΣΤ. ΔΑΦΝΗ"
   dirKey: (t) => (t.trip_headsign || '0').replace(/(\s*\([^)]*\))+\s*$/, '').trim() || '0',
+  // 17 (Πειραιάς – Άγ. Γεώργιος) and 20 (Ν. Φάληρο – Δραπετσώνα) are still filed
+  // as route_type 11, but OSY runs them with buses — the Piraeus pair is worked
+  // by rolling stock without poles. Drawn navy on the user's on-the-ground call;
+  // re-check on every feed refresh, the operator may fix the type upstream.
+  trolleyExcept: ['17', '20'],
 }];
 if (tramLines.length) MODES.push({
   mode: 'tram', label: 'metro & tram (STASY)', gtfsDir: 'data/gtfs-t', osmFile: 'data/osm/athens-rail.json',
@@ -178,6 +183,8 @@ async function processMode(cfg) {
   // the set also flags shared bus+trolleybus roadways for the dashed overlay
   if (cfg.mode === 'bus') {
     cfg.trolleySet = new Set(routes.filter((r) => r.route_type === '11').map((r) => r.route_short_name));
+    // feed-side type errors corrected per operator (see MODES)
+    for (const L of cfg.trolleyExcept || []) cfg.trolleySet.delete(L);
     if (cfg.trolleySet.size) {
       cfg.lineColors = {}; cfg.lineColorsDark = {};
       for (const L of cfg.trolleySet) { cfg.lineColors[L] = TROLLEY_GREEN; cfg.lineColorsDark[L] = TROLLEY_DARK; }
