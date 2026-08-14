@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T13:29:24.233Z",
+  "generatedAt": "2026-08-13T14:47:17.103Z",
   "bbox": [
     23.32055,
     37.717314,
@@ -756,6 +756,34 @@
       ]
     },
     {
+      "line": "19Β",
+      "mode": "bus",
+      "color": "#149a3f",
+      "dirs": [
+        {
+          "dir": "ΜΟΥΣΕΙΟ - ΧΑΛΑΝΔΡΙ",
+          "headsign": "ΜΟΥΣΕΙΟ - ΧΑΛΑΝΔΡΙ (ΣΙΔΕΡΑ)",
+          "variants": 1,
+          "tripCount": 154,
+          "stops": 53,
+          "lengthKm": 17.69,
+          "stats": {
+            "observations": 232,
+            "matched": 232,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.0470048752259262,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
       "line": "20",
       "mode": "bus",
       "color": "#149a3f",
@@ -805,34 +833,6 @@
       ]
     },
     {
-      "line": "021",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "ΠΛΑΤΕΙΑ ΚΑΝΙΓΓΟΣ - ΓΚΥΖΗ",
-          "headsign": "ΠΛΑΤΕΙΑ ΚΑΝΙΓΓΟΣ - ΓΚΥΖΗ",
-          "variants": 1,
-          "tripCount": 393,
-          "stops": 22,
-          "lengthKm": 4.97,
-          "stats": {
-            "observations": 202,
-            "matched": 202,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.243649801814909,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
       "line": "21",
       "mode": "bus",
       "color": "#149a3f",
@@ -853,6 +853,34 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 2.48652086560042,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "021",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "ΠΛΑΤΕΙΑ ΚΑΝΙΓΓΟΣ - ΓΚΥΖΗ",
+          "headsign": "ΠΛΑΤΕΙΑ ΚΑΝΙΓΓΟΣ - ΓΚΥΖΗ",
+          "variants": 1,
+          "tripCount": 393,
+          "stops": 22,
+          "lengthKm": 4.97,
+          "stats": {
+            "observations": 202,
+            "matched": 202,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.243649801814909,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -889,6 +917,34 @@
       ]
     },
     {
+      "line": "24",
+      "mode": "bus",
+      "color": "#149a3f",
+      "dirs": [
+        {
+          "dir": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ",
+          "headsign": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ",
+          "variants": 1,
+          "tripCount": 284,
+          "stops": 35,
+          "lengthKm": 10.72,
+          "stats": {
+            "observations": 535,
+            "matched": 535,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.928356493286123,
+            "roundaboutSegs": 26,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
       "line": "024",
       "mode": "bus",
       "color": "#0059a9",
@@ -917,27 +973,27 @@
       ]
     },
     {
-      "line": "24",
+      "line": "25",
       "mode": "bus",
       "color": "#149a3f",
       "dirs": [
         {
-          "dir": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ",
-          "headsign": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ",
+          "dir": "ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΙΛΙΟΝ - ΚΑΜΑΤΕΡΟ",
+          "headsign": "ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΙΛΙΟΝ - ΚΑΜΑΤΕΡΟ",
           "variants": 1,
-          "tripCount": 284,
-          "stops": 35,
-          "lengthKm": 10.72,
+          "tripCount": 211,
+          "stops": 51,
+          "lengthKm": 14.28,
           "stats": {
-            "observations": 535,
-            "matched": 535,
+            "observations": 462,
+            "matched": 462,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.928356493286123,
-            "roundaboutSegs": 26,
+            "meanError": 2.3144019745388973,
+            "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
           }
@@ -986,34 +1042,6 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 2.08669376196643,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "25",
-      "mode": "bus",
-      "color": "#149a3f",
-      "dirs": [
-        {
-          "dir": "ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΙΛΙΟΝ - ΚΑΜΑΤΕΡΟ",
-          "headsign": "ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΙΛΙΟΝ - ΚΑΜΑΤΕΡΟ",
-          "variants": 1,
-          "tripCount": 211,
-          "stops": 51,
-          "lengthKm": 14.28,
-          "stats": {
-            "observations": 462,
-            "matched": 462,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.3144019745388973,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -2295,34 +2323,6 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 3.3833115057756182,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "19Β",
-      "mode": "bus",
-      "color": "#149a3f",
-      "dirs": [
-        {
-          "dir": "ΜΟΥΣΕΙΟ - ΧΑΛΑΝΔΡΙ",
-          "headsign": "ΜΟΥΣΕΙΟ - ΧΑΛΑΝΔΡΙ (ΣΙΔΕΡΑ)",
-          "variants": 1,
-          "tripCount": 154,
-          "stops": 53,
-          "lengthKm": 17.69,
-          "stats": {
-            "observations": 232,
-            "matched": 232,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.0470048752259262,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -9485,202 +9485,6 @@
       ]
     },
     {
-      "line": "Α10",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "ΑΧΑΡΝΑΙ - ΣΤΑΘΜΟΣ ΛΑΡΙΣΗΣ",
-          "headsign": "ΑΧΑΡΝΑΙ - ΣΤΑΘΜΟΣ ΛΑΡΙΣΗΣ",
-          "variants": 1,
-          "tripCount": 289,
-          "stops": 44,
-          "lengthKm": 14.27,
-          "stats": {
-            "observations": 231,
-            "matched": 231,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.0515792385800253,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΣΤ. ΛΑΡΙΣΗΣ - ΑΧΑΡΝΑΙ",
-          "headsign": "ΣΤ. ΛΑΡΙΣΗΣ - ΑΧΑΡΝΑΙ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
-          "variants": 2,
-          "tripCount": 239,
-          "stops": 46,
-          "lengthKm": 14.61,
-          "stats": {
-            "observations": 225,
-            "matched": 225,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.84978597929564,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "Α11",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΠΛ. ΒΑΘΗ",
-          "headsign": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΠΛ. ΒΑΘΗ",
-          "variants": 1,
-          "tripCount": 249,
-          "stops": 32,
-          "lengthKm": 9.98,
-          "stats": {
-            "observations": 231,
-            "matched": 231,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.708869378591373,
-            "roundaboutSegs": 44,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΠΛ. ΒΑΘΗ - ΙΛΙΟΝ - ΠΕΤΡΟΥΠΟΛΗ",
-          "headsign": "ΠΛ. ΒΑΘΗ - ΙΛΙΟΝ - ΠΕΤΡΟΥΠΟΛΗ ",
-          "variants": 1,
-          "tripCount": 237,
-          "stops": 36,
-          "lengthKm": 11.06,
-          "stats": {
-            "observations": 282,
-            "matched": 282,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.539695882912589,
-            "roundaboutSegs": 36,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "Α13",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "ΚΗΠΟΥΠΟΛΗ - ΟΜΟΝΟΙΑ",
-          "headsign": "ΚΗΠΟΥΠΟΛΗ - ΟΜΟΝΟΙΑ",
-          "variants": 1,
-          "tripCount": 496,
-          "stops": 35,
-          "lengthKm": 9.92,
-          "stats": {
-            "observations": 493,
-            "matched": 493,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.1942567226492846,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΟΜΟΝΟΙΑ  - ΚΗΠΟΥΠΟΛΗ",
-          "headsign": "ΟΜΟΝΟΙΑ  - ΚΗΠΟΥΠΟΛΗ",
-          "variants": 1,
-          "tripCount": 496,
-          "stops": 38,
-          "lengthKm": 10.14,
-          "stats": {
-            "observations": 288,
-            "matched": 288,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.98264931370828,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "Α15",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "ΔΑΣΟΣ - ΣΤ. ΛΑΡΙΣΗΣ",
-          "headsign": "ΔΑΣΟΣ - ΣΤ. ΛΑΡΙΣΗΣ",
-          "variants": 1,
-          "tripCount": 489,
-          "stops": 32,
-          "lengthKm": 10.48,
-          "stats": {
-            "observations": 141,
-            "matched": 141,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.889129405561009,
-            "roundaboutSegs": 18,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΣΤ. ΛΑΡΙΣΗΣ - ΔΑΣΟΣ",
-          "headsign": "ΣΤ. ΛΑΡΙΣΗΣ - ΔΑΣΟΣ",
-          "variants": 1,
-          "tripCount": 498,
-          "stops": 30,
-          "lengthKm": 10.05,
-          "stats": {
-            "observations": 155,
-            "matched": 155,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.498078968133141,
-            "roundaboutSegs": 1,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
       "line": "Α2",
       "mode": "bus",
       "color": "#0059a9",
@@ -9926,6 +9730,202 @@
       ]
     },
     {
+      "line": "Α10",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "ΑΧΑΡΝΑΙ - ΣΤΑΘΜΟΣ ΛΑΡΙΣΗΣ",
+          "headsign": "ΑΧΑΡΝΑΙ - ΣΤΑΘΜΟΣ ΛΑΡΙΣΗΣ",
+          "variants": 1,
+          "tripCount": 289,
+          "stops": 44,
+          "lengthKm": 14.27,
+          "stats": {
+            "observations": 231,
+            "matched": 231,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.0515792385800253,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "ΣΤ. ΛΑΡΙΣΗΣ - ΑΧΑΡΝΑΙ",
+          "headsign": "ΣΤ. ΛΑΡΙΣΗΣ - ΑΧΑΡΝΑΙ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
+          "variants": 2,
+          "tripCount": 239,
+          "stops": 46,
+          "lengthKm": 14.61,
+          "stats": {
+            "observations": 225,
+            "matched": 225,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.84978597929564,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "Α11",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΠΛ. ΒΑΘΗ",
+          "headsign": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΠΛ. ΒΑΘΗ",
+          "variants": 1,
+          "tripCount": 249,
+          "stops": 32,
+          "lengthKm": 9.98,
+          "stats": {
+            "observations": 231,
+            "matched": 231,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.708869378591373,
+            "roundaboutSegs": 44,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "ΠΛ. ΒΑΘΗ - ΙΛΙΟΝ - ΠΕΤΡΟΥΠΟΛΗ",
+          "headsign": "ΠΛ. ΒΑΘΗ - ΙΛΙΟΝ - ΠΕΤΡΟΥΠΟΛΗ ",
+          "variants": 1,
+          "tripCount": 237,
+          "stops": 36,
+          "lengthKm": 11.06,
+          "stats": {
+            "observations": 282,
+            "matched": 282,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.539695882912589,
+            "roundaboutSegs": 36,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "Α13",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "ΚΗΠΟΥΠΟΛΗ - ΟΜΟΝΟΙΑ",
+          "headsign": "ΚΗΠΟΥΠΟΛΗ - ΟΜΟΝΟΙΑ",
+          "variants": 1,
+          "tripCount": 496,
+          "stops": 35,
+          "lengthKm": 9.92,
+          "stats": {
+            "observations": 493,
+            "matched": 493,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.1942567226492846,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "ΟΜΟΝΟΙΑ  - ΚΗΠΟΥΠΟΛΗ",
+          "headsign": "ΟΜΟΝΟΙΑ  - ΚΗΠΟΥΠΟΛΗ",
+          "variants": 1,
+          "tripCount": 496,
+          "stops": 38,
+          "lengthKm": 10.14,
+          "stats": {
+            "observations": 288,
+            "matched": 288,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.98264931370828,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "Α15",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "ΔΑΣΟΣ - ΣΤ. ΛΑΡΙΣΗΣ",
+          "headsign": "ΔΑΣΟΣ - ΣΤ. ΛΑΡΙΣΗΣ",
+          "variants": 1,
+          "tripCount": 489,
+          "stops": 32,
+          "lengthKm": 10.48,
+          "stats": {
+            "observations": 141,
+            "matched": 141,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.889129405561009,
+            "roundaboutSegs": 18,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "ΣΤ. ΛΑΡΙΣΗΣ - ΔΑΣΟΣ",
+          "headsign": "ΣΤ. ΛΑΡΙΣΗΣ - ΔΑΣΟΣ",
+          "variants": 1,
+          "tripCount": 498,
+          "stops": 30,
+          "lengthKm": 10.05,
+          "stats": {
+            "observations": 155,
+            "matched": 155,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.498078968133141,
+            "roundaboutSegs": 1,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
       "line": "Β1",
       "mode": "bus",
       "color": "#0059a9",
@@ -9968,6 +9968,132 @@
             "rawMeters": 0,
             "meanError": 4.8621618717623685,
             "roundaboutSegs": 21,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "Β2",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ - ΑΓ. ΚΟΣΜΑΣ",
+          "headsign": "ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ - ΑΓ. ΚΟΣΜΑΣ (ΜΕΣΩ ΠΑΡΑΛΙΑΚΗΣ)",
+          "variants": 1,
+          "tripCount": 330,
+          "stops": 59,
+          "lengthKm": 23,
+          "stats": {
+            "observations": 715,
+            "matched": 715,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 1,
+            "rawMeters": 503,
+            "meanError": 3.788648934461647,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "Β5",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "ΑΓ. ΠΑΡΑΣΚΕΥΗ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΣΤ. ΛΑΡΙΣΗΣ",
+          "headsign": "ΑΓ. ΠΑΡΑΣΚΕΥΗ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΣΤ. ΛΑΡΙΣΗΣ",
+          "variants": 1,
+          "tripCount": 434,
+          "stops": 47,
+          "lengthKm": 12.93,
+          "stats": {
+            "observations": 264,
+            "matched": 264,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.195734810056533,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "ΣΤ. ΛΑΡΙΣΗΣ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΑΓ. ΠΑΡΑΣΚΕΥΗ",
+          "headsign": "ΣΤ. ΛΑΡΙΣΗΣ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΑΓ. ΠΑΡΑΣΚΕΥΗ",
+          "variants": 1,
+          "tripCount": 440,
+          "stops": 43,
+          "lengthKm": 13.42,
+          "stats": {
+            "observations": 291,
+            "matched": 291,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.708807440613805,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "Β9",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "Ν. ΚΗΦΙΣΙΑ - ΜΕΤΑΜΟΡΦΩΣΗ - ΧΑΛΚΟΚΟΝΔΥΛΗ",
+          "headsign": "Ν. ΚΗΦΙΣΙΑ - ΜΕΤΑΜΟΡΦΩΣΗ - ΧΑΛΚΟΚΟΝΔΥΛΗ",
+          "variants": 1,
+          "tripCount": 352,
+          "stops": 63,
+          "lengthKm": 18.17,
+          "stats": {
+            "observations": 425,
+            "matched": 425,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.127701495645982,
+            "roundaboutSegs": 9,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "ΧΑΛΚΟΚΟΝΔΥΛΗ - ΜΕΤΑΜΟΡΦΩΣΗ - Ν.  ΚΗΦΙΣΙΑ",
+          "headsign": "ΧΑΛΚΟΚΟΝΔΥΛΗ - ΜΕΤΑΜΟΡΦΩΣΗ - Ν.  ΚΗΦΙΣΙΑ",
+          "variants": 1,
+          "tripCount": 345,
+          "stops": 57,
+          "lengthKm": 18.11,
+          "stats": {
+            "observations": 342,
+            "matched": 342,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.454793252176593,
+            "roundaboutSegs": 15,
             "extStart": 0,
             "extEnd": 0
           }
@@ -10164,132 +10290,6 @@
             "rawMeters": 0,
             "meanError": 2.657128981914951,
             "roundaboutSegs": 1,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "Β2",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ - ΑΓ. ΚΟΣΜΑΣ",
-          "headsign": "ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ - ΑΓ. ΚΟΣΜΑΣ (ΜΕΣΩ ΠΑΡΑΛΙΑΚΗΣ)",
-          "variants": 1,
-          "tripCount": 330,
-          "stops": 59,
-          "lengthKm": 23,
-          "stats": {
-            "observations": 715,
-            "matched": 715,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 1,
-            "rawMeters": 503,
-            "meanError": 3.788648934461647,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "Β5",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "ΑΓ. ΠΑΡΑΣΚΕΥΗ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΣΤ. ΛΑΡΙΣΗΣ",
-          "headsign": "ΑΓ. ΠΑΡΑΣΚΕΥΗ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΣΤ. ΛΑΡΙΣΗΣ",
-          "variants": 1,
-          "tripCount": 434,
-          "stops": 47,
-          "lengthKm": 12.93,
-          "stats": {
-            "observations": 264,
-            "matched": 264,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.195734810056533,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΣΤ. ΛΑΡΙΣΗΣ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΑΓ. ΠΑΡΑΣΚΕΥΗ",
-          "headsign": "ΣΤ. ΛΑΡΙΣΗΣ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΑΓ. ΠΑΡΑΣΚΕΥΗ",
-          "variants": 1,
-          "tripCount": 440,
-          "stops": 43,
-          "lengthKm": 13.42,
-          "stats": {
-            "observations": 291,
-            "matched": 291,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.708807440613805,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "Β9",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "Ν. ΚΗΦΙΣΙΑ - ΜΕΤΑΜΟΡΦΩΣΗ - ΧΑΛΚΟΚΟΝΔΥΛΗ",
-          "headsign": "Ν. ΚΗΦΙΣΙΑ - ΜΕΤΑΜΟΡΦΩΣΗ - ΧΑΛΚΟΚΟΝΔΥΛΗ",
-          "variants": 1,
-          "tripCount": 352,
-          "stops": 63,
-          "lengthKm": 18.17,
-          "stats": {
-            "observations": 425,
-            "matched": 425,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.127701495645982,
-            "roundaboutSegs": 9,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΧΑΛΚΟΚΟΝΔΥΛΗ - ΜΕΤΑΜΟΡΦΩΣΗ - Ν.  ΚΗΦΙΣΙΑ",
-          "headsign": "ΧΑΛΚΟΚΟΝΔΥΛΗ - ΜΕΤΑΜΟΡΦΩΣΗ - Ν.  ΚΗΦΙΣΙΑ",
-          "variants": 1,
-          "tripCount": 345,
-          "stops": 57,
-          "lengthKm": 18.11,
-          "stats": {
-            "observations": 342,
-            "matched": 342,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.454793252176593,
-            "roundaboutSegs": 15,
             "extStart": 0,
             "extEnd": 0
           }
