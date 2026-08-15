@@ -306,11 +306,29 @@ async function init() {
   // left out — text bent around a 20 m circle is unreadable, and the streets
   // meeting there carry the name anyway.
   map.addSource('street-names', { type: 'geojson', data: 'data/street-names.geojson' });
-  const streetNamesDef = (id, extra) => ({
+  // Two lines wherever the pipeline found a Latin reading: the local name on
+  // top, its transliteration under it — the way this city writes its own street
+  // plates. The Latin line is set a fifth smaller, because it is the reading aid
+  // and not the name, which also keeps the block from taking twice the room from
+  // its neighbours in the collision grid.
+  //
+  // It is charged for on the overview, where a taller label wins fewer
+  // collisions: at z12 the network names 20 streets single-line and 18 with the
+  // Latin line in Athens, 17 against 12 in Thessaloniki. It is kept there all
+  // the same, because below z13 THIS layer draws nearly every street name on
+  // the map (the base tiles keep only their arterials down there), so dropping
+  // the second line would hide the transliteration exactly where it is ours to
+  // show. `latinLine: false` on a layer is the switch back.
+  const streetNamesDef = (id, extra, latinLine = true) => ({
     id, type: 'symbol', source: 'street-names',
     ...extra,
     layout: {
-      'text-field': ['get', 'name'],
+      'text-field': latinLine
+        ? ['case', ['has', 'latin'],
+            ['format', ['get', 'name'], {}, '\n', {}, ['get', 'latin'], { 'font-scale': 0.8 }],
+            ['get', 'name']]
+        : ['get', 'name'],
+      'text-line-height': 1.1,
       'text-font': [NARROW],
       'symbol-placement': 'line',
       // tighter than the base style's 250 px: a long avenue should repeat its
@@ -318,8 +336,12 @@ async function init() {
       'symbol-spacing': ['interpolate', ['linear'], ['zoom'], 11, 190, 14, 260, 17, 380],
       'text-size': ['interpolate', ['linear'], ['zoom'], 11, 9.5, 14, 11.5, 17, 13.5],
       // beside the stroke, on the opposite side from the line numbers
-      // (those sit 0.6 em above it), so name and numbers never fight
-      'text-offset': [0, 0.9],
+      // (those sit 0.6 em above it), so name and numbers never fight. A
+      // two-line block is centered on its offset, so it is pushed half a line
+      // further out — otherwise the local name would land on the stroke itself
+      'text-offset': latinLine
+        ? ['case', ['has', 'latin'], ['literal', [0, 1.35]], ['literal', [0, 0.9]]]
+        : [0, 0.9],
       'text-max-angle': 32,
       'text-padding': 2,
       'text-pitch-alignment': 'viewport',
@@ -581,6 +603,27 @@ async function init() {
   // …and the network's own street names need the same lift below z13, for the
   // same reason: down there the numbers cover the whole region wall to wall.
   map.addLayer(streetNamesDef('transit-street-names-low', { minzoom: 10.5, maxzoom: 13 }));
+  // The base tiles carry a Latin reading of their own for ~40% of the Greek
+  // street names, and the OpenFreeMap style prints it BEFORE the local name on a
+  // single line ("Skoufa Σκουφά"). Our labels put the local name first with the
+  // Latin under it, so without this the same map would show two opposite
+  // conventions side by side. The tiles' split into name:latin / name:nonlatin
+  // is a split of the NAME, not a translation of it, so the two-line form is
+  // used only where the whole name is Greek — a name that is already part
+  // Latin ("Galleria Κοραή") keeps the base style's one-line concatenation.
+  const BASE_NAME_LAYERS = ['highway-name-path', 'highway-name-minor', 'highway-name-major', 'highway-name-major-low'];
+  const baseBilingual = ['case',
+    ['all', ['has', 'name:latin'], ['has', 'name:nonlatin'], ['==', ['get', 'name'], ['get', 'name:nonlatin']]],
+      ['format', ['get', 'name'], {}, '\n', {}, ['get', 'name:latin'], { 'font-scale': 0.8 }],
+    ['has', 'name:nonlatin'],
+      ['concat', ['get', 'name:latin'], ' ', ['get', 'name:nonlatin']],
+    ['coalesce', ['get', 'name_en'], ['get', 'name']]];
+  for (const id of BASE_NAME_LAYERS) {
+    if (!map.getLayer(id)) continue;
+    map.setLayoutProperty(id, 'text-field', baseBilingual);
+    map.setLayoutProperty(id, 'text-line-height', 1.1);
+  }
+
   for (const id of [...BADGE_LAYERS, ...BADGE_NAME_LAYERS]) map.moveLayer(id);
   map.moveLayer('stops-metro-names');
 

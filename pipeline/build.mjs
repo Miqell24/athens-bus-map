@@ -12,7 +12,7 @@ import { dirname, join } from 'node:path';
 import { iterCsv, readCsv } from './lib/csv.mjs';
 import { makeProj, resample, nearestOnPolyline, polylineLength } from './lib/geo.mjs';
 import { buildGraph } from './lib/graph.mjs';
-import { buildNameDict, greekTitleCase } from './lib/greek.mjs';
+import { buildNameDict, greekTitleCase, latinize } from './lib/greek.mjs';
 import { matchShape, extendToStops } from './lib/hmm.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -1316,8 +1316,19 @@ const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8
 const nameFeatures = mergeRuns(streetFeatures
   .filter((f) => f.properties.name && !f.properties.roundabout && !f.properties.unmapped)
   .map((f) => ({ coords: f.geometry.coordinates, name: f.properties.name, linesKey: f.properties.name, roundabout: 0 })))
-  .map((r) => ({ type: 'Feature', geometry: { type: 'LineString', coordinates: r.coords }, properties: { name: r.name } }));
-log(`Street names: ${nameFeatures.length} named polylines re-joined from ${streetFeatures.filter((f) => f.properties.name).length} runs`);
+  .map((r) => {
+    // Second line of the label: the name transliterated the way Greece signs
+    // its own streets (ELOT 743, see lib/greek.mjs). A name that is already Latin
+    // adds nothing and stays single-line.
+    const latin = latinize(r.name);
+    return {
+      type: 'Feature',
+      geometry: { type: 'LineString', coordinates: r.coords },
+      properties: { name: r.name, ...(latin && latin !== r.name ? { latin } : {}) },
+    };
+  });
+log(`Street names: ${nameFeatures.length} named polylines re-joined from ${streetFeatures.filter((f) => f.properties.name).length} runs` +
+    ` (${nameFeatures.filter((f) => f.properties.latin).length} with a Latin second line)`);
 
 let bLonMin = Infinity, bLonMax = -Infinity, bLatMin = Infinity, bLatMax = -Infinity;
 for (const f of routeFeatures) for (const [lon, lat] of f.geometry.coordinates) {

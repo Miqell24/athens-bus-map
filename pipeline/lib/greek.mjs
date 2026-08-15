@@ -110,3 +110,87 @@ export function greekTitleCase(name, dict) {
     .map((tok) => tok.split(/(-)/).map((p) => (p === '-' ? p : casePart(p))).join(''))
     .join('');
 }
+
+// ---------- Greek → Latin, ELOT 743 (= ISO 843 transliteration) ----------
+//
+// The street-name labels carry the Latin reading under the Greek one, the way
+// Greece writes its own signs: the blue street plates and every road sign use
+// ELOT 743, so "Πανεπιστημίου" reads "Panepistimiou" here exactly as it does on
+// the corner of the street. OSM's own Latin tags were measured against this and
+// dropped: int_name covers 27% of the names in the Athens extract and 28% in
+// Thessaloniki, mixes transliteration with translation ("Egnatia Odos" vs
+// "Egnatia Motorway") and suffix habits ("Odos Agrianon", "G. Stratigi Str."),
+// and a fair share of it is simply wrong (Ελευθερίας tagged "Amfitheas",
+// 19 Μαΐου tagged "Atlantidos street"). A standard applied by us covers 100% of
+// the names with one convention.
+//
+// The letters are transliterated, not the sounds: ELOT is reversible, which is
+// why η and ι both give i, υ gives y, and ω gives o.
+const EL_SINGLE = {
+  α: 'a', β: 'v', γ: 'g', δ: 'd', ε: 'e', ζ: 'z', η: 'i', θ: 'th', ι: 'i',
+  κ: 'k', λ: 'l', μ: 'm', ν: 'n', ξ: 'x', ο: 'o', π: 'p', ρ: 'r', σ: 's',
+  ς: 's', τ: 't', υ: 'y', φ: 'f', χ: 'ch', ψ: 'ps', ω: 'o',
+};
+// αυ/ευ/ηυ end in -f before a voiceless consonant and at the end of a word
+// (Ελευθερίας → Eleftherias), in -v everywhere else (Ευαγγελισμός → Evangelismos)
+const EL_VOICELESS = new Set(['θ', 'κ', 'ξ', 'π', 'σ', 'ς', 'τ', 'φ', 'χ', 'ψ']);
+const EL_PAIR = { αι: 'ai', ει: 'ei', οι: 'oi', υι: 'yi', ου: 'ou', γγ: 'ng', γξ: 'nx', γχ: 'nch' };
+const EL_WORD = /[Α-Ωα-ωΆΈΉΊΌΎΏΪΫάέήίόύώϊϋΐΰς]+/g;
+
+// One word → letters stripped of their accents, each remembering whether it
+// carried one: the accent itself is not transliterated, but it decides whether
+// two vowels are a digraph. A diaeresis always splits the pair (Μαϊάμι → Maiami)
+// and so does an accent on the FIRST vowel — "άυ" is two sounds (a-y) where
+// "αύ" is one digraph (av/af).
+const elLetters = (word) => {
+  const out = [];
+  for (const ch of word.normalize('NFD')) {
+    const code = ch.charCodeAt(0);
+    if (code >= 0x0300 && code <= 0x036f) {                  // combining mark
+      const last = out[out.length - 1];
+      if (last) { if (code === 0x0308) last.diaer = true; else last.acute = true; }
+      continue;
+    }
+    out.push({ c: ch.toLowerCase(), up: ch !== ch.toLowerCase(), acute: false, diaer: false });
+  }
+  return out;
+};
+
+const elWord = (word) => {
+  const L = elLetters(word);
+  if (!L.length) return word;
+  // ΑΘΗΝΑ → ATHINA, Αθήνα → Athina: an all-caps word keeps shouting, a
+  // capitalized one capitalizes only the first letter of a multi-letter chunk
+  const caps = L.length > 1 && L.every((x) => x.up);
+  let out = '';
+  for (let i = 0; i < L.length; i++) {
+    const a = L[i], b = L[i + 1];
+    let chunk = null, adv = 1;
+    if (b && !b.diaer && !a.acute) {
+      const pair = a.c + b.c;
+      if (pair === 'αυ' || pair === 'ευ' || pair === 'ηυ') {
+        const next = L[i + 2] ? L[i + 2].c : '';
+        chunk = (pair[0] === 'α' ? 'a' : pair[0] === 'ε' ? 'e' : 'i') +
+                (!next || EL_VOICELESS.has(next) ? 'f' : 'v');
+        adv = 2;
+      } else if (pair === 'μπ') {            // ELOT: b at the start of a word, mp inside
+        chunk = i === 0 ? 'b' : 'mp'; adv = 2;
+      } else if (EL_PAIR[pair]) {
+        chunk = EL_PAIR[pair]; adv = 2;
+      }
+    }
+    if (chunk === null) chunk = EL_SINGLE[a.c] ?? a.c;
+    out += caps ? chunk.toUpperCase() : a.up ? chunk.charAt(0).toUpperCase() + chunk.slice(1) : chunk;
+    i += adv - 1;
+  }
+  return out;
+};
+
+// Everything that is not a Greek word — digits, "&", Latin fragments, dots —
+// passes through untouched, so "Καραολή & Δημητρίου" comes out as
+// "Karaoli & Dimitriou" and "Αυτοκινητόδρομος Α621" keeps its number.
+export function latinize(name) {
+  if (!name || !EL_WORD.test(name)) { EL_WORD.lastIndex = 0; return name; }
+  EL_WORD.lastIndex = 0;
+  return name.replace(EL_WORD, elWord);
+}
