@@ -40,9 +40,18 @@ const keyParts = (s) => {
   const m = /^(\D*)(\d*)(.*)$/.exec(s);
   return [m[1], m[2] ? Number(m[2]) : Infinity, m[3]];
 };
+// Line RANK (7.09.2026, user rule for the whole family): trolleybuses first,
+// day lines next, NIGHT lines last — in every list the map prints: the panel,
+// the number rows along the streets, the terminus badge grids. The night
+// rule is this city's own (NIGHT, tested on the printed number); the
+// trolleybuses are whatever the feed loop painted green (TROLLEYS).
+const NIGHT = /^(400|500|790)$/;
+const TROLLEYS = new Set();
+const lineRank = (k) => (TROLLEYS.has(k) ? 0
+  : NIGHT.test(typeof LBL !== 'undefined' && LBL.has(k) ? LBL.get(k) : k) ? 2 : 1);
 const numSort = (a, b) => {
   const A = keyParts(a), B = keyParts(b);
-  return A[0].localeCompare(B[0]) || (A[1] - B[1]) || A[2].localeCompare(B[2]);
+  return lineRank(a) - lineRank(b) || A[0].localeCompare(B[0]) || (A[1] - B[1]) || A[2].localeCompare(B[2]);
 };
 function round6(v) { return Math.round(v * 1e6) / 1e6; }
 
@@ -187,7 +196,7 @@ async function processMode(cfg) {
     for (const L of cfg.trolleyExcept || []) cfg.trolleySet.delete(L);
     if (cfg.trolleySet.size) {
       cfg.lineColors = {}; cfg.lineColorsDark = {};
-      for (const L of cfg.trolleySet) { cfg.lineColors[L] = TROLLEY_GREEN; cfg.lineColorsDark[L] = TROLLEY_DARK; }
+      for (const L of cfg.trolleySet) { cfg.lineColors[L] = TROLLEY_GREEN; cfg.lineColorsDark[L] = TROLLEY_DARK; TROLLEYS.add(L); }
       log(`trolleybus lines (${cfg.trolleySet.size}): ${[...cfg.trolleySet].sort(numSort).join(', ')}`);
     }
   }
@@ -1351,6 +1360,6 @@ writeFileSync(join(outDir, 'meta.json'), JSON.stringify({
   bbox: [bLonMin, bLatMin, bLonMax, bLatMax],
   badgeBands: BADGE_BANDS,
   modes: MODES.map((m) => ({ mode: m.mode, label: m.label, color: m.color })),
-  lines: metaLines,
+  lines: metaLines.map((l) => ({ ...l, rank: lineRank(l.line) })),
 }, null, 2));
 log(`Wrote data/out/{route,streets,labels,street-names,stops,badges,gtfs-shape}.geojson + meta.json`);
