@@ -277,9 +277,16 @@ async function init() {
         '\n', {},
         ['get', 'ntLines'], { 'text-color': KMK }],
       ['format', ['get', 'lines'], {}]]];
+  // Night lines print black (user rule, 8.09.2026): a row that carries one
+  // arrives from the pipeline (night.mjs) as coloured sections — l0/c0 … for
+  // the default rows, bl/bc for the bus-only view, tl/tc for the tram-only
+  // view — one section per run of same-coloured numbers, so the day numbers
+  // keep the mode colour and the night numbers are black.
+  const sectionRow = (pre) => { const r = ['format']; for (let i = 0; i < 24; i++) r.push(['coalesce', ['get', pre + 'l' + i], ''], { 'text-color': ['coalesce', ['get', pre + 'c' + i], KMK] }); return r; };
+  const numberFieldN = ['case', ['has', 'l0'], sectionRow(''), numberField];
   map.addSource('labels', { type: 'geojson', data: 'data/labels.geojson' });
   const numbersLayout = {
-    'text-field': numberField,
+    'text-field': numberFieldN,
     'text-font': [NARROW_BOLD],
     // a quarter smaller than the stop names' scale: the rows are the most
     // repeated element on the map, and at the old size they crowded whole
@@ -824,6 +831,8 @@ async function init() {
         ['get', 'ntLines'], { 'text-color': KMK }],
       ['format', ['get', 'lines'], {}]]];
   const tramOnlyNumbers = ['format', ['get', 'lines'], {}];
+  const busOnlyNumbersN = ['case', ['has', 'bl0'], sectionRow('b'), busOnlyNumbers];
+  const tramOnlyNumbersN = ['case', ['has', 'tl0'], sectionRow('t'), tramOnlyNumbers];
   function applyFilters() {
     // an active journey hides the WHOLE regular network (user request: the
     // line's return run and the rest of its route were noise) — the ride is
@@ -871,10 +880,10 @@ async function init() {
       // trams hidden: shared corridor labels (mode=tram with busLines) must stay,
       // but they show only the bus part
       numC = ['all', ['any', ['==', ['get', 'mode'], 'bus'], ['has', 'busLines']], selC];
-      numField = busOnlyNumbers;
+      numField = busOnlyNumbersN;
     } else {
       numC = ['all', modeC, selC];
-      numField = (state.tram || state.metro) && !state.bus ? tramOnlyNumbers : numberField;
+      numField = (state.tram || state.metro) && !state.bus ? tramOnlyNumbersN : numberFieldN;
     }
     for (const d of NUM_LAYERS) {
       const thinC = d.id === 'street-numbers-extra' ? densityCond : densityMainCond;
