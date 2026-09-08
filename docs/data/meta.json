@@ -10829,156 +10829,6 @@
       "rank": 1
     },
     {
-      "line": "400",
-      "mode": "bus",
-      "color": "#000000",
-      "dirs": [
-        {
-          "dir": "ΠΕΙΡΑΙΑΣ -  ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ",
-          "headsign": "ΠΕΙΡΑΙΑΣ -  ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ (ΝΥΧΤΕΡΙΝΗ) (Προσωρινή)",
-          "variants": 2,
-          "tripCount": 30,
-          "stops": 97,
-          "lengthKm": 30.22,
-          "stats": {
-            "observations": 663,
-            "matched": 663,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.1272274107266225,
-            "roundaboutSegs": 6,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ -  ΠΕΙΡΑΙΑΣ",
-          "headsign": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ -  ΠΕΙΡΑΙΑΣ (ΝΥΧΤΕΡΙΝΗ)",
-          "variants": 2,
-          "tripCount": 25,
-          "stops": 104,
-          "lengthKm": 30.88,
-          "stats": {
-            "observations": 588,
-            "matched": 588,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.1081867816176354,
-            "roundaboutSegs": 27,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 2
-    },
-    {
-      "line": "500",
-      "mode": "bus",
-      "color": "#000000",
-      "dirs": [
-        {
-          "dir": "ΚΗΦΙΣΙΑ - ΠΕΙΡΑΙΑΣ",
-          "headsign": "ΚΗΦΙΣΙΑ - ΠΕΙΡΑΙΑΣ (ΝΥΧΤΕΡΙΝΗ)",
-          "variants": 2,
-          "tripCount": 26,
-          "stops": 91,
-          "lengthKm": 33.43,
-          "stats": {
-            "observations": 699,
-            "matched": 699,
-            "noCandidates": 0,
-            "viterbiBreaks": 1,
-            "bridged": 0,
-            "rawStretchCount": 1,
-            "rawMeters": 15,
-            "meanError": 2.349053103710027,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΠΕΙΡΑΙΑΣ - ΚΗΦΙΣΙΑ",
-          "headsign": "ΠΕΙΡΑΙΑΣ - ΚΗΦΙΣΙΑ (ΝΥΧΤΕΡΙΝΗ)",
-          "variants": 2,
-          "tripCount": 27,
-          "stops": 85,
-          "lengthKm": 33.43,
-          "stats": {
-            "observations": 721,
-            "matched": 721,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.4439000463215685,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 2
-    },
-    {
-      "line": "790",
-      "mode": "bus",
-      "color": "#000000",
-      "dirs": [
-        {
-          "dir": "ΓΛΥΦΑΔΑ - ΠΕΡΙΣΤΕΡΙ",
-          "headsign": "ΓΛΥΦΑΔΑ - ΠΕΡΙΣΤΕΡΙ (ΑΝΘΟΥΠΟΛΗ) (ΝΥΧΤΕΡΙΝΗ)",
-          "variants": 1,
-          "tripCount": 35,
-          "stops": 61,
-          "lengthKm": 21.44,
-          "stats": {
-            "observations": 440,
-            "matched": 440,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.253865648072944,
-            "roundaboutSegs": 9,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΠΕΡΙΣΤΕΡΙ (ΑΝΘΟΥΠΟΛΗ) - ΓΛΥΦΑΔΑ",
-          "headsign": "ΠΕΡΙΣΤΕΡΙ (ΑΝΘΟΥΠΟΛΗ) - ΓΛΥΦΑΔΑ (ΝΥΧΤΕΡΙΝΗ)",
-          "variants": 1,
-          "tripCount": 35,
-          "stops": 63,
-          "lengthKm": 22.51,
-          "stats": {
-            "observations": 377,
-            "matched": 377,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.520102800815718,
-            "roundaboutSegs": 8,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 2
-    },
-    {
       "line": "M1",
       "mode": "tram",
       "color": "#009550",
@@ -11227,6 +11077,156 @@
         }
       ],
       "rank": 1
+    },
+    {
+      "line": "400",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "ΠΕΙΡΑΙΑΣ -  ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ",
+          "headsign": "ΠΕΙΡΑΙΑΣ -  ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ (ΝΥΧΤΕΡΙΝΗ) (Προσωρινή)",
+          "variants": 2,
+          "tripCount": 30,
+          "stops": 97,
+          "lengthKm": 30.22,
+          "stats": {
+            "observations": 663,
+            "matched": 663,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.1272274107266225,
+            "roundaboutSegs": 6,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ -  ΠΕΙΡΑΙΑΣ",
+          "headsign": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ -  ΠΕΙΡΑΙΑΣ (ΝΥΧΤΕΡΙΝΗ)",
+          "variants": 2,
+          "tripCount": 25,
+          "stops": 104,
+          "lengthKm": 30.88,
+          "stats": {
+            "observations": 588,
+            "matched": 588,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.1081867816176354,
+            "roundaboutSegs": 27,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "500",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "ΚΗΦΙΣΙΑ - ΠΕΙΡΑΙΑΣ",
+          "headsign": "ΚΗΦΙΣΙΑ - ΠΕΙΡΑΙΑΣ (ΝΥΧΤΕΡΙΝΗ)",
+          "variants": 2,
+          "tripCount": 26,
+          "stops": 91,
+          "lengthKm": 33.43,
+          "stats": {
+            "observations": 699,
+            "matched": 699,
+            "noCandidates": 0,
+            "viterbiBreaks": 1,
+            "bridged": 0,
+            "rawStretchCount": 1,
+            "rawMeters": 15,
+            "meanError": 2.349053103710027,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "ΠΕΙΡΑΙΑΣ - ΚΗΦΙΣΙΑ",
+          "headsign": "ΠΕΙΡΑΙΑΣ - ΚΗΦΙΣΙΑ (ΝΥΧΤΕΡΙΝΗ)",
+          "variants": 2,
+          "tripCount": 27,
+          "stops": 85,
+          "lengthKm": 33.43,
+          "stats": {
+            "observations": 721,
+            "matched": 721,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.4439000463215685,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "790",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "ΓΛΥΦΑΔΑ - ΠΕΡΙΣΤΕΡΙ",
+          "headsign": "ΓΛΥΦΑΔΑ - ΠΕΡΙΣΤΕΡΙ (ΑΝΘΟΥΠΟΛΗ) (ΝΥΧΤΕΡΙΝΗ)",
+          "variants": 1,
+          "tripCount": 35,
+          "stops": 61,
+          "lengthKm": 21.44,
+          "stats": {
+            "observations": 440,
+            "matched": 440,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.253865648072944,
+            "roundaboutSegs": 9,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "ΠΕΡΙΣΤΕΡΙ (ΑΝΘΟΥΠΟΛΗ) - ΓΛΥΦΑΔΑ",
+          "headsign": "ΠΕΡΙΣΤΕΡΙ (ΑΝΘΟΥΠΟΛΗ) - ΓΛΥΦΑΔΑ (ΝΥΧΤΕΡΙΝΗ)",
+          "variants": 1,
+          "tripCount": 35,
+          "stops": 63,
+          "lengthKm": 22.51,
+          "stats": {
+            "observations": 377,
+            "matched": 377,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.520102800815718,
+            "roundaboutSegs": 8,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
     }
   ]
 }
