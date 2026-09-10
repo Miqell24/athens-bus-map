@@ -1,0 +1,28 @@
+{
+  "id": "2026-09-10",
+  "label": "10 Sept 2026",
+  "generatedAt": "2026-09-10T13:49:03.774Z",
+  "feeds": [
+    {
+      "dir": "data/gtfs",
+      "tag": "OASA buses & trolleybuses (OSY)",
+      "publisher": "",
+      "version": "2026-08-05",
+      "start": "",
+      "end": "",
+      "mtime": 1,
+      "label": "OASA buses & trolleybuses (OSY) 2026-08-05"
+    },
+    {
+      "dir": "data/gtfs-t",
+      "tag": "STASY metro & tram",
+      "publisher": "",
+      "version": "2026-07-01",
+      "start": "",
+      "end": "",
+      "mtime": 1,
+      "label": "STASY metro & tram 2026-07-01"
+    }
+  ],
+  "archivedAt": "2026-09-10T13:49:04.173Z"
+}

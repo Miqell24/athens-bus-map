@@ -1,0 +1,29 @@
+{
+  "id": "2026-07-08",
+  "label": "8 Jul 2026",
+  "generatedAt": "2026-09-10T13:44:42.547Z",
+  "note": "the OSY feed of 8.07.2026 (timetable 6.07–6.10) and the STASY feed of 1.07; the network as published on 15.08",
+  "feeds": [
+    {
+      "dir": "data/gtfs",
+      "tag": "OASA buses & trolleybuses (OSY)",
+      "publisher": "",
+      "version": "2026-07-03",
+      "start": "",
+      "end": "",
+      "mtime": 1,
+      "label": "OASA buses & trolleybuses (OSY) 2026-07-03"
+    },
+    {
+      "dir": "data/gtfs-t",
+      "tag": "STASY metro & tram",
+      "publisher": "",
+      "version": "2026-07-01",
+      "start": "",
+      "end": "",
+      "mtime": 1,
+      "label": "STASY metro & tram 2026-07-01"
+    }
+  ],
+  "archivedAt": "2026-09-10T13:47:14.014Z"
+}

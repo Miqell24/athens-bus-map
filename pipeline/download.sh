@@ -26,20 +26,47 @@ except Exception:
 PYEOF
 }
 
+# Since August 2026 data.gov.gr publishes both feeds as .rar (the .zip under the
+# same resource id is the frozen July 2026 file — 10.09.2026: OSY zip 8.07,
+# rar 6.08). The archive holds one folder (osy_gtfs/, stasy_gtfs/); it is
+# flattened into the target directory. Needs 7-Zip (7z) or unar.
+unrar_to () {  # <archive> <dir>
+  rm -rf "$2.tmp" && mkdir -p "$2.tmp"
+  if command -v 7z >/dev/null 2>&1; then 7z x -y -o"$2.tmp" "$1" >/dev/null
+  elif [ -x "/c/Program Files/7-Zip/7z.exe" ]; then "/c/Program Files/7-Zip/7z.exe" x -y -o"$2.tmp" "$1" >/dev/null
+  elif command -v unar >/dev/null 2>&1; then unar -q -o "$2.tmp" "$1"
+  else echo "brak 7z/unar do rozpakowania $1 (brew install sevenzip / apt install p7zip-full)" >&2; exit 1; fi
+  rm -rf "$2" && mkdir -p "$2"
+  find "$2.tmp" -name 'routes.txt' -exec dirname {} \; | head -1 | while read -r d; do mv "$d"/* "$2"/; done
+  rm -rf "$2.tmp"
+}
+
 # 1) GTFS — OSY (buses + trolleybuses), published on data.gov.gr
 if [ ! -f data/gtfs/routes.txt ]; then
-  echo "== osy_gtfs.zip =="
-  curl -fL --retry 3 --max-time 600 -o data/osy_gtfs.zip "https://data.gov.gr/dataset/fb049bb1-aea6-4443-95fa-8b941dd6a057/resource/119db488-16ea-4c76-b560-41c472872390/download/osy_gtfs.zip"
-  unzip -o data/osy_gtfs.zip -d data/gtfs
+  echo "== osy_gtfs.rar =="
+  curl -fL --retry 3 --max-time 600 -o data/osy_gtfs.rar "https://data.gov.gr/dataset/fb049bb1-aea6-4443-95fa-8b941dd6a057/resource/119db488-16ea-4c76-b560-41c472872390/download/osy_gtfs.rar"
+  unrar_to data/osy_gtfs.rar data/gtfs
 fi
 
 # 1b) GTFS — STASY (metro M1-M3 + tram T6/T7); the feed has NO shapes.txt —
 #     the pipeline reconstructs geometry from stop sequences routed on OSM rails.
 if [ ! -f data/gtfs-t/routes.txt ]; then
-  echo "== stasy_gtfs.zip =="
-  curl -fL --retry 3 --max-time 600 -o data/stasy_gtfs.zip "https://data.gov.gr/dataset/4e897a75-975a-4ce7-af65-f32ea01f93b9/resource/5e3858ee-d9ba-48c2-9015-744ea160976d/download/stasy_gtfs.zip"
-  unzip -o data/stasy_gtfs.zip -d data/gtfs-t
+  echo "== stasy_gtfs.rar =="
+  curl -fL --retry 3 --max-time 600 -o data/stasy_gtfs.rar "https://data.gov.gr/dataset/4e897a75-975a-4ce7-af65-f32ea01f93b9/resource/5e3858ee-d9ba-48c2-9015-744ea160976d/download/stasy_gtfs.rar"
+  unrar_to data/stasy_gtfs.rar data/gtfs-t
 fi
+
+# Overpass down (every public mirror answers 504 for hours at a time — the
+# wall Berlin, London, Kraków, Athens and Bucharest all hit): cut the same
+# files out of the Geofabrik extract instead. pipeline/pbf-cut.py writes the
+# JSON shape Overpass would have returned; needs `pip3 install --user osmium`.
+pbf_fallback () {
+  echo "== Overpass failed — Geofabrik extract + pipeline/pbf-cut.py ==" >&2
+  if [ ! -f data/greece-latest.osm.pbf ]; then
+    curl -fL --retry 5 --retry-delay 5 -C - --max-time 3600 -o data/greece-latest.osm.pbf "https://download.geofabrik.de/europe/greece-latest.osm.pbf"
+  fi
+  python3 pipeline/pbf-cut.py data/greece-latest.osm.pbf road:data/osm/athens.json:37.70,23.31,38.34,24.05 names:data/osm/athens-names.json:37.70,23.31,38.34,24.05 rail:data/osm/athens-rail.json:37.82,23.61,38.11,23.98
+}
 
 # 2) OSM — roadways in the bbox of the whole OSY network (GTFS shapes extent + margin:
 #    Elefsina - Rafina - Kapandriti - Varkiza), incl. highway=construction
@@ -56,7 +83,7 @@ if [ ! -f data/osm/athens.json ]; then
       ok=1; break
     fi
   done
-  [ "$ok" = 1 ] || { rm -f data/osm/athens.json; echo "Overpass: all mirrors failed" >&2; exit 1; }
+  [ "$ok" = 1 ] || { rm -f data/osm/athens.json; pbf_fallback; }
 fi
 
 # 2b) OSM — every NAMED feature in the same bbox, tags only. Not geometry: this
@@ -78,7 +105,7 @@ if [ ! -f data/osm/athens-names.json ]; then
     fi
   done
   # not fatal: without it the stop names simply come out unaccented
-  [ "$ok" = 1 ] || { rm -f data/osm/athens-names.json; echo "Overpass (names): all mirrors failed — stop names will lose their accents" >&2; }
+  [ "$ok" = 1 ] || { rm -f data/osm/athens-names.json; pbf_fallback; }
 fi
 
 # 2c) OSM — rail network for STASY (separate graph): metro tunnels (subway),
@@ -96,7 +123,7 @@ if [ ! -f data/osm/athens-rail.json ]; then
       ok=1; break
     fi
   done
-  [ "$ok" = 1 ] || { rm -f data/osm/athens-rail.json; echo "Overpass (rail): all mirrors failed" >&2; exit 1; }
+  [ "$ok" = 1 ] || { rm -f data/osm/athens-rail.json; pbf_fallback; }
 fi
 
 # 3) MapLibre GL (vendored, no CDN at runtime)

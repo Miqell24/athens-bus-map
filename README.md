@@ -29,6 +29,30 @@ pipeline, different city and feeds.
   the image).
 - GTFS shapes.txt quality report (`npm run report` → `data/gtfs-gaps-report.md`).
 
+## Timeline — the map's versions
+
+The panel's **Map version** row (10.09.2026, the Kraków mechanism of 3.09)
+switches between dated versions of the network in place: the camera, the base,
+the picked line, the label sizes, the density and the mode filters all stay as
+they are — only the data changes. Each version is a build of `data/out/`,
+archived by `pipeline/snapshot.mjs` under `data/out/versions/<YYYY-MM-DD>/`
+(the corridor view only — the archives carry no `route.geojson`, so the journey
+planner works on the current build and says so) and listed in
+`data/out/versions.json` with the feeds it came from and its line list; the row
+shows the lines added and removed since the previous version. `#v=2026-07-08`
+in the URL opens a given version. `npm run build` archives its predecessor
+(prebuild) and stamps the new build (postbuild).
+
+**The series so far:** 8.07.2026 — the OSY feed of 8 July (timetable 6.07–6.10),
+the network as first published — and 10.09.2026 — the OSY feed of 6 August,
+which data.gov.gr publishes as a `.rar` under the same resource id (the `.zip`
+there is the frozen July file; `download.sh` fetches the rar now, 7-Zip or
+`unar` unpacks it). Between the two: 242, 250, Ε90 and Χ21 gone, 801, 836, Χ23
+and Χ80 new, several lines with extra service patterns (Χ96 EXPRESS, 115 to
+Ακαδημία, 740 to ΟΑΚΑ), the network 7 022 → 7 476 km. STASY's feed is unchanged
+since 1.07. 509 runs the same route in both feeds (Ζηρίνειο – Άγ. Στέφανος –
+Κρυονέρι, 54 stops); 508 was already gone in July.
+
 ## Requirements
 
 Node ≥ 18 (no npm dependencies), `curl`, `unzip`, internet on first run.

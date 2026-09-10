@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Athina Public Transport — interactive map</title>
 <link rel="stylesheet" href="vendor/maplibre-gl.css">
-<link rel="stylesheet" href="style.css?v=20260826c">
+<link rel="stylesheet" href="style.css?v=20260910a">
 </head>
 <body>
 <div id="map"></div>
@@ -114,6 +114,20 @@
     <button type="button" data-bg="paper" class="on">Paper base</button>
     <button type="button" data-bg="grey">Grey base</button>
   </div>
+  <div id="timeline" class="timeline" hidden
+       title="The map's dated versions: switch between builds of the network without losing the view, the zoom or any setting.">
+    <div class="tl-row">
+      <span class="lbl">Map version</span>
+      <button type="button" id="tl-prev" aria-label="Previous version">&#9664;</button>
+      <span id="tl-val"></span>
+      <button type="button" id="tl-next" aria-label="Next version">&#9654;</button>
+    </div>
+    <input id="tl-range" type="range" min="0" max="0" step="1" value="0" list="tl-ticks" aria-label="Timeline of the map's versions">
+    <datalist id="tl-ticks"></datalist>
+    <p id="tl-info" class="hint"></p>
+    <p id="tl-feeds" class="hint feeds"></p>
+    <p id="tl-note" class="hint note" hidden></p>
+  </div>
   <ul class="legend">
     <li><label><input type="checkbox" id="toggle-bus" checked> <span class="sw line"></span> Bus &amp; trolleybus routes</label></li>
     <li class="sublegend"><span class="mini" style="background:#149a3f"></span>trolleybus · dashed = shared with buses</li>
@@ -161,7 +175,7 @@
   <label class="debug"><input type="checkbox" id="toggle-shape"> show raw GTFS shapes (QA)</label>
 </aside>
 <script src="vendor/maplibre-gl.js"></script>
-<script src="app.js?v=20260908n"></script>
+<script src="app.js?v=20260910a"></script>
 <script src="pdf-export.js?v=20260908i"></script>
 <script>
 (() => {

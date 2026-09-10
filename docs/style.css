@@ -377,3 +377,30 @@ details.journey .beta {
 }
 .city-switch nav .city-filter:focus { outline: none; border-color: var(--kmk); box-shadow: 0 0 0 2px rgba(0, 89, 169, 0.2); }
 @media (pointer: coarse) { .city-switch nav .city-filter { font-size: 16px; } }
+
+/* TIMELINE — the map's dated versions (pipeline/snapshot.mjs archives every
+   build, data/versions.json lists them). Hidden until there are two. */
+.timeline { margin: 0 0 8px; padding: 8px 0 5px; border-top: 1px solid #e3e8f0; border-bottom: 1px solid #e3e8f0; font-size: 12.5px; color: #223; }
+.timeline .tl-row { display: flex; align-items: center; gap: 6px; }
+.timeline .lbl { flex: 1 1 auto; font-weight: 600; color: var(--kmk-dark); }
+.timeline button {
+  flex: 0 0 auto;
+  width: 30px;
+  padding: 3px 0;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--kmk);
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.timeline button:hover { background: var(--kmk-dark); }
+.timeline button:disabled { opacity: 0.4; cursor: default; }
+#tl-val { flex: 0 0 auto; min-width: 96px; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; color: #223; transition: opacity 0.15s; }
+.timeline.loading #tl-val { opacity: 0.4; }
+#tl-range { display: block; width: 100%; margin: 7px 0 0; accent-color: var(--kmk); cursor: pointer; }
+.timeline .hint { margin: 4px 0 0; }
+.timeline .hint.feeds { color: #8a8f99; font-size: 11px; }
+.timeline .hint.note { color: #8a5a00; font-weight: 600; }

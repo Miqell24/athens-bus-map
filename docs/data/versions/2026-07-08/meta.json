@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T13:49:03.774Z",
+  "generatedAt": "2026-09-10T13:44:42.547Z",
   "bbox": [
     23.32055,
     37.717314,
@@ -50,7 +50,7 @@
           "dir": "ΜΟΣΧΑΤΟ - ΚΑΛΛΙΘΕΑ - ΠΛ. ΑΤΤΙΚΗΣ",
           "headsign": "ΜΟΣΧΑΤΟ - ΚΑΛΛΙΘΕΑ - ΠΛ. ΑΤΤΙΚΗΣ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 267,
+          "tripCount": 260,
           "stops": 29,
           "lengthKm": 9.9,
           "stats": {
@@ -71,7 +71,7 @@
           "dir": "ΠΛ. ΑΤΤΙΚΗΣ - ΚΑΛΛΙΘΕΑ - ΜΟΣΧΑΤΟ",
           "headsign": "ΠΛ. ΑΤΤΙΚΗΣ - ΚΑΛΛΙΘΕΑ - ΜΟΣΧΑΤΟ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 266,
+          "tripCount": 259,
           "stops": 30,
           "lengthKm": 9.17,
           "stats": {
@@ -100,7 +100,7 @@
           "dir": "ΑΝΩ ΚΥΨΕΛΗ - ΠΑΓΚΡΑΤΙ - ΚΑΙΣΑΡΙΑΝΗ",
           "headsign": "ΑΝΩ ΚΥΨΕΛΗ - ΠΑΓΚΡΑΤΙ - ΚΑΙΣΑΡΙΑΝΗ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 245,
+          "tripCount": 265,
           "stops": 30,
           "lengthKm": 9.22,
           "stats": {
@@ -121,7 +121,7 @@
           "dir": "ΚΑΙΣΑΡΙΑΝΗ - ΠΑΓΚΡΑΤΙ - ΑΝΩ ΚΥΨΕΛΗ",
           "headsign": "ΚΑΙΣΑΡΙΑΝΗ - ΠΑΓΚΡΑΤΙ - ΑΝΩ ΚΥΨΕΛΗ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 234,
+          "tripCount": 264,
           "stops": 25,
           "lengthKm": 8.47,
           "stats": {
@@ -150,7 +150,7 @@
           "dir": "Ν. ΦΙΛΑΔΕΛΦΕΙΑ - ΑΝΩ ΠΑΤΗΣΙΑ - ΝΕΟ ΨΥΧΙΚΟ",
           "headsign": "Ν. ΦΙΛΑΔΕΛΦΕΙΑ - ΑΝΩ ΠΑΤΗΣΙΑ - ΝΕΟ ΨΥΧΙΚΟ",
           "variants": 1,
-          "tripCount": 366,
+          "tripCount": 373,
           "stops": 39,
           "lengthKm": 12.38,
           "stats": {
@@ -171,7 +171,7 @@
           "dir": "ΝΕΟ ΨΥΧΙΚΟ - ΑΝΩ ΠΑΤΗΣΙΑ - Ν. ΦΙΛΑΔΕΛΦΕΙΑ",
           "headsign": "ΝΕΟ ΨΥΧΙΚΟ - ΑΝΩ ΠΑΤΗΣΙΑ - Ν. ΦΙΛΑΔΕΛΦΕΙΑ",
           "variants": 1,
-          "tripCount": 379,
+          "tripCount": 456,
           "stops": 38,
           "lengthKm": 12.53,
           "stats": {
@@ -200,7 +200,7 @@
           "dir": "ΑΝΩ ΚΥΨΕΛΗ - ΑΓ. ΑΡΤΕΜΙΟΣ - ΣΤ. ΑΓ. ΙΩΑΝΝΗΣ",
           "headsign": "ΑΝΩ ΚΥΨΕΛΗ - ΑΓ. ΑΡΤΕΜΙΟΣ - ΣΤ. ΑΓ. ΙΩΑΝΝΗΣ",
           "variants": 1,
-          "tripCount": 271,
+          "tripCount": 317,
           "stops": 32,
           "lengthKm": 9.52,
           "stats": {
@@ -221,7 +221,7 @@
           "dir": "ΣΤ. ΑΓ. ΙΩΑΝΝΗΣ - ΑΓ. ΑΡΤΕΜΙΟΣ - ΑΝΩ ΚΥΨΕΛΗ",
           "headsign": "ΣΤ. ΑΓ. ΙΩΑΝΝΗΣ - ΑΓ. ΑΡΤΕΜΙΟΣ - ΑΝΩ ΚΥΨΕΛΗ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
           "variants": 1,
-          "tripCount": 281,
+          "tripCount": 327,
           "stops": 28,
           "lengthKm": 9.55,
           "stats": {
@@ -250,7 +250,7 @@
           "dir": "ΛΑΜΠΡΙΝΗ - ΠΛ. ΣΥΝΤΑΓΜΑΤΟΣ - ΤΖΙΤΖΙΦΙΕΣ",
           "headsign": "ΛΑΜΠΡΙΝΗ - ΠΛ. ΣΥΝΤΑΓΜΑΤΟΣ - ΤΖΙΤΖΙΦΙΕΣ",
           "variants": 1,
-          "tripCount": 332,
+          "tripCount": 339,
           "stops": 46,
           "lengthKm": 14.47,
           "stats": {
@@ -271,7 +271,7 @@
           "dir": "ΤΖΙΤΖΙΦΙΕΣ - ΠΛ. ΣΥΝΤΑΓΜΑΤΟΣ - ΛΑΜΠΡΙΝΗ",
           "headsign": "ΤΖΙΤΖΙΦΙΕΣ - ΠΛ. ΣΥΝΤΑΓΜΑΤΟΣ - ΛΑΜΠΡΙΝΗ",
           "variants": 1,
-          "tripCount": 305,
+          "tripCount": 315,
           "stops": 44,
           "lengthKm": 14.24,
           "stats": {
@@ -300,7 +300,7 @@
           "dir": "ΙΠΠΟΚΡΑΤΟΥΣ - ΚΟΣΜΑΣ ΑΙΤΩΛΟΣ - Ν. ΦΙΛΑΔΕΛΦΕΙΑ",
           "headsign": "ΙΠΠΟΚΡΑΤΟΥΣ - ΚΟΣΜΑΣ ΑΙΤΩΛΟΣ - Ν. ΦΙΛΑΔΕΛΦΕΙΑ",
           "variants": 1,
-          "tripCount": 296,
+          "tripCount": 316,
           "stops": 29,
           "lengthKm": 8.4,
           "stats": {
@@ -321,7 +321,7 @@
           "dir": "Ν. ΦΙΛΑΔΕΛΦΕΙΑ - ΚΟΣΜΑΣ ΑΙΤΩΛΟΣ - ΙΠΠΟΚΡΑΤΟΥΣ",
           "headsign": "Ν. ΦΙΛΑΔΕΛΦΕΙΑ - ΚΟΣΜΑΣ ΑΙΤΩΛΟΣ - ΙΠΠΟΚΡΑΤΟΥΣ",
           "variants": 1,
-          "tripCount": 296,
+          "tripCount": 316,
           "stops": 35,
           "lengthKm": 9.92,
           "stats": {
@@ -350,7 +350,7 @@
           "dir": "ΤΖΙΤΖΙΦΙΕΣ - ΧΑΛΑΝΔΡΙ",
           "headsign": "ΤΖΙΤΖΙΦΙΕΣ - ΧΑΛΑΝΔΡΙ",
           "variants": 1,
-          "tripCount": 274,
+          "tripCount": 148,
           "stops": 47,
           "lengthKm": 15.17,
           "stats": {
@@ -368,10 +368,31 @@
           }
         },
         {
+          "dir": "ΤΖΙΤΖΙΦΙΕΣ -ΧΑΛΑΝΔΡΙ",
+          "headsign": "ΤΖΙΤΖΙΦΙΕΣ -ΧΑΛΑΝΔΡΙ (Προσωρινή λόγω έργων 07:00-15:30)",
+          "variants": 1,
+          "tripCount": 156,
+          "stops": 45,
+          "lengthKm": 15.08,
+          "stats": {
+            "observations": 350,
+            "matched": 350,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.7222940724895954,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
           "dir": "ΧΑΛΑΝΔΡΙ - ΤΖΙΤΖΙΦΙΕΣ",
           "headsign": "ΧΑΛΑΝΔΡΙ - ΤΖΙΤΖΙΦΙΕΣ",
           "variants": 1,
-          "tripCount": 278,
+          "tripCount": 289,
           "stops": 41,
           "lengthKm": 14.35,
           "stats": {
@@ -400,7 +421,7 @@
           "dir": "Α. ΠΑΤΗΣΙΑ - Ν. ΠΑΓΚΡΑΤΙ - Ν. ΕΛΒΕΤΙΑ",
           "headsign": "Α. ΠΑΤΗΣΙΑ - Ν. ΠΑΓΚΡΑΤΙ - Ν. ΕΛΒΕΤΙΑ",
           "variants": 1,
-          "tripCount": 401,
+          "tripCount": 444,
           "stops": 33,
           "lengthKm": 10.07,
           "stats": {
@@ -421,7 +442,7 @@
           "dir": "Ν. ΕΛΒΕΤΙΑ - Ν. ΠΑΓΚΡΑΤΙ - Α. ΠΑΤΗΣΙΑ",
           "headsign": "Ν. ΕΛΒΕΤΙΑ - Ν. ΠΑΓΚΡΑΤΙ - Α. ΠΑΤΗΣΙΑ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 401,
+          "tripCount": 439,
           "stops": 32,
           "lengthKm": 10.94,
           "stats": {
@@ -450,7 +471,7 @@
           "dir": "ΖΑΠΠΕΙΟ - ΠΕΡΙΣΤΕΡΙ",
           "headsign": "ΖΑΠΠΕΙΟ - ΠΕΡΙΣΤΕΡΙ (ΑΓ. ΙΕΡΟΘΕΟΣ)",
           "variants": 1,
-          "tripCount": 330,
+          "tripCount": 344,
           "stops": 29,
           "lengthKm": 8.73,
           "stats": {
@@ -471,7 +492,7 @@
           "dir": "ΠΕΡΙΣΤΕΡΙ (ΑΓ. ΙΕΡΟΘΕΟΣ) - ΖΑΠΠΕΙΟ",
           "headsign": "ΠΕΡΙΣΤΕΡΙ (ΑΓ. ΙΕΡΟΘΕΟΣ) - ΖΑΠΠΕΙΟ",
           "variants": 1,
-          "tripCount": 335,
+          "tripCount": 358,
           "stops": 30,
           "lengthKm": 9.02,
           "stats": {
@@ -500,7 +521,7 @@
           "dir": "ΓΗΡΟΚΟΜΕΙΟ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΛΑΜΠΡΙΝΗ",
           "headsign": "ΓΗΡΟΚΟΜΕΙΟ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΛΑΜΠΡΙΝΗ",
           "variants": 1,
-          "tripCount": 362,
+          "tripCount": 425,
           "stops": 35,
           "lengthKm": 9.54,
           "stats": {
@@ -521,7 +542,7 @@
           "dir": "ΛΑΜΠΡΙΝΗ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΓΗΡΟΚΟΜΕΙΟ",
           "headsign": "ΛΑΜΠΡΙΝΗ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΓΗΡΟΚΟΜΕΙΟ",
           "variants": 1,
-          "tripCount": 391,
+          "tripCount": 443,
           "stops": 31,
           "lengthKm": 9.92,
           "stats": {
@@ -568,31 +589,10 @@
           }
         },
         {
-          "dir": "ΟΜΟΝΟΙΑ - ΠΕΤΡΑΛΩΝΑ",
-          "headsign": "ΟΜΟΝΟΙΑ - ΠΕΤΡΑΛΩΝΑ (ΑΠΟ ΟΜΟΝΟΙΑ ΕΩΣ ΠΕΤΡΑΛΩΝΑ)",
-          "variants": 1,
-          "tripCount": 22,
-          "stops": 16,
-          "lengthKm": 4.71,
-          "stats": {
-            "observations": 106,
-            "matched": 106,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.6380593260888239,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "ΠΕΤΡΑΛΩΝΑ - ΔΙΚΑΣΤΗΡΙΑ - ΕΛ. ΒΕΝΙΖΕΛΟΥ",
           "headsign": "ΠΕΤΡΑΛΩΝΑ - ΔΙΚΑΣΤΗΡΙΑ - ΕΛ. ΒΕΝΙΖΕΛΟΥ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 209,
+          "tripCount": 225,
           "stops": 24,
           "lengthKm": 8.35,
           "stats": {
@@ -604,27 +604,6 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 2.585607014118295,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΠΕΤΡΑΛΩΝΑ - ΟΜΟΝΟΙΑ",
-          "headsign": "ΠΕΤΡΑΛΩΝΑ - ΟΜΟΝΟΙΑ  (ΕΩΣ ΟΜΟΝΟΙΑ)",
-          "variants": 1,
-          "tripCount": 26,
-          "stops": 15,
-          "lengthKm": 4.81,
-          "stats": {
-            "observations": 73,
-            "matched": 73,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.6979145637897666,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -642,7 +621,7 @@
           "dir": "ΑΓ. ΙΩΑΝΝΗΣ ΡΕΝΤΗΣ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΑΓ. ΙΩΑΝΝΗΣ ΡΕΝΤΗΣ - ΠΕΙΡΑΙΑΣ",
           "variants": 1,
-          "tripCount": 296,
+          "tripCount": 287,
           "stops": 30,
           "lengthKm": 8.59,
           "stats": {
@@ -671,7 +650,7 @@
           "dir": "ΜΟΥΣΕΙΟ - ΧΑΛΑΝΔΡΙ",
           "headsign": "ΜΟΥΣΕΙΟ - ΧΑΛΑΝΔΡΙ (ΜΕΣΩ ΕΘΝ. ΑΝΤΙΣΤΑΣΕΩΣ)",
           "variants": 1,
-          "tripCount": 180,
+          "tripCount": 194,
           "stops": 26,
           "lengthKm": 8.48,
           "stats": {
@@ -692,7 +671,7 @@
           "dir": "ΧΑΛΑΝΔΡΙ - ΜΟΥΣΕΙΟ",
           "headsign": "ΧΑΛΑΝΔΡΙ - ΜΟΥΣΕΙΟ (ΜΕΣΩ ΕΘΝ. ΑΝΤΙΣΤΑΣΕΩΣ)",
           "variants": 1,
-          "tripCount": 179,
+          "tripCount": 176,
           "stops": 26,
           "lengthKm": 8.57,
           "stats": {
@@ -742,7 +721,7 @@
           "dir": "ΣΤ. ΧΑΛΑΝΔΡΙΟΥ (ΣΙΔΕΡΑ) - ΜΟΥΣΕΙΟ",
           "headsign": "ΣΤ. ΧΑΛΑΝΔΡΙΟΥ (ΣΙΔΕΡΑ) - ΜΟΥΣΕΙΟ   ",
           "variants": 1,
-          "tripCount": 14,
+          "tripCount": 7,
           "stops": 39,
           "lengthKm": 12.62,
           "stats": {
@@ -771,7 +750,7 @@
           "dir": "ΜΟΥΣΕΙΟ - ΧΑΛΑΝΔΡΙ",
           "headsign": "ΜΟΥΣΕΙΟ - ΧΑΛΑΝΔΡΙ (ΣΙΔΕΡΑ)",
           "variants": 1,
-          "tripCount": 159,
+          "tripCount": 154,
           "stops": 53,
           "lengthKm": 17.69,
           "stats": {
@@ -800,7 +779,7 @@
           "dir": "ΝΙΚΑΙΑ - Π. ΡΑΛΛΗ - ΟΜΟΝΟΙΑ",
           "headsign": "ΝΙΚΑΙΑ - Π. ΡΑΛΛΗ - ΟΜΟΝΟΙΑ",
           "variants": 1,
-          "tripCount": 374,
+          "tripCount": 443,
           "stops": 55,
           "lengthKm": 16.96,
           "stats": {
@@ -829,7 +808,7 @@
           "dir": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ",
           "headsign": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ",
           "variants": 1,
-          "tripCount": 279,
+          "tripCount": 284,
           "stops": 35,
           "lengthKm": 10.72,
           "stats": {
@@ -857,8 +836,8 @@
         {
           "dir": "ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΙΛΙΟΝ - ΚΑΜΑΤΕΡΟ",
           "headsign": "ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΙΛΙΟΝ - ΚΑΜΑΤΕΡΟ",
-          "variants": 2,
-          "tripCount": 223,
+          "variants": 1,
+          "tripCount": 211,
           "stops": 51,
           "lengthKm": 14.28,
           "stats": {
@@ -887,7 +866,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΑΓ. ΓΕΩΡΓΙΟΣ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΑΓ. ΓΕΩΡΓΙΟΣ",
           "variants": 1,
-          "tripCount": 345,
+          "tripCount": 343,
           "stops": 42,
           "lengthKm": 10.6,
           "stats": {
@@ -916,7 +895,7 @@
           "dir": "ΔΡΑΠΕΤΣΩΝΑ - ΚΑΣΤΕΛΛΑ - Ν. ΦΑΛΗΡΟ",
           "headsign": "ΔΡΑΠΕΤΣΩΝΑ - ΚΑΣΤΕΛΛΑ - Ν. ΦΑΛΗΡΟ",
           "variants": 1,
-          "tripCount": 313,
+          "tripCount": 315,
           "stops": 27,
           "lengthKm": 7.03,
           "stats": {
@@ -937,7 +916,7 @@
           "dir": "Ν. ΦΑΛΗΡΟ - ΚΑΣΤΕΛΛΑ - ΔΡΑΠΕΤΣΩΝΑ",
           "headsign": "Ν. ΦΑΛΗΡΟ - ΚΑΣΤΕΛΛΑ - ΔΡΑΠΕΤΣΩΝΑ",
           "variants": 1,
-          "tripCount": 303,
+          "tripCount": 305,
           "stops": 31,
           "lengthKm": 7.54,
           "stats": {
@@ -963,31 +942,10 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "ΠΛΑΤΕΙΑ ΚΑΝΙΓΓΟΣ - ΓΚΥΖH",
-          "headsign": "ΠΛΑΤΕΙΑ ΚΑΝΙΓΓΟΣ - ΓΚΥΖH (ΓΚΥΖΗ ΕΩΣ ΚΑΝΙΓΓΟΣ)",
-          "variants": 2,
-          "tripCount": 7,
-          "stops": 13,
-          "lengthKm": 2.56,
-          "stats": {
-            "observations": 82,
-            "matched": 82,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.9706126639602393,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "ΠΛΑΤΕΙΑ ΚΑΝΙΓΓΟΣ - ΓΚΥΖΗ",
           "headsign": "ΠΛΑΤΕΙΑ ΚΑΝΙΓΓΟΣ - ΓΚΥΖΗ",
           "variants": 1,
-          "tripCount": 345,
+          "tripCount": 393,
           "stops": 22,
           "lengthKm": 4.97,
           "stats": {
@@ -1013,31 +971,10 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "ΑΚΑΔΗΜΙΑ - Ν. ΚΥΨΕΛΗ",
-          "headsign": "ΑΚΑΔΗΜΙΑ - Ν. ΚΥΨΕΛΗ (ΑΠΟ ΚΥΨΕΛΗ)",
-          "variants": 2,
-          "tripCount": 7,
-          "stops": 13,
-          "lengthKm": 3.93,
-          "stats": {
-            "observations": 130,
-            "matched": 130,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.5641493846709245,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "ΑΚΑΔΗΜΙΑ - ΝΕΑ ΚΥΨΕΛΗ",
           "headsign": "ΑΚΑΔΗΜΙΑ - ΝΕΑ ΚΥΨΕΛΗ",
           "variants": 1,
-          "tripCount": 347,
+          "tripCount": 358,
           "stops": 26,
           "lengthKm": 7.75,
           "stats": {
@@ -1095,7 +1032,7 @@
           "dir": "ΙΠΠΟΚΡΑΤΟΥΣ - ΠΡΟΦ. ΔΑΝΙΗΛ",
           "headsign": "ΙΠΠΟΚΡΑΤΟΥΣ - ΠΡΟΦ. ΔΑΝΙΗΛ",
           "variants": 1,
-          "tripCount": 185,
+          "tripCount": 193,
           "stops": 17,
           "lengthKm": 5.72,
           "stats": {
@@ -1116,7 +1053,7 @@
           "dir": "ΠΡ. ΔΑΝΙΗΛ - ΙΠΠΟΚΡΑΤΟΥΣ",
           "headsign": "ΠΡ. ΔΑΝΙΗΛ - ΙΠΠΟΚΡΑΤΟΥΣ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 189,
+          "tripCount": 195,
           "stops": 24,
           "lengthKm": 6.08,
           "stats": {
@@ -1145,7 +1082,7 @@
           "dir": "ΒΟΤΑΝΙΚΟΣ - ΙΠΠΟΚΡΑΤΟΥΣ",
           "headsign": "ΒΟΤΑΝΙΚΟΣ - ΙΠΠΟΚΡΑΤΟΥΣ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 195,
+          "tripCount": 197,
           "stops": 26,
           "lengthKm": 6.82,
           "stats": {
@@ -1166,7 +1103,7 @@
           "dir": "ΙΠΠΟΚΡΑΤΟΥΣ - ΒΟΤΑΝΙΚΟΣ",
           "headsign": "ΙΠΠΟΚΡΑΤΟΥΣ - ΒΟΤΑΝΙΚΟΣ ",
           "variants": 1,
-          "tripCount": 191,
+          "tripCount": 198,
           "stops": 22,
           "lengthKm": 6.79,
           "stats": {
@@ -1195,7 +1132,7 @@
           "dir": "ΑΝΩ ΚΥΨΕΛΗ - ΠΕΤΡΑΛΩΝΑ - ΤΑΥΡΟΣ",
           "headsign": "ΑΝΩ ΚΥΨΕΛΗ - ΠΕΤΡΑΛΩΝΑ - ΤΑΥΡΟΣ",
           "variants": 1,
-          "tripCount": 308,
+          "tripCount": 310,
           "stops": 30,
           "lengthKm": 9.65,
           "stats": {
@@ -1216,7 +1153,7 @@
           "dir": "ΤΑΥΡΟΣ - ΠΕΤΡΑΛΩΝΑ - ΑΝΩ ΚΥΨΕΛΗ",
           "headsign": "ΤΑΥΡΟΣ - ΠΕΤΡΑΛΩΝΑ - ΑΝΩ ΚΥΨΕΛΗ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 316,
+          "tripCount": 327,
           "stops": 31,
           "lengthKm": 9.26,
           "stats": {
@@ -1242,31 +1179,10 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "ΚΥΨΕΛΗ - ΓΑΛΑΤΣΙ - ΣΤ.ΠΑΝΟΡΜΟΥ - ΣΤ.ΚΑΤΕΧΑΚΗ",
-          "headsign": "ΚΥΨΕΛΗ - ΓΑΛΑΤΣΙ - ΣΤ.ΠΑΝΟΡΜΟΥ - ΣΤ.ΚΑΤΕΧΑΚΗ (ΑΠΟ ΠΛ. ΚΥΨΕΛΗΣ)",
-          "variants": 2,
-          "tripCount": 14,
-          "stops": 26,
-          "lengthKm": 7.97,
-          "stats": {
-            "observations": 278,
-            "matched": 278,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.9124122741111873,
-            "roundaboutSegs": 24,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "ΣΤ.ΚΑΤΕΧΑΚΗ-ΣΤ.ΠΑΝΟΡΜΟΥ-ΓΑΛΑΤΣΙ-ΚΥΨΕΛΗ",
           "headsign": "ΣΤ.ΚΑΤΕΧΑΚΗ-ΣΤ.ΠΑΝΟΡΜΟΥ-ΓΑΛΑΤΣΙ-ΚΥΨΕΛΗ",
-          "variants": 3,
-          "tripCount": 215,
+          "variants": 2,
+          "tripCount": 225,
           "stops": 55,
           "lengthKm": 17.07,
           "stats": {
@@ -1295,7 +1211,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΣΥΝΤΑΓΜΑ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΣΥΝΤΑΓΜΑ(ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ) ",
           "variants": 2,
-          "tripCount": 462,
+          "tripCount": 502,
           "stops": 36,
           "lengthKm": 16.88,
           "stats": {
@@ -1316,7 +1232,7 @@
           "dir": "ΣΥΝΤΑΓΜΑ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΣΥΝΤΑΓΜΑ - ΠΕΙΡΑΙΑΣ(ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ) ",
           "variants": 1,
-          "tripCount": 585,
+          "tripCount": 640,
           "stops": 35,
           "lengthKm": 16.14,
           "stats": {
@@ -1365,8 +1281,8 @@
         {
           "dir": "ΜΟΥΣΕΙΟ - ΕΛΛΗΝΟΡΩΣΩΝ",
           "headsign": "ΜΟΥΣΕΙΟ - ΕΛΛΗΝΟΡΩΣΩΝ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
-          "variants": 1,
-          "tripCount": 240,
+          "variants": 2,
+          "tripCount": 233,
           "stops": 26,
           "lengthKm": 7.21,
           "stats": {
@@ -1395,7 +1311,7 @@
           "dir": "ΟΜΟΝΟΙΑ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΟΜΟΝΟΙΑ - ΠΕΙΡΑΙΑΣ",
           "variants": 1,
-          "tripCount": 330,
+          "tripCount": 344,
           "stops": 42,
           "lengthKm": 11.39,
           "stats": {
@@ -1416,7 +1332,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΟΜΟΝΟΙΑ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΟΜΟΝΟΙΑ",
           "variants": 1,
-          "tripCount": 321,
+          "tripCount": 340,
           "stops": 38,
           "lengthKm": 10.92,
           "stats": {
@@ -1445,7 +1361,7 @@
           "dir": "ΣΤ. ΥΠΕΡ. ΛΕΩΦ. ΚΗΦΙΣΟΥ - ΟΜΟΝΟΙΑ",
           "headsign": "ΣΤ. ΥΠΕΡ. ΛΕΩΦ. ΚΗΦΙΣΟΥ - ΟΜΟΝΟΙΑ (ΜΕΣΩ ΑΚΑΔ. ΠΛΑΤ.)",
           "variants": 1,
-          "tripCount": 621,
+          "tripCount": 616,
           "stops": 27,
           "lengthKm": 7.79,
           "stats": {
@@ -1460,27 +1376,6 @@
             "roundaboutSegs": 23,
             "extStart": 0,
             "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΣΤ.ΥΠΕΡ.ΛΕΩΦ. ΚΗΦΙΣΟΥ - ΟΜΟΝΟΙΑ",
-          "headsign": "ΣΤ.ΥΠΕΡ.ΛΕΩΦ. ΚΗΦΙΣΟΥ - ΟΜΟΝΟΙΑ (ΑΠΟ ΕΘΝΙΚΟ ΘΕΑΤΡΟ ΕΩΣ ΣΤ.ΥΠΕΡ.ΛΕΩΦ.ΚΗΦΙΣΟΥ)",
-          "variants": 2,
-          "tripCount": 7,
-          "stops": 14,
-          "lengthKm": 3.59,
-          "stats": {
-            "observations": 123,
-            "matched": 123,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 5.037921142342614,
-            "roundaboutSegs": 14,
-            "extStart": 0,
-            "extEnd": 575
           }
         }
       ],
@@ -1524,7 +1419,7 @@
           "dir": "ΠΕΡΙΣΣΟΣ - ΛΑΜΠΡΙΝΗ - ΟΜΟΝΟΙΑ",
           "headsign": "ΠΕΡΙΣΣΟΣ - ΛΑΜΠΡΙΝΗ - ΟΜΟΝΟΙΑ ",
           "variants": 2,
-          "tripCount": 275,
+          "tripCount": 302,
           "stops": 59,
           "lengthKm": 16.96,
           "stats": {
@@ -1611,7 +1506,7 @@
           "dir": "ΑΛΙΜΟΣ - ΕΛΛΗΝΙΚΟ",
           "headsign": "ΑΛΙΜΟΣ - ΕΛΛΗΝΙΚΟ",
           "variants": 1,
-          "tripCount": 128,
+          "tripCount": 138,
           "stops": 38,
           "lengthKm": 12.48,
           "stats": {
@@ -1632,7 +1527,7 @@
           "dir": "ΕΛΛΗΝΙΚΟ - ΑΛΙΜΟΣ",
           "headsign": "ΕΛΛΗΝΙΚΟ - ΑΛΙΜΟΣ",
           "variants": 1,
-          "tripCount": 134,
+          "tripCount": 144,
           "stops": 37,
           "lengthKm": 11.02,
           "stats": {
@@ -1660,8 +1555,8 @@
         {
           "dir": "ΑΓ. ΒΑΡΒΑΡΑ - ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ",
           "headsign": "ΑΓ. ΒΑΡΒΑΡΑ - ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ",
-          "variants": 2,
-          "tripCount": 234,
+          "variants": 1,
+          "tripCount": 245,
           "stops": 63,
           "lengthKm": 17.16,
           "stats": {
@@ -1689,8 +1584,8 @@
         {
           "dir": "ΣΤ. ΑΓ. ΔΗΜΗΤΡΙΟΣ - ΑΝΩ ΚΑΛΑΜΑΚΙ",
           "headsign": "ΣΤ. ΑΓ. ΔΗΜΗΤΡΙΟΣ - ΑΝΩ ΚΑΛΑΜΑΚΙ ",
-          "variants": 4,
-          "tripCount": 320,
+          "variants": 1,
+          "tripCount": 376,
           "stops": 41,
           "lengthKm": 12.52,
           "stats": {
@@ -1718,8 +1613,8 @@
         {
           "dir": "ΑΓ. ΔΗΜΗΤΡΙΟΣ - ΣΤ. ΔΑΦΝΗ",
           "headsign": "ΑΓ. ΔΗΜΗΤΡΙΟΣ - ΣΤ. ΔΑΦΝΗ ",
-          "variants": 2,
-          "tripCount": 525,
+          "variants": 1,
+          "tripCount": 550,
           "stops": 37,
           "lengthKm": 10.65,
           "stats": {
@@ -1760,27 +1655,6 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 2.6285681388873523,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΚΙΤΣΙ - ΒΟΥΛΙΑΓΜΕΝΗ - ΑΚΑΔΗΜΙΑ",
-          "headsign": "ΚΙΤΣΙ - ΒΟΥΛΙΑΓΜΕΝΗ - ΑΚΑΔΗΜΙΑ (ΚΙΤΣΙ - ΑΚΑΔΗΜΙΑ)",
-          "variants": 1,
-          "tripCount": 7,
-          "stops": 99,
-          "lengthKm": 38.35,
-          "stats": {
-            "observations": 771,
-            "matched": 771,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.9287206290070107,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -1940,7 +1814,7 @@
           "dir": "ΠΡΟΑΣΤΙΑΚΟΣ ΣΤ. ΚΟΡΩΠΙΟΥ - ΒΑΡΗ - ΓΛΥΦΑΔΑ",
           "headsign": "ΠΡΟΑΣΤΙΑΚΟΣ ΣΤ. ΚΟΡΩΠΙΟΥ - ΒΑΡΗ - ΓΛΥΦΑΔΑ (Προσωρινή λόγω έργων)",
           "variants": 2,
-          "tripCount": 152,
+          "tripCount": 78,
           "stops": 52,
           "lengthKm": 24.75,
           "stats": {
@@ -2018,8 +1892,8 @@
         {
           "dir": "ΒΑΡΚΙΖΑ - ΣΤ. ΑΡΓΥΡΟΥΠΟΛΗ",
           "headsign": "ΒΑΡΚΙΖΑ - ΣΤ. ΑΡΓΥΡΟΥΠΟΛΗ",
-          "variants": 5,
-          "tripCount": 243,
+          "variants": 1,
+          "tripCount": 304,
           "stops": 90,
           "lengthKm": 37.41,
           "stats": {
@@ -2047,8 +1921,8 @@
         {
           "dir": "ΣΑΡΩΝΙΔΑ - ΑΝΑΒΥΣΣΟΣ - ΠΑΛΑΙΑ ΦΩΚΑΙΑ",
           "headsign": "ΣΑΡΩΝΙΔΑ - ΑΝΑΒΥΣΣΟΣ - ΠΑΛΑΙΑ ΦΩΚΑΙΑ (Προσωρινή λόγω έργων)",
-          "variants": 2,
-          "tripCount": 91,
+          "variants": 1,
+          "tripCount": 77,
           "stops": 48,
           "lengthKm": 25,
           "stats": {
@@ -2077,7 +1951,7 @@
           "dir": "ΓΛΥΦΑΔΑ - ΑΓΙΑ ΤΡΙΑΔΑ - ΣΤ. ΑΡΓΥΡΟΥΠΟΛΗΣ",
           "headsign": "ΓΛΥΦΑΔΑ - ΑΓΙΑ ΤΡΙΑΔΑ - ΣΤ. ΑΡΓΥΡΟΥΠΟΛΗΣ ",
           "variants": 3,
-          "tripCount": 173,
+          "tripCount": 176,
           "stops": 84,
           "lengthKm": 25.94,
           "stats": {
@@ -2106,7 +1980,7 @@
           "dir": "ΠΑΛ. ΦΑΛΗΡΟ - ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ",
           "headsign": "ΠΑΛ. ΦΑΛΗΡΟ - ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ",
           "variants": 2,
-          "tripCount": 216,
+          "tripCount": 227,
           "stops": 69,
           "lengthKm": 18.08,
           "stats": {
@@ -2134,8 +2008,8 @@
         {
           "dir": "ΓΛΥΦΑΔΑ - ΤΕΡΨΙΘΕΑ",
           "headsign": "ΓΛΥΦΑΔΑ - ΤΕΡΨΙΘΕΑ ",
-          "variants": 4,
-          "tripCount": 181,
+          "variants": 2,
+          "tripCount": 178,
           "stops": 76,
           "lengthKm": 26.3,
           "stats": {
@@ -2164,7 +2038,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - Ν.ΣΜΥΡΝΗ",
           "headsign": "ΠΕΙΡΑΙΑΣ - Ν.ΣΜΥΡΝΗ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
           "variants": 1,
-          "tripCount": 232,
+          "tripCount": 227,
           "stops": 51,
           "lengthKm": 22.89,
           "stats": {
@@ -2193,7 +2067,7 @@
           "dir": "ΑΜΑΞ. ΑΓ. ΔΗΜΗΤΡΙΟΥ - ΣΤ. ΔΑΦΝΗΣ",
           "headsign": "ΑΜΑΞ. ΑΓ. ΔΗΜΗΤΡΙΟΥ - ΣΤ. ΔΑΦΝΗΣ ",
           "variants": 1,
-          "tripCount": 354,
+          "tripCount": 341,
           "stops": 31,
           "lengthKm": 8.57,
           "stats": {
@@ -2222,7 +2096,7 @@
           "dir": "ΑΝΩ Ν. ΣΜΥΡΝΗ Β - ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ",
           "headsign": "ΑΝΩ Ν. ΣΜΥΡΝΗ Β - ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ",
           "variants": 1,
-          "tripCount": 201,
+          "tripCount": 211,
           "stops": 43,
           "lengthKm": 11.63,
           "stats": {
@@ -2251,7 +2125,7 @@
           "dir": "ΑΝΩ Ν. ΣΜΥΡΝΗ Α - ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ",
           "headsign": "ΑΝΩ Ν. ΣΜΥΡΝΗ Α - ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ",
           "variants": 1,
-          "tripCount": 214,
+          "tripCount": 218,
           "stops": 42,
           "lengthKm": 12.21,
           "stats": {
@@ -2280,7 +2154,7 @@
           "dir": "ΓΛΥΦΑΔΑ - ΠΟΛΥΓΩΝΟ",
           "headsign": "ΓΛΥΦΑΔΑ - ΠΟΛΥΓΩΝΟ (Προσωρινή λόγω έργων)",
           "variants": 2,
-          "tripCount": 228,
+          "tripCount": 235,
           "stops": 89,
           "lengthKm": 28.09,
           "stats": {
@@ -2301,7 +2175,7 @@
           "dir": "ΠΟΛΥΓΩΝΟ - ΓΛΥΦΑΔΑ",
           "headsign": "ΠΟΛΥΓΩΝΟ - ΓΛΥΦΑΔΑ (Προσωρινή λόγω έργων)",
           "variants": 2,
-          "tripCount": 219,
+          "tripCount": 224,
           "stops": 79,
           "lengthKm": 29.07,
           "stats": {
@@ -2326,27 +2200,6 @@
       "mode": "bus",
       "color": "#0059a9",
       "dirs": [
-        {
-          "dir": "ΣΤ. ΔΑΦΝΗ - ΚΑΛΑΜΑΚΙ",
-          "headsign": "ΣΤ. ΔΑΦΝΗ - ΚΑΛΑΜΑΚΙ (ΕΩΣ ΣΤΑΣΗ ΜΕΤΑΜΟΡΦΩΣΗ)",
-          "variants": 2,
-          "tripCount": 14,
-          "stops": 20,
-          "lengthKm": 5.34,
-          "stats": {
-            "observations": 177,
-            "matched": 177,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.2238306471358373,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
         {
           "dir": "ΣΤ.ΔΑΦΝΗ - ΚΑΛΑΜΑΚΙ",
           "headsign": "ΣΤ.ΔΑΦΝΗ - ΚΑΛΑΜΑΚΙ ",
@@ -2409,7 +2262,7 @@
           "dir": "ΠΑΝ/ΜΑ ΒΟΥΛΑΣ - Α.ΓΛΥΦΑΔΑ - ΣΤ. ΑΡΓΥΡΟΥΠΟΛΗ",
           "headsign": "ΠΑΝ/ΜΑ ΒΟΥΛΑΣ - Α.ΓΛΥΦΑΔΑ - ΣΤ. ΑΡΓΥΡΟΥΠΟΛΗ",
           "variants": 1,
-          "tripCount": 281,
+          "tripCount": 276,
           "stops": 53,
           "lengthKm": 17.15,
           "stats": {
@@ -2438,7 +2291,7 @@
           "dir": "ΒΟΥΛΑ - ΠΑΝΟΡΑΜΑ",
           "headsign": "ΒΟΥΛΑ - ΠΑΝΟΡΑΜΑ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 132,
+          "tripCount": 144,
           "stops": 30,
           "lengthKm": 11.63,
           "stats": {
@@ -2463,27 +2316,6 @@
       "mode": "bus",
       "color": "#0059a9",
       "dirs": [
-        {
-          "dir": "ΣΤ. ΑΓ. ΔΗΜΗΤΡΙΟΣ - Κ. ΗΛ/ΠΟΛΗ - ΑΡΓ/ΠΟΛΗ - ΤΕΡΨΙΘΕΑ",
-          "headsign": "ΣΤ. ΑΓ. ΔΗΜΗΤΡΙΟΣ - Κ. ΗΛ/ΠΟΛΗ - ΑΡΓ/ΠΟΛΗ - ΤΕΡΨΙΘΕΑ (ΑΠΟ ΣΤΑΣΗ ΔΑΡΖΕΝΤΑ)",
-          "variants": 3,
-          "tripCount": 5,
-          "stops": 29,
-          "lengthKm": 8.13,
-          "stats": {
-            "observations": 127,
-            "matched": 127,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.79103412852308,
-            "roundaboutSegs": 3,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
         {
           "dir": "ΣΤ.ΑΓ.ΔΗΜΗΤΡΙΟΣ - Κ.ΗΛ/ΠΟΛΗ-ΑΡΓ/ΠΟΛΗ-ΤΕΡΨΙΘΕΑ",
           "headsign": "ΣΤ.ΑΓ.ΔΗΜΗΤΡΙΟΣ - Κ.ΗΛ/ΠΟΛΗ-ΑΡΓ/ΠΟΛΗ-ΤΕΡΨΙΘΕΑ",
@@ -2537,8 +2369,8 @@
         {
           "dir": "ΒΑΡΚΙΖΑ - ΣΤ. ΑΡΓΥΡΟΥΠΟΛΗ",
           "headsign": "ΒΑΡΚΙΖΑ - ΣΤ. ΑΡΓΥΡΟΥΠΟΛΗ",
-          "variants": 5,
-          "tripCount": 479,
+          "variants": 2,
+          "tripCount": 514,
           "stops": 72,
           "lengthKm": 26.4,
           "stats": {
@@ -2564,31 +2396,10 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "ΣΤ. ΑΓ. ΔΗΜΗΤΡΙΟΣ - ΑΡΓΥΡΟΥΠΟΛΗ",
-          "headsign": "ΣΤ. ΑΓ. ΔΗΜΗΤΡΙΟΣ - ΑΡΓΥΡΟΥΠΟΛΗ (ΑΠΟ ΑΡΓΥΡΟΥΠΟΛΗ ΣΤΑΣΗ ΜΙΚΡΑΣ ΑΣΙΑΣ)",
-          "variants": 2,
-          "tripCount": 12,
-          "stops": 30,
-          "lengthKm": 8.53,
-          "stats": {
-            "observations": 149,
-            "matched": 149,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.251488506895073,
-            "roundaboutSegs": 73,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "ΣΤ.ΑΓ.ΔΗΜΗΤΡΙΟΣ - ΑΡΓΥΡΟΥΠΟΛΗ",
           "headsign": "ΣΤ.ΑΓ.ΔΗΜΗΤΡΙΟΣ - ΑΡΓΥΡΟΥΠΟΛΗ",
           "variants": 1,
-          "tripCount": 148,
+          "tripCount": 158,
           "stops": 61,
           "lengthKm": 17.39,
           "stats": {
@@ -2616,8 +2427,8 @@
         {
           "dir": "ΚΑΡΕΑΣ - ΑΚΑΔΗΜΙΑ",
           "headsign": "ΚΑΡΕΑΣ - ΑΚΑΔΗΜΙΑ",
-          "variants": 2,
-          "tripCount": 314,
+          "variants": 1,
+          "tripCount": 363,
           "stops": 55,
           "lengthKm": 14.85,
           "stats": {
@@ -2645,7 +2456,7 @@
         {
           "dir": "ΣΤΡ. ΣΑΚΕΤΑ - ΑΚΑΔΗΜΙΑ",
           "headsign": "ΣΤΡ. ΣΑΚΕΤΑ - ΑΚΑΔΗΜΙΑ",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 4,
           "stops": 45,
           "lengthKm": 12.41,
@@ -2674,8 +2485,8 @@
         {
           "dir": "ΕΚΕΜΣ - ΑΚΑΔΗΜΙΑ",
           "headsign": "ΕΚΕΜΣ - ΑΚΑΔΗΜΙΑ",
-          "variants": 3,
-          "tripCount": 40,
+          "variants": 1,
+          "tripCount": 41,
           "stops": 46,
           "lengthKm": 13.48,
           "stats": {
@@ -2703,8 +2514,8 @@
         {
           "dir": "ΓΛΥΦΑΔΑ - ΣΟΥΡΜΕΝΑ - ΤΕΡΨΙΘΕΑ",
           "headsign": "ΓΛΥΦΑΔΑ - ΣΟΥΡΜΕΝΑ - ΤΕΡΨΙΘΕΑ",
-          "variants": 6,
-          "tripCount": 175,
+          "variants": 3,
+          "tripCount": 176,
           "stops": 57,
           "lengthKm": 17.32,
           "stats": {
@@ -2733,7 +2544,7 @@
           "dir": "ΑΓ. ΜΑΡΙΝΑ - ΣΤ. ΔΑΦΝΗΣ",
           "headsign": "ΑΓ. ΜΑΡΙΝΑ - ΣΤ. ΔΑΦΝΗΣ ",
           "variants": 1,
-          "tripCount": 485,
+          "tripCount": 436,
           "stops": 30,
           "lengthKm": 8.54,
           "stats": {
@@ -2746,27 +2557,6 @@
             "rawMeters": 0,
             "meanError": 2.1393555926347037,
             "roundaboutSegs": 22,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΑΓ.ΜΑΡΙΝΑ - ΣΤ. ΔΑΦΝΗΣ",
-          "headsign": "ΑΓ.ΜΑΡΙΝΑ - ΣΤ. ΔΑΦΝΗΣ (ΕΩΣ ΑΚΑΔΗΜΙΑ)",
-          "variants": 1,
-          "tripCount": 5,
-          "stops": 23,
-          "lengthKm": 7.42,
-          "stats": {
-            "observations": 260,
-            "matched": 260,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.023696177633973,
-            "roundaboutSegs": 12,
             "extStart": 0,
             "extEnd": 0
           }
@@ -2812,7 +2602,7 @@
           "dir": "ΥΜΗΤΤΟΣ - ΜΕΤΑΜΟΡΦΩΣΗ - ΑΚΑΔΗΜΙΑ",
           "headsign": "ΥΜΗΤΤΟΣ - ΜΕΤΑΜΟΡΦΩΣΗ - ΑΚΑΔΗΜΙΑ",
           "variants": 1,
-          "tripCount": 255,
+          "tripCount": 267,
           "stops": 37,
           "lengthKm": 9.56,
           "stats": {
@@ -2891,7 +2681,7 @@
           "dir": "ΖΩΟΔΟΧΟΣ ΠΗΓΗ - ΑΚΑΔΗΜΙΑ",
           "headsign": "ΖΩΟΔΟΧΟΣ ΠΗΓΗ - ΑΚΑΔΗΜΙΑ(Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 399,
+          "tripCount": 453,
           "stops": 43,
           "lengthKm": 11.56,
           "stats": {
@@ -2920,7 +2710,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΑΓ. ΔΗΜΗΤΡΙΟΣ -  ΣΤ. ΔΑΦΝΗ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΑΓ. ΔΗΜΗΤΡΙΟΣ -  ΣΤ. ΔΑΦΝΗ(Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 138,
+          "tripCount": 156,
           "stops": 43,
           "lengthKm": 16.39,
           "stats": {
@@ -2941,7 +2731,7 @@
           "dir": "ΣΤ. ΔΑΦΝΗ - ΑΓ. ΔΗΜΗΤΡΙΟΣ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΣΤ. ΔΑΦΝΗ - ΑΓ. ΔΗΜΗΤΡΙΟΣ - ΠΕΙΡΑΙΑΣ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 143,
+          "tripCount": 161,
           "stops": 44,
           "lengthKm": 17.41,
           "stats": {
@@ -2970,7 +2760,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΣΤ. ΔΑΦΝΗ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΣΤ. ΔΑΦΝΗ",
           "variants": 1,
-          "tripCount": 297,
+          "tripCount": 343,
           "stops": 46,
           "lengthKm": 13.45,
           "stats": {
@@ -2991,7 +2781,7 @@
           "dir": "ΣΤ. ΔΑΦΝΗ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΣΤ. ΔΑΦΝΗ - ΠΕΙΡΑΙΑΣ",
           "variants": 2,
-          "tripCount": 237,
+          "tripCount": 296,
           "stops": 47,
           "lengthKm": 13.95,
           "stats": {
@@ -3020,7 +2810,7 @@
           "dir": "ΑΓ. ΔΗΜΗΤΡΙΟΣ - ΣΤ. ΚΑΛΛΙΘΕΑ",
           "headsign": "ΑΓ. ΔΗΜΗΤΡΙΟΣ - ΣΤ. ΚΑΛΛΙΘΕΑ",
           "variants": 1,
-          "tripCount": 317,
+          "tripCount": 344,
           "stops": 34,
           "lengthKm": 9.48,
           "stats": {
@@ -3041,7 +2831,7 @@
           "dir": "ΣΤ. ΚΑΛΛΙΘΕΑ - ΑΓ. ΔΗΜΗΤΡΙΟΣ",
           "headsign": "ΣΤ. ΚΑΛΛΙΘΕΑ - ΑΓ. ΔΗΜΗΤΡΙΟΣ",
           "variants": 1,
-          "tripCount": 318,
+          "tripCount": 344,
           "stops": 35,
           "lengthKm": 9.45,
           "stats": {
@@ -3070,7 +2860,7 @@
           "dir": "ΑΝΩ ΙΛΙΣΙΑ - ΑΚΑΔΗΜΙΑ",
           "headsign": "ΑΝΩ ΙΛΙΣΙΑ - ΑΚΑΔΗΜΙΑ",
           "variants": 1,
-          "tripCount": 359,
+          "tripCount": 418,
           "stops": 34,
           "lengthKm": 10.08,
           "stats": {
@@ -3099,7 +2889,7 @@
           "dir": "ΠΑΝΕΠΙΣΤΗΜΙΟΥΠΟΛΗ - ΑΚΑΔΗΜΙΑ",
           "headsign": "ΠΑΝΕΠΙΣΤΗΜΙΟΥΠΟΛΗ - ΑΚΑΔΗΜΙΑ",
           "variants": 1,
-          "tripCount": 189,
+          "tripCount": 204,
           "stops": 32,
           "lengthKm": 10.47,
           "stats": {
@@ -3128,7 +2918,7 @@
           "dir": "ΕΛ.ΒΕΝΙΖΕΛΟΥ - ΚΑΙΣΑΡΙΑΝΗ",
           "headsign": "ΕΛ.ΒΕΝΙΖΕΛΟΥ - ΚΑΙΣΑΡΙΑΝΗ",
           "variants": 1,
-          "tripCount": 505,
+          "tripCount": 510,
           "stops": 34,
           "lengthKm": 9.93,
           "stats": {
@@ -3149,7 +2939,7 @@
           "dir": "ΚΑΙΣΑΡΙΑΝΗ - ΕΛ. ΒΕΝΙΖΕΛΟΥ",
           "headsign": "ΚΑΙΣΑΡΙΑΝΗ - ΕΛ. ΒΕΝΙΖΕΛΟΥ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 512,
+          "tripCount": 522,
           "stops": 34,
           "lengthKm": 9.74,
           "stats": {
@@ -3178,7 +2968,7 @@
           "dir": "ΑΓ. ΑΡΤΕΜΙΟΣ - ΑΝΩ ΠΕΤΡΑΛΩΝΑ",
           "headsign": "ΑΓ. ΑΡΤΕΜΙΟΣ - ΑΝΩ ΠΕΤΡΑΛΩΝΑ ",
           "variants": 2,
-          "tripCount": 175,
+          "tripCount": 184,
           "stops": 30,
           "lengthKm": 10.23,
           "stats": {
@@ -3199,7 +2989,7 @@
           "dir": "ΑΝΩ ΠΕΤΡΑΛΩΝΑ - ΑΓ. ΑΡΤΕΜΙΟΣ",
           "headsign": "ΑΝΩ ΠΕΤΡΑΛΩΝΑ - ΑΓ. ΑΡΤΕΜΙΟΣ",
           "variants": 2,
-          "tripCount": 180,
+          "tripCount": 186,
           "stops": 33,
           "lengthKm": 9.75,
           "stats": {
@@ -3228,7 +3018,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΑΓ. ΔΗΜΗΤΡΙΟΣ -ΣΤ. ΔΑΦΝΗ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΑΓ. ΔΗΜΗΤΡΙΟΣ -ΣΤ. ΔΑΦΝΗ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 138,
+          "tripCount": 150,
           "stops": 43,
           "lengthKm": 14.67,
           "stats": {
@@ -3249,7 +3039,7 @@
           "dir": "ΣΤ. ΔΑΦΝΗ-ΑΓ. ΔΗΜΗΤΡΙΟΣ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΣΤ. ΔΑΦΝΗ-ΑΓ. ΔΗΜΗΤΡΙΟΣ - ΠΕΙΡΑΙΑΣ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 136,
+          "tripCount": 148,
           "stops": 44,
           "lengthKm": 18.14,
           "stats": {
@@ -3278,7 +3068,7 @@
           "dir": "ΑΚΡΟΠΟΛΗ - ΖΩΓΡΑΦΟΥ",
           "headsign": "ΑΚΡΟΠΟΛΗ - ΖΩΓΡΑΦΟΥ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 293,
+          "tripCount": 307,
           "stops": 31,
           "lengthKm": 9.51,
           "stats": {
@@ -3299,7 +3089,7 @@
           "dir": "ΖΩΓΡΑΦΟΥ - ΑΚΡΟΠΟΛΗ",
           "headsign": "ΖΩΓΡΑΦΟΥ - ΑΚΡΟΠΟΛΗ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 316,
+          "tripCount": 334,
           "stops": 29,
           "lengthKm": 9.06,
           "stats": {
@@ -3328,7 +3118,7 @@
           "dir": "ΖΩΓΡΑΦΟΥ - ΑΚΑΔΗΜΙΑ",
           "headsign": "ΖΩΓΡΑΦΟΥ - ΑΚΑΔΗΜΙΑ ",
           "variants": 1,
-          "tripCount": 339,
+          "tripCount": 343,
           "stops": 33,
           "lengthKm": 10.17,
           "stats": {
@@ -3356,8 +3146,8 @@
         {
           "dir": "ΑΝΩ ΗΛΙΟΥΠΟΛΗ - ΣΤ. ΔΑΦΝΗΣ",
           "headsign": "ΑΝΩ ΗΛΙΟΥΠΟΛΗ - ΣΤ. ΔΑΦΝΗΣ ",
-          "variants": 2,
-          "tripCount": 327,
+          "variants": 1,
+          "tripCount": 411,
           "stops": 47,
           "lengthKm": 13.55,
           "stats": {
@@ -3378,6 +3168,64 @@
       "rank": 1
     },
     {
+      "line": "242",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "ΣΤ. ΚΑΤΕΧΑΚΗ - ΠΟΛΥΤΕXNΕΙΟΥΠΟΛΗ",
+          "headsign": "ΣΤ. ΚΑΤΕΧΑΚΗ - ΠΟΛΥΤΕXNΕΙΟΥΠΟΛΗ",
+          "variants": 1,
+          "tripCount": 200,
+          "stops": 20,
+          "lengthKm": 7.59,
+          "stats": {
+            "observations": 294,
+            "matched": 294,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.5991802882234363,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "250",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "ΠΑΝΕΠΙΣΤΗΜΙΟΥΠΟΛΗ - ΣΤ. ΕΥΑΓΓΕΛΙΣΜΟΣ",
+          "headsign": "ΠΑΝΕΠΙΣΤΗΜΙΟΥΠΟΛΗ - ΣΤ. ΕΥΑΓΓΕΛΙΣΜΟΣ",
+          "variants": 1,
+          "tripCount": 220,
+          "stops": 26,
+          "lengthKm": 8.71,
+          "stats": {
+            "observations": 379,
+            "matched": 379,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.8151324058946336,
+            "roundaboutSegs": 5,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
       "line": "300",
       "mode": "bus",
       "color": "#0059a9",
@@ -3385,7 +3233,7 @@
         {
           "dir": "ΠΛ. ΚΑΡΑΪΣΚΑΚΗ - ΤΖΑΝΕΙΟ",
           "headsign": "ΠΛ. ΚΑΡΑΪΣΚΑΚΗ - ΤΖΑΝΕΙΟ",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 209,
           "stops": 16,
           "lengthKm": 4.96,
@@ -3414,7 +3262,7 @@
         {
           "dir": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ - ΑΝΘΟΥΣΑ - ΠΕΝΤΕΛΗ",
           "headsign": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ - ΑΝΘΟΥΣΑ - ΠΕΝΤΕΛΗ",
-          "variants": 3,
+          "variants": 2,
           "tripCount": 93,
           "stops": 82,
           "lengthKm": 28.37,
@@ -3472,7 +3320,7 @@
         {
           "dir": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ - ΓΕΡΑΚΑΣ",
           "headsign": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ - ΓΕΡΑΚΑΣ",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 318,
           "stops": 49,
           "lengthKm": 15.37,
@@ -3502,7 +3350,7 @@
           "dir": "ΑΡΤΕΜΙΣ (ΒΡΑΥΡΩΝΑ) - ΣΤ. ΝΟΜΙΣΜΑΤΟΚΟΠΕΙΟ",
           "headsign": "ΑΡΤΕΜΙΣ (ΒΡΑΥΡΩΝΑ) - ΣΤ. ΝΟΜΙΣΜΑΤΟΚΟΠΕΙΟ",
           "variants": 1,
-          "tripCount": 284,
+          "tripCount": 289,
           "stops": 75,
           "lengthKm": 27.66,
           "stats": {
@@ -3523,7 +3371,7 @@
           "dir": "ΣΤ. ΝΟΜΙΣΜΑΤΟΚΟΠΕΙΟ - ΑΡΤΕΜΙΣ",
           "headsign": "ΣΤ. ΝΟΜΙΣΜΑΤΟΚΟΠΕΙΟ - ΑΡΤΕΜΙΣ (ΒΡΑΥΡΩΝΑ)",
           "variants": 1,
-          "tripCount": 270,
+          "tripCount": 265,
           "stops": 75,
           "lengthKm": 27.61,
           "stats": {
@@ -3552,7 +3400,7 @@
           "dir": "ΑΡΤΕΜΙΣ (ΑΓ. ΝΙΚΟΛΑΟΣ) - ΣΤ. ΝΟΜΙΣΜΑΤΟΚΟΠΕΙΟ",
           "headsign": "ΑΡΤΕΜΙΣ (ΑΓ. ΝΙΚΟΛΑΟΣ) - ΣΤ. ΝΟΜΙΣΜΑΤΟΚΟΠΕΙΟ",
           "variants": 1,
-          "tripCount": 298,
+          "tripCount": 303,
           "stops": 70,
           "lengthKm": 25.42,
           "stats": {
@@ -3573,7 +3421,7 @@
           "dir": "ΣΤ. ΝΟΜΙΣΜΑΤΟΚΟΠΕΙΟ - ΑΡΤΕΜΙΣ",
           "headsign": "ΣΤ. ΝΟΜΙΣΜΑΤΟΚΟΠΕΙΟ - ΑΡΤΕΜΙΣ (ΑΓ. ΝΙΚΟΛΑΟΣ)",
           "variants": 1,
-          "tripCount": 277,
+          "tripCount": 272,
           "stops": 70,
           "lengthKm": 24.84,
           "stats": {
@@ -3601,7 +3449,7 @@
         {
           "dir": "ΣΤ.ΔΟΥΚ.ΠΛΑΚΕΝΤΙΑΣ-ΔΗΜ.ΓΕΡΑΚΑ- ΜΠΑΛΑΝΑ ΓΕΡΑΚΑ",
           "headsign": "ΣΤ.ΔΟΥΚ.ΠΛΑΚΕΝΤΙΑΣ-ΔΗΜ.ΓΕΡΑΚΑ- ΜΠΑΛΑΝΑ ΓΕΡΑΚΑ",
-          "variants": 4,
+          "variants": 2,
           "tripCount": 118,
           "stops": 52,
           "lengthKm": 17.59,
@@ -3680,8 +3528,8 @@
         {
           "dir": "ΚΟΡΩΠΙ - ΠΑΙΑΝΙΑ - ΣΤ. ΝΟΜΙΣΜΑΤΟΚΟΠΕΙΟ",
           "headsign": "ΚΟΡΩΠΙ - ΠΑΙΑΝΙΑ - ΣΤ. ΝΟΜΙΣΜΑΤΟΚΟΠΕΙΟ",
-          "variants": 2,
-          "tripCount": 358,
+          "variants": 1,
+          "tripCount": 354,
           "stops": 57,
           "lengthKm": 18.99,
           "stats": {
@@ -3702,7 +3550,7 @@
           "dir": "ΣΤ. ΝΟΜΙΣΜΑΤΟΚΟΠΕΙΟ - ΠΑΙΑΝΙΑ - ΚΟΡΩΠΙ",
           "headsign": "ΣΤ. ΝΟΜΙΣΜΑΤΟΚΟΠΕΙΟ - ΠΑΙΑΝΙΑ - ΚΟΡΩΠΙ",
           "variants": 1,
-          "tripCount": 352,
+          "tripCount": 343,
           "stops": 53,
           "lengthKm": 19.2,
           "stats": {
@@ -3730,8 +3578,8 @@
         {
           "dir": "ΚΟΡΩΠΙ - ΣΤ. ΠΡΟΑΣΤΙΑΚΟΥ - ΚΟΡΩΠΙ",
           "headsign": "ΚΟΡΩΠΙ - ΣΤ. ΠΡΟΑΣΤΙΑΚΟΥ - ΚΟΡΩΠΙ (Προσωρινή λόγω έργων)",
-          "variants": 3,
-          "tripCount": 214,
+          "variants": 1,
+          "tripCount": 212,
           "stops": 31,
           "lengthKm": 13.27,
           "stats": {
@@ -3760,18 +3608,18 @@
           "dir": "ΣΤ. ΚΟΡΩΠΙ - ΜΑΡΚΟΠΟΥΛΟ - ΠΟΡΤΟ ΡΑΦΤΗ - ΑΥΛΑΚΙ",
           "headsign": "ΣΤ. ΚΟΡΩΠΙ - ΜΑΡΚΟΠΟΥΛΟ - ΠΟΡΤΟ ΡΑΦΤΗ - ΑΥΛΑΚΙ ",
           "variants": 2,
-          "tripCount": 140,
-          "stops": 81,
-          "lengthKm": 43.86,
+          "tripCount": 61,
+          "stops": 78,
+          "lengthKm": 43.73,
           "stats": {
-            "observations": 1670,
-            "matched": 1670,
+            "observations": 1683,
+            "matched": 1683,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 3.6027829984838613,
+            "meanError": 3.525790081773661,
             "roundaboutSegs": 41,
             "extStart": 0,
             "extEnd": 0
@@ -3808,41 +3656,20 @@
         },
         {
           "dir": "Γ ΜΑΡΑΘΩΝΑΣ (ΜΕΣΩ ΠΑΡΑΛΙΑΣ) - ΝΕΑ ΜΑΚΡΗ - ΡΑΦΗΝΑ - ΜΑΤΙ - ΜΑΡΑΘΩΝΑΣ",
-          "headsign": "Γ ΜΑΡΑΘΩΝΑΣ (ΜΕΣΩ ΠΑΡΑΛΙΑΣ) - ΝΕΑ ΜΑΚΡΗ - ΡΑΦΗΝΑ - ΜΑΤΙ - ΜΑΡΑΘΩΝΑΣ",
-          "variants": 1,
-          "tripCount": 26,
-          "stops": 100,
-          "lengthKm": 46.84,
+          "headsign": "Γ ΜΑΡΑΘΩΝΑΣ (ΜΕΣΩ ΠΑΡΑΛΙΑΣ) - ΝΕΑ ΜΑΚΡΗ - ΡΑΦΗΝΑ - ΜΑΤΙ - ΜΑΡΑΘΩΝΑΣ (Προσωρινή λόγω έργων)",
+          "variants": 2,
+          "tripCount": 16,
+          "stops": 97,
+          "lengthKm": 47.03,
           "stats": {
-            "observations": 1974,
-            "matched": 1974,
+            "observations": 1976,
+            "matched": 1976,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.8723485295426183,
-            "roundaboutSegs": 40,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΓΡΑΜΜΑΤΙΚΟ-ΜΑΡΑΘΩΝΑΣ - ΝΕΑ ΜΑΚΡΗ - ΡΑΦΗΝΑ - ΜΑΤΙ - ΜΑΡΑΘΩΝΑΣ",
-          "headsign": "ΓΡΑΜΜΑΤΙΚΟ-ΜΑΡΑΘΩΝΑΣ - ΝΕΑ ΜΑΚΡΗ - ΡΑΦΗΝΑ - ΜΑΤΙ - ΜΑΡΑΘΩΝΑΣ",
-          "variants": 1,
-          "tripCount": 30,
-          "stops": 85,
-          "lengthKm": 48.58,
-          "stats": {
-            "observations": 2107,
-            "matched": 2107,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.593563309363673,
+            "meanError": 3.0574786270449863,
             "roundaboutSegs": 40,
             "extStart": 0,
             "extEnd": 0
@@ -3850,20 +3677,20 @@
         },
         {
           "dir": "ΜΑΡΑΘΩΝΑΣ - ΝΕΑ ΜΑΚΡΗ - ΡΑΦΗΝΑ - ΜΑΤΙ - ΜΑΡΑΘΩΝΑΣ",
-          "headsign": "ΜΑΡΑΘΩΝΑΣ - ΝΕΑ ΜΑΚΡΗ - ΡΑΦΗΝΑ - ΜΑΤΙ - ΜΑΡΑΘΩΝΑΣ",
-          "variants": 3,
-          "tripCount": 78,
-          "stops": 86,
-          "lengthKm": 41.7,
+          "headsign": "ΜΑΡΑΘΩΝΑΣ - ΝΕΑ ΜΑΚΡΗ - ΡΑΦΗΝΑ - ΜΑΤΙ - ΜΑΡΑΘΩΝΑΣ (Προσωρινή λόγω έργων)",
+          "variants": 2,
+          "tripCount": 24,
+          "stops": 83,
+          "lengthKm": 41.75,
           "stats": {
-            "observations": 1825,
-            "matched": 1825,
+            "observations": 1823,
+            "matched": 1823,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.518769410755526,
+            "meanError": 2.619694776733972,
             "roundaboutSegs": 40,
             "extStart": 0,
             "extEnd": 0
@@ -3880,8 +3707,8 @@
         {
           "dir": "ΣΤ. ΚΟΡΩΠΙ - ΚΑΛΥΒΙΑ",
           "headsign": "ΣΤ. ΚΟΡΩΠΙ - ΚΑΛΥΒΙΑ (ΚΥΚΛΙΚΗ)",
-          "variants": 3,
-          "tripCount": 72,
+          "variants": 2,
+          "tripCount": 53,
           "stops": 60,
           "lengthKm": 33.49,
           "stats": {
@@ -3909,7 +3736,7 @@
         {
           "dir": "Β Ν. ΒΟΥΤΖΑΣ (2ο Γυμνάσιο) - ΠΑΛΛΗΝΗ - ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ",
           "headsign": "Β Ν. ΒΟΥΤΖΑΣ (2ο Γυμνάσιο) - ΠΑΛΛΗΝΗ - ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ ",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 35,
           "stops": 53,
           "lengthKm": 19.23,
@@ -3930,7 +3757,7 @@
         {
           "dir": "Β ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ - ΠΑΛΛΗΝΗ - Ν. ΒΟΥΤΖΑΣ",
           "headsign": "Β ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ - ΠΑΛΛΗΝΗ - Ν. ΒΟΥΤΖΑΣ (2ο Γυμνάσιο)",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 27,
           "stops": 53,
           "lengthKm": 19.88,
@@ -3951,7 +3778,7 @@
         {
           "dir": "Γ ΝΕΑ ΜΑΚΡΗ - ΠΑΛΛΗΝΗ - ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ",
           "headsign": "Γ ΝΕΑ ΜΑΚΡΗ - ΠΑΛΛΗΝΗ - ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 61,
           "stops": 65,
           "lengthKm": 24.31,
@@ -3993,7 +3820,7 @@
         {
           "dir": "ΡΑΦΗΝΑ - ΠΑΛΛΗΝΗ - ΣΤ.ΔΟΥΚ.ΠΛΑΚΕΝΤΙΑΣ",
           "headsign": "ΡΑΦΗΝΑ - ΠΑΛΛΗΝΗ - ΣΤ.ΔΟΥΚ.ΠΛΑΚΕΝΤΙΑΣ",
-          "variants": 3,
+          "variants": 1,
           "tripCount": 131,
           "stops": 49,
           "lengthKm": 17.55,
@@ -4014,8 +3841,8 @@
         {
           "dir": "ΣΤ.ΔΟΥΚ.ΠΛΑΚΕΝΤΙΑΣ - ΠΑΛΛΗΝΗ - ΡΑΦΗΝΑ",
           "headsign": "ΣΤ.ΔΟΥΚ.ΠΛΑΚΕΝΤΙΑΣ - ΠΑΛΛΗΝΗ - ΡΑΦΗΝΑ ",
-          "variants": 3,
-          "tripCount": 134,
+          "variants": 1,
+          "tripCount": 139,
           "stops": 52,
           "lengthKm": 18.68,
           "stats": {
@@ -4093,8 +3920,8 @@
         {
           "dir": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ - ΠΑΛΛΗΝΗ - ΕΚΠΤ. ΧΩΡΙΟ",
           "headsign": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ - ΠΑΛΛΗΝΗ - ΕΚΠΤ. ΧΩΡΙΟ",
-          "variants": 3,
-          "tripCount": 264,
+          "variants": 1,
+          "tripCount": 266,
           "stops": 86,
           "lengthKm": 33.3,
           "stats": {
@@ -4209,8 +4036,8 @@
         {
           "dir": "ΚΟΡΩΠΙ - ΑΓ. ΜΑΡΙΝΑ",
           "headsign": "ΚΟΡΩΠΙ - ΑΓ. ΜΑΡΙΝΑ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
-          "variants": 2,
-          "tripCount": 171,
+          "variants": 1,
+          "tripCount": 161,
           "stops": 90,
           "lengthKm": 40.03,
           "stats": {
@@ -4239,7 +4066,7 @@
           "dir": "ΠΟΛΥΔΡΟΣΟ - ΣΤ. ΚΑΤΕΧΑΚΗ",
           "headsign": "ΠΟΛΥΔΡΟΣΟ - ΣΤ. ΚΑΤΕΧΑΚΗ",
           "variants": 1,
-          "tripCount": 277,
+          "tripCount": 302,
           "stops": 27,
           "lengthKm": 8.13,
           "stats": {
@@ -4260,7 +4087,7 @@
           "dir": "ΣΤ. ΚΑΤΕΧΑΚΗ - ΠΟΛΥΔΡΟΣΟ",
           "headsign": "ΣΤ. ΚΑΤΕΧΑΚΗ - ΠΟΛΥΔΡΟΣΟ",
           "variants": 1,
-          "tripCount": 271,
+          "tripCount": 301,
           "stops": 26,
           "lengthKm": 6.83,
           "stats": {
@@ -4288,8 +4115,8 @@
         {
           "dir": "ΣΤ. ΧΑΛΑΝΔΡΙ - ΜΕΛΙΣΣΙΑ",
           "headsign": "ΣΤ. ΧΑΛΑΝΔΡΙ - ΜΕΛΙΣΣΙΑ",
-          "variants": 3,
-          "tripCount": 206,
+          "variants": 1,
+          "tripCount": 212,
           "stops": 54,
           "lengthKm": 16.32,
           "stats": {
@@ -4397,7 +4224,7 @@
           "dir": "ΠΑΠΑΓΟΥ - ΣΤ. ΕΘΝ. ΑΜΥΝΑ",
           "headsign": "ΠΑΠΑΓΟΥ - ΣΤ. ΕΘΝ. ΑΜΥΝΑ ",
           "variants": 1,
-          "tripCount": 265,
+          "tripCount": 295,
           "stops": 43,
           "lengthKm": 12.38,
           "stats": {
@@ -4423,30 +4250,9 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "ΑΝΩ ΜΕΛΙΣΣΙΑ - ΟΑΚΑ",
-          "headsign": "ΑΝΩ ΜΕΛΙΣΣΙΑ - ΟΑΚΑ (ΑΠΟ ΣΤΑΣΗ ΚΛΕΙΟΥΣ)",
-          "variants": 1,
-          "tripCount": 12,
-          "stops": 31,
-          "lengthKm": 8.43,
-          "stats": {
-            "observations": 272,
-            "matched": 272,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.8382678744366143,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "ΟΑΚΑ - ΑΝΩ ΜΕΛΙΣΣΙΑ",
           "headsign": "ΟΑΚΑ - ΑΝΩ ΜΕΛΙΣΣΙΑ",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 261,
           "stops": 57,
           "lengthKm": 17.53,
@@ -4475,7 +4281,7 @@
         {
           "dir": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ - ΣΙΣΜΑΝΟΓΛΕΙΟ - ΧΑΛΑΝΔΡΙ",
           "headsign": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ - ΣΙΣΜΑΝΟΓΛΕΙΟ - ΧΑΛΑΝΔΡΙ",
-          "variants": 4,
+          "variants": 2,
           "tripCount": 192,
           "stops": 57,
           "lengthKm": 19.63,
@@ -4505,7 +4311,7 @@
           "dir": "ΣΤ. ΕΘΝ. ΑΜΥΝΑΣ - ΧΟΛΑΡΓΟΣ",
           "headsign": "ΣΤ. ΕΘΝ. ΑΜΥΝΑΣ - ΧΟΛΑΡΓΟΣ",
           "variants": 1,
-          "tripCount": 304,
+          "tripCount": 354,
           "stops": 23,
           "lengthKm": 6.23,
           "stats": {
@@ -4517,27 +4323,6 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 3.1125857457248616,
-            "roundaboutSegs": 13,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΣΤ.ΕΘΝ.ΑΜΥΝΑΣ - ΧΟΛΑΡΓΟΣ",
-          "headsign": "ΣΤ.ΕΘΝ.ΑΜΥΝΑΣ - ΧΟΛΑΡΓΟΣ (ΑΠΟ ΠΛ.ΧΟΛΑΡΓΟΥ)",
-          "variants": 2,
-          "tripCount": 7,
-          "stops": 13,
-          "lengthKm": 3.41,
-          "stats": {
-            "observations": 154,
-            "matched": 154,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.444357939978718,
             "roundaboutSegs": 13,
             "extStart": 0,
             "extEnd": 0
@@ -4571,27 +4356,6 @@
             "extStart": 0,
             "extEnd": 0
           }
-        },
-        {
-          "dir": "ΣΤ. ΕΘΝΙΚΗΣ ΑΜΥΝΑΣ - ΣΧΟΛ. ΧΟΛΑΡΓΟΥ",
-          "headsign": "ΣΤ. ΕΘΝΙΚΗΣ ΑΜΥΝΑΣ - ΣΧΟΛ. ΧΟΛΑΡΓΟΥ (ΑΠΟ ΣΤΑΣΗ ΔΗΜΑΡΧΕΙΟ)",
-          "variants": 2,
-          "tripCount": 7,
-          "stops": 15,
-          "lengthKm": 4.64,
-          "stats": {
-            "observations": 143,
-            "matched": 143,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.9715257106508477,
-            "roundaboutSegs": 9,
-            "extStart": 0,
-            "extEnd": 0
-          }
         }
       ],
       "rank": 1
@@ -4605,7 +4369,7 @@
           "dir": "ΑΓ. ΑΝΑΡΓΥΡΟΙ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΑΓ. ΑΝΑΡΓΥΡΟΙ - ΠΕΙΡΑΙΑΣ (ΜΕΣΩ ΚΗΦΙΣΟΥ) ",
           "variants": 1,
-          "tripCount": 263,
+          "tripCount": 306,
           "stops": 46,
           "lengthKm": 17.81,
           "stats": {
@@ -4626,7 +4390,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΑΓ. ΑΝΑΡΓΥΡΟΙ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΑΓ. ΑΝΑΡΓΥΡΟΙ (ΜΕΣΩ ΚΗΦΙΣΟΥ) (Προσωρινή λόγω έργων) ",
           "variants": 1,
-          "tripCount": 252,
+          "tripCount": 306,
           "stops": 44,
           "lengthKm": 19.88,
           "stats": {
@@ -4655,7 +4419,7 @@
           "dir": "ΑΓ. ΑΝΑΡΓΥΡΟΙ - ΑΓ. ΠΑΡΑΣΚΕΥΗ",
           "headsign": "ΑΓ. ΑΝΑΡΓΥΡΟΙ - ΑΓ. ΠΑΡΑΣΚΕΥΗ",
           "variants": 1,
-          "tripCount": 348,
+          "tripCount": 366,
           "stops": 41,
           "lengthKm": 13.94,
           "stats": {
@@ -4676,7 +4440,7 @@
           "dir": "ΑΓ. ΠΑΡΑΣΚΕΥΗ - ΑΓ. ΑΝΑΡΓΥΡΟΙ",
           "headsign": "ΑΓ. ΠΑΡΑΣΚΕΥΗ - ΑΓ. ΑΝΑΡΓΥΡΟΙ",
           "variants": 1,
-          "tripCount": 356,
+          "tripCount": 364,
           "stops": 43,
           "lengthKm": 13.54,
           "stats": {
@@ -4734,7 +4498,7 @@
           "dir": "ΝΟΣΟΚ. ΠΕΝΤΕΛΗΣ - ΣΤ. ΑΜΑΡΟΥΣΙΟΥ",
           "headsign": "ΝΟΣΟΚ. ΠΕΝΤΕΛΗΣ - ΣΤ. ΑΜΑΡΟΥΣΙΟΥ (ΜΕΣΩ ΠΙΚΠΑ)",
           "variants": 1,
-          "tripCount": 215,
+          "tripCount": 203,
           "stops": 46,
           "lengthKm": 14,
           "stats": {
@@ -4755,7 +4519,7 @@
           "dir": "ΣΤ. ΑΜΑΡΟΥΣΙΟΥ - ΝΟΣΟΚ. ΠΕΝΤΕΛΗΣ",
           "headsign": "ΣΤ. ΑΜΑΡΟΥΣΙΟΥ - ΝΟΣΟΚ. ΠΕΝΤΕΛΗΣ (ΜΕΣΩ ΠΙΚΠΑ)",
           "variants": 1,
-          "tripCount": 215,
+          "tripCount": 203,
           "stops": 46,
           "lengthKm": 14.03,
           "stats": {
@@ -4784,7 +4548,7 @@
           "dir": "ΑΝΩ ΒΡΙΛΗΣΣΙΑ - ΧΑΛΑΝΔΡΙ",
           "headsign": "ΑΝΩ ΒΡΙΛΗΣΣΙΑ - ΧΑΛΑΝΔΡΙ",
           "variants": 2,
-          "tripCount": 215,
+          "tripCount": 236,
           "stops": 32,
           "lengthKm": 9.07,
           "stats": {
@@ -4805,7 +4569,7 @@
           "dir": "ΧΑΛΑΝΔΡΙ - ΑΝΩ ΒΡΙΛΗΣΣΙΑ",
           "headsign": "ΧΑΛΑΝΔΡΙ - ΑΝΩ ΒΡΙΛΗΣΣΙΑ",
           "variants": 1,
-          "tripCount": 230,
+          "tripCount": 252,
           "stops": 36,
           "lengthKm": 10.44,
           "stats": {
@@ -4834,7 +4598,7 @@
           "dir": "Ν. ΠΕΝΤΕΛΗ - ΧΑΛΑΝΔΡΙ - ΣΤ. ΧΑΛΑΝΔΡΙΟΥ",
           "headsign": "Ν. ΠΕΝΤΕΛΗ - ΧΑΛΑΝΔΡΙ - ΣΤ. ΧΑΛΑΝΔΡΙΟΥ",
           "variants": 1,
-          "tripCount": 200,
+          "tripCount": 208,
           "stops": 30,
           "lengthKm": 8.21,
           "stats": {
@@ -4883,8 +4647,8 @@
         {
           "dir": "ΣΤ. ΧΑΛΑΝΔΡΙ - Ν. ΠΕΝΤΕΛΗ - ΧΑΛΑΝΔΡΙ",
           "headsign": "ΣΤ. ΧΑΛΑΝΔΡΙ - Ν. ΠΕΝΤΕΛΗ - ΧΑΛΑΝΔΡΙ",
-          "variants": 3,
-          "tripCount": 184,
+          "variants": 2,
+          "tripCount": 186,
           "stops": 66,
           "lengthKm": 20.46,
           "stats": {
@@ -4913,7 +4677,7 @@
           "dir": "Π. ΠΕΝΤΕΛΗ - ΧΑΛΑΝΔΡΙ - ΣΤ. ΧΑΛΑΝΔΡΙ",
           "headsign": "Π. ΠΕΝΤΕΛΗ - ΧΑΛΑΝΔΡΙ - ΣΤ. ΧΑΛΑΝΔΡΙ",
           "variants": 1,
-          "tripCount": 216,
+          "tripCount": 213,
           "stops": 30,
           "lengthKm": 9.21,
           "stats": {
@@ -4934,7 +4698,7 @@
           "dir": "ΣΤ. ΧΑΛΑΝΔΡΙ - ΧΑΛΑΝΔΡΙ - Π. ΠΕΝΤΕΛΗ",
           "headsign": "ΣΤ. ΧΑΛΑΝΔΡΙ - ΧΑΛΑΝΔΡΙ - Π. ΠΕΝΤΕΛΗ",
           "variants": 1,
-          "tripCount": 221,
+          "tripCount": 223,
           "stops": 48,
           "lengthKm": 13.7,
           "stats": {
@@ -4962,8 +4726,8 @@
         {
           "dir": "ΣΤ. ΧΑΛΑΝΔΡΙ - Π. ΠΕΝΤΕΛΗ - ΧΑΛΑΝΔΡΙ",
           "headsign": "ΣΤ. ΧΑΛΑΝΔΡΙ - Π. ΠΕΝΤΕΛΗ - ΧΑΛΑΝΔΡΙ",
-          "variants": 3,
-          "tripCount": 183,
+          "variants": 2,
+          "tripCount": 190,
           "stops": 76,
           "lengthKm": 23.2,
           "stats": {
@@ -5071,7 +4835,7 @@
           "dir": "ΘΡΑΚΟΜΑΚΕΔΟΝΕΣ - ΚΗΦΙΣΙΑ",
           "headsign": "ΘΡΑΚΟΜΑΚΕΔΟΝΕΣ - ΚΗΦΙΣΙΑ ",
           "variants": 1,
-          "tripCount": 295,
+          "tripCount": 296,
           "stops": 70,
           "lengthKm": 30.48,
           "stats": {
@@ -5149,7 +4913,7 @@
         {
           "dir": "ΖΗΡΙΝΕΙΟ - ΑΓ. ΣΤΕΦΑΝΟΣ - ΚΡΥΟΝΕΡΙ",
           "headsign": "ΖΗΡΙΝΕΙΟ - ΑΓ. ΣΤΕΦΑΝΟΣ - ΚΡΥΟΝΕΡΙ",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 267,
           "stops": 54,
           "lengthKm": 17.66,
@@ -5170,7 +4934,7 @@
         {
           "dir": "ΚΡΥΟΝΕΡΙ - ΑΓ. ΣΤΕΦΑΝΟΣ - ΖΗΡΙΝΕΙΟ",
           "headsign": "ΚΡΥΟΝΕΡΙ - ΑΓ. ΣΤΕΦΑΝΟΣ - ΖΗΡΙΝΕΙΟ",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 265,
           "stops": 53,
           "lengthKm": 18.05,
@@ -5300,7 +5064,7 @@
           "dir": "ΣΤΑΘΜΟΣ ΚΗΦΙΣΙΑΣ - ΑΔΑΜΕΣ Α",
           "headsign": "ΣΤΑΘΜΟΣ ΚΗΦΙΣΙΑΣ - ΑΔΑΜΕΣ Α",
           "variants": 1,
-          "tripCount": 152,
+          "tripCount": 171,
           "stops": 38,
           "lengthKm": 13,
           "stats": {
@@ -5321,7 +5085,7 @@
           "dir": "ΣΤΑΘΜΟΣ ΚΗΦΙΣΙΑΣ - ΑΔΑΜΕΣ Β",
           "headsign": "ΣΤΑΘΜΟΣ ΚΗΦΙΣΙΑΣ - ΑΔΑΜΕΣ Β (Εναλλακτική λόγω λαϊκης κάθε τρίτη (06:00-16:00)",
           "variants": 1,
-          "tripCount": 15,
+          "tripCount": 18,
           "stops": 38,
           "lengthKm": 12.79,
           "stats": {
@@ -5350,7 +5114,7 @@
           "dir": "ΣΤΑΘΜΟΣ ΚΗΦΙΣΙΑΣ - ΑΔΑΜΕΣ Β",
           "headsign": "ΣΤΑΘΜΟΣ ΚΗΦΙΣΙΑΣ - ΑΔΑΜΕΣ Β",
           "variants": 2,
-          "tripCount": 153,
+          "tripCount": 172,
           "stops": 46,
           "lengthKm": 14.97,
           "stats": {
@@ -5379,7 +5143,7 @@
           "dir": "ΣΤΑΘΜΟΣ ΚΗΦΙΣΙΑΣ - ΠΟΛΙΤΕΙΑ",
           "headsign": "ΣΤΑΘΜΟΣ ΚΗΦΙΣΙΑΣ - ΠΟΛΙΤΕΙΑ ",
           "variants": 1,
-          "tripCount": 159,
+          "tripCount": 162,
           "stops": 22,
           "lengthKm": 6.41,
           "stats": {
@@ -5408,7 +5172,7 @@
           "dir": "ΣΤ. ΚΗΦΙΣΙΑΣ - ΚΕΦΑΛΑΡΙ",
           "headsign": "ΣΤ. ΚΗΦΙΣΙΑΣ - ΚΕΦΑΛΑΡΙ",
           "variants": 1,
-          "tripCount": 152,
+          "tripCount": 155,
           "stops": 23,
           "lengthKm": 6.92,
           "stats": {
@@ -5466,7 +5230,7 @@
           "dir": "Ν. ΠΕΝΤΕΛΗ - ΜΕΛΙΣΣΙΑ - ΣΤ. ΚΗΦΙΣΙΑΣ",
           "headsign": "Ν. ΠΕΝΤΕΛΗ - ΜΕΛΙΣΣΙΑ - ΣΤ. ΚΗΦΙΣΙΑΣ",
           "variants": 2,
-          "tripCount": 174,
+          "tripCount": 188,
           "stops": 35,
           "lengthKm": 10.51,
           "stats": {
@@ -5487,7 +5251,7 @@
           "dir": "ΣΤ. ΚΗΦΙΣΙΑΣ - ΜΕΛΙΣΣΙΑ - Ν. ΠΕΝΤΕΛΗ",
           "headsign": "ΣΤ. ΚΗΦΙΣΙΑΣ - ΜΕΛΙΣΣΙΑ - Ν. ΠΕΝΤΕΛΗ",
           "variants": 3,
-          "tripCount": 155,
+          "tripCount": 167,
           "stops": 29,
           "lengthKm": 8.22,
           "stats": {
@@ -5622,20 +5386,20 @@
       "dirs": [
         {
           "dir": "ΑΧΑΡΝΑΙ - ΒΑΡΥΜΠΟΜΠΗ",
-          "headsign": "ΑΧΑΡΝΑΙ - ΒΑΡΥΜΠΟΜΠΗ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
+          "headsign": "ΑΧΑΡΝΑΙ - ΒΑΡΥΜΠΟΜΠΗ",
           "variants": 1,
           "tripCount": 48,
-          "stops": 33,
-          "lengthKm": 14.67,
+          "stops": 34,
+          "lengthKm": 12.95,
           "stats": {
-            "observations": 261,
-            "matched": 261,
+            "observations": 232,
+            "matched": 232,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.3996880092628,
+            "meanError": 2.270358227804219,
             "roundaboutSegs": 13,
             "extStart": 0,
             "extEnd": 0
@@ -5643,20 +5407,20 @@
         },
         {
           "dir": "ΒΑΡΥΜΠΟΜΠΗ - ΑΧΑΡΝΑΙ",
-          "headsign": "ΒΑΡΥΜΠΟΜΠΗ - ΑΧΑΡΝΑΙ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
+          "headsign": "ΒΑΡΥΜΠΟΜΠΗ - ΑΧΑΡΝΑΙ",
           "variants": 1,
           "tripCount": 48,
           "stops": 30,
-          "lengthKm": 13.88,
+          "lengthKm": 12.15,
           "stats": {
-            "observations": 218,
-            "matched": 218,
+            "observations": 170,
+            "matched": 170,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.261561179840244,
+            "meanError": 2.1778386128481695,
             "roundaboutSegs": 5,
             "extStart": 0,
             "extEnd": 0
@@ -5761,7 +5525,7 @@
           "dir": "ΚΗΦΙΣΙΑ - Π. ΦΑΛΗΡΟ",
           "headsign": "ΚΗΦΙΣΙΑ - Π. ΦΑΛΗΡΟ",
           "variants": 1,
-          "tripCount": 454,
+          "tripCount": 543,
           "stops": 56,
           "lengthKm": 20.86,
           "stats": {
@@ -5782,7 +5546,7 @@
           "dir": "Π. ΦΑΛΗΡΟ - ΚΗΦΙΣΙΑ",
           "headsign": "Π. ΦΑΛΗΡΟ - ΚΗΦΙΣΙΑ ",
           "variants": 1,
-          "tripCount": 489,
+          "tripCount": 544,
           "stops": 56,
           "lengthKm": 20.86,
           "stats": {
@@ -5858,52 +5622,10 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "ΚΑΛΟΓΡΕΖΑ - Ν. ΙΩΝΙΑ",
-          "headsign": "ΚΑΛΟΓΡΕΖΑ - Ν. ΙΩΝΙΑ (ΑΠΟ ΣΤΑΣΗ ΣΧΟΛΕΙΟ)",
-          "variants": 1,
-          "tripCount": 13,
-          "stops": 10,
-          "lengthKm": 3.3,
-          "stats": {
-            "observations": 115,
-            "matched": 115,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.9703056189496406,
-            "roundaboutSegs": 21,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "Ν. ΙΩΝΙΑ - ΚΑΛΟΓΡΕΖΑ",
-          "headsign": "Ν. ΙΩΝΙΑ - ΚΑΛΟΓΡΕΖΑ (ΕΩΣ 13η ΚΑΛΟΓΡΕΖΑΣ) ",
-          "variants": 1,
-          "tripCount": 12,
-          "stops": 19,
-          "lengthKm": 5.9,
-          "stats": {
-            "observations": 243,
-            "matched": 243,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.5713810650608004,
-            "roundaboutSegs": 30,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "Ν. ΙΩΝΙΑ - ΚΑΛΟΓΡΕΖΑ - ΣΤ. ΠΑΝΟΡΜΟΥ",
           "headsign": "Ν. ΙΩΝΙΑ - ΚΑΛΟΓΡΕΖΑ - ΣΤ. ΠΑΝΟΡΜΟΥ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
           "variants": 2,
-          "tripCount": 231,
+          "tripCount": 230,
           "stops": 61,
           "lengthKm": 21.4,
           "stats": {
@@ -5961,18 +5683,18 @@
           "dir": "ΠΕΡΙΣΣΟΣ - ΑΝΩ ΠΑΤΗΣΙΑ",
           "headsign": "ΠΕΡΙΣΣΟΣ - ΑΝΩ ΠΑΤΗΣΙΑ",
           "variants": 2,
-          "tripCount": 229,
-          "stops": 39,
+          "tripCount": 225,
+          "stops": 37,
           "lengthKm": 12.32,
           "stats": {
-            "observations": 482,
-            "matched": 482,
+            "observations": 481,
+            "matched": 481,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 3.049925580586966,
+            "meanError": 3.068306157030561,
             "roundaboutSegs": 27,
             "extStart": 0,
             "extEnd": 0
@@ -5989,8 +5711,8 @@
         {
           "dir": "ΓΑΛΑΤΣΙ - ΑΚΑΔΗΜΙΑ - ΝΕΚΡ. ΖΩΓΡΑΦΟΥ",
           "headsign": "ΓΑΛΑΤΣΙ - ΑΚΑΔΗΜΙΑ - ΝΕΚΡ. ΖΩΓΡΑΦΟΥ",
-          "variants": 2,
-          "tripCount": 635,
+          "variants": 1,
+          "tripCount": 681,
           "stops": 41,
           "lengthKm": 12.59,
           "stats": {
@@ -6011,7 +5733,7 @@
           "dir": "ΝΕΚΡ. ΖΩΓΡΑΦΟΥ - ΑΚΑΔΗΜΙΑ - ΓΑΛΑΤΣΙ",
           "headsign": "ΝΕΚΡ. ΖΩΓΡΑΦΟΥ - ΑΚΑΔΗΜΙΑ - ΓΑΛΑΤΣΙ",
           "variants": 1,
-          "tripCount": 627,
+          "tripCount": 648,
           "stops": 45,
           "lengthKm": 15.28,
           "stats": {
@@ -6023,27 +5745,6 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 2.5398062666575543,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΝΕΚΡ. ΖΩΓΡΑΦΟΥ - ΑΚΑΔΗΜΙΑ - ΓΑΛΑΤΣΙ (ΕΩΣ ΑΚΑΔΗΜΙΑ))",
-          "headsign": "ΝΕΚΡ. ΖΩΓΡΑΦΟΥ - ΑΚΑΔΗΜΙΑ - ΓΑΛΑΤΣΙ (ΕΩΣ ΑΚΑΔΗΜΙΑ))",
-          "variants": 1,
-          "tripCount": 2,
-          "stops": 18,
-          "lengthKm": 5.48,
-          "stats": {
-            "observations": 176,
-            "matched": 176,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.948842877236573,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -6060,8 +5761,8 @@
         {
           "dir": "ΦΙΛΟΘΕΗ - ΑΜΠΕΛΟΚΗΠΟΙ",
           "headsign": "ΦΙΛΟΘΕΗ - ΑΜΠΕΛΟΚΗΠΟΙ",
-          "variants": 3,
-          "tripCount": 205,
+          "variants": 1,
+          "tripCount": 200,
           "stops": 50,
           "lengthKm": 17.47,
           "stats": {
@@ -6119,7 +5820,7 @@
           "dir": "ΑΝΩ ΓΑΛΑΤΣΙ - ΓΟΥΔΗ",
           "headsign": "ΑΝΩ ΓΑΛΑΤΣΙ - ΓΟΥΔΗ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
           "variants": 1,
-          "tripCount": 227,
+          "tripCount": 228,
           "stops": 34,
           "lengthKm": 10.4,
           "stats": {
@@ -6140,7 +5841,7 @@
           "dir": "ΓΟΥΔΗ - ΑΝΩ ΓΑΛΑΤΣΙ",
           "headsign": "ΓΟΥΔΗ - ΑΝΩ ΓΑΛΑΤΣΙ (Εναλλακτική λόγω έργων)",
           "variants": 2,
-          "tripCount": 198,
+          "tripCount": 199,
           "stops": 34,
           "lengthKm": 10.99,
           "stats": {
@@ -6168,19 +5869,19 @@
         {
           "dir": "ΤΟΠΙΚΗ ΗΡΑΚΛΕΙΟΥ",
           "headsign": "ΤΟΠΙΚΗ ΗΡΑΚΛΕΙΟΥ",
-          "variants": 2,
-          "tripCount": 188,
+          "variants": 3,
+          "tripCount": 95,
           "stops": 28,
-          "lengthKm": 7.11,
+          "lengthKm": 7.12,
           "stats": {
-            "observations": 304,
-            "matched": 304,
+            "observations": 300,
+            "matched": 300,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.8428024979513866,
+            "meanError": 1.781812997032158,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -6197,41 +5898,20 @@
         {
           "dir": "ΗΡΑΚΛΕΙΟ - ΑΓ. ΝΕΚΤΑΡΙΟΣ - ΠΕΥΚΗ",
           "headsign": "ΗΡΑΚΛΕΙΟ - ΑΓ. ΝΕΚΤΑΡΙΟΣ - ΠΕΥΚΗ",
-          "variants": 1,
-          "tripCount": 200,
-          "stops": 38,
-          "lengthKm": 10.41,
+          "variants": 2,
+          "tripCount": 106,
+          "stops": 39,
+          "lengthKm": 10.36,
           "stats": {
-            "observations": 452,
-            "matched": 452,
+            "observations": 449,
+            "matched": 449,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.0096048311360004,
+            "meanError": 1.9528121217776906,
             "roundaboutSegs": 25,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΗΡΑΚΛΕΙΟ -ΑΓ. ΝΕΚΤΑΡΙΟΣ-ΠΕΥΚΗ",
-          "headsign": "ΗΡΑΚΛΕΙΟ -ΑΓ. ΝΕΚΤΑΡΙΟΣ-ΠΕΥΚΗ (ΑΠΟ 8η ΠΕΥΚΗΣ)",
-          "variants": 1,
-          "tripCount": 6,
-          "stops": 18,
-          "lengthKm": 5.21,
-          "stats": {
-            "observations": 215,
-            "matched": 215,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.072057998150075,
-            "roundaboutSegs": 4,
             "extStart": 0,
             "extEnd": 0
           }
@@ -6247,8 +5927,8 @@
         {
           "dir": "ΨΥΧΙΚΟ - ΠΑΝΟΡΜΟΥ Α",
           "headsign": "ΨΥΧΙΚΟ - ΠΑΝΟΡΜΟΥ Α",
-          "variants": 2,
-          "tripCount": 261,
+          "variants": 1,
+          "tripCount": 263,
           "stops": 19,
           "lengthKm": 5.16,
           "stats": {
@@ -6277,7 +5957,7 @@
           "dir": "ΨΥΧΙΚΟ - ΠΑΝΟΡΜΟΥ Β",
           "headsign": "ΨΥΧΙΚΟ - ΠΑΝΟΡΜΟΥ Β",
           "variants": 2,
-          "tripCount": 168,
+          "tripCount": 173,
           "stops": 34,
           "lengthKm": 12.23,
           "stats": {
@@ -6290,27 +5970,6 @@
             "rawMeters": 0,
             "meanError": 2.4141892050174683,
             "roundaboutSegs": 74,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΨΥΧΙΚΟ -ΠΑΝΟΡΜΟΥ Β",
-          "headsign": "ΨΥΧΙΚΟ -ΠΑΝΟΡΜΟΥ Β (ΕΩΣ ΣΤΑΣΗ ΣΧΟΛΕΙΟ)",
-          "variants": 1,
-          "tripCount": 7,
-          "stops": 18,
-          "lengthKm": 6.13,
-          "stats": {
-            "observations": 238,
-            "matched": 238,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.5817057171924214,
-            "roundaboutSegs": 48,
             "extStart": 0,
             "extEnd": 0
           }
@@ -6356,7 +6015,7 @@
           "dir": "ΚΑΜΑΤΕΡΟ-ΙΛΙΟΝ-ΣΤ.ΑΝΘΟΥΠΟΛΗ",
           "headsign": "ΚΑΜΑΤΕΡΟ-ΙΛΙΟΝ-ΣΤ.ΑΝΘΟΥΠΟΛΗ",
           "variants": 1,
-          "tripCount": 159,
+          "tripCount": 158,
           "stops": 47,
           "lengthKm": 15.21,
           "stats": {
@@ -6384,8 +6043,8 @@
         {
           "dir": "ΑΓ. ΕΛΕΥΘΕΡΙΟΣ - ΑΓ. ΑΝΑΡΓΥΡΟΙ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΑΓ. ΕΛΕΥΘΕΡΙΟΣ - ΑΓ. ΑΝΑΡΓΥΡΟΙ - ΠΕΙΡΑΙΑΣ",
-          "variants": 2,
-          "tripCount": 370,
+          "variants": 1,
+          "tripCount": 376,
           "stops": 55,
           "lengthKm": 17.45,
           "stats": {
@@ -6405,8 +6064,8 @@
         {
           "dir": "ΠΕΙΡΑΙΑΣ - ΑΓ. ΑΝΑΡΓΥΡΟΙ - ΑΓ. ΕΛΕΥΘΕΡΙΟΣ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΑΓ. ΑΝΑΡΓΥΡΟΙ - ΑΓ. ΕΛΕΥΘΕΡΙΟΣ",
-          "variants": 2,
-          "tripCount": 373,
+          "variants": 1,
+          "tripCount": 385,
           "stops": 56,
           "lengthKm": 19.05,
           "stats": {
@@ -6435,7 +6094,7 @@
           "dir": "ΚΑΜΑΤΕΡΟ -  ΠΛ. ΑΓ. ΑΝΑΡΓΥΡΩΝ",
           "headsign": "ΚΑΜΑΤΕΡΟ -  ΠΛ. ΑΓ. ΑΝΑΡΓΥΡΩΝ",
           "variants": 1,
-          "tripCount": 217,
+          "tripCount": 221,
           "stops": 50,
           "lengthKm": 13.39,
           "stats": {
@@ -6492,8 +6151,8 @@
         {
           "dir": "ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΙΛΙΟΝ",
           "headsign": "ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΙΛΙΟΝ (ΜΕΣΩ Λ. ΑΝ.ΠΑΠΑΝΔΡΕΟΥ)",
-          "variants": 3,
-          "tripCount": 204,
+          "variants": 1,
+          "tripCount": 264,
           "stops": 29,
           "lengthKm": 9.04,
           "stats": {
@@ -6551,7 +6210,7 @@
           "dir": "ΖΩΦΡΙΑ - ΣΤ. ΑΤΤΙΚΗ",
           "headsign": "ΖΩΦΡΙΑ - ΣΤ. ΑΤΤΙΚΗ",
           "variants": 1,
-          "tripCount": 153,
+          "tripCount": 154,
           "stops": 39,
           "lengthKm": 12.32,
           "stats": {
@@ -6572,7 +6231,7 @@
           "dir": "ΣΤ. ΑΤΤΙΚΗ-ΖΩΦΡΙΑ",
           "headsign": "ΣΤ. ΑΤΤΙΚΗ-ΖΩΦΡΙΑ",
           "variants": 1,
-          "tripCount": 147,
+          "tripCount": 144,
           "stops": 38,
           "lengthKm": 12.1,
           "stats": {
@@ -6597,27 +6256,6 @@
       "mode": "bus",
       "color": "#0059a9",
       "dirs": [
-        {
-          "dir": "ΑΧΑΡΝΑΙ - ΕΡΓ. ΠΟΛΥΚΑΤΟΙΚΙΕΣ - Α.ΛΙΟΣΙΑ",
-          "headsign": "ΑΧΑΡΝΑΙ - ΕΡΓ. ΠΟΛΥΚΑΤΟΙΚΙΕΣ - Α.ΛΙΟΣΙΑ",
-          "variants": 1,
-          "tripCount": 7,
-          "stops": 28,
-          "lengthKm": 8.75,
-          "stats": {
-            "observations": 336,
-            "matched": 336,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 4.616462579599633,
-            "roundaboutSegs": 8,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
         {
           "dir": "ΑΧΑΡΝΑΙ - ΕΡΓ. ΠΟΛΥΚΑΤΟΙΚΙΕΣ-Α.ΛΙΟΣΙΑ",
           "headsign": "ΑΧΑΡΝΑΙ - ΕΡΓ. ΠΟΛΥΚΑΤΟΙΚΙΕΣ-Α.ΛΙΟΣΙΑ",
@@ -6651,7 +6289,7 @@
           "dir": "ΚΗΠΟΥΠΟΛΗ - ΠΑΛΑΤΙΑΝΗ - ΣΤ. ΛΑΡΙΣΗΣ",
           "headsign": "ΚΗΠΟΥΠΟΛΗ - ΠΑΛΑΤΙΑΝΗ - ΣΤ. ΛΑΡΙΣΗΣ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
           "variants": 1,
-          "tripCount": 278,
+          "tripCount": 279,
           "stops": 75,
           "lengthKm": 22.03,
           "stats": {
@@ -6680,7 +6318,7 @@
           "dir": "ΑΝΑΚΑΣΑ - ΑΓ.ΑΝΑΡΓΥΡΟΙ - ΣΤ. ΑΤΤΙΚΗ",
           "headsign": "ΑΝΑΚΑΣΑ - ΑΓ.ΑΝΑΡΓΥΡΟΙ - ΣΤ. ΑΤΤΙΚΗ ",
           "variants": 2,
-          "tripCount": 214,
+          "tripCount": 260,
           "stops": 48,
           "lengthKm": 14.14,
           "stats": {
@@ -6707,20 +6345,20 @@
       "dirs": [
         {
           "dir": "ΑΧΑΡΝΑΙ - ΚΗΦΙΣΙΑ",
-          "headsign": "ΑΧΑΡΝΑΙ - ΚΗΦΙΣΙΑ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
+          "headsign": "ΑΧΑΡΝΑΙ - ΚΗΦΙΣΙΑ",
           "variants": 1,
           "tripCount": 277,
-          "stops": 80,
-          "lengthKm": 33.3,
+          "stops": 81,
+          "lengthKm": 29.85,
           "stats": {
-            "observations": 917,
-            "matched": 917,
+            "observations": 812,
+            "matched": 812,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 3.2938665963101434,
+            "meanError": 3.2593778283167367,
             "roundaboutSegs": 15,
             "extStart": 0,
             "extEnd": 0
@@ -6736,20 +6374,20 @@
       "dirs": [
         {
           "dir": "ΦΥΛΗ - ΑΝΩ ΛΙΟΣΙΑ",
-          "headsign": "ΦΥΛΗ - ΑΝΩ ΛΙΟΣΙΑ",
+          "headsign": "ΦΥΛΗ - ΑΝΩ ΛΙΟΣΙΑ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
           "variants": 1,
           "tripCount": 303,
-          "stops": 49,
-          "lengthKm": 14.41,
+          "stops": 40,
+          "lengthKm": 15.49,
           "stats": {
-            "observations": 574,
-            "matched": 574,
+            "observations": 692,
+            "matched": 692,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 3.641115375065612,
+            "meanError": 5.1735874759230756,
             "roundaboutSegs": 34,
             "extStart": 0,
             "extEnd": 0
@@ -6767,7 +6405,7 @@
           "dir": "ΑΧΑΡΝΑΙ (ΜΕΣΟΝΥΧΙ) - Ν.ΙΩΝΙΑ",
           "headsign": "ΑΧΑΡΝΑΙ (ΜΕΣΟΝΥΧΙ) - Ν.ΙΩΝΙΑ   (ΚΥΚΛΙΚΗ)",
           "variants": 1,
-          "tripCount": 435,
+          "tripCount": 445,
           "stops": 47,
           "lengthKm": 18.14,
           "stats": {
@@ -6795,7 +6433,7 @@
         {
           "dir": "ΑΧΑΡΝΑΙ (ΜΕΣΟΝΥΧΙ) - ΘΡΑΚΟΜΑΚΕΔΟΝΕΣ",
           "headsign": "ΑΧΑΡΝΑΙ (ΜΕΣΟΝΥΧΙ) - ΘΡΑΚΟΜΑΚΕΔΟΝΕΣ  (ΠΛ. ΑΡΙΣΤΟΤΕΛΟΥΣ)",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 64,
           "stops": 51,
           "lengthKm": 17.98,
@@ -6854,7 +6492,7 @@
           "dir": "ΜΕΣΟΝΥΧΙ -ΑΓ.ΚΩΝΣΤΑΝΤΙΝΟΣ  - ΑΓ.ΠΑΡΑΣΚΕΥΗ",
           "headsign": "ΜΕΣΟΝΥΧΙ -ΑΓ.ΚΩΝΣΤΑΝΤΙΝΟΣ  - ΑΓ.ΠΑΡΑΣΚΕΥΗ",
           "variants": 1,
-          "tripCount": 200,
+          "tripCount": 219,
           "stops": 49,
           "lengthKm": 15.05,
           "stats": {
@@ -6882,7 +6520,7 @@
         {
           "dir": "ΑΧΑΡΝΑΙ - ΑΓ.ΠΕΤΡΟΣ - ΑΓ.ΙΩΑΝΝΗΣ - ΠΛΑΤΩΝΑΣ",
           "headsign": "ΑΧΑΡΝΑΙ - ΑΓ.ΠΕΤΡΟΣ - ΑΓ.ΙΩΑΝΝΗΣ - ΠΛΑΤΩΝΑΣ",
-          "variants": 3,
+          "variants": 1,
           "tripCount": 214,
           "stops": 52,
           "lengthKm": 15.23,
@@ -6912,7 +6550,7 @@
           "dir": "ΖΩΟΔ. ΠΗΓΗ - ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΛΟΦΟΣ ΑΞΙΩΜΑΤΙΚΩΝ",
           "headsign": "ΖΩΟΔ. ΠΗΓΗ - ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΛΟΦΟΣ ΑΞΙΩΜΑΤΙΚΩΝ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
           "variants": 1,
-          "tripCount": 254,
+          "tripCount": 249,
           "stops": 38,
           "lengthKm": 10.7,
           "stats": {
@@ -6962,7 +6600,7 @@
           "dir": "ΑΝΘΟΥΠΟΛΗ - ΣΤ. Μ. ΑΝΘΟΥΠΟΛΗ - ΑΤΤΙΚΟ ΝΟΣ. - ΔΑΣΟΣ",
           "headsign": "ΑΝΘΟΥΠΟΛΗ - ΣΤ. Μ. ΑΝΘΟΥΠΟΛΗ - ΑΤΤΙΚΟ ΝΟΣ. - ΔΑΣΟΣ",
           "variants": 1,
-          "tripCount": 238,
+          "tripCount": 240,
           "stops": 39,
           "lengthKm": 10.48,
           "stats": {
@@ -6983,7 +6621,7 @@
           "dir": "ΔΑΣΟΣ - ΑΤΤΙΚΟ ΝΟΣ. - ΣΤ. Μ. ΑΝΘΟΥΠΟΛΗ - ΑΝΘΟΥΠΟΛΗ",
           "headsign": "ΔΑΣΟΣ - ΑΤΤΙΚΟ ΝΟΣ. - ΣΤ. Μ. ΑΝΘΟΥΠΟΛΗ - ΑΝΘΟΥΠΟΛΗ",
           "variants": 2,
-          "tripCount": 206,
+          "tripCount": 213,
           "stops": 37,
           "lengthKm": 11.15,
           "stats": {
@@ -7012,7 +6650,7 @@
           "dir": "ΙΛΙΟΝ - ΑΓ. ΦΑΝΟΥΡΙΟΣ - ΑΚΑΔΗΜΙΑ",
           "headsign": "ΙΛΙΟΝ - ΑΓ. ΦΑΝΟΥΡΙΟΣ - ΑΚΑΔΗΜΙΑ ",
           "variants": 2,
-          "tripCount": 418,
+          "tripCount": 442,
           "stops": 60,
           "lengthKm": 17.24,
           "stats": {
@@ -7041,7 +6679,7 @@
           "dir": "ΑΧΑΡΝΑΙ - ΑΝΩ ΛΙΟΣΙΑ",
           "headsign": "ΑΧΑΡΝΑΙ - ΑΝΩ ΛΙΟΣΙΑ",
           "variants": 1,
-          "tripCount": 176,
+          "tripCount": 171,
           "stops": 45,
           "lengthKm": 13.27,
           "stats": {
@@ -7068,20 +6706,20 @@
       "dirs": [
         {
           "dir": "ΑΧΑΡΝΑΙ - ΝΟΣ. ΑΓ. ΑΝΑΡΓΥΡΟΙ",
-          "headsign": "ΑΧΑΡΝΑΙ - ΝΟΣ. ΑΓ. ΑΝΑΡΓΥΡΟΙ (Προσωρινή λόγω έργων)",
+          "headsign": "ΑΧΑΡΝΑΙ - ΝΟΣ. ΑΓ. ΑΝΑΡΓΥΡΟΙ",
           "variants": 1,
           "tripCount": 50,
-          "stops": 49,
-          "lengthKm": 25.71,
+          "stops": 50,
+          "lengthKm": 22.32,
           "stats": {
-            "observations": 854,
-            "matched": 854,
+            "observations": 793,
+            "matched": 793,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 3.1843077690693895,
+            "meanError": 3.2350071749351175,
             "roundaboutSegs": 19,
             "extStart": 0,
             "extEnd": 0
@@ -7125,48 +6763,6 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "ΟΑΚΑ - ΣΚΑ - ΑΧΑΡΝΑΙ - ΟΛΥΜΠ. ΧΩΡΙΟ",
-          "headsign": "ΟΑΚΑ - ΣΚΑ - ΑΧΑΡΝΑΙ - ΟΛΥΜΠ. ΧΩΡΙΟ ",
-          "variants": 1,
-          "tripCount": 6,
-          "stops": 44,
-          "lengthKm": 20.63,
-          "stats": {
-            "observations": 560,
-            "matched": 560,
-            "noCandidates": 0,
-            "viterbiBreaks": 1,
-            "bridged": 0,
-            "rawStretchCount": 1,
-            "rawMeters": 20,
-            "meanError": 4.1881931847568135,
-            "roundaboutSegs": 78,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΟΛΥΜΠ. ΧΩΡΙΟ - ΣΚΑ - ΑΧΑΡΝΑΙ - OAKA",
-          "headsign": "ΟΛΥΜΠ. ΧΩΡΙΟ - ΣΚΑ - ΑΧΑΡΝΑΙ - OAKA",
-          "variants": 1,
-          "tripCount": 6,
-          "stops": 44,
-          "lengthKm": 20.52,
-          "stats": {
-            "observations": 470,
-            "matched": 470,
-            "noCandidates": 0,
-            "viterbiBreaks": 1,
-            "bridged": 0,
-            "rawStretchCount": 2,
-            "rawMeters": 418,
-            "meanError": 4.106629994424575,
-            "roundaboutSegs": 69,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "ΟΛΥΜΠ. ΧΩΡΙΟ - ΣΚΑ - ΑΧΑΡΝΑΙ - ΑΓ. ΑΝΝΑ",
           "headsign": "ΟΛΥΜΠ. ΧΩΡΙΟ - ΣΚΑ - ΑΧΑΡΝΑΙ - ΑΓ. ΑΝΝΑ",
           "variants": 1,
@@ -7198,8 +6794,8 @@
         {
           "dir": "ΠΕΤΡΟΥΠΟΛΗ - ΠΑΝΟΡΑΜΑ - ΣΤ. ΑΝΘΟΥΠΟΛΗ",
           "headsign": "ΠΕΤΡΟΥΠΟΛΗ - ΠΑΝΟΡΑΜΑ - ΣΤ. ΑΝΘΟΥΠΟΛΗ",
-          "variants": 2,
-          "tripCount": 243,
+          "variants": 1,
+          "tripCount": 242,
           "stops": 52,
           "lengthKm": 14.7,
           "stats": {
@@ -7228,7 +6824,7 @@
           "dir": "ΧΡΥΣΟΥΠΟΛΗ - ΑΝΘΟΥΠΟΛΗ - ΣΤ ΠΕΡΙΣΤΕΡΙ",
           "headsign": "ΧΡΥΣΟΥΠΟΛΗ - ΑΝΘΟΥΠΟΛΗ - ΣΤ ΠΕΡΙΣΤΕΡΙ ",
           "variants": 3,
-          "tripCount": 161,
+          "tripCount": 152,
           "stops": 34,
           "lengthKm": 8.82,
           "stats": {
@@ -7286,7 +6882,7 @@
           "dir": "ΑΤΤΙΚΟ ΝΟΣΟΚΟΜΕΙΟ - ΣΤ.ΜΕΤΡΟ ΑΙΓΑΛΕΩ - ΝΙΚΑΙΑ",
           "headsign": "ΑΤΤΙΚΟ ΝΟΣΟΚΟΜΕΙΟ - ΣΤ.ΜΕΤΡΟ ΑΙΓΑΛΕΩ - ΝΙΚΑΙΑ",
           "variants": 3,
-          "tripCount": 163,
+          "tripCount": 198,
           "stops": 47,
           "lengthKm": 12.71,
           "stats": {
@@ -7305,63 +6901,21 @@
         },
         {
           "dir": "ΝΙΚΑΙΑ - ΣΤ.ΜΕΤΡΟ ΑΙΓΑΛΕΩ - ΑΤΤΙΚΟ ΝΟΣΟΚΟΜΕΙΟ",
-          "headsign": "ΝΙΚΑΙΑ - ΣΤ.ΜΕΤΡΟ ΑΙΓΑΛΕΩ - ΑΤΤΙΚΟ ΝΟΣΟΚΟΜΕΙΟ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
-          "variants": 2,
-          "tripCount": 159,
-          "stops": 44,
-          "lengthKm": 13.67,
+          "headsign": "ΝΙΚΑΙΑ - ΣΤ.ΜΕΤΡΟ ΑΙΓΑΛΕΩ - ΑΤΤΙΚΟ ΝΟΣΟΚΟΜΕΙΟ",
+          "variants": 4,
+          "tripCount": 192,
+          "stops": 47,
+          "lengthKm": 13.53,
           "stats": {
-            "observations": 291,
-            "matched": 291,
+            "observations": 259,
+            "matched": 259,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.2265122653265728,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΝΙΚΑΙΑ -ΣΤ.ΜΕΤΡΟ ΑΙΓΑΛΕΩ-ΑΤΤΙΚΟ ΝΟΣΟΚΟΜΕΙΟ",
-          "headsign": "ΝΙΚΑΙΑ -ΣΤ.ΜΕΤΡΟ ΑΙΓΑΛΕΩ-ΑΤΤΙΚΟ ΝΟΣΟΚΟΜΕΙΟ (Εναλλακτική λόγω έργων & λαϊκής κάθε Πέμπτη 05:00-17:00)",
-          "variants": 1,
-          "tripCount": 23,
-          "stops": 44,
-          "lengthKm": 13.72,
-          "stats": {
-            "observations": 283,
-            "matched": 283,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.363248731069946,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΝΙΚΑΙΑ-ΣΤ.ΜΕΤΡΟ ΑΙΓΑΛΕΩ-ΑΤΤΙΚΟ ΝΟΣΟΚΟΜΕΙΟ",
-          "headsign": "ΝΙΚΑΙΑ-ΣΤ.ΜΕΤΡΟ ΑΙΓΑΛΕΩ-ΑΤΤΙΚΟ ΝΟΣΟΚΟΜΕΙΟ (ΕΝΑΛΛΑΚΤΙΚΗ ΚΑΘΕ ΣΑΒΒΑΤΟ ΛΟΓΩ ΕΡΓΩΝ & ΛΑΪΚΗΣ 05:00-17:00)",
-          "variants": 1,
-          "tripCount": 1,
-          "stops": 43,
-          "lengthKm": 13,
-          "stats": {
-            "observations": 236,
-            "matched": 236,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.8111335299512943,
-            "roundaboutSegs": 0,
+            "meanError": 2.2934953312290367,
+            "roundaboutSegs": 12,
             "extStart": 0,
             "extEnd": 0
           }
@@ -7377,8 +6931,8 @@
         {
           "dir": "ΑΧΑΡΝΑΙ - ΑΓ. ΙΩΑΝΝΗΣ - ΑΓ. ΠΕΤΡΟΣ",
           "headsign": "ΑΧΑΡΝΑΙ - ΑΓ. ΙΩΑΝΝΗΣ - ΑΓ. ΠΕΤΡΟΣ",
-          "variants": 4,
-          "tripCount": 178,
+          "variants": 2,
+          "tripCount": 182,
           "stops": 45,
           "lengthKm": 12.34,
           "stats": {
@@ -7407,7 +6961,7 @@
           "dir": "ΑXAΡΝΑΙ - Κ. ΜΥΛΟΣ - ΣΤ. ΚΑΤΩ ΠΑΤΗΣΙΑ",
           "headsign": "ΑXAΡΝΑΙ - Κ. ΜΥΛΟΣ - ΣΤ. ΚΑΤΩ ΠΑΤΗΣΙΑ",
           "variants": 1,
-          "tripCount": 243,
+          "tripCount": 260,
           "stops": 92,
           "lengthKm": 26.69,
           "stats": {
@@ -7428,7 +6982,7 @@
           "dir": "ΑXAΡΝΑΙ - Κ.ΜΥΛΟΣ - ΣΤ. ΚΑΤΩ ΠΑΤΗΣΙΑ",
           "headsign": "ΑXAΡΝΑΙ - Κ.ΜΥΛΟΣ - ΣΤ. ΚΑΤΩ ΠΑΤΗΣΙΑ (20:00 ΕΩΣ ΛΗΞΗ ΩΡΑΡΙΟΥ)",
           "variants": 1,
-          "tripCount": 40,
+          "tripCount": 35,
           "stops": 91,
           "lengthKm": 26.46,
           "stats": {
@@ -7457,7 +7011,7 @@
           "dir": "ΑXAΡΝΑΙ - Κ. ΜΥΛΟΣ - ΣΤ. ΚΑΤΩ ΠΑΤΗΣΙΑ",
           "headsign": "ΑXAΡΝΑΙ - Κ. ΜΥΛΟΣ - ΣΤ. ΚΑΤΩ ΠΑΤΗΣΙΑ",
           "variants": 1,
-          "tripCount": 86,
+          "tripCount": 98,
           "stops": 89,
           "lengthKm": 26.65,
           "stats": {
@@ -7478,7 +7032,7 @@
           "dir": "ΑΧΑΡΝΑΙ - ΚΟΚΚΙΝΟΣ ΜΥΛΟΣ - ΣΤ. ΚΑΤΩ ΠΑΤΗΣΙΑ",
           "headsign": "ΑΧΑΡΝΑΙ - ΚΟΚΚΙΝΟΣ ΜΥΛΟΣ - ΣΤ. ΚΑΤΩ ΠΑΤΗΣΙΑ (ΜΕΣΩ ΧΑΡΑΥΓΗΣ) (20:00 ΕΩΣ ΛΗΞΗ ΩΡΑΡΙΟΥ)",
           "variants": 1,
-          "tripCount": 12,
+          "tripCount": 14,
           "stops": 88,
           "lengthKm": 26.39,
           "stats": {
@@ -7519,35 +7073,6 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 2.397842888104859,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "line": "801",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "ΠΕΙΡΑΙΑΣ - ΠΑΛΑΣΚΑ",
-          "headsign": "ΠΕΙΡΑΙΑΣ - ΠΑΛΑΣΚΑ",
-          "variants": 1,
-          "tripCount": 5,
-          "stops": 53,
-          "lengthKm": 18.67,
-          "stats": {
-            "observations": 380,
-            "matched": 380,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 4.085096016251007,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -7614,7 +7139,7 @@
         {
           "dir": "ΑΣΠΡΟΠΥΡΓΟΣ - ΝΕΟΚΤΙΣΤΑ",
           "headsign": "ΑΣΠΡΟΠΥΡΓΟΣ - ΝΕΟΚΤΙΣΤΑ",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 76,
           "stops": 25,
           "lengthKm": 9.14,
@@ -7636,7 +7161,7 @@
           "dir": "ΝΕΟΚΤΙΣΤΑ - ΑΣΠΡΟΠΥΡΓΟΣ",
           "headsign": "ΝΕΟΚΤΙΣΤΑ - ΑΣΠΡΟΠΥΡΓΟΣ",
           "variants": 1,
-          "tripCount": 83,
+          "tripCount": 72,
           "stops": 27,
           "lengthKm": 9.1,
           "stats": {
@@ -7662,43 +7187,22 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "ΣΧΙΣΤΟ - ΚΑΡΑΒΑΣ  - ΣΤ. ΚΟΡΥΔΑΛΛΟΣ",
-          "headsign": "ΣΧΙΣΤΟ - ΚΑΡΑΒΑΣ  - ΣΤ. ΚΟΡΥΔΑΛΛΟΣ (ΑΠΟ ΠΛ.ΕΛΕΥΘΕΡΙΑΣ ΕΩΣ ΟΜΟΝΟΙΑ )",
-          "variants": 1,
-          "tripCount": 5,
-          "stops": 31,
-          "lengthKm": 8.35,
-          "stats": {
-            "observations": 198,
-            "matched": 198,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.3852933943633925,
-            "roundaboutSegs": 7,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "ΣΧΙΣΤΟ - ΚΑΡΑΒΑΣ -  ΣΤ. ΚΟΡΥΔΑΛΛΟΣ",
-          "headsign": "ΣΧΙΣΤΟ - ΚΑΡΑΒΑΣ -  ΣΤ. ΚΟΡΥΔΑΛΛΟΣ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
+          "headsign": "ΣΧΙΣΤΟ - ΚΑΡΑΒΑΣ -  ΣΤ. ΚΟΡΥΔΑΛΛΟΣ",
           "variants": 1,
-          "tripCount": 215,
-          "stops": 53,
-          "lengthKm": 13.2,
+          "tripCount": 222,
+          "stops": 63,
+          "lengthKm": 14.43,
           "stats": {
-            "observations": 466,
-            "matched": 466,
+            "observations": 472,
+            "matched": 472,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.9272227020850865,
-            "roundaboutSegs": 0,
+            "meanError": 2.826832647475257,
+            "roundaboutSegs": 11,
             "extStart": 0,
             "extEnd": 0
           }
@@ -7715,7 +7219,7 @@
           "dir": "ΑΝΩ ΚΟΡΥΔΑΛΛΟΣ - ΣΤ. ΜΕΤΡΟ ΑΙΓΑΛΕΩ",
           "headsign": "ΑΝΩ ΚΟΡΥΔΑΛΛΟΣ - ΣΤ. ΜΕΤΡΟ ΑΙΓΑΛΕΩ",
           "variants": 1,
-          "tripCount": 282,
+          "tripCount": 271,
           "stops": 68,
           "lengthKm": 17.29,
           "stats": {
@@ -7741,43 +7245,22 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "ΣΧΙΣΤO - ΣΤ.ΝΙΚΑΙΑ - ΣΤ.ΚΟΡΥΔΑΛΛΟΣ",
-          "headsign": "ΣΧΙΣΤO - ΣΤ.ΝΙΚΑΙΑ - ΣΤ.ΚΟΡΥΔΑΛΛΟΣ (ΑΠΟ ΣΤΑΣΗ ΗΠΕΙΡΟΥ ΕΩΣ ΓΟΥΝΑΡΗ)",
-          "variants": 1,
-          "tripCount": 6,
-          "stops": 24,
-          "lengthKm": 6.22,
-          "stats": {
-            "observations": 200,
-            "matched": 200,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.2956126969385204,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "ΣΧΙΣΤΟ - ΣΤ. ΝΙΚΑΙΑ - ΣΤ. ΚΟΡΥΔΑΛΛΟΣ",
-          "headsign": "ΣΧΙΣΤΟ - ΣΤ. ΝΙΚΑΙΑ - ΣΤ. ΚΟΡΥΔΑΛΛΟΣ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
+          "headsign": "ΣΧΙΣΤΟ - ΣΤ. ΝΙΚΑΙΑ - ΣΤ. ΚΟΡΥΔΑΛΛΟΣ",
           "variants": 1,
-          "tripCount": 218,
-          "stops": 65,
-          "lengthKm": 15.9,
+          "tripCount": 223,
+          "stops": 64,
+          "lengthKm": 15.42,
           "stats": {
-            "observations": 414,
-            "matched": 414,
+            "observations": 408,
+            "matched": 408,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 3.115507157534997,
-            "roundaboutSegs": 0,
+            "meanError": 2.9225056388011956,
+            "roundaboutSegs": 2,
             "extStart": 0,
             "extEnd": 0
           }
@@ -7792,41 +7275,20 @@
       "dirs": [
         {
           "dir": "ΣΧΙΣΤO -  ΣΤ. ΚΟΡΥΔΑΛΛΟΣ",
-          "headsign": "ΣΧΙΣΤO -  ΣΤ. ΚΟΡΥΔΑΛΛΟΣ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
+          "headsign": "ΣΧΙΣΤO -  ΣΤ. ΚΟΡΥΔΑΛΛΟΣ",
           "variants": 1,
-          "tripCount": 270,
-          "stops": 52,
-          "lengthKm": 13.35,
+          "tripCount": 309,
+          "stops": 49,
+          "lengthKm": 12.89,
           "stats": {
-            "observations": 517,
-            "matched": 517,
+            "observations": 494,
+            "matched": 494,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.4370487424505893,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΣΧΙΣΤΟ - ΣΤ.ΚΟΡΥΔΑΛΛΟΣ",
-          "headsign": "ΣΧΙΣΤΟ - ΣΤ.ΚΟΡΥΔΑΛΛΟΣ (ΕΩΣ ΓΟΥΝΑΡΗ-ΠΕΙΡΑΙΑΣ)",
-          "variants": 1,
-          "tripCount": 6,
-          "stops": 36,
-          "lengthKm": 9.73,
-          "stats": {
-            "observations": 364,
-            "matched": 364,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.3825091394136684,
+            "meanError": 2.5080129859192763,
             "roundaboutSegs": 12,
             "extStart": 0,
             "extEnd": 0
@@ -7843,8 +7305,8 @@
         {
           "dir": "ΧΑΪΔΑΡΙ - ΣΤ. ΑΓΙΑ ΜΑΡΙΝΑ",
           "headsign": "ΧΑΪΔΑΡΙ - ΣΤ. ΑΓΙΑ ΜΑΡΙΝΑ",
-          "variants": 3,
-          "tripCount": 242,
+          "variants": 2,
+          "tripCount": 231,
           "stops": 47,
           "lengthKm": 12.2,
           "stats": {
@@ -7873,7 +7335,7 @@
           "dir": "ΑΒΕΡΩΦ - ΠΡΟΥΣΣΗΣ",
           "headsign": "ΑΒΕΡΩΦ - ΠΡΟΥΣΣΗΣ",
           "variants": 1,
-          "tripCount": 308,
+          "tripCount": 316,
           "stops": 36,
           "lengthKm": 9.7,
           "stats": {
@@ -7894,7 +7356,7 @@
           "dir": "ΠΡΟΥΣΣΗΣ - ΑΒΕΡΩΦ",
           "headsign": "ΠΡΟΥΣΣΗΣ - ΑΒΕΡΩΦ",
           "variants": 1,
-          "tripCount": 301,
+          "tripCount": 309,
           "stops": 34,
           "lengthKm": 10.23,
           "stats": {
@@ -7923,7 +7385,7 @@
           "dir": "ΣΧΙΣΤΟ ΚΑΡΑΒΑΣ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΣΧΙΣΤΟ ΚΑΡΑΒΑΣ - ΠΕΙΡΑΙΑΣ",
           "variants": 3,
-          "tripCount": 223,
+          "tripCount": 262,
           "stops": 80,
           "lengthKm": 20.97,
           "stats": {
@@ -7952,7 +7414,7 @@
           "dir": "ΓΟΥΔΗ - ΤΑΥΡΟΣ",
           "headsign": "ΓΟΥΔΗ - ΤΑΥΡΟΣ (Εναλλακτική λόγω έργων)",
           "variants": 1,
-          "tripCount": 209,
+          "tripCount": 205,
           "stops": 31,
           "lengthKm": 9.84,
           "stats": {
@@ -7973,7 +7435,7 @@
           "dir": "ΤΑΥΡΟΣ - ΓΟΥΔΗ",
           "headsign": "ΤΑΥΡΟΣ - ΓΟΥΔΗ (Εναλλακτική λόγω έργων)",
           "variants": 1,
-          "tripCount": 203,
+          "tripCount": 200,
           "stops": 34,
           "lengthKm": 10.22,
           "stats": {
@@ -8101,8 +7563,8 @@
         {
           "dir": "ΛΙΜ. ΠΕΡΑΜΑΤΟΣ - ΑΝΩ ΠΕΡΑΜΑ",
           "headsign": "ΛΙΜ. ΠΕΡΑΜΑΤΟΣ - ΑΝΩ ΠΕΡΑΜΑ",
-          "variants": 2,
-          "tripCount": 310,
+          "variants": 1,
+          "tripCount": 372,
           "stops": 38,
           "lengthKm": 7.81,
           "stats": {
@@ -8131,7 +7593,7 @@
           "dir": "ΝΕΚΡ. ΣΧΙΣΤΟΥ - ΠΕΡΑΜΑ",
           "headsign": "ΝΕΚΡ. ΣΧΙΣΤΟΥ - ΠΕΡΑΜΑ",
           "variants": 2,
-          "tripCount": 78,
+          "tripCount": 73,
           "stops": 29,
           "lengthKm": 10.47,
           "stats": {
@@ -8181,7 +7643,7 @@
           "dir": "ΚΕΡΑΤΣΙΝΙ - ΣΤ.ΝΙΚΑΙΑ - ΔΡΑΠΕΤΣΩΝΑ",
           "headsign": "ΚΕΡΑΤΣΙΝΙ - ΣΤ.ΝΙΚΑΙΑ - ΔΡΑΠΕΤΣΩΝΑ ",
           "variants": 1,
-          "tripCount": 274,
+          "tripCount": 251,
           "stops": 38,
           "lengthKm": 9.97,
           "stats": {
@@ -8210,7 +7672,7 @@
           "dir": "ΑΓΙΑ ΑΝΑΣΤΑΣΙΑ - ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ",
           "headsign": "ΑΓΙΑ ΑΝΑΣΤΑΣΙΑ - ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ",
           "variants": 1,
-          "tripCount": 321,
+          "tripCount": 306,
           "stops": 22,
           "lengthKm": 5.96,
           "stats": {
@@ -8238,8 +7700,8 @@
         {
           "dir": "ΑΓ. ΑΝΤΩΝΙΟΣ - ΝΕΑ ΖΩΗ",
           "headsign": "ΑΓ. ΑΝΤΩΝΙΟΣ - ΝΕΑ ΖΩΗ",
-          "variants": 4,
-          "tripCount": 490,
+          "variants": 1,
+          "tripCount": 603,
           "stops": 33,
           "lengthKm": 8.27,
           "stats": {
@@ -8265,31 +7727,10 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΑΓ. ΒΑΣΙΛΕΙΟΣ",
-          "headsign": "ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΑΓ. ΒΑΣΙΛΕΙΟΣ (ΑΠΟ ΑΓ.ΒΑΣΙΛΕΙΟ)",
-          "variants": 2,
-          "tripCount": 7,
-          "stops": 17,
-          "lengthKm": 4.74,
-          "stats": {
-            "observations": 220,
-            "matched": 220,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.735354339543984,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΑΓ.ΒΑΣΙΛΕΙΟΣ",
           "headsign": "ΣΤ. ΑΓ. ΑΝΤΩΝΙΟΣ - ΑΓ.ΒΑΣΙΛΕΙΟΣ ",
           "variants": 1,
-          "tripCount": 307,
+          "tripCount": 312,
           "stops": 32,
           "lengthKm": 8.76,
           "stats": {
@@ -8317,8 +7758,8 @@
         {
           "dir": "ΝΕΑΠΟΛΗ - ΑΓ. ΑΝΤΩΝΙΟΣ - ΠΕΙΡΑΙΑΣ Α",
           "headsign": "ΝΕΑΠΟΛΗ - ΑΓ. ΑΝΤΩΝΙΟΣ - ΠΕΙΡΑΙΑΣ Α",
-          "variants": 3,
-          "tripCount": 306,
+          "variants": 2,
+          "tripCount": 314,
           "stops": 64,
           "lengthKm": 16.73,
           "stats": {
@@ -8347,7 +7788,7 @@
           "dir": "ΝΕΑΠΟΛΗ - ΑΓ. ΑΝΤΩΝΙΟΣ - ΠΕΙΡΑΙΑΣ Β",
           "headsign": "ΝΕΑΠΟΛΗ - ΑΓ. ΑΝΤΩΝΙΟΣ - ΠΕΙΡΑΙΑΣ Β",
           "variants": 3,
-          "tripCount": 109,
+          "tripCount": 112,
           "stops": 64,
           "lengthKm": 16.54,
           "stats": {
@@ -8375,8 +7816,8 @@
         {
           "dir": "ΠΕΙΡΑΙΑΣ - ΑΓ. ΜΗΝΑΣ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΑΓ. ΜΗΝΑΣ",
-          "variants": 4,
-          "tripCount": 241,
+          "variants": 2,
+          "tripCount": 245,
           "stops": 58,
           "lengthKm": 17.17,
           "stats": {
@@ -8405,7 +7846,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΑΣΠΡΑ ΧΩΜΑΤΑ - ΣΤ.ΝΙΚΑΙΑ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΑΣΠΡΑ ΧΩΜΑΤΑ - ΣΤ.ΝΙΚΑΙΑ",
           "variants": 1,
-          "tripCount": 183,
+          "tripCount": 217,
           "stops": 44,
           "lengthKm": 12.71,
           "stats": {
@@ -8434,7 +7875,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΘΗΒΩΝ - ΣΤ.ΝΙΚΑΙΑ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΘΗΒΩΝ - ΣΤ.ΝΙΚΑΙΑ",
           "variants": 1,
-          "tripCount": 164,
+          "tripCount": 168,
           "stops": 60,
           "lengthKm": 17.86,
           "stats": {
@@ -8462,8 +7903,8 @@
         {
           "dir": "ΠΑΔΑ ΑΡΧΑΙΟΣ ΕΛΑΙΩΝΑΣ - ΣΤ.ΑΙΓΑΛΕΩ - ΠΑΔΑ ΑΛΣΟΣ ΑΙΓΑΛΕΩ",
           "headsign": "ΠΑΔΑ ΑΡΧΑΙΟΣ ΕΛΑΙΩΝΑΣ - ΣΤ.ΑΙΓΑΛΕΩ - ΠΑΔΑ ΑΛΣΟΣ ΑΙΓΑΛΕΩ",
-          "variants": 3,
-          "tripCount": 207,
+          "variants": 1,
+          "tripCount": 212,
           "stops": 36,
           "lengthKm": 10.5,
           "stats": {
@@ -8490,21 +7931,21 @@
       "dirs": [
         {
           "dir": "ΑΓ.ΒΑΡΒΑΡΑ - ΣΤ.ΚΟΡΥΔΑΛΛΟΣ",
-          "headsign": "ΑΓ.ΒΑΡΒΑΡΑ - ΣΤ.ΚΟΡΥΔΑΛΛΟΣ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)  ",
-          "variants": 3,
-          "tripCount": 255,
-          "stops": 49,
-          "lengthKm": 12.54,
+          "headsign": "ΑΓ.ΒΑΡΒΑΡΑ - ΣΤ.ΚΟΡΥΔΑΛΛΟΣ",
+          "variants": 1,
+          "tripCount": 298,
+          "stops": 41,
+          "lengthKm": 10.88,
           "stats": {
-            "observations": 535,
-            "matched": 535,
+            "observations": 488,
+            "matched": 488,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.1593068637405755,
-            "roundaboutSegs": 0,
+            "meanError": 1.9487752820364543,
+            "roundaboutSegs": 11,
             "extStart": 0,
             "extEnd": 0
           }
@@ -8519,21 +7960,21 @@
       "dirs": [
         {
           "dir": "ΑΙΓΑΛΕΩ - ΠΕΙΡΑΙΑΣ",
-          "headsign": "ΑΙΓΑΛΕΩ - ΠΕΙΡΑΙΑΣ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)  ",
+          "headsign": "ΑΙΓΑΛΕΩ - ΠΕΙΡΑΙΑΣ",
           "variants": 3,
-          "tripCount": 247,
-          "stops": 43,
-          "lengthKm": 11.94,
+          "tripCount": 260,
+          "stops": 41,
+          "lengthKm": 11.35,
           "stats": {
-            "observations": 281,
-            "matched": 281,
+            "observations": 263,
+            "matched": 263,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.5687960638642755,
-            "roundaboutSegs": 0,
+            "meanError": 2.4956533084142705,
+            "roundaboutSegs": 11,
             "extStart": 0,
             "extEnd": 0
           }
@@ -8542,7 +7983,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΑΙΓΑΛΕΩ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΑΙΓΑΛΕΩ",
           "variants": 3,
-          "tripCount": 252,
+          "tripCount": 261,
           "stops": 42,
           "lengthKm": 12.17,
           "stats": {
@@ -8571,7 +8012,7 @@
           "dir": "ΕΥΓΕΝΕΙΑ - ΧΑΡΑΥΓΗ - ΠΕΙΡΑΙΑΣ Α",
           "headsign": "ΕΥΓΕΝΕΙΑ - ΧΑΡΑΥΓΗ - ΠΕΙΡΑΙΑΣ Α ",
           "variants": 2,
-          "tripCount": 163,
+          "tripCount": 158,
           "stops": 56,
           "lengthKm": 13.54,
           "stats": {
@@ -8600,7 +8041,7 @@
           "dir": "ΕΥΓΕΝΕΙΑ - ΧΑΡΑΥΓΗ - ΠΕΙΡΑΙΑΣ Β",
           "headsign": "ΕΥΓΕΝΕΙΑ - ΧΑΡΑΥΓΗ - ΠΕΙΡΑΙΑΣ Β",
           "variants": 2,
-          "tripCount": 169,
+          "tripCount": 165,
           "stops": 55,
           "lengthKm": 13.14,
           "stats": {
@@ -8621,35 +8062,6 @@
       "rank": 1
     },
     {
-      "line": "836",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "ΠΛ. ΚΟΥΜΟΥΝΔΟΥΡΟΥ - ΠΑΛΑΣΚΑ",
-          "headsign": "ΠΛ. ΚΟΥΜΟΥΝΔΟΥΡΟΥ - ΠΑΛΑΣΚΑ",
-          "variants": 1,
-          "tripCount": 10,
-          "stops": 46,
-          "lengthKm": 20.65,
-          "stats": {
-            "observations": 447,
-            "matched": 447,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 6.020737459897748,
-            "roundaboutSegs": 22,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
       "line": "837",
       "mode": "bus",
       "color": "#0059a9",
@@ -8657,8 +8069,8 @@
         {
           "dir": "ΑΓΙΑ ΒΑΡΒΑΡΑ - ΣΤ.ΑΓ.ΒΑΡΒΑΡΑ - ΣΤ.ΑΓ.ΜΑΡΙΝΑ",
           "headsign": "ΑΓΙΑ ΒΑΡΒΑΡΑ - ΣΤ.ΑΓ.ΒΑΡΒΑΡΑ - ΣΤ.ΑΓ.ΜΑΡΙΝΑ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ) ",
-          "variants": 3,
-          "tripCount": 195,
+          "variants": 4,
+          "tripCount": 131,
           "stops": 35,
           "lengthKm": 9.28,
           "stats": {
@@ -8670,27 +8082,6 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 2.378716913584045,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΑΓΙΑ ΒΑΡΒΑΡΑ - ΣΤ.ΑΓ.ΒΑΡΒΑΡΑ -ΣΤ.ΑΓ.ΜΑΡΙΝΑ",
-          "headsign": "ΑΓΙΑ ΒΑΡΒΑΡΑ - ΣΤ.ΑΓ.ΒΑΡΒΑΡΑ -ΣΤ.ΑΓ.ΜΑΡΙΝΑ (ΕΝΑΛΛΑΚΤΙΚΗ ΛΟΓΩ ΕΡΓΩΝ & ΛΑΪΚΗΣ ΚΑΘΕ ΠΕΜΠΤΗ 05:00-17:00)",
-          "variants": 1,
-          "tripCount": 27,
-          "stops": 30,
-          "lengthKm": 7.93,
-          "stats": {
-            "observations": 393,
-            "matched": 393,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.2351625116670935,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -8708,7 +8099,7 @@
           "dir": "ΟΜΟΝΟΙΑ - ΡΕΝΤΗΣ - ΠΑΛ. ΚΟΚΚΙΝΙΑ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΟΜΟΝΟΙΑ - ΡΕΝΤΗΣ - ΠΑΛ. ΚΟΚΚΙΝΙΑ - ΠΕΙΡΑΙΑΣ",
           "variants": 2,
-          "tripCount": 96,
+          "tripCount": 95,
           "stops": 72,
           "lengthKm": 25.38,
           "stats": {
@@ -8734,31 +8125,10 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "ΠΕΡΑΜΑ - ΣΤ. ΝΙΚΑΙΑ",
-          "headsign": "ΠΕΡΑΜΑ - ΣΤ. ΝΙΚΑΙΑ (ΟΜΟΝΟΙΑ ΕΩΣ ΠΕΡΑΜΑ)",
-          "variants": 2,
-          "tripCount": 5,
-          "stops": 53,
-          "lengthKm": 16.1,
-          "stats": {
-            "observations": 343,
-            "matched": 343,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.8528408700455032,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "ΠΕΡΑΜΑ - ΣΤ.ΝΙΚΑΙΑ",
           "headsign": "ΠΕΡΑΜΑ - ΣΤ.ΝΙΚΑΙΑ",
           "variants": 1,
-          "tripCount": 260,
+          "tripCount": 277,
           "stops": 64,
           "lengthKm": 17.78,
           "stats": {
@@ -8785,21 +8155,21 @@
       "dirs": [
         {
           "dir": "ΠΕΡΑΜΑ - ΣΤ. ΚΟΡΥΔΑΛΛΟΣ",
-          "headsign": "ΠΕΡΑΜΑ - ΣΤ. ΚΟΡΥΔΑΛΛΟΣ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
-          "variants": 2,
-          "tripCount": 278,
-          "stops": 80,
-          "lengthKm": 22.82,
+          "headsign": "ΠΕΡΑΜΑ - ΣΤ. ΚΟΡΥΔΑΛΛΟΣ ",
+          "variants": 1,
+          "tripCount": 292,
+          "stops": 82,
+          "lengthKm": 23.58,
           "stats": {
-            "observations": 613,
-            "matched": 613,
+            "observations": 590,
+            "matched": 590,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.785931871352023,
-            "roundaboutSegs": 0,
+            "meanError": 2.831208804975283,
+            "roundaboutSegs": 12,
             "extStart": 0,
             "extEnd": 0
           }
@@ -8816,7 +8186,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΠΕΡΑΜΑ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΠΕΡΑΜΑ",
           "variants": 1,
-          "tripCount": 600,
+          "tripCount": 638,
           "stops": 39,
           "lengthKm": 11.44,
           "stats": {
@@ -8837,7 +8207,7 @@
           "dir": "ΠΕΡΑΜΑ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΠΕΡΑΜΑ - ΠΕΙΡΑΙΑΣ",
           "variants": 1,
-          "tripCount": 596,
+          "tripCount": 633,
           "stops": 40,
           "lengthKm": 10.84,
           "stats": {
@@ -8866,7 +8236,7 @@
           "dir": "ΕΛΕΥΣΙΝΑ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΕΛΕΥΣΙΝΑ - ΠΕΙΡΑΙΑΣ",
           "variants": 1,
-          "tripCount": 240,
+          "tripCount": 249,
           "stops": 62,
           "lengthKm": 24.93,
           "stats": {
@@ -8887,7 +8257,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΕΛΕΥΣΙΝΑ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΕΛΕΥΣΙΝΑ",
           "variants": 1,
-          "tripCount": 248,
+          "tripCount": 268,
           "stops": 61,
           "lengthKm": 25.45,
           "stats": {
@@ -8915,7 +8285,7 @@
         {
           "dir": "ΝΕΑΠΟΛΗ - ΣΤ.ΝΙΚΑΙΑ",
           "headsign": "ΝΕΑΠΟΛΗ - ΣΤ.ΝΙΚΑΙΑ",
-          "variants": 3,
+          "variants": 2,
           "tripCount": 258,
           "stops": 31,
           "lengthKm": 7.55,
@@ -8994,7 +8364,7 @@
         {
           "dir": "ΨΑΡΙ - ΑΣΠΡΟΠΥΡΓΟΣ - ΛΟΦΟΣ ΚΥΡΙΛΛΟΥ",
           "headsign": "ΨΑΡΙ - ΑΣΠΡΟΠΥΡΓΟΣ - ΛΟΦΟΣ ΚΥΡΙΛΛΟΥ",
-          "variants": 3,
+          "variants": 2,
           "tripCount": 242,
           "stops": 34,
           "lengthKm": 12.73,
@@ -9024,7 +8394,7 @@
           "dir": "ΑΙΓΑΛΕΩ - ΥΜΗΤΤΟΣ - ΔΑΦΝΗ",
           "headsign": "ΑΙΓΑΛΕΩ - ΥΜΗΤΤΟΣ - ΔΑΦΝΗ",
           "variants": 2,
-          "tripCount": 260,
+          "tripCount": 274,
           "stops": 44,
           "lengthKm": 13.46,
           "stats": {
@@ -9045,7 +8415,7 @@
           "dir": "ΔΑΦΝΗ - ΥΜΗΤΤΟΣ - ΑΙΓΑΛΕΩ",
           "headsign": "ΔΑΦΝΗ - ΥΜΗΤΤΟΣ - ΑΙΓΑΛΕΩ",
           "variants": 1,
-          "tripCount": 291,
+          "tripCount": 298,
           "stops": 46,
           "lengthKm": 13.94,
           "stats": {
@@ -9074,7 +8444,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΔΕΞΑΜΕΝΕΣ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΔΕΞΑΜΕΝΕΣ (Εναλλακτική λόγω λαϊκής κάθε Τετάρτη 05:00-17:00)",
           "variants": 1,
-          "tripCount": 20,
+          "tripCount": 24,
           "stops": 38,
           "lengthKm": 17.56,
           "stats": {
@@ -9095,7 +8465,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΔΕΞΑΜΕΝΕΣ - ΝΕΟΣ ΜΩΛΟΣ ΔΡΑΠΕΤΣΩΝΑΣ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΔΕΞΑΜΕΝΕΣ - ΝΕΟΣ ΜΩΛΟΣ ΔΡΑΠΕΤΣΩΝΑΣ (ΚΥΚΛΙΚΗ)",
           "variants": 1,
-          "tripCount": 160,
+          "tripCount": 176,
           "stops": 43,
           "lengthKm": 17.71,
           "stats": {
@@ -9124,7 +8494,7 @@
           "dir": "Π. ΦΑΛΗΡΟ - ΓΕΝ. ΚΡΑΤΙΚΟ ΝΙΚΑΙΑΣ - ΣΧΙΣΤΟ ΚΕΡΑΤΣΙΝΙ",
           "headsign": "Π. ΦΑΛΗΡΟ - ΓΕΝ. ΚΡΑΤΙΚΟ ΝΙΚΑΙΑΣ - ΣΧΙΣΤΟ ΚΕΡΑΤΣΙΝΙ (Προσωρινή λόγω έργων)",
           "variants": 1,
-          "tripCount": 161,
+          "tripCount": 171,
           "stops": 49,
           "lengthKm": 15.51,
           "stats": {
@@ -9145,7 +8515,7 @@
           "dir": "ΣΧΙΣΤΟ ΚΕΡΑΤΣΙΝΙΟΥ - ΓΕΝ. ΚΡΑTIKO - Π. ΦΑΛΗΡΟ",
           "headsign": "ΣΧΙΣΤΟ ΚΕΡΑΤΣΙΝΙΟΥ - ΓΕΝ. ΚΡΑTIKO - Π. ΦΑΛΗΡΟ (Προσωρινή λόγω έργων)",
           "variants": 2,
-          "tripCount": 147,
+          "tripCount": 162,
           "stops": 55,
           "lengthKm": 18.61,
           "stats": {
@@ -9403,7 +8773,7 @@
           "dir": "ΑΜΑΞΟΣΤΑΣΙΟ ΒΟΤΑΝΙΚΟΥ - ΜΑΝΔΡΑ",
           "headsign": "ΑΜΑΞΟΣΤΑΣΙΟ ΒΟΤΑΝΙΚΟΥ - ΜΑΝΔΡΑ",
           "variants": 1,
-          "tripCount": 14,
+          "tripCount": 8,
           "stops": 80,
           "lengthKm": 31.91,
           "stats": {
@@ -9431,7 +8801,7 @@
         {
           "dir": "ΑΣΠΡΟΠΥΡΓΟΣ - ΣΤ. ΑΓ. ΜΑΡΙΝΑ",
           "headsign": "ΑΣΠΡΟΠΥΡΓΟΣ - ΣΤ. ΑΓ. ΜΑΡΙΝΑ",
-          "variants": 6,
+          "variants": 2,
           "tripCount": 317,
           "stops": 71,
           "lengthKm": 32.38,
@@ -9511,7 +8881,7 @@
           "dir": "ΕΛΕΥΣΙΝΑ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΕΛΕΥΣΙΝΑ - ΠΕΙΡΑΙΑΣ (ΜΕΣΩ Λ. ΕΘΝ. ΑΝΤΙΣΤΑΣΕΩΣ)",
           "variants": 1,
-          "tripCount": 62,
+          "tripCount": 84,
           "stops": 41,
           "lengthKm": 20.47,
           "stats": {
@@ -9532,7 +8902,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΕΛΕΥΣΙΝΑ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΕΛΕΥΣΙΝΑ (ΜΕΣΩ Λ. ΕΘΝ. ΑΝΤΙΣΤΑΣΕΩΣ)",
           "variants": 1,
-          "tripCount": 62,
+          "tripCount": 84,
           "stops": 47,
           "lengthKm": 22.59,
           "stats": {
@@ -9560,7 +8930,7 @@
         {
           "dir": "ΠΕΙΡΑΙΑΣ - ΣΧΙΣΤΟ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΣΧΙΣΤΟ ",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 33,
           "stops": 49,
           "lengthKm": 17.55,
@@ -9589,8 +8959,8 @@
         {
           "dir": "ΕΛΕΥΣΙΝΑ - ΣΤ. ΑΓ. ΜΑΡΙΝΑ",
           "headsign": "ΕΛΕΥΣΙΝΑ - ΣΤ. ΑΓ. ΜΑΡΙΝΑ",
-          "variants": 5,
-          "tripCount": 341,
+          "variants": 2,
+          "tripCount": 332,
           "stops": 61,
           "lengthKm": 32.39,
           "stats": {
@@ -9618,7 +8988,7 @@
         {
           "dir": "ΑΧΑΡΝΑΙ - ΕΛΕΥΣΙΝΑ",
           "headsign": "ΑΧΑΡΝΑΙ - ΕΛΕΥΣΙΝΑ",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 101,
           "stops": 70,
           "lengthKm": 26.07,
@@ -9718,8 +9088,8 @@
         {
           "dir": "ΕΛΕΥΣΙΝΑ - ΑΣΠΡΟΠΥΡΓΟΣ - ΡΟΥΠΑΚΙ",
           "headsign": "ΕΛΕΥΣΙΝΑ - ΑΣΠΡΟΠΥΡΓΟΣ - ΡΟΥΠΑΚΙ",
-          "variants": 2,
-          "tripCount": 104,
+          "variants": 1,
+          "tripCount": 85,
           "stops": 33,
           "lengthKm": 14.32,
           "stats": {
@@ -9739,8 +9109,8 @@
         {
           "dir": "ΡΟΥΠΑΚΙ - ΑΣΠΡΟΠΥΡΓΟΣ - ΕΛΕΥΣΙΝΑ",
           "headsign": "ΡΟΥΠΑΚΙ - ΑΣΠΡΟΠΥΡΓΟΣ - ΕΛΕΥΣΙΝΑ",
-          "variants": 2,
-          "tripCount": 110,
+          "variants": 1,
+          "tripCount": 99,
           "stops": 39,
           "lengthKm": 15.19,
           "stats": {
@@ -9848,7 +9218,7 @@
           "dir": "ΑΓ. ΒΑΡΒΑΡΑ - ΧΑΪΔΑΡΙ - ΑΓ. ΑΝΑΡΓΥΡΟΙ - ΙΛΙΟΝ",
           "headsign": "ΑΓ. ΒΑΡΒΑΡΑ - ΧΑΪΔΑΡΙ - ΑΓ. ΑΝΑΡΓΥΡΟΙ - ΙΛΙΟΝ",
           "variants": 2,
-          "tripCount": 147,
+          "tripCount": 164,
           "stops": 55,
           "lengthKm": 18.26,
           "stats": {
@@ -9869,7 +9239,7 @@
           "dir": "ΙΛΙΟΝ - ΑΓ.ΑΝΑΡΓΥΡΟΙ - ΧΑΪΔΑΡΙ - ΑΓ.ΒΑΡΒΑΡΑ",
           "headsign": "ΙΛΙΟΝ - ΑΓ.ΑΝΑΡΓΥΡΟΙ - ΧΑΪΔΑΡΙ - ΑΓ.ΒΑΡΒΑΡΑ",
           "variants": 2,
-          "tripCount": 150,
+          "tripCount": 163,
           "stops": 49,
           "lengthKm": 15.59,
           "stats": {
@@ -9927,7 +9297,7 @@
           "dir": "ΠΛ. ΚΑΡΑΪΣΚΑΚΗ - ΚΑΛΛΙΠΟΛΗ",
           "headsign": "ΠΛ. ΚΑΡΑΪΣΚΑΚΗ - ΚΑΛΛΙΠΟΛΗ",
           "variants": 2,
-          "tripCount": 340,
+          "tripCount": 382,
           "stops": 25,
           "lengthKm": 6.61,
           "stats": {
@@ -9955,8 +9325,8 @@
         {
           "dir": "ΑΓ. ΒΑΣΙΛΕΙΟΣ - ΑΓ. ΣΟΦΙΑ - ΚΡΑΤ. ΝΙΚΑΙΑΣ",
           "headsign": "ΑΓ. ΒΑΣΙΛΕΙΟΣ - ΑΓ. ΣΟΦΙΑ - ΚΡΑΤ. ΝΙΚΑΙΑΣ",
-          "variants": 2,
-          "tripCount": 280,
+          "variants": 1,
+          "tripCount": 291,
           "stops": 37,
           "lengthKm": 9.66,
           "stats": {
@@ -9976,8 +9346,8 @@
         {
           "dir": "ΚΡΑΤ. ΝΙΚΑΙΑΣ - ΑΓ. ΣΟΦΙΑ - ΑΓ. ΒΑΣΙΛΕΙΟΣ",
           "headsign": "ΚΡΑΤ. ΝΙΚΑΙΑΣ - ΑΓ. ΣΟΦΙΑ - ΑΓ. ΒΑΣΙΛΕΙΟΣ",
-          "variants": 3,
-          "tripCount": 288,
+          "variants": 1,
+          "tripCount": 299,
           "stops": 39,
           "lengthKm": 10.62,
           "stats": {
@@ -10004,20 +9374,20 @@
       "dirs": [
         {
           "dir": "ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ - ΤΖΙΤΖΙΦΙΕΣ",
-          "headsign": "ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ - ΤΖΙΤΖΙΦΙΕΣ",
-          "variants": 3,
-          "tripCount": 239,
-          "stops": 34,
-          "lengthKm": 10.67,
+          "headsign": "ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ - ΤΖΙΤΖΙΦΙΕΣ (Προσωρινή λόγω έργων 07:00-15:30)",
+          "variants": 2,
+          "tripCount": 129,
+          "stops": 31,
+          "lengthKm": 10.05,
           "stats": {
-            "observations": 395,
-            "matched": 395,
+            "observations": 393,
+            "matched": 393,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.2357939280887327,
+            "meanError": 2.242500442941307,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -10064,7 +9434,7 @@
           "dir": "ΣΤΑΘ. ΚΑΛΛΙΘΕΑΣ - ΙΔΡ. ΤΥΦΛΩΝ - Π.Ε ΝΟΤΙΟΥ ΤΟΜΕΑ",
           "headsign": "ΣΤΑΘ. ΚΑΛΛΙΘΕΑΣ - ΙΔΡ. ΤΥΦΛΩΝ - Π.Ε ΝΟΤΙΟΥ ΤΟΜΕΑ",
           "variants": 1,
-          "tripCount": 5,
+          "tripCount": 10,
           "stops": 23,
           "lengthKm": 14.79,
           "stats": {
@@ -10121,8 +9491,8 @@
         {
           "dir": "ΟΜΟΝΟΙΑ - ΛΑΧΑΝΑΓΟΡΑ - ΠΑΛ. ΚΟΚΚΙΝΙΑ",
           "headsign": "ΟΜΟΝΟΙΑ - ΛΑΧΑΝΑΓΟΡΑ - ΠΑΛ. ΚΟΚΚΙΝΙΑ",
-          "variants": 3,
-          "tripCount": 90,
+          "variants": 2,
+          "tripCount": 89,
           "stops": 73,
           "lengthKm": 21.77,
           "stats": {
@@ -10150,8 +9520,8 @@
         {
           "dir": "ΛΟΦΟΣ ΒΩΚΟΥ - ΠΡ. ΗΛΙΑΣ",
           "headsign": "ΛΟΦΟΣ ΒΩΚΟΥ - ΠΡ. ΗΛΙΑΣ",
-          "variants": 2,
-          "tripCount": 346,
+          "variants": 1,
+          "tripCount": 370,
           "stops": 47,
           "lengthKm": 10.94,
           "stats": {
@@ -10179,7 +9549,7 @@
         {
           "dir": "ΒΟΥΛΑ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΒΟΥΛΑ - ΠΕΙΡΑΙΑΣ (Προσωρινή λόγω έργων)",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 299,
           "stops": 56,
           "lengthKm": 22.62,
@@ -10229,8 +9599,8 @@
         {
           "dir": "ΑΚΑΔΗΜΙΑ - ΒΟΥΛΑ",
           "headsign": "ΑΚΑΔΗΜΙΑ - ΒΟΥΛΑ (ΜΕΣΩ Λ. ΑΜΦΙΘΕΑΣ)",
-          "variants": 2,
-          "tripCount": 579,
+          "variants": 1,
+          "tripCount": 619,
           "stops": 57,
           "lengthKm": 21.36,
           "stats": {
@@ -10250,8 +9620,8 @@
         {
           "dir": "ΒΟΥΛΑ - ΑΚΑΔΗΜΙΑ",
           "headsign": "ΒΟΥΛΑ - ΑΚΑΔΗΜΙΑ (ΜΕΣΩ Λ. ΑΜΦΙΘΕΑΣ)",
-          "variants": 2,
-          "tripCount": 599,
+          "variants": 1,
+          "tripCount": 615,
           "stops": 60,
           "lengthKm": 20.89,
           "stats": {
@@ -10279,8 +9649,8 @@
         {
           "dir": "ΑΚΑΔΗΜΙΑ - ΓΛΥΦΑΔΑ",
           "headsign": "ΑΚΑΔΗΜΙΑ - ΓΛΥΦΑΔΑ (ΜΕΣΩ Λ. ΒΟΥΛΙΑΓΜΕΝΗΣ)",
-          "variants": 1,
-          "tripCount": 322,
+          "variants": 2,
+          "tripCount": 287,
           "stops": 44,
           "lengthKm": 16.51,
           "stats": {
@@ -10301,7 +9671,7 @@
           "dir": "ΓΛΥΦΑΔΑ - ΑΚΑΔΗΜΙΑ",
           "headsign": "ΓΛΥΦΑΔΑ - ΑΚΑΔΗΜΙΑ (ΜΕΣΩ Λ. ΒΟΥΛΙΑΓΜΕΝΗΣ)",
           "variants": 1,
-          "tripCount": 326,
+          "tripCount": 322,
           "stops": 45,
           "lengthKm": 16.44,
           "stats": {
@@ -10330,7 +9700,7 @@
           "dir": "ΑΚΑΔΗΜΙΑ - ΑΓ. ΠΑΡΑΣΚΕΥΗ - ΑΝΘΟΥΣΑ",
           "headsign": "ΑΚΑΔΗΜΙΑ - ΑΓ. ΠΑΡΑΣΚΕΥΗ - ΑΝΘΟΥΣΑ",
           "variants": 1,
-          "tripCount": 369,
+          "tripCount": 399,
           "stops": 44,
           "lengthKm": 15.06,
           "stats": {
@@ -10351,7 +9721,7 @@
           "dir": "ΑΝΘΟΥΣΑ - ΑΓ. ΠΑΡΑΣΚΕΥΗ - ΑΚΑΔΗΜΙΑ",
           "headsign": "ΑΝΘΟΥΣΑ - ΑΓ. ΠΑΡΑΣΚΕΥΗ - ΑΚΑΔΗΜΙΑ ",
           "variants": 1,
-          "tripCount": 354,
+          "tripCount": 388,
           "stops": 48,
           "lengthKm": 15.42,
           "stats": {
@@ -10379,8 +9749,8 @@
         {
           "dir": "ΚΗΦΙΣΙΑ - ΣΤΟΥΡΝΑΡΗ",
           "headsign": "ΚΗΦΙΣΙΑ - ΣΤΟΥΡΝΑΡΗ",
-          "variants": 2,
-          "tripCount": 390,
+          "variants": 1,
+          "tripCount": 399,
           "stops": 41,
           "lengthKm": 14.48,
           "stats": {
@@ -10401,7 +9771,7 @@
           "dir": "ΣΤΟΥΡΝΑΡΗ - ΚΗΦΙΣΙΑ",
           "headsign": "ΣΤΟΥΡΝΑΡΗ - ΚΗΦΙΣΙΑ",
           "variants": 1,
-          "tripCount": 396,
+          "tripCount": 382,
           "stops": 43,
           "lengthKm": 15.23,
           "stats": {
@@ -10430,7 +9800,7 @@
           "dir": "ΜΑΡΟΥΣΙ - Ν. ΙΩΝΙΑ - ΠΟΛΥΤΕΧΝEIO",
           "headsign": "ΜΑΡΟΥΣΙ - Ν. ΙΩΝΙΑ - ΠΟΛΥΤΕΧΝEIO",
           "variants": 1,
-          "tripCount": 435,
+          "tripCount": 437,
           "stops": 58,
           "lengthKm": 17.72,
           "stats": {
@@ -10451,7 +9821,7 @@
           "dir": "ΠΟΛΥΤΕΧΝΕΙΟ - Ν. ΙΩΝΙΑ - ΜΑΡΟΥΣΙ",
           "headsign": "ΠΟΛΥΤΕΧΝΕΙΟ - Ν. ΙΩΝΙΑ - ΜΑΡΟΥΣΙ",
           "variants": 1,
-          "tripCount": 445,
+          "tripCount": 472,
           "stops": 57,
           "lengthKm": 16.62,
           "stats": {
@@ -10479,8 +9849,8 @@
         {
           "dir": "ΑΧΑΡΝΑΙ - ΣΤΑΘΜΟΣ ΛΑΡΙΣΗΣ",
           "headsign": "ΑΧΑΡΝΑΙ - ΣΤΑΘΜΟΣ ΛΑΡΙΣΗΣ",
-          "variants": 2,
-          "tripCount": 272,
+          "variants": 1,
+          "tripCount": 289,
           "stops": 44,
           "lengthKm": 14.27,
           "stats": {
@@ -10500,8 +9870,8 @@
         {
           "dir": "ΣΤ. ΛΑΡΙΣΗΣ - ΑΧΑΡΝΑΙ",
           "headsign": "ΣΤ. ΛΑΡΙΣΗΣ - ΑΧΑΡΝΑΙ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
-          "variants": 1,
-          "tripCount": 265,
+          "variants": 2,
+          "tripCount": 239,
           "stops": 46,
           "lengthKm": 14.62,
           "stats": {
@@ -10530,7 +9900,7 @@
           "dir": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΠΛ. ΒΑΘΗ",
           "headsign": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΠΛ. ΒΑΘΗ",
           "variants": 1,
-          "tripCount": 241,
+          "tripCount": 249,
           "stops": 32,
           "lengthKm": 9.98,
           "stats": {
@@ -10551,7 +9921,7 @@
           "dir": "ΠΛ. ΒΑΘΗ - ΙΛΙΟΝ - ΠΕΤΡΟΥΠΟΛΗ",
           "headsign": "ΠΛ. ΒΑΘΗ - ΙΛΙΟΝ - ΠΕΤΡΟΥΠΟΛΗ ",
           "variants": 1,
-          "tripCount": 229,
+          "tripCount": 237,
           "stops": 36,
           "lengthKm": 11.06,
           "stats": {
@@ -10580,7 +9950,7 @@
           "dir": "ΚΗΠΟΥΠΟΛΗ - ΟΜΟΝΟΙΑ",
           "headsign": "ΚΗΠΟΥΠΟΛΗ - ΟΜΟΝΟΙΑ",
           "variants": 1,
-          "tripCount": 473,
+          "tripCount": 496,
           "stops": 35,
           "lengthKm": 9.93,
           "stats": {
@@ -10601,7 +9971,7 @@
           "dir": "ΟΜΟΝΟΙΑ  - ΚΗΠΟΥΠΟΛΗ",
           "headsign": "ΟΜΟΝΟΙΑ  - ΚΗΠΟΥΠΟΛΗ",
           "variants": 1,
-          "tripCount": 468,
+          "tripCount": 496,
           "stops": 38,
           "lengthKm": 10.14,
           "stats": {
@@ -10630,7 +10000,7 @@
           "dir": "ΔΑΣΟΣ - ΣΤ. ΛΑΡΙΣΗΣ",
           "headsign": "ΔΑΣΟΣ - ΣΤ. ΛΑΡΙΣΗΣ",
           "variants": 1,
-          "tripCount": 419,
+          "tripCount": 489,
           "stops": 32,
           "lengthKm": 10.48,
           "stats": {
@@ -10651,7 +10021,7 @@
           "dir": "ΣΤ. ΛΑΡΙΣΗΣ - ΔΑΣΟΣ",
           "headsign": "ΣΤ. ΛΑΡΙΣΗΣ - ΔΑΣΟΣ",
           "variants": 1,
-          "tripCount": 419,
+          "tripCount": 498,
           "stops": 30,
           "lengthKm": 10.05,
           "stats": {
@@ -10680,7 +10050,7 @@
           "dir": "ΑΝΩ ΓΛΥΦΑΔΑ - ΠΕΙΡΑΙΑΣ",
           "headsign": "ΑΝΩ ΓΛΥΦΑΔΑ - ΠΕΙΡΑΙΑΣ (Εναλλακτική λόγω έργων)",
           "variants": 2,
-          "tripCount": 131,
+          "tripCount": 130,
           "stops": 57,
           "lengthKm": 21.71,
           "stats": {
@@ -10701,7 +10071,7 @@
           "dir": "ΠΕΙΡΑΙΑΣ - ΑΝΩ ΓΛΥΦΑΔΑ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΑΝΩ ΓΛΥΦΑΔΑ  (Προσωρινή λόγω έργων)",
           "variants": 2,
-          "tripCount": 132,
+          "tripCount": 131,
           "stops": 57,
           "lengthKm": 21.18,
           "stats": {
@@ -10730,7 +10100,7 @@
           "dir": "ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ - ΑΓ. ΚΟΣΜΑΣ",
           "headsign": "ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ - ΑΓ. ΚΟΣΜΑΣ (ΜΕΣΩ ΠΑΡΑΛΙΑΚΗΣ)",
           "variants": 1,
-          "tripCount": 341,
+          "tripCount": 330,
           "stops": 59,
           "lengthKm": 23,
           "stats": {
@@ -10742,27 +10112,6 @@
             "rawStretchCount": 1,
             "rawMeters": 503,
             "meanError": 3.7886350289780464,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ - ΑΓ.ΚΟΣΜΑΣ",
-          "headsign": "ΣΤ. ΣΥΓΓΡΟΥ ΦΙΞ - ΑΓ.ΚΟΣΜΑΣ (ΜΕΣΩ ΠΑΡΑΛΙΑΚΗΣ) (5η ΑΛΙΜΟΥ ΕΩΣ ΣΤ.ΣΥΓΓΡΟΥ ΦΙΞ)",
-          "variants": 2,
-          "tripCount": 18,
-          "stops": 31,
-          "lengthKm": 11.59,
-          "stats": {
-            "observations": 320,
-            "matched": 320,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 1,
-            "rawMeters": 503,
-            "meanError": 2.723671290061052,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -10780,7 +10129,7 @@
           "dir": "ΑΓ. ΠΑΡΑΣΚΕΥΗ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΣΤ. ΛΑΡΙΣΗΣ",
           "headsign": "ΑΓ. ΠΑΡΑΣΚΕΥΗ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΣΤ. ΛΑΡΙΣΗΣ",
           "variants": 1,
-          "tripCount": 378,
+          "tripCount": 434,
           "stops": 47,
           "lengthKm": 12.93,
           "stats": {
@@ -10801,7 +10150,7 @@
           "dir": "ΣΤ. ΛΑΡΙΣΗΣ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΑΓ. ΠΑΡΑΣΚΕΥΗ",
           "headsign": "ΣΤ. ΛΑΡΙΣΗΣ - Λ. ΑΛΕΞΑΝΔΡΑΣ - ΑΓ. ΠΑΡΑΣΚΕΥΗ",
           "variants": 1,
-          "tripCount": 404,
+          "tripCount": 440,
           "stops": 43,
           "lengthKm": 13.42,
           "stats": {
@@ -10830,7 +10179,7 @@
           "dir": "Ν. ΚΗΦΙΣΙΑ - ΜΕΤΑΜΟΡΦΩΣΗ - ΧΑΛΚΟΚΟΝΔΥΛΗ",
           "headsign": "Ν. ΚΗΦΙΣΙΑ - ΜΕΤΑΜΟΡΦΩΣΗ - ΧΑΛΚΟΚΟΝΔΥΛΗ",
           "variants": 1,
-          "tripCount": 343,
+          "tripCount": 352,
           "stops": 63,
           "lengthKm": 18.17,
           "stats": {
@@ -10851,7 +10200,7 @@
           "dir": "ΧΑΛΚΟΚΟΝΔΥΛΗ - ΜΕΤΑΜΟΡΦΩΣΗ - Ν.  ΚΗΦΙΣΙΑ",
           "headsign": "ΧΑΛΚΟΚΟΝΔΥΛΗ - ΜΕΤΑΜΟΡΦΩΣΗ - Ν.  ΚΗΦΙΣΙΑ",
           "variants": 1,
-          "tripCount": 340,
+          "tripCount": 345,
           "stops": 57,
           "lengthKm": 18.11,
           "stats": {
@@ -10880,7 +10229,7 @@
           "dir": "ΑΧΑΡΝΑΙ - ΣΤΑΘΜΟΣ ΛΑΡΙΣΗΣ",
           "headsign": "ΑΧΑΡΝΑΙ - ΣΤΑΘΜΟΣ ΛΑΡΙΣΗΣ (ΜΕΣΩ ΑΡΙΣΤΟΤΕΛΟΥΣ)",
           "variants": 1,
-          "tripCount": 263,
+          "tripCount": 276,
           "stops": 43,
           "lengthKm": 14.04,
           "stats": {
@@ -10901,7 +10250,7 @@
           "dir": "ΣΤΑΘΜΟΣ ΛΑΡΙΣΗΣ - ΑΧΑΡΝΑΙ",
           "headsign": "ΣΤΑΘΜΟΣ ΛΑΡΙΣΗΣ - ΑΧΑΡΝΑΙ (ΜΕΣΩ ΑΡΙΣΤΟΤΕΛΟΥΣ)",
           "variants": 1,
-          "tripCount": 257,
+          "tripCount": 259,
           "stops": 46,
           "lengthKm": 14.38,
           "stats": {
@@ -10930,7 +10279,7 @@
           "dir": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΠΛ. ΒΑΘΗ",
           "headsign": "ΠΕΤΡΟΥΠΟΛΗ - ΙΛΙΟΝ - ΠΛ. ΒΑΘΗ",
           "variants": 1,
-          "tripCount": 243,
+          "tripCount": 257,
           "stops": 32,
           "lengthKm": 10,
           "stats": {
@@ -10951,7 +10300,7 @@
           "dir": "ΠΛ. ΒΑΘΗ - ΙΛΙΟΝ - ΠΕΤΡΟΥΠΟΛΗ",
           "headsign": "ΠΛ. ΒΑΘΗ - ΙΛΙΟΝ - ΠΕΤΡΟΥΠΟΛΗ ",
           "variants": 1,
-          "tripCount": 233,
+          "tripCount": 243,
           "stops": 32,
           "lengthKm": 10.19,
           "stats": {
@@ -10980,7 +10329,7 @@
           "dir": "ΑΝΩ ΛΙΟΣΙΑ (ΠΑΝΟΡΑΜΑ) - ΣΤ. ΑΤΤΙΚΗ",
           "headsign": "ΑΝΩ ΛΙΟΣΙΑ (ΠΑΝΟΡΑΜΑ) - ΣΤ. ΑΤΤΙΚΗ (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
           "variants": 1,
-          "tripCount": 365,
+          "tripCount": 378,
           "stops": 46,
           "lengthKm": 14.26,
           "stats": {
@@ -11000,8 +10349,8 @@
         {
           "dir": "ΣΤ. ΑΤΤΙΚΗ - ΑΝΩ ΛΙΟΣΙΑ",
           "headsign": "ΣΤ. ΑΤΤΙΚΗ - ΑΝΩ ΛΙΟΣΙΑ (ΠΑΝΟΡΑΜΑ)",
-          "variants": 2,
-          "tripCount": 353,
+          "variants": 1,
+          "tripCount": 363,
           "stops": 43,
           "lengthKm": 13.55,
           "stats": {
@@ -11030,7 +10379,7 @@
           "dir": "ΠΑΛΑΤΑΚΙ - ΣΤΑΘΜΟΣ ΛΑΡΙΣΗΣ",
           "headsign": "ΠΑΛΑΤΑΚΙ - ΣΤΑΘΜΟΣ ΛΑΡΙΣΗΣ",
           "variants": 1,
-          "tripCount": 35,
+          "tripCount": 61,
           "stops": 20,
           "lengthKm": 7.39,
           "stats": {
@@ -11051,7 +10400,7 @@
           "dir": "ΣΤ. ΛΑΡΙΣΗΣ - ΠΑΛΑΤΑΚΙ",
           "headsign": "ΣΤ. ΛΑΡΙΣΗΣ - ΠΑΛΑΤΑΚΙ",
           "variants": 1,
-          "tripCount": 40,
+          "tripCount": 61,
           "stops": 22,
           "lengthKm": 7.59,
           "stats": {
@@ -11080,7 +10429,7 @@
           "dir": "ΚΑΜΑΤΕΡΟ - ΑΓ. ΝΙΚΟΛΑΟΣ - ΙΛΙΟΝ - ΠΟΛΥΤΕΧΝΕΙΟ",
           "headsign": "ΚΑΜΑΤΕΡΟ - ΑΓ. ΝΙΚΟΛΑΟΣ - ΙΛΙΟΝ - ΠΟΛΥΤΕΧΝΕΙΟ",
           "variants": 1,
-          "tripCount": 291,
+          "tripCount": 297,
           "stops": 64,
           "lengthKm": 19.28,
           "stats": {
@@ -11132,17 +10481,67 @@
           "variants": 1,
           "tripCount": 140,
           "stops": 23,
-          "lengthKm": 12.47,
+          "lengthKm": 12.38,
           "stats": {
-            "observations": 239,
-            "matched": 239,
+            "observations": 234,
+            "matched": 234,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 3.3212850164732832,
+            "meanError": 3.377132145130873,
             "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "Ε90",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "ΠΑΝΕΠΙΣΤΗΜΙΟΥΠΟΛΗ - ΠΕΙΡΑΙΑΣ",
+          "headsign": "ΠΑΝΕΠΙΣΤΗΜΙΟΥΠΟΛΗ - ΠΕΙΡΑΙΑΣ (ΣΧΟΛΙΚΗ EXPRESS)",
+          "variants": 1,
+          "tripCount": 15,
+          "stops": 20,
+          "lengthKm": 18.03,
+          "stats": {
+            "observations": 557,
+            "matched": 557,
+            "noCandidates": 0,
+            "viterbiBreaks": 2,
+            "bridged": 0,
+            "rawStretchCount": 2,
+            "rawMeters": 40,
+            "meanError": 5.835739872466502,
+            "roundaboutSegs": 9,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "ΠΕΙΡΑΙΑΣ - ΠΑΝΕΠΙΣΤΗΜΙΟΥΠΟΛΗ",
+          "headsign": "ΠΕΙΡΑΙΑΣ - ΠΑΝΕΠΙΣΤΗΜΙΟΥΠΟΛΗ (ΣΧΟΛΙΚΗ EXPRESS) (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
+          "variants": 1,
+          "tripCount": 20,
+          "stops": 20,
+          "lengthKm": 17.7,
+          "stats": {
+            "observations": 447,
+            "matched": 447,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.605268102564646,
+            "roundaboutSegs": 3,
             "extStart": 0,
             "extEnd": 0
           }
@@ -11201,77 +10600,48 @@
       "rank": 1
     },
     {
-      "line": "Χ23",
+      "line": "Χ21",
       "mode": "bus",
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "ΣΤ. ΑΜΠΕΛΟΚΗΠΟΙ - ΣΤ. ΜΟΝΑΣΤΗΡΑΚΙ",
-          "headsign": "ΣΤ. ΑΜΠΕΛΟΚΗΠΟΙ - ΣΤ. ΜΟΝΑΣΤΗΡΑΚΙ",
+          "dir": "ΣΤ. ΕΘΝ. ΑΜΥΝΑ - ΣΤ. ΕΥΑΓΓΕΛΙΣΜΟΣ",
+          "headsign": "ΣΤ. ΕΘΝ. ΑΜΥΝΑ - ΣΤ. ΕΥΑΓΓΕΛΙΣΜΟΣ",
           "variants": 1,
-          "tripCount": 112,
-          "stops": 6,
-          "lengthKm": 6.68,
+          "tripCount": 110,
+          "stops": 8,
+          "lengthKm": 10.56,
           "stats": {
-            "observations": 181,
-            "matched": 181,
+            "observations": 515,
+            "matched": 515,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 3.207742507296387,
-            "roundaboutSegs": 14,
+            "meanError": 2.7406418818677576,
+            "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
           }
         },
         {
-          "dir": "ΣΤ. ΜΟΝΑΣΤΗΡΑΚΙ - ΣΤ. ΑΜΠΕΛΟΚΗΠΟΙ",
-          "headsign": "ΣΤ. ΜΟΝΑΣΤΗΡΑΚΙ - ΣΤ. ΑΜΠΕΛΟΚΗΠΟΙ",
+          "dir": "ΣΤ. ΕΥΑΓΓΕΛΙΣΜΟΣ - ΣΤ. ΕΘΝ. ΑΜΥΝΑ",
+          "headsign": "ΣΤ. ΕΥΑΓΓΕΛΙΣΜΟΣ - ΣΤ. ΕΘΝ. ΑΜΥΝΑ",
           "variants": 1,
-          "tripCount": 120,
-          "stops": 6,
-          "lengthKm": 5.61,
+          "tripCount": 110,
+          "stops": 7,
+          "lengthKm": 8.75,
           "stats": {
-            "observations": 181,
-            "matched": 181,
+            "observations": 383,
+            "matched": 383,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 3.205262709316179,
+            "meanError": 3.3780607947252514,
             "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "line": "Χ80",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "ΠΕΙΡΑΙΑΣ - ΑΚΡΟΠΟΛΗ - ΣΥΝΤΑΓΜΑ",
-          "headsign": "ΠΕΙΡΑΙΑΣ - ΑΚΡΟΠΟΛΗ - ΣΥΝΤΑΓΜΑ",
-          "variants": 1,
-          "tripCount": 144,
-          "stops": 17,
-          "lengthKm": 29.35,
-          "stats": {
-            "observations": 709,
-            "matched": 709,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.0368716100882476,
-            "roundaboutSegs": 16,
             "extStart": 0,
             "extEnd": 0
           }
@@ -11288,7 +10658,7 @@
           "dir": "ΑΕΡΟΛΙΜΕΝΑΣ ΑΘΗΝΩΝ - ΣΤ.ΥΠΕΡ.ΛΕΩΦ.ΚΗΦΙΣΟΥ",
           "headsign": "ΑΕΡΟΛΙΜΕΝΑΣ ΑΘΗΝΩΝ - ΣΤ.ΥΠΕΡ.ΛΕΩΦ.ΚΗΦΙΣΟΥ(EXPRESS) (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
           "variants": 1,
-          "tripCount": 373,
+          "tripCount": 358,
           "stops": 13,
           "lengthKm": 44.19,
           "stats": {
@@ -11406,27 +10776,6 @@
           }
         },
         {
-          "dir": "ΑΕΡ/ΝΑΣ ΑΘΗΝΩΝ - ΠΕΙΡΑΙΑΣ (EXPRESS)-",
-          "headsign": "ΑΕΡ/ΝΑΣ ΑΘΗΝΩΝ - ΠΕΙΡΑΙΑΣ (EXPRESS)-(18:40-03:20 ΕΩΣ ΠΛ.ΚΑΡΑΪΣΚΑΚΗ) (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
-          "variants": 1,
-          "tripCount": 147,
-          "stops": 35,
-          "lengthKm": 42.71,
-          "stats": {
-            "observations": 710,
-            "matched": 710,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.823726275861204,
-            "roundaboutSegs": 0,
-            "extStart": 121,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "ΠΕΙΡΑΙΑΣ - ΑΕΡ/ΝΑΣ ΑΘΗΝΩΝ",
           "headsign": "ΠΕΙΡΑΙΑΣ - ΑΕΡ/ΝΑΣ ΑΘΗΝΩΝ (EXPRESS) (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
           "variants": 1,
@@ -11446,27 +10795,6 @@
             "extStart": 0,
             "extEnd": 0
           }
-        },
-        {
-          "dir": "ΠΕΙΡΑΙΑΣ - ΑΕΡ/ΝΑΣ ΑΘΗΝΩΝ (EXPRESS)-",
-          "headsign": "ΠΕΙΡΑΙΑΣ - ΑΕΡ/ΝΑΣ ΑΘΗΝΩΝ (EXPRESS)-(20:30-04:30 ΑΠΟ ΠΛ.ΚΑΡΑΪΣΚΑΚΗ)(ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ)",
-          "variants": 1,
-          "tripCount": 126,
-          "stops": 39,
-          "lengthKm": 41.78,
-          "stats": {
-            "observations": 678,
-            "matched": 678,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.8191369248631526,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
         }
       ],
       "rank": 1
@@ -11477,31 +10805,10 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "ΑΕΡ/ΝΑΣ ΑΘΗΝΩΝ - ΣΤ.ΕΛΛΗΝΙΚΟ (EXPRESS)-",
-          "headsign": "ΑΕΡ/ΝΑΣ ΑΘΗΝΩΝ - ΣΤ.ΕΛΛΗΝΙΚΟ (EXPRESS)-(ΝΥΧΤΕΡΙΝΗ - ΕΩΣ ΣΤ.ΔΑΦΝΗ)",
-          "variants": 2,
-          "tripCount": 35,
-          "stops": 18,
-          "lengthKm": 35,
-          "stats": {
-            "observations": 345,
-            "matched": 345,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.7374488186397805,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
           "dir": "ΑΕΡΟΛΙΜΕΝΑΣ ΑΘΗΝΩΝ - ΣΤ.ΕΛΛΗΝΙΚΟ",
           "headsign": "ΑΕΡΟΛΙΜΕΝΑΣ ΑΘΗΝΩΝ - ΣΤ.ΕΛΛΗΝΙΚΟ (EXPRESS) ",
-          "variants": 2,
-          "tripCount": 119,
+          "variants": 1,
+          "tripCount": 105,
           "stops": 28,
           "lengthKm": 56.18,
           "stats": {
@@ -11778,42 +11085,42 @@
       "dirs": [
         {
           "dir": "ΠΕΙΡΑΙΑΣ -  ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ",
-          "headsign": "ΠΕΙΡΑΙΑΣ -  ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ (ΝΥΧΤΕΡΙΝΗ) (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ) ",
+          "headsign": "ΠΕΙΡΑΙΑΣ -  ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ (ΝΥΧΤΕΡΙΝΗ) (Προσωρινή)",
           "variants": 2,
           "tripCount": 30,
-          "stops": 98,
-          "lengthKm": 30.98,
+          "stops": 97,
+          "lengthKm": 30.45,
           "stats": {
-            "observations": 684,
-            "matched": 684,
+            "observations": 663,
+            "matched": 663,
             "noCandidates": 0,
             "viterbiBreaks": 4,
             "bridged": 0,
             "rawStretchCount": 4,
             "rawMeters": 78,
-            "meanError": 3.1330497547151532,
-            "roundaboutSegs": 26,
+            "meanError": 3.080229496289327,
+            "roundaboutSegs": 28,
             "extStart": 0,
             "extEnd": 0
           }
         },
         {
           "dir": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ -  ΠΕΙΡΑΙΑΣ",
-          "headsign": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ -  ΠΕΙΡΑΙΑΣ (ΝΥΧΤΕΡΙΝΗ) (ΠΡΟΣΩΡΙΝΗ ΛΟΓΩ ΕΡΓΩΝ) ",
+          "headsign": "ΣΤ. ΔΟΥΚ. ΠΛΑΚΕΝΤΙΑΣ -  ΠΕΙΡΑΙΑΣ (ΝΥΧΤΕΡΙΝΗ)",
           "variants": 2,
           "tripCount": 25,
-          "stops": 106,
-          "lengthKm": 31.38,
+          "stops": 104,
+          "lengthKm": 30.88,
           "stats": {
-            "observations": 605,
-            "matched": 605,
+            "observations": 588,
+            "matched": 588,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 3.139154573874418,
-            "roundaboutSegs": 16,
+            "meanError": 3.115377684514075,
+            "roundaboutSegs": 27,
             "extStart": 0,
             "extEnd": 0
           }
@@ -11849,20 +11156,20 @@
         },
         {
           "dir": "ΠΕΙΡΑΙΑΣ - ΚΗΦΙΣΙΑ",
-          "headsign": "ΠΕΙΡΑΙΑΣ - ΚΗΦΙΣΙΑ (Προσωρινή λόγω έργων)",
+          "headsign": "ΠΕΙΡΑΙΑΣ - ΚΗΦΙΣΙΑ (ΝΥΧΤΕΡΙΝΗ)",
           "variants": 2,
           "tripCount": 27,
-          "stops": 84,
-          "lengthKm": 33.37,
+          "stops": 85,
+          "lengthKm": 33.43,
           "stats": {
-            "observations": 730,
-            "matched": 730,
+            "observations": 721,
+            "matched": 721,
             "noCandidates": 0,
             "viterbiBreaks": 0,
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.4282878559600993,
+            "meanError": 2.4460581891020503,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -11880,7 +11187,7 @@
           "dir": "ΓΛΥΦΑΔΑ - ΠΕΡΙΣΤΕΡΙ",
           "headsign": "ΓΛΥΦΑΔΑ - ΠΕΡΙΣΤΕΡΙ (ΑΝΘΟΥΠΟΛΗ) (ΝΥΧΤΕΡΙΝΗ)",
           "variants": 1,
-          "tripCount": 50,
+          "tripCount": 35,
           "stops": 61,
           "lengthKm": 21.44,
           "stats": {
@@ -11901,7 +11208,7 @@
           "dir": "ΠΕΡΙΣΤΕΡΙ (ΑΝΘΟΥΠΟΛΗ) - ΓΛΥΦΑΔΑ",
           "headsign": "ΠΕΡΙΣΤΕΡΙ (ΑΝΘΟΥΠΟΛΗ) - ΓΛΥΦΑΔΑ (ΝΥΧΤΕΡΙΝΗ)",
           "variants": 1,
-          "tripCount": 20,
+          "tripCount": 35,
           "stops": 63,
           "lengthKm": 22.49,
           "stats": {
