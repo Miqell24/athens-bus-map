@@ -43,8 +43,10 @@ shows the lines added and removed since the previous version. `#v=2026-07-08`
 in the URL opens a given version. `npm run build` archives its predecessor
 (prebuild) and stamps the new build (postbuild).
 
-**The series so far:** 8.07.2026 — the OSY feed of 8 July (timetable 6.07–6.10),
-the network as first published — and 10.09.2026 — the OSY feed of 6 August,
+**The series so far:** 29.06.2026 — the OSY feed of 29 June (timetable 25.05–25.08,
+the last dataset MobilityDatabase keeps before July: 836 and Χ19 still running,
+Χ21 not yet), 8.07.2026 — the OSY feed of 8 July (timetable 6.07–6.10), the
+network as first published — and 10.09.2026 — the OSY feed of 6 August,
 which data.gov.gr publishes as a `.rar` under the same resource id (the `.zip`
 there is the frozen July file; `download.sh` fetches the rar now, 7-Zip or
 `unar` unpacks it). Between the two: 242, 250, Ε90 and Χ21 gone, 801, 836, Χ23
