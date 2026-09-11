@@ -39,6 +39,7 @@ const VDIR = join(OUT, 'versions');
 const FEED_TAGS = {
   'data/gtfs': 'OASA buses & trolleybuses (OSY)',
   'data/gtfs-t': 'STASY metro & tram',
+  'data/gtfs-p': 'Hellenic Train Proastiakos',
 };
 
 // ---- CLI ----

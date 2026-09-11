@@ -306,6 +306,7 @@
         if (l.paint && l.paint['text-halo-width']) l.paint['text-halo-width'] = scaleOut(l.paint['text-halo-width'], f);
       }
       if (/^route-/.test(l.id) && l.paint && l.paint['line-width']) l.paint['line-width'] = scaleOut(l.paint['line-width'], f);
+      if (/^route-/.test(l.id) && l.paint && l.paint['line-offset']) l.paint['line-offset'] = scaleOut(l.paint['line-offset'], f);
     }
     for (const id of ['highway-name-major', 'transit-street-names']) {
       const mi = st.layers.findIndex((l) => l.id === id);
@@ -564,10 +565,33 @@
     // a path in page space, vertices closer than 0.15 pt to the last one
     // written dropped (invisible at any print size, a third of the file)
     const EPS = 0.15;
-    const pathOf = (coords, close) => {
+    // `off` (page units) shifts the line sideways the way MapLibre's
+    // line-offset does — positive to the RIGHT of the drawing direction — for
+    // the side-by-side rail ribbons (Athens: Proastiakos and M3 on one track);
+    // each vertex moves along the mean normal of its two segments, the miter
+    // capped at twice the offset
+    const offsetPts = (pts, off) => {
+      const nrm = [];
+      for (let i = 0; i + 1 < pts.length; i++) {
+        const dx = pts[i + 1][0] - pts[i][0], dy = pts[i + 1][1] - pts[i][1];
+        const L = Math.hypot(dx, dy) || 1;
+        nrm.push([dy / L, -dx / L]); // right-hand normal, page y grows upward
+      }
+      return pts.map((p, i) => {
+        const a = nrm[Math.max(0, i - 1)], b = nrm[Math.min(nrm.length - 1, i)];
+        let nx = a[0] + b[0], ny = a[1] + b[1];
+        const L = Math.hypot(nx, ny);
+        if (L < 1e-6) { nx = b[0]; ny = b[1]; } else { nx /= L; ny /= L; }
+        const k = Math.min(2, 1 / Math.max(0.5, nx * b[0] + ny * b[1]));
+        return [p[0] + nx * off * k, p[1] + ny * off * k];
+      });
+    };
+    const pathOf = (coords, close, off) => {
       let d = '', lx = NaN, ly = NaN, n = 0;
-      for (let i = 0; i < coords.length; i++) {
-        const [x, y] = px(coords[i][0], coords[i][1]);
+      let pts = coords.map((c) => px(c[0], c[1]));
+      if (off && pts.length > 1) pts = offsetPts(pts, off);
+      for (let i = 0; i < pts.length; i++) {
+        const [x, y] = pts[i];
         if (i && i < coords.length - 1 && Math.abs(x - lx) < EPS && Math.abs(y - ly) < EPS) continue;
         d += f1(x) + ' ' + f1(y) + (n ? ' l ' : ' m '); lx = x; ly = y; n++;
       }
@@ -708,10 +732,11 @@
           const dash = ev(paint('line-dasharray'), z, p);
           const cap = ev(layout('line-cap'), z, p);
           const pre = rgbS(c) + ' RG ' + f2(w) + ' w ' + (cap === 'round' ? '1 J 1 j' : cap === 'square' ? '2 J 0 j' : '0 J 0 j') + (Array.isArray(dash) ? ' [' + dash.map((d) => f2(Math.max(0.01, d * w))).join(' ') + '] 0 d' : ' [] 0 d');
+          const off = num(ev(paint('line-offset'), z, p), 0) * S;
           withAlpha(c.a, () => {
             for (const line of asLines(g)) {
               if (line.length < 2) continue;
-              const d = pathOf(line, false);
+              const d = pathOf(line, false, off);
               if (d) { C.op(pre + ' ' + d + ' S'); counts.lines++; }
             }
           });

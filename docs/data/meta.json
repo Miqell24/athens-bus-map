@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-10T13:49:03.774Z",
+  "generatedAt": "2026-09-11T13:49:20.896Z",
   "bbox": [
-    23.32055,
+    22.73481,
     37.717314,
     24.036655,
-    38.327716
+    38.46389
   ],
   "badgeBands": [
     [
@@ -36,7 +36,7 @@
     },
     {
       "mode": "tram",
-      "label": "metro & tram (STASY)",
+      "label": "metro, tram & Proastiakos (STASY + Hellenic Train)",
       "color": "#d6212b"
     }
   ],
@@ -11522,6 +11522,206 @@
       "rank": 1
     },
     {
+      "line": "A1",
+      "mode": "tram",
+      "color": "#3c5494",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Αεροδρόμιο",
+          "variants": 2,
+          "tripCount": 510,
+          "stops": 19,
+          "lengthKm": 48.16,
+          "stats": {
+            "observations": 1605,
+            "matched": 1605,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.10248752665404905,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Πειραιάς",
+          "variants": 2,
+          "tripCount": 540,
+          "stops": 19,
+          "lengthKm": 48.14,
+          "stats": {
+            "observations": 1554,
+            "matched": 1554,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.10431331251586913,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "A2",
+      "mode": "tram",
+      "color": "#6e6f73",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Αεροδρόμιο",
+          "variants": 1,
+          "tripCount": 848,
+          "stops": 12,
+          "lengthKm": 33.38,
+          "stats": {
+            "observations": 1061,
+            "matched": 1061,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.10161127558941506,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Άνω Λιόσια",
+          "variants": 1,
+          "tripCount": 848,
+          "stops": 12,
+          "lengthKm": 33.36,
+          "stats": {
+            "observations": 994,
+            "matched": 994,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.1099855613940511,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "A3",
+      "mode": "tram",
+      "color": "#3bb464",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Χαλκίδα",
+          "variants": 3,
+          "tripCount": 344,
+          "stops": 17,
+          "lengthKm": 82.56,
+          "stats": {
+            "observations": 3134,
+            "matched": 3134,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.17164396826652042,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Αθήνα",
+          "variants": 3,
+          "tripCount": 344,
+          "stops": 17,
+          "lengthKm": 82.54,
+          "stats": {
+            "observations": 3050,
+            "matched": 3050,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.09370517193471992,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "A4",
+      "mode": "tram",
+      "color": "#f09635",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Κιάτο",
+          "variants": 1,
+          "tripCount": 540,
+          "stops": 20,
+          "lengthKm": 121.23,
+          "stats": {
+            "observations": 3706,
+            "matched": 3706,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.15115600726526962,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Πειραιάς",
+          "variants": 2,
+          "tripCount": 510,
+          "stops": 20,
+          "lengthKm": 121.23,
+          "stats": {
+            "observations": 3809,
+            "matched": 3809,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.12950196610287776,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
       "line": "M1",
       "mode": "tram",
       "color": "#009550",
@@ -11532,7 +11732,7 @@
           "variants": 1,
           "tripCount": 8432,
           "stops": 24,
-          "lengthKm": 25.67,
+          "lengthKm": 25.64,
           "stats": {
             "observations": 24,
             "matched": 24,
@@ -11541,7 +11741,7 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 11.787253797235339,
+            "meanError": 11.770130593495182,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -11553,7 +11753,7 @@
           "variants": 1,
           "tripCount": 8370,
           "stops": 24,
-          "lengthKm": 25.67,
+          "lengthKm": 25.64,
           "stats": {
             "observations": 24,
             "matched": 24,
@@ -11562,7 +11762,7 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 7.82930730143645,
+            "meanError": 7.816822691233483,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -11582,7 +11782,7 @@
           "variants": 1,
           "tripCount": 9072,
           "stops": 20,
-          "lengthKm": 17.9,
+          "lengthKm": 17.89,
           "stats": {
             "observations": 20,
             "matched": 20,
@@ -11591,7 +11791,7 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 18.24715224010613,
+            "meanError": 18.21070752710064,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -11603,7 +11803,7 @@
           "variants": 1,
           "tripCount": 9060,
           "stops": 20,
-          "lengthKm": 17.9,
+          "lengthKm": 17.89,
           "stats": {
             "observations": 20,
             "matched": 20,
@@ -11612,7 +11812,7 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 17.675880038064804,
+            "meanError": 17.64147386547873,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -11628,11 +11828,11 @@
       "dirs": [
         {
           "dir": "0",
-          "headsign": "Ελ. Βενιζέλος",
+          "headsign": "Αεροδρόμιο",
           "variants": 1,
           "tripCount": 9605,
           "stops": 28,
-          "lengthKm": 46.48,
+          "lengthKm": 46.42,
           "stats": {
             "observations": 28,
             "matched": 28,
@@ -11641,7 +11841,7 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 22.0847074702796,
+            "meanError": 21.65937178315607,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -11653,7 +11853,7 @@
           "variants": 1,
           "tripCount": 9664,
           "stops": 28,
-          "lengthKm": 46.48,
+          "lengthKm": 46.42,
           "stats": {
             "observations": 28,
             "matched": 28,
@@ -11662,7 +11862,7 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 21.581495889351324,
+            "meanError": 21.564074049584104,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -11682,7 +11882,7 @@
           "variants": 1,
           "tripCount": 5476,
           "stops": 19,
-          "lengthKm": 9.23,
+          "lengthKm": 9.22,
           "stats": {
             "observations": 19,
             "matched": 19,
@@ -11691,7 +11891,7 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 5.398383321962315,
+            "meanError": 5.389565588847351,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -11703,7 +11903,7 @@
           "variants": 1,
           "tripCount": 5476,
           "stops": 19,
-          "lengthKm": 9.07,
+          "lengthKm": 9.06,
           "stats": {
             "observations": 19,
             "matched": 19,
@@ -11712,7 +11912,7 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 6.4151708870615805,
+            "meanError": 6.404361322572196,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -11732,7 +11932,7 @@
           "variants": 1,
           "tripCount": 5158,
           "stops": 37,
-          "lengthKm": 18.7,
+          "lengthKm": 18.68,
           "stats": {
             "observations": 37,
             "matched": 37,
@@ -11741,7 +11941,7 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 6.657802021722947,
+            "meanError": 6.649119026795175,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
@@ -11753,7 +11953,7 @@
           "variants": 1,
           "tripCount": 5417,
           "stops": 37,
-          "lengthKm": 18.16,
+          "lengthKm": 18.14,
           "stats": {
             "observations": 37,
             "matched": 37,
@@ -11762,7 +11962,7 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 7.1083731789109175,
+            "meanError": 7.0996759770717635,
             "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0

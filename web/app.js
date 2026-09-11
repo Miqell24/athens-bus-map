@@ -186,7 +186,7 @@ async function init() {
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: false }), 'top-right');
   map.addControl(new maplibregl.GeolocateControl({ positionOptions: { enableHighAccuracy: true }, trackUserLocation: true, showUserHeading: true, fitBoundsOptions: { maxZoom: 15.5 } }), 'top-right');
   map.addControl(new maplibregl.ScaleControl({ maxWidth: 120 }), 'bottom-left');
-  map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: 'Timetables: GTFS OASA (data.gov.gr)' }));
+  map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: 'Timetables: GTFS OASA (data.gov.gr) · Hellenic Train (via Transitous)' }));
 
   const versionIndex = await versionsP;
   const VERSIONS = versionIndex && Array.isArray(versionIndex.versions) && versionIndex.versions.length ? versionIndex.versions : null;
@@ -223,7 +223,7 @@ async function init() {
   const paintMeta = () => {
     const nBus = meta.lines.filter((l) => l.mode === 'bus').length;
     const nTram = meta.lines.filter((l) => l.mode === 'tram').length;
-    document.getElementById('count').textContent = `(${nBus} bus · ${nTram} metro/tram)`;
+    document.getElementById('count').textContent = `(${nBus} bus · ${nTram} rail)`;
     document.getElementById('stamp').textContent = new Date(meta.generatedAt).toLocaleDateString('en-GB');
   };
   paintMeta();
@@ -249,6 +249,15 @@ async function init() {
   // true OSM positions). Metro is the exception: a WIDE translucent ribbon with
   // no white casing, laid over the street network like on printed transit maps.
   const metroC = ['==', ['get', 'metro'], 1];
+  // Shared rail corridors of lines in different colours (Proastiakos A1–A4,
+  // and with M3 to the airport) arrive as one feature per line, `off` its slot
+  // across the corridor and `n` the ribbon count: narrower ribbons laid side
+  // by side (line-offset, see the rail pass in the pipeline).
+  const splitC = ['>', ['coalesce', ['get', 'n'], 1], 1];
+  // suburban rail (Proastiakos, `sub`) always wears the narrow ribbon
+  const narrowC = ['any', splitC, ['==', ['get', 'sub'], 1]];
+  const SPLIT_W = [1.8, 4.2, 8.4]; // ribbon width at z10 / z14 / z17 when split
+  const offsetBy = (w) => ['*', ['coalesce', ['get', 'off'], 0], w];
   map.addLayer({
     id: 'route-casing', type: 'line', source: 'streets',
     layout: { 'line-join': 'round', 'line-cap': 'round' },
@@ -264,10 +273,13 @@ async function init() {
     paint: {
       'line-color': ['coalesce', ['get', 'color'], KMK],
       'line-width': ['interpolate', ['linear'], ['zoom'],
-        10, ['case', metroC, 3, 1.1],
-        14, ['case', metroC, 7, 2.3],
-        17, ['case', metroC, 14, 4.5]],
-      'line-opacity': ['case', metroC, 0.4, 1],
+        10, ['case', narrowC, SPLIT_W[0], metroC, 3, 1.1],
+        14, ['case', narrowC, SPLIT_W[1], metroC, 7, 2.3],
+        17, ['case', narrowC, SPLIT_W[2], metroC, 14, 4.5]],
+      'line-offset': ['interpolate', ['linear'], ['zoom'],
+        10, offsetBy(SPLIT_W[0]), 14, offsetBy(SPLIT_W[1]), 17, offsetBy(SPLIT_W[2])],
+      // the narrow ribbons need more body than the lone wide one
+      'line-opacity': ['case', narrowC, 0.75, metroC, 0.4, 1],
     },
   }, firstSymbol);
   // Shared bus+trolleybus roadways: green dashes over the navy stroke, so the
@@ -453,6 +465,10 @@ async function init() {
     [KMK, KMK_DARK], [TROLLEY_GREEN, '#0a5121'],
     ['#009550', '#00512b'], ['#e30613', '#7c060e'], ['#1e9cd7', '#0d567a'],
     ['#7d2b8b', '#45164e'], ['#d6212b', '#7c1116'],
+    // Proastiakos A1–A4, and the interchange rim of stations shared by lines
+    // of different colours
+    ['#3c5494', '#1f2d52'], ['#6e6f73', '#3b3c3f'], ['#3bb464', '#1f6436'], ['#f09635', '#8a5214'],
+    ['#3a3a3a', '#111111'],
   ];
   const discIcon = (fill, rim, half) => {
     const S = 48;
@@ -849,11 +865,16 @@ async function init() {
   const WIDTH_BASE = map.getStyle().layers
     .filter((l) => l.type === 'line' && l.source && !/^journey/.test(l.id)
       && map.getSource(l.source) && map.getSource(l.source).type === 'geojson')
-    .map((l) => ({ id: l.id, w: map.getPaintProperty(l.id, 'line-width') }));
+    .map((l) => ({ id: l.id, w: map.getPaintProperty(l.id, 'line-width'), off: map.getPaintProperty(l.id, 'line-offset') }));
   const WIDTH_SCALES = [0.6, 0.8, 1, 1.25, 1.6, 2];
   let lineScale = 1;
   function applyLineWidth() {
-    for (const b of WIDTH_BASE) if (map.getLayer(b.id)) map.setPaintProperty(b.id, 'line-width', scaleOut(b.w, lineScale));
+    for (const b of WIDTH_BASE) {
+      if (!map.getLayer(b.id)) continue;
+      map.setPaintProperty(b.id, 'line-width', scaleOut(b.w, lineScale));
+      // side-by-side ribbons keep touching at any width
+      if (b.off) map.setPaintProperty(b.id, 'line-offset', scaleOut(b.off, lineScale));
+    }
     const out = document.getElementById('width-val');
     if (out) out.textContent = Math.round(lineScale * 100) + '%';
     const i = WIDTH_SCALES.indexOf(lineScale);
@@ -1038,6 +1059,9 @@ async function init() {
       if (/^route-/.test(l.id) && l.paint && l.paint['line-width']) {
         l.paint['line-width'] = scaleOut(l.paint['line-width'], f);
       }
+      if (/^route-/.test(l.id) && l.paint && l.paint['line-offset']) {
+        l.paint['line-offset'] = scaleOut(l.paint['line-offset'], f);
+      }
     }
     // Poster passes only (boostStyle never runs on the WYSIWYG current-view
     // export): arterial street names move ABOVE the transit numbers. On the
@@ -1156,7 +1180,7 @@ async function init() {
       const fs = Math.max(16, Math.round(out.width / 130));
       ctx.font = `${fs}px sans-serif`;
       ctx.textBaseline = 'bottom';
-      const txt = '© OpenStreetMap contributors · OpenFreeMap · GTFS: OASA (data.gov.gr)';
+      const txt = '© OpenStreetMap contributors · OpenFreeMap · GTFS: OASA (data.gov.gr) · Hellenic Train (Transitous)';
       const tw = ctx.measureText(txt).width;
       ctx.fillStyle = 'rgba(255,255,255,0.82)';
       ctx.fillRect(out.width - tw - fs, out.height - fs * 1.7, tw + fs, fs * 1.7);
@@ -1400,7 +1424,7 @@ async function init() {
             const fs = Math.max(16, Math.round(Wf / 500));
             cx.font = `${fs}px sans-serif`;
             cx.textBaseline = 'bottom';
-            const txt = '© OpenStreetMap contributors · OpenFreeMap · GTFS: OASA (data.gov.gr)';
+            const txt = '© OpenStreetMap contributors · OpenFreeMap · GTFS: OASA (data.gov.gr) · Hellenic Train (Transitous)';
             const tw = Math.min(cx.measureText(txt).width, wpx - fs);
             cx.fillStyle = 'rgba(255,255,255,0.82)';
             cx.fillRect(wpx - tw - fs, hpx - fs * 1.7, tw + fs, fs * 1.7);

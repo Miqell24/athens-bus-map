@@ -7,7 +7,7 @@
   "scripts": {
     "download": "bash pipeline/download.sh",
     "prebuild": "node pipeline/snapshot.mjs --archive",
-    "build": "node --max-old-space-size=6144 pipeline/build.mjs --all --tram M1,M2,M3,T6,T7",
+    "build": "node --max-old-space-size=6144 pipeline/build.mjs --all --tram M1,M2,M3,T6,T7,A1,A2,A3,A4",
     "postbuild": "node pipeline/snapshot.mjs --stamp",
     "report": "node pipeline/report-gaps.mjs",
     "serve": "node pipeline/serve.mjs 8125",

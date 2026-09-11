@@ -1,8 +1,8 @@
 {
-  "id": "2026-09-10",
-  "label": "10 Sept 2026",
-  "generatedAt": "2026-09-10T13:49:03.774Z",
-  "note": "the OSY feed of 6.08.2026 (a .rar on data.gov.gr since August); STASY unchanged since 1.07",
+  "id": "2026-09-11",
+  "label": "11 Sept 2026",
+  "generatedAt": "2026-09-11T13:49:20.896Z",
+  "note": "the OSY feed of 6.08.2026 and STASY of 1.07, now with Proastiakos A1–A4 of Hellenic Train (its feed of 10.09.2026, collected by Transitous)",
   "feeds": [
     {
       "dir": "data/gtfs",
@@ -23,7 +23,16 @@
       "end": "",
       "mtime": 1,
       "label": "STASY metro & tram 2026-07-01"
+    },
+    {
+      "dir": "data/gtfs-p",
+      "tag": "Hellenic Train Proastiakos",
+      "publisher": "Hellenic Train (collected by Transitous)",
+      "version": "2026-09-10",
+      "start": "",
+      "end": "",
+      "label": "Hellenic Train Proastiakos 2026-09-10"
     }
   ],
-  "archivedAt": "2026-09-10T13:49:04.173Z"
+  "archivedAt": "2026-09-11T13:49:21.486Z"
 }

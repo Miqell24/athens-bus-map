@@ -30,6 +30,12 @@ const RAIL_OK = new Set(['subway', 'tram', 'light_rail', 'rail']);
 function tramAccess(tags) {
   if (!tags || !RAIL_OK.has(tags.railway)) return null;
   const s = tags.service;
+  // Proastiakos (11.09.2026) changes track on the crossovers of the main line
+  // — A2 and A4 at the Acharnes rail centre, A4 at Agioi Anargyroi — and with
+  // them cut out its matched route broke there (300–370 m drawn raw). Plain
+  // rail keeps its crossovers at the restricted-road cost, so only a shape that
+  // really crosses over takes one; metro and tram tracks still leave them out.
+  if (s === 'crossover' && tags.railway === 'rail') return { restricted: true, driveway: false };
   if (s === 'yard' || s === 'siding' || s === 'spur' || s === 'crossover') return null;
   return { restricted: false, driveway: false };
 }

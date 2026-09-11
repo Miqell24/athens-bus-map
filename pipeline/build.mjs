@@ -83,14 +83,27 @@ const MODES = [{
   trolleyExcept: ['17', '20'],
 }];
 if (tramLines.length) MODES.push({
-  mode: 'tram', label: 'metro & tram (STASY)', gtfsDir: 'data/gtfs-t', osmFile: 'data/osm/athens-rail.json',
+  mode: 'tram', label: 'metro, tram & Proastiakos (STASY + Hellenic Train)',
+  // Proastiakos (11.09.2026) rides the SAME pass as STASY: M3 shares the
+  // suburban tracks from Doukissis Plakentias to the airport, and Neratziotissa,
+  // Plakentias and the airport are one station for both — one graph, one
+  // station merge. The Hellenic Train feed is rebuilt by pipeline/proastiakos.mjs
+  // with "P:" ids, so the two feeds never collide.
+  gtfsDirs: ['data/gtfs-t', 'data/gtfs-p'], osmFile: 'data/osm/athens-rail.json',
   graphMode: 'tram', color: '#d6212b', colorDark: '#7c1116',
   // official Athens line colors: M1 green, M2 red, M3 blue (drawn azure so it
-  // never blends with the navy bus strokes), tram purple
-  lineColors:     { M1: '#009550', M2: '#e30613', M3: '#1e9cd7', T6: '#d6212b', T7: '#d6212b' },
-  lineColorsDark: { M1: '#00512b', M2: '#7c060e', M3: '#0d567a', T6: '#7c1116', T7: '#7c1116' },
+  // never blends with the navy bus strokes), tram purple; Proastiakos A1–A4
+  // wear the legend colours of Hellenic Train's own network map
+  lineColors:     { M1: '#009550', M2: '#e30613', M3: '#1e9cd7', T6: '#d6212b', T7: '#d6212b',
+    A1: '#3c5494', A2: '#6e6f73', A3: '#3bb464', A4: '#f09635' },
+  lineColorsDark: { M1: '#00512b', M2: '#7c060e', M3: '#0d567a', T6: '#7c1116', T7: '#7c1116',
+    A1: '#1f2d52', A2: '#3b3c3f', A3: '#1f6436', A4: '#8a5214' },
   all: false, lines: tramLines,
 });
+// Metro-class rail — wide ribbon, full-disc stations, no street numbers: the
+// three metro lines and the four Proastiakos lines. Only the rail mode asks
+// (the Latin A of A1 is not the Greek Α of bus Α1).
+const isMetroLine = (l) => /^M\d/.test(l) || /^A\d$/.test(l);
 
 
 // The stop names arrive from the operator in capitals; OSM holds the same words
@@ -178,14 +191,18 @@ async function processMode(cfg) {
     return c;
   };
   // STASY publishes no shapes.txt — geometry is reconstructed from stop sequences
-  const hasShapes = existsSync(join(ROOT, cfg.gtfsDir, 'shapes.txt'));
+  // a mode may read several feeds in one pass (rail: STASY + Proastiakos)
+  const feedFiles = (name) => (cfg.gtfsDirs || [cfg.gtfsDir]).map((d) => join(ROOT, d, name)).filter((f) => existsSync(f));
+  async function* iterFeeds(name) { for (const f of feedFiles(name)) yield* iterCsv(f); }
+  const readFeeds = async (name) => (await Promise.all(feedFiles(name).map((f) => readCsv(f)))).flat();
+  const hasShapes = feedFiles('shapes.txt').length > 0;
   if (!hasShapes) log('no shapes.txt in this feed — stop sequences become the HMM observations');
   // more trips sampled when stop sequences ARE the geometry: the longest run must
   // win over short-turn variants (e.g. M3 to the airport vs Doukissis Plakentias)
-  const tripCap = hasShapes ? 40 : 200;
+  const tripCap = hasShapes && cfg.mode !== 'tram' ? 40 : 200;
 
   // ---------- 1) routes.txt → line list and route_ids ----------
-  const routes = await readCsv(join(ROOT, cfg.gtfsDir, 'routes.txt'));
+  const routes = await readFeeds('routes.txt');
   // OSY data quirk: some short names carry stray whitespace ("14 " vs "14")
   for (const r of routes) r.route_short_name = (r.route_short_name || '').trim();
   // trolleybuses (GTFS route_type 11) ride the same roads but get their own color;
@@ -216,7 +233,7 @@ async function processMode(cfg) {
 
   // ---------- 2) trips.txt → representative variant (shape) per line+direction ----------
   const byLineDir = new Map();
-  for await (const t of iterCsv(join(ROOT, cfg.gtfsDir, 'trips.txt'))) {
+  for await (const t of iterFeeds('trips.txt')) {
     const L = routeToLine.get(t.route_id);
     if (!L) continue;
     let dirs = byLineDir.get(L);
@@ -250,7 +267,7 @@ async function processMode(cfg) {
   const allTripIds = new Set();
   for (const r of reps) for (const id of r.candTrips) allTripIds.add(id);
   const tripStops = new Map();
-  for await (const st of iterCsv(join(ROOT, cfg.gtfsDir, 'stop_times.txt'))) {
+  for await (const st of iterFeeds('stop_times.txt')) {
     if (!allTripIds.has(st.trip_id)) continue;
     let arr = tripStops.get(st.trip_id);
     if (!arr) tripStops.set(st.trip_id, (arr = []));
@@ -267,10 +284,12 @@ async function processMode(cfg) {
 
   // ---------- 4) stops.txt (before shapes — stop coords may BE the geometry) ----------
   const stopsById = new Map();
-  for (const s of await readCsv(join(ROOT, cfg.gtfsDir, 'stops.txt'))) {
+  for (const s of await readFeeds('stops.txt')) {
     // OSY names carry double spaces here and there — collapse for clean labels
     const name = (s.stop_name || '').replace(/\s+/g, ' ').trim();
-    const shown = greekTitleCase(name, nameDict);
+    // Hellenic Train writes its stations properly already; the title-casing
+    // made "Σκα" of ΣΚΑ
+    const shown = s.stop_id.startsWith('P:') ? name : greekTitleCase(name, nameDict);
     stopsById.set(s.stop_id, { name: shown, lat: Number(s.stop_lat), lon: Number(s.stop_lon) });
   }
 
@@ -278,7 +297,7 @@ async function processMode(cfg) {
   if (hasShapes) {
     const shapeIds = new Set(reps.map((r) => r.shapeId));
     const shapePts = new Map();
-    for await (const s of iterCsv(join(ROOT, cfg.gtfsDir, 'shapes.txt'))) {
+    for await (const s of iterFeeds('shapes.txt')) {
       if (!shapeIds.has(s.shape_id)) continue;
       let arr = shapePts.get(s.shape_id);
       if (!arr) shapePts.set(s.shape_id, (arr = []));
@@ -287,10 +306,14 @@ async function processMode(cfg) {
     for (const r of reps) {
       const pts = (shapePts.get(r.shapeId) || []).sort((a, b) => a[0] - b[0]);
       r.shapeLatLon = pts.map((p) => [p[1], p[2]]);
-      if (r.shapeLatLon.length < 2) log(`SKIPPED ${r.line}/${r.dir}: empty shape ${r.shapeId}`);
+      // the rail pass mixes a shapeless feed (STASY) with a shaped one
+      // (Proastiakos): a trip without a shape id takes the station path below
+      if (r.shapeLatLon.length < 2 && !(cfg.mode === 'tram' && !r.shapeId)) log(`SKIPPED ${r.line}/${r.dir}: empty shape ${r.shapeId}`);
     }
-  } else {
+  }
+  {
     for (const r of reps) {
+      if (hasShapes && (r.shapeLatLon.length >= 2 || cfg.mode !== 'tram' || r.shapeId)) continue;
       r.pseudo = true;
       r.shapeLatLon = r.stopSeq
         .map((s) => stopsById.get(s.stopId))
@@ -422,16 +445,34 @@ async function processMode(cfg) {
   // interchanges) platform records into a single entry keyed by name — one disc,
   // one label (user report: Irini drawn twice, once off the tracks).
   if (cfg.mode === 'tram') {
-    const isMetroEntry = (e) => [...e.lines].every((l) => l.startsWith('M'));
+    const isMetroEntry = (e) => [...e.lines].every(isMetroLine);
+    // Keyed by the name AND the place: with Proastiakos in the pass, one name
+    // can be two stations — Ηράκλειο of M1 and of the suburban line stand
+    // 1.3 km apart, Άγιοι Ανάργυροι 0.9 km — while "Παιανία - Κάντζα" of M3 and
+    // "Παιανία-Κάντζα" of Hellenic Train are one platform pair.
+    // STASY and Hellenic Train name the shared M3 stations differently; the
+    // merged disc takes the suburban railway's full name (and STASY's extra
+    // "Σύνδεση Προαστιακου" point, which sits on Plakentias, folds into it)
+    const RAIL_ALIAS = {
+      'Δ. Πλακεντίας': 'Δουκίσσης Πλακεντίας', 'Σύνδεση Προαστιακου': 'Δουκίσσης Πλακεντίας',
+      'Κάντζα': 'Παιανία-Κάντζα', 'Ελ. Βενιζέλος': 'Αεροδρόμιο',
+    };
+    const nameKey = (n) => (RAIL_ALIAS[n] || n).replace(/\s*-\s*/g, '-');
     const byStation = new Map();
+    const MERGE_R = 450;
     for (const [id, e] of stopAgg) {
       if (!isMetroEntry(e)) continue;
-      let g = byStation.get(e.name);
-      if (!g) byStation.set(e.name, (g = []));
-      g.push([id, e]);
+      let gs = byStation.get(nameKey(e.name));
+      if (!gs) byStation.set(nameKey(e.name), (gs = []));
+      const [x, y] = proj.toXY(e.lat, e.lon);
+      let g = gs.find((g) => Math.hypot(g.x - x, g.y - y) < MERGE_R);
+      if (!g) gs.push((g = { x, y, list: [] }));
+      g.list.push([id, e]);
     }
-    for (const g of byStation.values()) {
+    for (const g of [...byStation.values()].flat().map((c) => c.list)) {
       if (g.length < 2) continue;
+      // the suburban railway's spelling wins (see RAIL_ALIAS)
+      g.sort((a, b) => (b[0].startsWith('P:') ? 1 : 0) - (a[0].startsWith('P:') ? 1 : 0));
       const base = g[0][1];
       let latS = base.lat, lonS = base.lon;
       for (let i = 1; i < g.length; i++) {
@@ -451,7 +492,7 @@ async function processMode(cfg) {
   const farNames = [];
   for (const e of stopAgg.values()) {
     const [sx, sy] = proj.toXY(e.lat, e.lon);
-    const isMetroStop = cfg.mode === 'tram' && [...e.lines].every((l) => l.startsWith('M'));
+    const isMetroStop = cfg.mode === 'tram' && [...e.lines].every(isMetroLine);
     let best = null, bestRun = null;
     // candidates are ONLY the runs that actually call at this pole: on a
     // double-track street the pole of one direction can lie nearer the
@@ -498,6 +539,9 @@ async function processMode(cfg) {
     }
     const arr = [...e.lines].sort(numSort);
     const termArr = [...e.term].sort(numSort);
+    // a station of lines in different colours (Proastiakos A1+A4, the metro
+    // interchanges) wears the neutral interchange rim, not the mode's red
+    const mixedRail = isMetroStop && new Set(arr.map((l) => colorOf([l]))).size > 1;
     stopFeatures.push({
       type: 'Feature',
       geometry: { type: 'Point', coordinates: [round6(lon), round6(lat)] },
@@ -510,8 +554,8 @@ async function processMode(cfg) {
         // stripped before the geojson is written
         termArr,
         mode: cfg.mode,
-        color: colorOf(arr),
-        colorDark: colorDarkOf(arr),
+        color: mixedRail ? '#3a3a3a' : colorOf(arr),
+        colorDark: mixedRail ? '#111111' : colorDarkOf(arr),
         angle,
         ...(sideInfo ? { sideInfo } : {}),
         // metro stations render as full discs (no roadside pole side to show)
@@ -615,7 +659,7 @@ async function processMode(cfg) {
           line, mode: p.mode, color: colorOf([line]), colorDark: colorDarkOf([line]),
           // metro and tram share the rail mode in the data; the M prefix is what
           // splits them into the two categories the panel offers
-          ...(p.mode === 'tram' && line.startsWith('M') ? { metro: 1 } : {}),
+          ...(p.mode === 'tram' && isMetroLine(line) ? { metro: 1 } : {}),
         })),
       });
     }
@@ -681,7 +725,7 @@ async function processMode(cfg) {
       if (n === arr.length) flags.trolley = 'all';
       else if (n > 0) flags.trolley = 'mix';
     }
-    if (cfg.mode === 'tram' && arr.every((l) => l.startsWith('M'))) flags.metro = 1;
+    if (cfg.mode === 'tram' && arr.every(isMetroLine)) flags.metro = 1;
     return flags;
   };
   const mergedRuns = mergeRuns(runs);
@@ -703,6 +747,43 @@ async function processMode(cfg) {
   }
   log(`Runs: ${runs.length} → ${mergedRuns.length} after merging` +
       (rawRunsAll.length ? ` (+${rawRunsAll.length} outside OSM)` : ''));
+
+  // Shared rail corridors of lines in DIFFERENT colours (Proastiakos A1–A4
+  // among themselves, and with M3 from Doukissis Plakentias to the airport):
+  // one ribbon per line, side by side — `off` is the slot across the corridor
+  // in ribbon widths, `n` the number of ribbons; the frontend narrows them and
+  // shifts each by line-offset. A single mixed ribbon could only have worn the
+  // mode red. line-offset is measured to the RIGHT of the drawing direction, so
+  // every split run is drawn outward from Athens central station: a line then
+  // keeps its side from one shared stretch to the next, and the slots follow
+  // the natural line order (A1, A2, A3, A4, M3) across the corridor.
+  if (cfg.mode === 'tram') {
+    const [hx, hy] = proj.toXY(37.9927, 23.7200);
+    const out = [];
+    let nSplit = 0;
+    for (const f of streetFeatures) {
+      const p = f.properties;
+      const cols = new Set(p.arr.map((l) => colorOf([l])));
+      if (!p.metro || cols.size < 2) { out.push(f); continue; }
+      nSplit++;
+      let coords = f.geometry.coordinates;
+      const [ax, ay] = proj.toXY(coords[0][1], coords[0][0]);
+      const [bx, by] = proj.toXY(coords[coords.length - 1][1], coords[coords.length - 1][0]);
+      if (Math.hypot(bx - hx, by - hy) < Math.hypot(ax - hx, ay - hy)) coords = [...coords].reverse();
+      p.arr.forEach((l, i) => out.push({
+        type: 'Feature',
+        geometry: { type: 'LineString', coordinates: coords },
+        properties: { ...p, name: i ? '' : p.name, lines: l, arr: [l], color: colorOf([l]), off: i - (p.arr.length - 1) / 2, n: p.arr.length },
+      }));
+    }
+    // suburban rail (A1–A4) is drawn as a narrower, near-opaque ribbon: the
+    // metro keeps its wide translucent one, and A4's orange must not melt into
+    // the base map's motorway beside it
+    for (const f of out) if (f.properties.metro && f.properties.arr.every((l) => /^A\d$/.test(l))) f.properties.sub = 1;
+    streetFeatures.length = 0;
+    streetFeatures.push(...out);
+    if (nSplit) log(`Rail: ${nSplit} shared multi-colour runs drawn as parallel ribbons`);
+  }
 
   const toLonLat = (xy) => xy.map(([x, y]) => { const [lon, lat] = proj.toLonLat(x, y); return [round6(lon), round6(lat)]; });
   const routeFeatures = reps.map((r) => ({

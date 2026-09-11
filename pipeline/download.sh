@@ -3,7 +3,7 @@
 # Everything is cached — re-running only fetches what is missing.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-mkdir -p data/gtfs data/gtfs-t data/osm web/vendor
+mkdir -p data/gtfs data/gtfs-t data/gtfs-p data/osm web/vendor
 
 # A downloaded extract is only accepted if it PARSES and carries a plausible
 # number of elements. `grep -q '"elements"'` — the guard this family used
@@ -56,6 +56,18 @@ if [ ! -f data/gtfs-t/routes.txt ]; then
   unrar_to data/stasy_gtfs.rar data/gtfs-t
 fi
 
+# 1c) Proastiakos (Hellenic Train) — the operator publishes no GTFS; Transitous
+#     collects one (every train of the country, one route per train number,
+#     shapes drawn on OSM). pipeline/proastiakos.mjs cuts the four Attica lines
+#     A1–A4 out of it into data/gtfs-p, which the build reads with STASY.
+if [ ! -f data/gtfs-p/routes.txt ]; then
+  echo "== Hellenic Train (Transitous) =="
+  curl -fL --retry 3 --max-time 600 -o data/hellenic-train.zip "https://jbb.ghsq.de/gtfs/gr-hellenic-train.gtfs.zip"
+  rm -rf data/hellenic-train && mkdir -p data/hellenic-train
+  unzip -q -o data/hellenic-train.zip -d data/hellenic-train
+  node pipeline/proastiakos.mjs data/hellenic-train data/gtfs-p
+fi
+
 # Overpass down (every public mirror answers 504 for hours at a time — the
 # wall Berlin, London, Kraków, Athens and Bucharest all hit): cut the same
 # files out of the Geofabrik extract instead. pipeline/pbf-cut.py writes the
@@ -65,7 +77,7 @@ pbf_fallback () {
   if [ ! -f data/greece-latest.osm.pbf ]; then
     curl -fL --retry 5 --retry-delay 5 -C - --max-time 3600 -o data/greece-latest.osm.pbf "https://download.geofabrik.de/europe/greece-latest.osm.pbf"
   fi
-  python3 pipeline/pbf-cut.py data/greece-latest.osm.pbf road:data/osm/athens.json:37.70,23.31,38.34,24.05 names:data/osm/athens-names.json:37.70,23.31,38.34,24.05 rail:data/osm/athens-rail.json:37.82,23.61,38.11,23.98
+  python3 pipeline/pbf-cut.py data/greece-latest.osm.pbf road:data/osm/athens.json:37.70,23.31,38.34,24.05 names:data/osm/athens-names.json:37.70,23.31,38.34,24.05 rail:data/osm/athens-rail.json:37.82,22.70,38.50,23.98
 }
 
 # 2) OSM — roadways in the bbox of the whole OSY network (GTFS shapes extent + margin:
@@ -108,11 +120,12 @@ if [ ! -f data/osm/athens-names.json ]; then
   [ "$ok" = 1 ] || { rm -f data/osm/athens-names.json; pbf_fallback; }
 fi
 
-# 2c) OSM — rail network for STASY (separate graph): metro tunnels (subway),
-#     tram tracks and surface rail (parts of M1 and shared corridors).
+# 2c) OSM — rail network for STASY + Proastiakos (separate graph): metro tunnels
+#     (subway), tram tracks and surface rail (parts of M1, the suburban lines).
+#     The box reaches Kiato in the west and Chalkida in the north (A4, A3).
 if [ ! -f data/osm/athens-rail.json ]; then
   echo "== Overpass (rail) =="
-  QT='[out:json][timeout:300];way(37.82,23.61,38.11,23.98)["railway"~"^(subway|tram|light_rail|rail)$"];out geom;'
+  QT='[out:json][timeout:300];way(37.82,22.70,38.50,23.98)["railway"~"^(subway|tram|light_rail|rail)$"];out geom;'
   ok=0
   for EP in "https://maps.mail.ru/osm/tools/overpass/api/interpreter" \
             "https://overpass-api.de/api/interpreter" \
