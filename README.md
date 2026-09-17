@@ -7,9 +7,9 @@ Train)** drawn exactly along roadways, tracks and tunnels (own
 HMM/Viterbi map matching on an OSM graph), line numbers written parallel to every
 street they use, labeled stops, true roundabout arcs.
 
-**Live map:** https://miqell24.github.io/athens-bus-map/
+**Live map:** https://agcghub.github.io/athens-bus-map/
 
-Sibling of [krakow-bus-map](https://github.com/Miqell24/krakow-bus-map) — same
+Sibling of [krakow-bus-map](https://github.com/AGCGHub/krakow-bus-map) — same
 pipeline, different city and feeds.
 
 ## Features
