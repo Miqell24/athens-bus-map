@@ -131,3 +131,10 @@ Full plan and roadmap: [PLAN.md](PLAN.md).
 Map data © OpenStreetMap contributors · tiles by OpenFreeMap · timetables: GTFS
 OASA/OSY/STASY via data.gov.gr · Hellenic Train (Proastiakos) as collected by
 Transitous.
+
+## 17.09.2026 — requested fixes
+
+- **Χ14 is a night line** — black and last, like 400, 500 and 790.
+- **24/7 lines underlined:** buses 040, Χ93, Χ95, Χ96, Χ97 and trolleybus 11 carry `h24` in `meta.json`; the panel chip and the terminus badges underline the number in black.
+- **Proastiakos without numbers.** A1–A4 are not used in the city: the codes stay keys (colours, selection, planner) but leave the number rows and badge grids; the panel, popups and legend name the routes (Piraeus – Airport, Ano Liosia – Airport, Athens – Chalkida, Piraeus – Kiato). Applied to the archived timeline versions as well.
+- **Not yet: the network of 18.09.2026** (new 320, 870, extended 314 and 868). The OASA feed on data.gov.gr is still the one of 6.08.2026; the timeline gets that version when the new feed is published.

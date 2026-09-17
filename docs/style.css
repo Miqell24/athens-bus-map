@@ -404,3 +404,7 @@ details.journey .beta {
 .timeline .hint { margin: 4px 0 0; }
 .timeline .hint.feeds { color: #8a8f99; font-size: 11px; }
 .timeline .hint.note { color: #8a5a00; font-weight: 600; }
+
+/* 24/7 lines: the number underlined in black (user 17.09.2026) */
+.chip.h24 { text-decoration: underline; text-decoration-color: #000; text-decoration-thickness: 3px; text-underline-offset: 3px; text-decoration-skip-ink: none; }
+.legend .chip.h24.demo { cursor: default; padding: 0 6px; margin-right: 4px; }

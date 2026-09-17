@@ -460,7 +460,8 @@
           }
         }
       ],
-      "rank": 0
+      "rank": 0,
+      "h24": 1
     },
     {
       "line": "12",
@@ -1250,7 +1251,8 @@
           }
         }
       ],
-      "rank": 1
+      "rank": 1,
+      "h24": 1
     },
     {
       "line": "046",
@@ -10550,56 +10552,6 @@
       "rank": 1
     },
     {
-      "line": "Χ14",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "ΚΗΦΙΣΙΑ - ΣΥΝΤΑΓΜΑ",
-          "headsign": "ΚΗΦΙΣΙΑ - ΣΥΝΤΑΓΜΑ (EXPRESS-ΝΥΧΤΕΡΙΝΗ)",
-          "variants": 1,
-          "tripCount": 45,
-          "stops": 40,
-          "lengthKm": 14.77,
-          "stats": {
-            "observations": 343,
-            "matched": 343,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 4.4001148736261175,
-            "roundaboutSegs": 22,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "ΣΥΝΤΑΓΜΑ - ΚΗΦΙΣΙΑ",
-          "headsign": "ΣΥΝΤΑΓΜΑ - ΚΗΦΙΣΙΑ (EXPRESS-ΝΥΧΤΕΡΙΝΗ)",
-          "variants": 1,
-          "tripCount": 53,
-          "stops": 39,
-          "lengthKm": 14.43,
-          "stats": {
-            "observations": 265,
-            "matched": 265,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.104114522871649,
-            "roundaboutSegs": 24,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
       "line": "Χ21",
       "mode": "bus",
       "color": "#0059a9",
@@ -10697,7 +10649,8 @@
           }
         }
       ],
-      "rank": 1
+      "rank": 1,
+      "h24": 1
     },
     {
       "line": "Χ95",
@@ -10747,7 +10700,8 @@
           }
         }
       ],
-      "rank": 1
+      "rank": 1,
+      "h24": 1
     },
     {
       "line": "Χ96",
@@ -10797,7 +10751,8 @@
           }
         }
       ],
-      "rank": 1
+      "rank": 1,
+      "h24": 1
     },
     {
       "line": "Χ97",
@@ -10826,7 +10781,8 @@
           }
         }
       ],
-      "rank": 1
+      "rank": 1,
+      "h24": 1
     },
     {
       "line": "M1",
@@ -11221,6 +11177,56 @@
             "rawMeters": 0,
             "meanError": 2.5371747955570654,
             "roundaboutSegs": 8,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "Χ14",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "ΚΗΦΙΣΙΑ - ΣΥΝΤΑΓΜΑ",
+          "headsign": "ΚΗΦΙΣΙΑ - ΣΥΝΤΑΓΜΑ (EXPRESS-ΝΥΧΤΕΡΙΝΗ)",
+          "variants": 1,
+          "tripCount": 45,
+          "stops": 40,
+          "lengthKm": 14.77,
+          "stats": {
+            "observations": 343,
+            "matched": 343,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 4.4001148736261175,
+            "roundaboutSegs": 22,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "ΣΥΝΤΑΓΜΑ - ΚΗΦΙΣΙΑ",
+          "headsign": "ΣΥΝΤΑΓΜΑ - ΚΗΦΙΣΙΑ (EXPRESS-ΝΥΧΤΕΡΙΝΗ)",
+          "variants": 1,
+          "tripCount": 53,
+          "stops": 39,
+          "lengthKm": 14.43,
+          "stats": {
+            "observations": 265,
+            "matched": 265,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.104114522871649,
+            "roundaboutSegs": 24,
             "extStart": 0,
             "extEnd": 0
           }

@@ -1,7 +1,7 @@
 {
   "id": "2026-09-11",
   "label": "11 Sept 2026",
-  "generatedAt": "2026-09-11T13:49:20.896Z",
+  "generatedAt": "2026-09-17T11:12:42.683Z",
   "note": "the OSY feed of 6.08.2026 and STASY of 1.07, now with Proastiakos A1–A4 of Hellenic Train (its feed of 10.09.2026, collected by Transitous)",
   "feeds": [
     {
@@ -34,5 +34,5 @@
       "label": "Hellenic Train Proastiakos 2026-09-10"
     }
   ],
-  "archivedAt": "2026-09-11T13:49:21.486Z"
+  "archivedAt": "2026-09-17T11:12:43.395Z"
 }

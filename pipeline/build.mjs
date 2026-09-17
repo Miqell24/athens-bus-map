@@ -45,7 +45,17 @@ const keyParts = (s) => {
 // the number rows along the streets, the terminus badge grids. The night
 // rule is this city's own (NIGHT, tested on the printed number); the
 // trolleybuses are whatever the feed loop painted green (TROLLEYS).
-const NIGHT = /^(400|500|790)$/;
+// Χ14 (Greek chi) joins the night lines (user 17.09.2026)
+const NIGHT = /^(400|500|790|Χ14)$/;
+// Lines running round the clock, flagged h24 in meta.json — the map underlines
+// their numbers in black (user 17.09.2026): buses 040, Χ93, Χ95, Χ96, Χ97
+// and trolleybus 11. Keyed by mode, the rail keys reuse numbers.
+const H24 = new Set(['bus|040', 'bus|Χ93', 'bus|Χ95', 'bus|Χ96', 'bus|Χ97', 'bus|11']);
+// Proastiakos prints no number (user 17.09.2026: "numeracja Proastiakos do
+// usunięcia, nieużywana na mieście — zostają kolory"): Hellenic Train's A1–A4
+// codes stay KEYS (colours, selection, the planner) but leave every number
+// row and terminus badge grid; the panel names the routes instead.
+const NO_NUMBER = /^A[1-4]$/;
 const TROLLEYS = new Set();
 const lineRank = (k) => (TROLLEYS.has(k) ? 0
   : NIGHT.test(typeof LBL !== 'undefined' && LBL.has(k) ? LBL.get(k) : k) ? 2 : 1);
@@ -650,12 +660,13 @@ async function processMode(cfg) {
     const p = f.properties;
     // the lines that END here, not every line that calls: a corridor stop where
     // one route turns back otherwise built a wall of boxes for its through lines
-    if (p.terminus && p.label && p.badgeLines && p.badgeLines.length) {
+    const numbered = (p.badgeLines || []).filter((l) => !NO_NUMBER.test(l));
+    if (p.terminus && p.label && numbered.length) {
       badgeAnchors.push({
         lon: f.geometry.coordinates[0],
         lat: f.geometry.coordinates[1],
         name: p.name,
-        lines: p.badgeLines.map((line) => ({
+        lines: numbered.map((line) => ({
           line, mode: p.mode, color: colorOf([line]), colorDark: colorDarkOf([line]),
           // metro and tram share the rail mode in the data; the M prefix is what
           // splits them into the two categories the panel offers
@@ -1077,7 +1088,10 @@ const metaLines = results.flatMap((r) => r.metaLines);
     // Keys keep the prefix — trolleybus 6 exists too, so selection and the
     // journey planner must not merge them — only the drawn text drops it.
     const tramDisp = (s) => s.split(', ').map((l) => (/^T\d+$/.test(l) ? l.slice(1) : l)).join(', ');
-    const baseProps = { lines: p.mode === 'tram' ? tramDisp(p.lines) : p.lines, color: p.color, mode: p.mode, arr, ...(p.metro ? { metro: 1 } : {}) };
+    // Proastiakos numbers leave the row; a row of nothing but Proastiakos is not emitted
+    const rowLines = p.mode === 'tram' ? p.lines.split(', ').filter((l) => !NO_NUMBER.test(l)).join(', ') : p.lines;
+    if (!rowLines) continue;
+    const baseProps = { lines: p.mode === 'tram' ? tramDisp(rowLines) : rowLines, color: p.color, mode: p.mode, arr: arr.filter((l) => !NO_NUMBER.test(l)), ...(p.metro ? { metro: 1 } : {}) };
     if (p.busLines) baseProps.busLines = p.busLines;
     // mixed bus+trolleybus roadway: the label keeps the trolleybus numbers
     // GREEN in a two-colour row (user request) — all-trolleybus sets already
@@ -1441,13 +1455,13 @@ writeFileSync(join(outDir, 'meta.json'), JSON.stringify({
   bbox: [bLonMin, bLatMin, bLonMax, bLatMax],
   badgeBands: BADGE_BANDS,
   modes: MODES.map((m) => ({ mode: m.mode, label: m.label, color: m.color })),
-  lines: metaLines.map((l) => ({ ...l, rank: lineRank(l.line) })),
+  lines: metaLines.map((l) => ({ ...l, rank: lineRank(l.line), ...(H24.has(l.mode + '|' + l.line) ? { h24: 1 } : {}) })),
 }, null, 2));
 log(`Wrote data/out/{route,streets,labels,street-names,stops,badges,gtfs-shape}.geojson + meta.json`);
 
 // Night lines print black, and sort last where the lists carry no rank
 // (user rule 8.09.2026): a post-pass over the written outputs, see night.mjs.
-await (await import('./night.mjs')).nightPass(outDir, /^(400|500|790)$/, { sort: true });
+await (await import('./night.mjs')).nightPass(outDir, /^(400|500|790|Χ14)$/, { sort: true });
 // Stop names, headsigns and the few line keys the street prints otherwise
 // (audit, 11.09.2026): a post-pass over the written outputs, see names.mjs.
 (await import('./names.mjs')).namesPass(outDir, undefined, { log });

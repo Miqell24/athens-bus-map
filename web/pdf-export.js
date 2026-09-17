@@ -960,10 +960,13 @@
         const th = rows.length * lh * size;
         if (typeof icon === 'string' && icon) {
           const rim = col((icon.match(/#[0-9a-f]{6}/i) || [null])[0], 1);
-          if (/^badge-/.test(icon)) {
-            const boxW = tw + 7 * S, boxH = th + 3 * S, dx = off[0] * size, dy = -off[1] * size;
+          if (/^badgeh?-/.test(icon)) {
+            const h24 = /^badgeh-/.test(icon);
+            const boxW = tw + 7 * S, boxH = th + (h24 ? 4.6 : 3) * S, dx = off[0] * size, dy = -off[1] * size;
             const rc = rim || { r: 0.2, g: 0.2, b: 0.2 };
-            alpha(0.92, () => push('1 1 1 rg ' + rgbS(rc) + ' RG ' + f2(1.1 * S) + ' w 0 J 1 j [] 0 d ' + rrect(ax + dx - boxW / 2, ay + dy - boxH / 2, boxW, boxH, Math.min(2.5 * S, boxH / 3)) + ' B'));
+            alpha(0.92, () => push('1 1 1 rg ' + rgbS(rc) + ' RG ' + f2(1.1 * S) + ' w 0 J 1 j [] 0 d ' + rrect(ax + dx - boxW / 2, ay + dy - boxH / 2 - (h24 ? 0.8 * S : 0), boxW, boxH, Math.min(2.5 * S, boxH / 3)) + ' B'));
+            // 24/7: the black under-bar of the live map's badge
+            if (h24) push('0 0 0 rg ' + f2(ax + dx - tw / 2) + ' ' + f2(ay + dy - boxH / 2 + 0.2 * S) + ' ' + f2(tw) + ' ' + f2(1.1 * S) + ' re f');
             counts.icons++;
           } else if (/^(stop|dot)-/.test(icon)) {
             // The stop markers, larger than on screen (user rule: they must
