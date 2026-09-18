@@ -135,6 +135,6 @@ Transitous.
 ## 17.09.2026 — requested fixes
 
 - **Χ14 is a night line** — black and last, like 400, 500 and 790.
-- **24/7 lines underlined:** buses 040, Χ93, Χ95, Χ96, Χ97 and trolleybus 11 carry `h24` in `meta.json`; the panel chip and the terminus badges underline the number in black.
+- **24/7 lines underlined:** buses 040, Χ93, Χ95, Χ96, Χ97 and trolleybus 11 carry `h24` in `meta.json`; the panel chip and the terminus badges underline the number in black. **18.09.2026:** the mark is now a black `+` after the number, one space away (`100 +`) — the street rows could not carry an underline (MapLibre has no text decoration), and the rows are where a reader meets the number. One mark everywhere: the rows (sectioned by `pipeline/h24.mjs`, the last post-pass), the terminus badges, the panel chips (a black tab), the stop popups, the legend and the PDF export.
 - **Proastiakos without numbers.** A1–A4 are not used in the city: the codes stay keys (colours, selection, planner) but leave the number rows and badge grids; the panel, popups and legend name the routes (Piraeus – Airport, Ano Liosia – Airport, Athens – Chalkida, Piraeus – Kiato). Applied to the archived timeline versions as well.
 - **Not yet: the network of 18.09.2026** (new 320, 870, extended 314 and 868). The OASA feed on data.gov.gr is still the one of 6.08.2026; the timeline gets that version when the new feed is published.

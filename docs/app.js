@@ -235,7 +235,7 @@ async function init() {
   const dispLine = (l) => PROAST[l] || (/^T\d+$/.test(l) ? l.slice(1) : l);
   const paintChips = () => {
     document.getElementById('chips').innerHTML = meta.lines
-      .map((l) => `<button class="chip${l.h24 ? ' h24' : ''}" data-line="${esc(l.line)}" style="background:${esc(l.color)}">${esc(dispLine(l.line))}</button>`)
+      .map((l) => `<button class="chip${l.h24 ? ' h24' : ''}" data-line="${esc(l.line)}" style="background:${esc(l.color)}">${esc(dispLine(l.line))}${l.h24 ? '<span class="plus">+</span>' : ''}</button>`)
       .join(' ');
   };
   paintChips();
@@ -488,11 +488,8 @@ async function init() {
   };
   // Terminus badge box: translucent rounded rectangle rimmed in the line color;
   // registered as a STRETCHABLE image so icon-text-fit wraps it around any number.
-  // h24: a line running round the clock gets a BLACK BAR under its number
-  // (user 17.09.2026: "czarne podkreślenie numeru"): the box grows 4 px at
-  // the bottom, below the content area, so the stretch zones stay the same.
-  const badgeBox = (rim, h24) => {
-    const W = 26, H = h24 ? 24 : 20, LW = 2.5;
+  const badgeBox = (rim) => {
+    const W = 26, H = 20, LW = 2.5;
     const c = document.createElement('canvas');
     c.width = W; c.height = H;
     const x = c.getContext('2d');
@@ -500,7 +497,6 @@ async function init() {
     x.roundRect(LW / 2 + 0.5, LW / 2 + 0.5, W - LW - 1, H - LW - 1, 5);
     x.fillStyle = 'rgba(255,255,255,0.72)'; x.fill();
     x.lineWidth = LW; x.strokeStyle = rim; x.stroke();
-    if (h24) { x.fillStyle = '#000000'; x.fillRect(6, 17, 14, 3); }
     return x.getImageData(0, 0, W, H);
   };
   const addStopIcons = (m) => {
@@ -513,7 +509,6 @@ async function init() {
         pixelRatio: 2,
         stretchX: [[10, 16]], stretchY: [[8, 12]], content: [6, 4, 20, 16],
       });
-      m.addImage('badgeh-' + c, badgeBox(c, true), { pixelRatio: 2, stretchX: [[10, 16]], stretchY: [[8, 12]], content: [6, 4, 20, 16] });
     }
   };
   // Safety net: a line color the palette misses must never strip a badge of
@@ -522,11 +517,11 @@ async function init() {
   const darkenHex = (hex) => '#' + (hex.match(/[0-9a-f]{2}/gi) || [])
     .map((h) => Math.round(parseInt(h, 16) * 0.45).toString(16).padStart(2, '0')).join('');
   const addMissingIcon = (m) => (e) => {
-    const g = /^(stop|dot|badgeh|badge)-(#[0-9a-f]{6})(-t)?$/.exec(e.id);
+    const g = /^(stop|dot|badge)-(#[0-9a-f]{6})(-t)?$/.exec(e.id);
     if (!g || m.hasImage(e.id)) return;
     const [, kind, c, t] = g;
-    if (kind === 'badge' || kind === 'badgeh') {
-      m.addImage(e.id, badgeBox(c, kind === 'badgeh'), {
+    if (kind === 'badge') {
+      m.addImage(e.id, badgeBox(c), {
         pixelRatio: 2,
         stretchX: [[10, 16]], stretchY: [[8, 12]], content: [6, 4, 20, 16],
       });
@@ -617,9 +612,13 @@ async function init() {
   // the current zoom is drawn.
   map.addSource('badges', { type: 'geojson', data: D('badges.geojson') });
   const DEFAULT_BANDS = [[13, 14], [14, 15], [15, 16.5], [16.5, 22]];
-  // lines running round the clock (meta.json h24): their terminus badges carry
-  // the black under-bar
-  const H24_LINES = (meta.lines || []).filter((l) => l.h24).map((l) => l.line);
+  // lines running round the clock (meta.json h24) print a black "+" after the
+  // number, one space away — in the street rows (sectioned by the pipeline's
+  // h24.mjs), on the terminus badges, the panel chips and in the stop popups
+  // (18.09.2026; the underline of 17.09 could not be drawn in the rows)
+  const H24_KEYS = (meta.lines || []).filter((l) => l.h24).map((l) => l.mode + '|' + l.line);
+  const isH24 = ['in', ['concat', ['get', 'mode'], '|', ['get', 'line']], ['literal', H24_KEYS]];
+  const h24List = (list, mode) => String(list || '').split(', ').map((n) => (H24_KEYS.includes(mode + '|' + n) ? n + ' +' : n)).join(', ');
   let BADGE_BANDS = meta.badgeBands || DEFAULT_BANDS;
   // legacy data without `band` passes every band filter — the disjoint zoom
   // ranges still draw it exactly once, so a stale badges.geojson degrades to the
@@ -639,7 +638,7 @@ async function init() {
       minzoom: z0, maxzoom: z1,
       filter: ['all', bandC(b), ['has', 'line']],
       layout: {
-        'text-field': ['coalesce', ['get', 'disp'], ['get', 'line']],
+        'text-field': ['case', isH24, ['format', ['coalesce', ['get', 'disp'], ['get', 'line']], {}, ' +', { 'text-color': '#000000' }], ['coalesce', ['get', 'disp'], ['get', 'line']]],
         'text-font': [NARROW_BOLD],
         // × sc: crowded complexes arrive pre-shrunk from the pipeline — the
         // per-feature constant keeps layout and render in agreement (the same
@@ -647,7 +646,7 @@ async function init() {
         // drift against icon-text-fit)
         'text-size': ['*', BADGE_EM[b] ?? 10, ['coalesce', ['get', 'sc'], 1]],
         'text-offset': ['get', 'off'],
-        'icon-image': ['concat', ['case', ['in', ['get', 'line'], ['literal', H24_LINES]], 'badgeh-', 'badge-'], ['coalesce', ['get', 'color'], KMK]],
+        'icon-image': ['concat', 'badge-', ['coalesce', ['get', 'color'], KMK]],
         'icon-text-fit': 'both',
         // top/bottom padding is deliberately uneven: the text box MapLibre fits
         // the icon around includes descender space digits never use (~0.12 em),
@@ -1505,7 +1504,7 @@ async function init() {
     const label = p.lines.includes(',') ? 'lines' : 'line';
     stopPopup = new maplibregl.Popup({ closeButton: false, offset: 10 })
       .setLngLat(f.geometry.coordinates)
-      .setHTML(`<strong>${esc(p.name)}</strong>${p.terminus ? ' · terminus' : ''}<br>${label}: ${esc(p.lines.split(', ').map(dispLine).join(', '))}`)
+      .setHTML(`<strong>${esc(p.name)}</strong>${p.terminus ? ' · terminus' : ''}<br>${label}: ${esc(p.lines.split(', ').map((n) => dispLine(n) + (H24_KEYS.includes(p.mode + '|' + n) ? ' +' : '')).join(', '))}`)
       .addTo(map);
   });
   map.on('mouseenter', 'stops-dots', () => (map.getCanvas().style.cursor = 'pointer'));

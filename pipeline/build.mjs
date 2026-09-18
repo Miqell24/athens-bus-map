@@ -47,9 +47,10 @@ const keyParts = (s) => {
 // trolleybuses are whatever the feed loop painted green (TROLLEYS).
 // Χ14 (Greek chi) joins the night lines (user 17.09.2026)
 const NIGHT = /^(400|500|790|Χ14)$/;
-// Lines running round the clock, flagged h24 in meta.json — the map underlines
-// their numbers in black (user 17.09.2026): buses 040, Χ93, Χ95, Χ96, Χ97
-// and trolleybus 11. Keyed by mode, the rail keys reuse numbers.
+// Lines running round the clock, flagged h24 in meta.json — the map prints a
+// black "+" after their numbers (user 18.09.2026; 17.09 it was a black
+// underline, which the street rows could not carry): buses 040, Χ93, Χ95, Χ96,
+// Χ97 and trolleybus 11. Keyed by mode, the rail keys reuse numbers.
 const H24 = new Set(['bus|040', 'bus|Χ93', 'bus|Χ95', 'bus|Χ96', 'bus|Χ97', 'bus|11']);
 // Proastiakos prints no number (user 17.09.2026: "numeracja Proastiakos do
 // usunięcia, nieużywana na mieście — zostają kolory"): Hellenic Train's A1–A4
@@ -1465,3 +1466,7 @@ await (await import('./night.mjs')).nightPass(outDir, /^(400|500|790|Χ14)$/, { 
 // Stop names, headsigns and the few line keys the street prints otherwise
 // (audit, 11.09.2026): a post-pass over the written outputs, see names.mjs.
 (await import('./names.mjs')).namesPass(outDir, undefined, { log });
+// Lines running round the clock print a black "+" after their number in the
+// street rows (user 18.09.2026; the underline of 17.09 could not be drawn
+// there): the LAST post-pass, see h24.mjs.
+(await import('./h24.mjs')).h24Pass(outDir, H24, { log });
